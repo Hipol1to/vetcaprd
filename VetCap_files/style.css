@@ -20,6 +20,13 @@
 .section-bg {
   background: #fcf2eb;
 }
+.section-bgv2 {
+  background: #2e5653 !important;
+}
+
+.menu-jevi {
+  background: #ffffff !important;
+}
 .section-bg2 {
   background: #305534;
 }
@@ -1642,6 +1649,26 @@ hr {
   margin-bottom: 30px;
   text-transform: uppercase;
 }
+
+.section-tittle-jevi {
+  color: #ffffff !important;
+  font-size: 40px;
+  display: block;
+  font-weight: 900;
+  line-height: 1.2;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.section-testo-jevi {
+  color: #ffffff !important;
+  font-size: 40px;
+  display: block;
+  font-weight: lighter !important;
+  line-height: 1.2;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
 @media only screen and (min-width: 1200px) and (max-width: 1399px) {
   .section-tittle h2 {
     font-size: 40px;
@@ -1934,8 +1961,8 @@ hr {
   height: 2px;
   bottom: -7px;
 }
-.browse-btn:hover {
-  color: #007a5c;
+.browse-btnv2:hover {
+  color: #ffffff !important;
   letter-spacing: 1px;
 }
 .browse-btn.browse-btn2 {
@@ -2575,9 +2602,9 @@ hr {
   }
 }
 .header-area .header-bottom .left-side .main-menu ul > li a {
-  color: #ffffff;
+  color: #2e5653;
   font-family: "Chivo", sans-serif;
-  font-weight: 400;
+  font-weight: bold;
   padding: 28px 7px;
   display: block;
   font-size: 18px;
@@ -2799,12 +2826,14 @@ hr {
 }
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
   .slider-height {
-    height: 720px;
+    max-width: 100%;
+    height: auto;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .slider-height {
-    height: 580px;
+    max-width: 100%;
+    height: auto;
   }
 }
 @media only screen and (min-width: 576px) and (max-width: 767px) {
@@ -2840,12 +2869,11 @@ hr {
 }
 .slider-bg1 {
   background-image: url(../img/hero/h1_hero1.jpg) !important;
-  background-size: 100% auto;
 }
 
 @media (max-width: 767px) {
   .slider-bg1 {
-    background-image: url(../img/hero/h1_hero_mobile.jpg) !important;
+    background-image: url(../img/Pagina_web_Phone_1.png) !important;
   }
 }
 
@@ -2877,7 +2905,9 @@ hr {
   font-family: "Chivo", sans-serif;
   font-size: 54px;
   font-weight: 900;
-  margin-bottom: 9px;
+  margin-top: 7%;
+  margin-bottom: 15%;
+  margin-left: 9%;
   color: #2e5653;
   line-height: 1.2;
 }
@@ -2893,7 +2923,7 @@ hr {
 }
 @media (max-width: 575px) {
   .slider-area .hero-caption h1 {
-    font-size: 25px;
+    font-size: 35px;
   }
 }
 .slider-area .hero-caption p {
