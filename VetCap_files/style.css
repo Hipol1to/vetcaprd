@@ -18,7 +18,7 @@
   background: #f9fafc;
 }
 .section-bg {
-  background: #fcf2eb;
+  background: #ffffff;
 }
 .section-bgv2 {
   background: #2e5653 !important;
@@ -94,9 +94,11 @@ h5,
 h6 {
   font-family: "Chivo", sans-serif;
   color: #ffffff;
+  font-size: 37px;
   margin-top: 0px;
+  margin-bottom: 7%;
   font-style: normal;
-  font-weight: 500;
+  font-weight: 400;
   text-transform: normal;
 }
 p {
@@ -105,7 +107,7 @@ p {
   font-size: 16px;
   line-height: 30px;
   margin-bottom: 15px;
-  font-weight: 400;
+  font-weight: 150;
   line-height: 1.6;
 }
 .f-left {
@@ -2903,12 +2905,12 @@ hr {
 }
 .slider-area .hero-caption h1 {
   font-family: "Chivo", sans-serif;
-  font-size: 54px;
-  font-weight: 900;
+  font-size: 73px;
+  font-weight: 500;
   margin-top: 7%;
-  margin-bottom: 15%;
-  margin-left: 9%;
-  color: #2e5653;
+  margin-bottom: 1%;
+  margin-left: 1%;
+  color: #fbfbfb;
   line-height: 1.2;
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -2927,7 +2929,7 @@ hr {
   }
 }
 .slider-area .hero-caption p {
-  color: #2e5653;
+  color: #fbfbfb;
   margin-bottom: 41px;
   font-size: 20px;
   font-weight: 400;
@@ -3733,7 +3735,9 @@ hr {
   position: relative;
 }
 .footer-wrapper .footer-area .footer-form form input {
-  width: 100%;
+  width: 20%;
+  margin-right: 13%;
+  float: right;
   height: 60px;
   padding: 10px 20px;
   border: 0;
@@ -3763,6 +3767,7 @@ hr {
 .footer-wrapper .footer-area .footer-form form .form-icon button {
   position: absolute;
   top: 0;
+  margin-right: 13%;
   right: 0;
   border: 0;
   cursor: pointer;
