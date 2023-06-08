@@ -1,3 +1,12 @@
+@font-face {
+  font-family: "CustomFont";
+  src: url("./Fontspring.otf") format("opentype");
+}
+
+body {
+  font-family: "CustomFont", Arial, sans-serif;
+}
+
 @import url("https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&display=swap");
 .gray-bg {
   background: #f1fbff;
@@ -1611,7 +1620,7 @@ hr {
 }
 .section-tittle p {
   color: #777777;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 400;
   line-height: 1.5;
 }
@@ -1644,9 +1653,9 @@ hr {
 }
 .section-tittle h2 {
   color: #32404d;
-  font-size: 40px;
+  font-size: 27px;
   display: block;
-  font-weight: 900;
+  font-weight: 600;
   line-height: 1.2;
   margin-bottom: 30px;
   text-transform: uppercase;
@@ -2871,6 +2880,24 @@ hr {
 }
 .slider-bg1 {
   background-image: url(../img/hero/h1_hero1.jpg) !important;
+}
+.slider-bg11 {
+  background-image: url(../assets/img/08.png) !important;
+}
+.slider-bg22 {
+  background-image: url(../assets/img/09.png) !important;
+}
+.slider-bg33 {
+  background-image: url(../assets/img/10.png) !important;
+}
+.slider-bg44 {
+  background-image: url(../assets/img/11.png) !important;
+}
+.slider-bg55 {
+  background-image: url(../assets/img/12.png) !important;
+}
+.slider-bg66 {
+  background-image: url(../assets/img/13.png) !important;
 }
 
 @media (max-width: 767px) {
@@ -6407,6 +6434,9 @@ del {
 .section-top-border {
   padding: 50px 0;
   border-top: 1px dotted #eee;
+}
+.mb-30-jevi {
+  margin-left: 15%;
 }
 .mb-30 {
   margin-bottom: 30px;
