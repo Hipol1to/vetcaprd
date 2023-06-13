@@ -32,6 +32,9 @@ body {
 .section-bgv2 {
   background: #2e5653 !important;
 }
+.section-bgv3 {
+  background: linear-gradient(to left, #305454, #40546c, #305454) !important;
+}
 
 .menu-jevi {
   background: #ffffff !important;
@@ -1655,10 +1658,14 @@ hr {
   color: #32404d;
   font-size: 27px;
   display: block;
-  font-weight: 600;
+  /* font-weight: 600; */
   line-height: 1.2;
   margin-bottom: 30px;
   text-transform: uppercase;
+}
+
+.h2vetcamps {
+  font-size: 360% !important;
 }
 
 .section-tittle-jevi {
@@ -2226,6 +2233,19 @@ hr {
   border: 1px solid transparent;
   display: inline-block;
 }
+
+.btn_1v2 {
+  background-color: #007a5c;
+  color: #ffffff !important;
+  padding: 11px 20px;
+  font-size: 32px;
+  border-radius: 0px;
+  font-weight: 400;
+  text-transform: capitalize;
+  border: 1px solid transparent;
+  display: inline-block;
+}
+
 .btn_1 i {
   margin-right: 8px;
 }
@@ -2881,6 +2901,9 @@ hr {
 .slider-bg1 {
   background-image: url(../img/hero/h1_hero1.jpg) !important;
 }
+.slider-vescap {
+  background-image: url(../assets/img/Fundacion-Vetcapp.png) !important;
+}
 .slider-bg11 {
   background-image: url(../assets/img/08.png) !important;
 }
@@ -3037,6 +3060,27 @@ hr {
   z-index: -1;
   background-repeat: no-repeat;
 }
+
+.hero-overlis {
+  position: relative;
+  z-index: 0;
+}
+.hero-overlis::before {
+  position: absolute;
+  content: "";
+  background-color: rgba(28, 35, 42, 0.47);
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  background-repeat: no-repeat;
+}
+
+
+
 .hero-overly02 {
   position: relative;
   z-index: 0;
