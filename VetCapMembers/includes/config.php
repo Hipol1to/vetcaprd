@@ -12,7 +12,7 @@ define('DBPASS','');
 define('DBNAME','daravey');
 
 //application address
-define('DIR','http://localhost/testin/');
+define('DIR','http://localhost/vettcap/VetCapMembers/');
 define('SITEEMAIL','noreply@domain.com');
 
 try {

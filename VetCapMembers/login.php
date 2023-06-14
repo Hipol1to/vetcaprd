@@ -46,69 +46,88 @@ require('layout/header.php');
 ?>
 
 	
-<div class="container">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<style>
+  .containerrr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to left, #305454, #40546c, #305454) !important;
+  }
 
-	<div class="row">
+  .form-containerrr {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(248, 249, 250, 0.8);
+    border-radius: 10px;
+  }
 
-	    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-			<form role="form" method="post" action="" autocomplete="off">
-				<h2>Please Login</h2>
-				<p><a href='./'>Back to home page</a></p>
-				<hr>
+  .form-containerrr h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2e5653 !important;
+  }
+</style>
 
-				<?php
-				//check for any errors
-				if (isset($error)){
-					foreach ($error as $error){
-						echo '<p class="bg-danger">'.$error.'</p>';
-					}
-				}
+<div class="containerrr">
+  <div class="form-containerrr">
+    <form role="form" method="post" action="" autocomplete="off">
+      <h2 style="color: #2e5653 !important;">Iniciar Sesión</h2>
+      <p style="color: #2e5653 !important;">¿Todavía no eres miembro? <a href="index.php"><b style="color: #2e5653 !important;">Regístrate</b> </a></p>
+      <hr>
 
-				if (isset($_GET['action'])){
+      <?php
+      // Check for any errors
+      if (isset($error)) {
+        foreach ($error as $error) {
+          echo '<p class="bg-danger">' . $error . '</p>';
+        }
+      }
 
-					//check the action
-					switch ($_GET['action']) {
-						case 'active':
-							echo "<h2 class='bg-success'>Your account is now active you may now log in.</h2>";
-							break;
-						case 'reset':
-							echo "<h2 class='bg-success'>Please check your inbox for a reset link.</h2>";
-							break;
-						case 'resetAccount':
-							echo "<h2 class='bg-success'>Password changed, you may now login.</h2>";
-							break;
-					}
+      if (isset($_GET['action'])) {
+        // Check the action
+        switch ($_GET['action']) {
+          case 'active':
+            echo "<h2 class='bg-success'>Your account is now active. You may now log in.</h2>";
+            break;
+          case 'reset':
+            echo "<h2 class='bg-success'>Please check your inbox for a reset link.</h2>";
+            break;
+          case 'resetAccount':
+            echo "<h2 class='bg-success'>Password changed. You may now login.</h2>";
+            break;
+        }
+      }
+      ?>
 
-				}
+      <div class="form-group">
+        <input type="text" name="username" id="username" class="form-control input-lg" placeholder="Usuario" value="<?php if(isset($error)){ echo htmlspecialchars($_POST['username'], ENT_QUOTES); } ?>" tabindex="1">
+      </div>
 
-				
-				?>
+      <div class="form-group">
+        <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña" tabindex="3">
+      </div>
 
-				<div class="form-group">
-					<input type="text" name="username" id="username" class="form-control input-lg" placeholder="User Name" value="<?php if(isset($error)){ echo htmlspecialchars($_POST['username'], ENT_QUOTES); } ?>" tabindex="1">
-				</div>
+      <div class="row">
+        <div class="col-xs-9 col-sm-9 col-md-9">
+          <a href="reset.php">¿Olvidaste tu contraseña?</a>
+        </div>
+      </div>
 
-				<div class="form-group">
-					<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="3">
-				</div>
-				
-				<div class="row">
-					<div class="col-xs-9 col-sm-9 col-md-9">
-						 <a href='reset.php'>Forgot your Password?</a>
-					</div>
-				</div>
-				
-				<hr>
-				<div class="row">
-					<div class="col-xs-6 col-md-6"><input type="submit" name="submit" value="Login" class="btn btn-primary btn-block btn-lg" tabindex="5"></div>
-				</div>
-			</form>
-		</div>
-	</div>
+      <hr>
 
-
-
+      <div class="row">
+        <div class="col-xs-6 col-md-6">
+          <input type="submit" name="submit" value="Iniciar sesión" class="btn btn-primary btn-block btn-lg" tabindex="5">
+        </div>
+      </div>
+    </form>
+  </div>
 </div>
+
 
 
 <?php 
