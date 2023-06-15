@@ -9,17 +9,17 @@ if( $user->is_logged_in() ){ header('Location: index.php'); exit(); }
 if(isset($_POST['submit'])){
 
 	if (! isset($_POST['username'])) {
-		$error[] = "Please fill out all fields";
+		$error[] = "Por favor completa todos los campos";
 	}
 
 	if (! isset($_POST['password'])) {
-		$error[] = "Please fill out all fields";
+		$error[] = "Por favor completa todos los campos";
 	}
 
 	$username = $_POST['username'];
 	if ($user->isValidUsername($username)){
 		if (! isset($_POST['password'])){
-			$error[] = 'A password must be entered';
+			$error[] = 'Debes introducir una contraseña';
 		}
 
 		$password = $_POST['password'];
@@ -30,10 +30,10 @@ if(isset($_POST['submit'])){
 			exit;
 
 		} else {
-			$error[] = 'Wrong username or password or your account has not been activated.';
+			$error[] = 'Usuario o contraseña incorrecta, asegurate de haber activado tu cuenta';
 		}
 	}else{
-		$error[] = 'Usernames are required to be Alphanumeric, and between 3-16 characters long';
+		$error[] = 'El usuario solo puede tener caracteres alfanumericos, entre 3-16 caracteres';
 	}
 
 }//end if submit
@@ -83,7 +83,7 @@ require('layout/header.php');
       // Check for any errors
       if (isset($error)) {
         foreach ($error as $error) {
-          echo '<p class="bg-danger">' . $error . '</p>';
+          echo '<p style="color: white;" class="bg-danger">' . $error . '</p>';
         }
       }
 
@@ -91,13 +91,13 @@ require('layout/header.php');
         // Check the action
         switch ($_GET['action']) {
           case 'active':
-            echo "<h2 class='bg-success'>Your account is now active. You may now log in.</h2>";
+            echo "<h2 class='bg-success'>Tu cuenta ha sido activada. Puedes iniciar sesión.</h2>";
             break;
           case 'reset':
-            echo "<h2 class='bg-success'>Please check your inbox for a reset link.</h2>";
+            echo "<h2 class='bg-success'>Se ha enviado a tu correo un link de reinicio de contraseña.</h2>";
             break;
           case 'resetAccount':
-            echo "<h2 class='bg-success'>Password changed. You may now login.</h2>";
+            echo "<h2 class='bg-success'>Contraseña cambiada correctamente. Puedes iniciar sesion.</h2>";
             break;
         }
       }

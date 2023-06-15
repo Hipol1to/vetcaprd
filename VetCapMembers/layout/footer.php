@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0049)https://preview.colorlib.com/theme/universityedu/ -->
 <html
   class="js sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers"
   lang="zxx"
@@ -242,18 +241,18 @@
                       </li>
                       <!-- <li>
                         <a
-                          href="https://preview.colorlib.com/theme/universityedu/contact.html#"
+                          href="#"
                         ></a>
                       </li>
                       <li>
                         <a
-                          href="https://preview.colorlib.com/theme/universityedu/contact.html#"
+                          href="#"
                           >Products</a
                         >
                       </li>
                       <li>
                         <a
-                          href="https://preview.colorlib.com/theme/universityedu/contact.html#"
+                          href="#"
                           >Tips &amp; Tricks</a
                         >
                       </li> -->
@@ -271,13 +270,13 @@
                       </li>
                       <!--  <li>
                         <a
-                          href="https://preview.colorlib.com/theme/universityedu/contact.html#"
+                          href="#"
                           >Ocean freight</a
                         >
                       </li>
                       <li>
                         <a
-                          href="https://preview.colorlib.com/theme/universityedu/contact.html#"
+                          href="#"
                           >Large projects</a
                         >
                       </li> -->
@@ -317,15 +316,15 @@
                       ><i class="fab fa-facebook"></i
                     ></a>
                     <a
-                      href="https://preview.colorlib.com/theme/universityedu/contact.html#"
+                      href="#"
                       ><i class="fab fa-instagram"></i
                     ></a>
                     <a
-                      href="https://preview.colorlib.com/theme/universityedu/contact.html#"
+                      href="#"
                       ><i class="fab fa-linkedin-in"></i
                     ></a>
                     <a
-                      href="https://preview.colorlib.com/theme/universityedu/contact.html#"
+                      href="#"
                       ><i class="fab fa-youtube"></i
                     ></a>
                   </div>
@@ -362,8 +361,8 @@
     <div id="back-top">
       <a
         title="Go to Top"
-        href="https://preview.colorlib.com/theme/universityedu/#"
-        ><i class="fas fa-long-arrow-alt-up"></i
+        href="#"
+        ><i style="color: white !important;" class="fas fa-long-arrow-alt-up"></i
       ></a>
     </div>
 

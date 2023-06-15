@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0049)https://preview.colorlib.com/theme/universityedu/ -->
 <html
   class="js sizes customelements history pointerevents postmessage webgl websockets cssanimations csscolumns csscolumns-width csscolumns-span csscolumns-fill csscolumns-gap csscolumns-rule csscolumns-rulecolor csscolumns-rulestyle csscolumns-rulewidth csscolumns-breakbefore csscolumns-breakafter csscolumns-breakinside flexbox picture srcset webworkers"
   lang="zxx"
@@ -245,7 +244,7 @@
                     >
                       <li>
                         <a
-                          href="https://preview.colorlib.com/theme/universityedu/index.html"
+                          href="./index.html"
                           role="menuitem"
                           tabindex="-1"
                           >Home</a
@@ -258,7 +257,7 @@
                       </li>
                       <li>
                         <a
-                          href="https://preview.colorlib.com/theme/universityedu/programs.html"
+                          href="./programs.html"
                           role="menuitem"
                           tabindex="-1"
                           >Programs</a
@@ -266,14 +265,14 @@
                       </li>
                       <li class="slicknav_collapsed slicknav_parent">
                         <a
-                          href="https://preview.colorlib.com/theme/universityedu/#"
+                          href="./#"
                           role="menuitem"
                           aria-haspopup="true"
                           tabindex="-1"
                           class="slicknav_item slicknav_row"
                           style="outline: none"
                           ><a
-                            href="https://preview.colorlib.com/theme/universityedu/blog.html"
+                            href="./blog.html"
                             tabindex="-1"
                             >Blog</a
                           >
@@ -287,7 +286,7 @@
                         >
                           <li>
                             <a
-                              href="https://preview.colorlib.com/theme/universityedu/blog.html"
+                              href="./blog.html"
                               role="menuitem"
                               tabindex="-1"
                               >Blog</a
@@ -295,7 +294,7 @@
                           </li>
                           <li>
                             <a
-                              href="https://preview.colorlib.com/theme/universityedu/blog_details.html"
+                              href="./blog_details.html"
                               role="menuitem"
                               tabindex="-1"
                               >Blog Details</a
@@ -303,7 +302,7 @@
                           </li>
                           <li>
                             <a
-                              href="https://preview.colorlib.com/theme/universityedu/elements.html"
+                              href="./elements.html"
                               role="menuitem"
                               tabindex="-1"
                               >Elements</a
@@ -313,7 +312,7 @@
                       </li>
                       <li>
                         <a
-                          href="https://preview.colorlib.com/theme/universityedu/contact.html"
+                          href="./contact.html"
                           role="menuitem"
                           tabindex="-1"
                           >Contact</a
@@ -339,8 +338,8 @@
     <div id="back-top">
       <a
         title="Go to Top"
-        href="https://preview.colorlib.com/theme/universityedu/#"
-        ><i class="fas fa-long-arrow-alt-up"></i
+        href="./#"
+        ><i style="color: white !important;" class="fas fa-long-arrow-alt-up"></i
       ></a>
     </div>
 

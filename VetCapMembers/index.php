@@ -26,7 +26,7 @@ if(isset($_POST['submit'])){
 
 	//very basic validation
 	if (! $user->isValidUsername($username)){
-		$error[] = 'Usernames must be at least 3 Alphanumeric characters';
+		$error[] = 'El usuario solo puede tener caracteres alfanumericos, entre 3-16 caracteres';
 	} else {
 		$stmt = $db->prepare('SELECT username FROM members WHERE username = :username');
 		$stmt->execute(array(':username' => $username));
@@ -38,28 +38,28 @@ if(isset($_POST['submit'])){
 	}
 
 	if (strlen($_POST['password']) < 3){
-		$error[] = 'Password is too short.';
+		$error[] = 'La contraseña es muy corta';
 	}
 
 	if (strlen($_POST['passwordConfirm']) < 3){
-		$error[] = 'Confirm password is too short.';
+		$error[] = 'Confirma tu contraseña';
 	}
 
 	if ($_POST['password'] != $_POST['passwordConfirm']){
-		$error[] = 'Passwords do not match.';
+		$error[] = 'Las contraseñas no coinciden';
 	}
 
 	//email validation
 	$email = htmlspecialchars_decode($_POST['email'], ENT_QUOTES);
 	if (! filter_var($email, FILTER_VALIDATE_EMAIL)){
-	    $error[] = 'Please enter a valid email address';
+	    $error[] = 'Por favor, ingresa una direccion de correo electrónico valida';
 	} else {
 		$stmt = $db->prepare('SELECT email FROM members WHERE email = :email');
 		$stmt->execute(array(':email' => $email));
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 		if (! empty($row['email'])){
-			$error[] = 'Email provided is already in use.';
+			$error[] = 'Este correo electrónico ya está en uso';
 		}
 	}
 
@@ -90,7 +90,7 @@ if(isset($_POST['submit'])){
 			$subject = "Activa tu cuenta";
 			$body = "<p>Gracias por registrarte en Fundacion Vetcap.</p>
 			<p>Para activar tu cuenta, por favor clica este enlace: <a href='".DIR."activate.php?x=$id&y=$activasion'>".DIR."activate.php?x=$id&y=$activasion</a></p>
-			<p>Regards Site Admin</p>";
+			<p>Atentamente, el equipo de Fundacion Vetcap</p>";
 
 			$mail = new Mail();
 			$mail->setFrom(SITEEMAIL);
@@ -153,13 +153,13 @@ require('layout/header.php');
       // Check for any errors
       if (isset($error)) {
         foreach ($error as $error) {
-          echo '<p class="bg-danger">'.$error.'</p>';
+          echo '<p style="color: white;" class="bg-danger">'.$error.'</p>';
         }
       }
 
       // If action is joined, show success message
       if (isset($_GET['action']) && $_GET['action'] == 'joined') {
-        echo "<h2 class='bg-success'>Registration successful, please check your email to activate your account.</h2>";
+        echo "<h2 class='bg-success'>Registro satisfactorio, revisa tu correo electronico para activar tu cuenta.</h2>";
       }
       ?>
 

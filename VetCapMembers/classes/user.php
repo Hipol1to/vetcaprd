@@ -23,9 +23,9 @@ class User
 	{
 		try {
 			if ($this->_ignoreCase) {
-				$stmt = $this->_db->prepare('SELECT password, username, memberID FROM members WHERE LOWER(username) = LOWER(:username) AND active="Yes" ');
+				$stmt = $this->_db->prepare('SELECT password, username, memberID, eventsRegistered FROM members WHERE LOWER(username) = LOWER(:username) AND active="Yes" ');
 			} else {
-				$stmt = $this->_db->prepare('SELECT password, username, memberID FROM members WHERE username = :username AND active="Yes" ');
+				$stmt = $this->_db->prepare('SELECT password, username, memberID, eventsRegistered FROM members WHERE username = :username AND active="Yes" ');
 			}
 			$stmt->execute(array('username' => $username));
 
@@ -70,6 +70,7 @@ class User
 			$_SESSION['loggedin'] = true;
 			$_SESSION['username'] = $row['username'];
 			$_SESSION['memberID'] = $row['memberID'];
+      $_SESSION['eventsRegistered'] = $row['eventsRegistered'];
 		    
 			return true;
 		}
