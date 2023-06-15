@@ -71,6 +71,17 @@ class User
 			$_SESSION['username'] = $row['username'];
 			$_SESSION['memberID'] = $row['memberID'];
       $_SESSION['eventsRegistered'] = $row['eventsRegistered'];
+      $jsonString = $_SESSION['eventsRegistered'];
+      $datas = json_decode($jsonString, true); // Convert JSON to PHP associative array
+
+      $eventIds = implode(',', $datas);
+      $_SESSION['eventIds'] = $eventIds;
+      $eventsQueryResult = $this->_db->prepare('SELECT id, name, description, picture FROM events WHERE id IN (' . $eventIds . ')');
+      $eventsQueryResult->execute();
+
+      $data = $eventsQueryResult->fetchAll(PDO::FETCH_ASSOC);
+
+      $_SESSION['eventsQueryResult'] = $data;
 		    
 			return true;
 		}

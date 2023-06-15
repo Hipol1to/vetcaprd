@@ -39,7 +39,7 @@ if(isset($_POST['submit'])){
 }//end if submit
 
 //define page title
-$title = 'Login';
+$title = 'Iniciar Sesion';
 
 //include header template
 require('layout/header.php'); 

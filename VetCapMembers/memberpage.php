@@ -7,7 +7,7 @@ if (! $user->is_logged_in()){
 }
 
 //define page title
-$title = 'Member Page';
+$title = 'VetCap Usuarios';
 
 //include header template
 require('layout/header.php'); 
@@ -32,14 +32,31 @@ require('layout/header.php');
           </div>
           <div class="row">
 <?php 
-$jsonString = $_SESSION['eventsRegistered'];
+/*
+$jsonString = $_SESSION['eventsQueryResult'];
 $data = json_decode($jsonString, true); // Convert JSON to PHP associative array
 
 // Get and print only the values
 $values = array_values($data);
 foreach ($values as $value) {
     echo $value . "<br>";
+} */
+
+if (isset($_SESSION['eventsQueryResult'])) {
+    $data = $_SESSION['eventsQueryResult'];
+
+    // Print the values
+    foreach ($data as $row) {
+        echo "Event ID: " . $row['id'] . "<br>";
+        echo "Event Name: " . $row['name'] . "<br>";
+        echo "Event Description: " . $row['description'] . "<br>";
+        echo "Event Picture: " . $row['picture'] . "<br><br>";
+    }
+} else {
+    echo "No events query result found in session.";
 }
+echo $_SESSION['eventIds'];
+
 ?>
           </div>
         </div>
