@@ -53,7 +53,7 @@ $pdo = new PDO('mysql:host=localhost;dbname=daravey', 'root', '');
 $stmt = $pdo->prepare('SELECT eventsRegistered FROM members WHERE memberID = :memberID');
 
 // Bind the parameter value
-$memberID = 10;
+$memberID = $_SESSION['memberID'];
 $stmt->bindParam(':memberID', $memberID, PDO::PARAM_INT);
 
 // Execute the query
@@ -68,7 +68,7 @@ $eventsRegistered = $result['eventsRegistered'];
 $jsonString = $eventsRegistered;
       $datas = json_decode($jsonString, true); // Convert JSON to PHP associative array
 
-      $eventIds = implode(',', $datas);
+      $eventIds = !empty($datas) ? implode(',', $datas) : '';
       $_SESSION['eventIds'] = $eventIds;
 
       $pdo = new PDO('mysql:host=localhost;dbname=daravey', 'root', '');
