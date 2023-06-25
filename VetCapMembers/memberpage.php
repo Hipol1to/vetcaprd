@@ -33,6 +33,9 @@ require('layout/header.php');
           </div>
           <div class="row">
 <?php 
+if (! isset($_SESSION['eventsQueryResult']) || $_SESSION['eventsQueryResult'] == null || $_SESSION['eventsQueryResult'] === null) {
+  echo "No tienes eventos registrados";
+}
 /*
 $jsonString = $_SESSION['eventsQueryResult'];
 $data = json_decode($jsonString, true); // Convert JSON to PHP associative array
@@ -44,7 +47,6 @@ foreach ($values as $value) {
 } */
 
 if (isset($_SESSION['eventsQueryResult'])) {
-
 
   //updating
 $pdo = new PDO('mysql:host=localhost;dbname=daravey', 'root', '');
@@ -261,32 +263,51 @@ $jsonString = $eventsRegistered;
     <div class="row">
       <div class="col-xl-12">
         <div class="section-tittle d-flex justify-content-between align-items-center">
-          <h2>UNSUBSCRIBE</h2>
+          <a href="#" onclick="event.preventDefault();">
+          <h2 id="showFormBtn">Click aqui para desinscribirse</h2>
+          </a>
         </div>
       </div>
     </div>
     <div class="row">
-      <form action="unsubscribe_event.php" method="POST">
-        <label for="event_id">Event List:</label>
-        <?php
-          // Retrieve the list of events from the database
-          $pdo = new PDO('mysql:host=localhost;dbname=daravey', 'root', '');
-          $stmt = $pdo->query('SELECT id, name FROM events');
-          $eventList = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        ?>
-        <select name="event_id" id="event_id">
-          <?php foreach ($eventList as $event) : ?>
-            <option value="<?php echo $event['id']; ?>"><?php echo $event['name']; ?></option>
-          <?php endforeach; ?>
-        </select>
-        <br>
-        <br> <!-- Added line break for spacing -->
-        <input type="submit" value="Unsubscribe">
-      </form>
+    </div>
+
+    <!-- Hidden form container initially -->
+    <div id="formContainer" style="display: none;">
+      <div class="row">
+        <form action="unsubscribe_event.php" method="POST" onsubmit="return confirm('Seguro que quieres desinscribir este evento?');">
+          <label for="event_id">Lista de eventos:</label>
+          <?php
+            // Retrieve the list of events from the database
+            $pdo = new PDO('mysql:host=localhost;dbname=daravey', 'root', '');
+            $stmt = $pdo->query('SELECT id, name FROM events');
+            $eventList = $stmt->fetchAll(PDO::FETCH_ASSOC);
+          ?>
+          <select name="event_id" id="event_id">
+            <?php foreach ($eventList as $event) : ?>
+              <option value="<?php echo $event['id']; ?>"><?php echo $event['name']; ?></option>
+            <?php endforeach; ?>
+          </select>
+          <br>
+          <br> <!-- Added line break for spacing -->
+          <input type="submit" value="Desinscribir">
+        </form>
+      </div>
     </div>
   </div>
 </section>
 
+<script>
+  // Get the button and form container elements
+  const showFormBtn = document.getElementById('showFormBtn');
+  const formContainer = document.getElementById('formContainer');
+
+  // Add click event listener to the button
+  showFormBtn.addEventListener('click', function() {
+    // Toggle the visibility of the form container
+    formContainer.style.display = formContainer.style.display === 'none' ? 'block' : 'none';
+  });
+</script>
 
 
 <?php 

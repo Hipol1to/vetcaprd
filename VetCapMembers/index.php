@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){
 		$row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 		if (! empty($row['username'])){
-			$error[] = 'Username provided is already in use.';
+			$error[] = 'Este nombre de usuario ya esta en uso';
 		}
 	}
 

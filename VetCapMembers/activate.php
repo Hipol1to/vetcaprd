@@ -22,7 +22,7 @@ if (is_numeric($memberID) && !empty($active)) {
 		exit;
 
 	} else {
-		echo "Your account could not be activated."; 
+		echo "Tu cuenta no pudo ser activada. Quizas este link ha expirado"; 
 	}
 	
 }
