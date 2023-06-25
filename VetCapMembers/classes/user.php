@@ -74,10 +74,11 @@ class User
       $jsonString = $_SESSION['eventsRegistered'];
       $datas = json_decode($jsonString, true); // Convert JSON to PHP associative array
 
-      $eventIds = implode(',', $datas);
-      $_SESSION['eventIds'] = $eventIds;
-      $eventsQueryResult = $this->_db->prepare('SELECT id, name, description, picture FROM events WHERE id IN (' . $eventIds . ')');
-      $eventsQueryResult->execute();
+      $eventIdsArray = explode(',', $eventIds);
+$placeholders = rtrim(str_repeat('?,', count($eventIdsArray)), ',');
+$eventsQueryResult = $this->_db->prepare("SELECT id, name, description, picture FROM events WHERE id IN ($placeholders)");
+$eventsQueryResult->execute($eventIdsArray);
+
 
       $data = $eventsQueryResult->fetchAll(PDO::FETCH_ASSOC);
 
