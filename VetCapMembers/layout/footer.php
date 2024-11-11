@@ -12,7 +12,6 @@
   ><style lang="en" type="text/css" id="dark-mode-native-sheet"></style>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <!-- <title>Fundacion VetCap</title> -->
     <title><?=isset($title) ? $title : null;?></title>
@@ -23,7 +22,6 @@
       type="image/x-icon"
       href="../assets/img/logo.jpg"
     />
-
     <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../assets/css/owl.carousel.min.css" />
     <link rel="stylesheet" href="../assets/css/slicknav.css" />
@@ -36,9 +34,6 @@
     <link rel="stylesheet" href="../assets/css/style.css" />
   </head>
   <body>
-
-
-    
     <footer>
       <div class="footer-wrapper gray-bg">
         <div class="footer-area footer-padding">
@@ -213,7 +208,6 @@
         </div>
       </div>
     </footer>
-
     <div id="back-top">
       <a
         title="Go to Top"
@@ -221,7 +215,6 @@
         ><i style="color: white !important;" class="fas fa-long-arrow-alt-up"></i
       ></a>
     </div>
-
     <script src="../assets/js/jquery-1.12.4.min.js"></script>
     <script src="../assets/js/jquery.slicknav.min.js"></script>
     <script src="../assets/js/main.js"></script>
