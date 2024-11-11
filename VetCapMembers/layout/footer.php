@@ -24,16 +24,16 @@
       href="../assets/img/logo.jpg"
     />
 
-    <link rel="stylesheet" href="../VetCap_files/bootstrap.min.css" />
-    <link rel="stylesheet" href="../VetCap_files/owl.carousel.min.css" />
-    <link rel="stylesheet" href="../VetCap_files/slicknav.css" />
-    <link rel="stylesheet" href="../VetCap_files/animate.min.css" />
-    <link rel="stylesheet" href="../VetCap_files/magnific-popup.css" />
-    <link rel="stylesheet" href="../VetCap_files/fontawesome-all.min.css" />
-    <link rel="stylesheet" href="../VetCap_files/themify-icons.css" />
-    <link rel="stylesheet" href="../VetCap_files/slick.css" />
-    <link rel="stylesheet" href="../VetCap_files/nice-select.css" />
-    <link rel="stylesheet" href="../VetCap_files/style.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="../assets/css/slicknav.css" />
+    <link rel="stylesheet" href="../assets/css/animate.min.css" />
+    <link rel="stylesheet" href="../assets/css/magnific-popup.css" />
+    <link rel="stylesheet" href="../assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="../assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="../assets/css/slick.css" />
+    <link rel="stylesheet" href="../assets/css/nice-select.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
   </head>
   <body>
 
@@ -222,8 +222,8 @@
       ></a>
     </div>
 
-    <script src="../js/jquery-1.12.4.min.js"></script>
-    <script src="../js/jquery.slicknav.min.js"></script>
-    <script src="../js/main.js"></script>
+    <script src="../assets/js/jquery-1.12.4.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/main.js"></script>
   </body>
 </html>
