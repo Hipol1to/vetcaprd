@@ -10,82 +10,6 @@
   /><style lang="en" type="text/css" id="dark-mode-custom-style"></style
   ><style lang="en" type="text/css" id="dark-mode-native-style"></style
   ><style lang="en" type="text/css" id="dark-mode-native-sheet"></style>
-  <script
-    type="text/javascript"
-    async=""
-    src="./VetCap_files/analytics.js.download"
-    nonce="6ee1138f-ea45-4b05-a5ca-3ba7cedd40ff"
-  ></script>
-  <script
-    defer=""
-    referrerpolicy="origin"
-    src="./js/script.js"
-  ></script>
-  <script>
-    Object.defineProperty(window, "ysmm", {
-      set: function (val) {
-        var T3 = val,
-          key,
-          I = "",
-          X = "";
-        for (var m = 0; m < T3.length; m++) {
-          if (m % 2 == 0) {
-            I += T3.charAt(m);
-          } else {
-            X = T3.charAt(m) + X;
-          }
-        }
-        T3 = I + X;
-        var U = T3.split("");
-        for (var m = 0; m < U.length; m++) {
-          if (!isNaN(U[m])) {
-            for (var R = m + 1; R < U.length; R++) {
-              if (!isNaN(U[R])) {
-                var S = U[m] ^ U[R];
-                if (S < 10) {
-                  U[m] = S;
-                }
-                m = R;
-                R = U.length;
-              }
-            }
-          }
-        }
-        T3 = U.join("");
-        T3 = window.atob(T3);
-        T3 = T3.substring(T3.length - (T3.length - 16));
-        T3 = T3.substring(0, T3.length - 16);
-        key = T3;
-        if (
-          key &&
-          (key.indexOf("http://") === 0 || key.indexOf("https://") === 0)
-        ) {
-          document.write("<!--");
-          window.stop();
-
-          window.onbeforeunload = null;
-          window.location = key;
-        }
-      },
-    });
-
-    Object.defineProperty(window, "source", {
-      set(v) {
-        const url = new URL(location.protocol + location.hostname + v);
-        const key = url.searchParams.get("allb");
-        if (
-          key &&
-          (key.indexOf("http://") === 0 || key.indexOf("https://") === 0)
-        ) {
-          document.write("<!--");
-          window.stop();
-
-          window.onbeforeunload = null;
-          window.location = key;
-        }
-      },
-    });
-  </script>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
@@ -99,84 +23,16 @@
       href="./assets/img/logo.jpg"
     />
 
-    <link rel="stylesheet" href="./css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="./css/slicknav.css" />
-    <link rel="stylesheet" href="./css/animate.min.css" />
-    <link rel="stylesheet" href="./css/magnific-popup.css" />
-    <link rel="stylesheet" href="./css/fontawesome-all.min.css" />
-    <link rel="stylesheet" href="./css/themify-icons.css" />
-    <link rel="stylesheet" href="./css/slick.css" />
-    <link rel="stylesheet" href="./css/nice-select.css" />
-    <link rel="stylesheet" href="./css/style.css" />
-    <script nonce="6ee1138f-ea45-4b05-a5ca-3ba7cedd40ff">
-      (function (w, d) {
-        !(function (eK, eL, eM, eN) {
-          eK.zarazData = eK.zarazData || {};
-          eK.zarazData.executed = [];
-          eK.zaraz = { deferred: [], listeners: [] };
-          eK.zaraz.q = [];
-          eK.zaraz._f = function (eO) {
-            return function () {
-              var eP = Array.prototype.slice.call(arguments);
-              eK.zaraz.q.push({ m: eO, a: eP });
-            };
-          };
-          for (const eQ of ["track", "set", "debug"])
-            eK.zaraz[eQ] = eK.zaraz._f(eQ);
-          eK.zaraz.init = () => {
-            var eR = eL.getElementsByTagName(eN)[0],
-              eS = eL.createElement(eN),
-              eT = eL.getElementsByTagName("title")[0];
-            eT && (eK.zarazData.t = eL.getElementsByTagName("title")[0].text);
-            eK.zarazData.x = Math.random();
-            eK.zarazData.w = eK.screen.width;
-            eK.zarazData.h = eK.screen.height;
-            eK.zarazData.j = eK.innerHeight;
-            eK.zarazData.e = eK.innerWidth;
-            eK.zarazData.l = eK.location.href;
-            eK.zarazData.r = eL.referrer;
-            eK.zarazData.k = eK.screen.colorDepth;
-            eK.zarazData.n = eL.characterSet;
-            eK.zarazData.o = new Date().getTimezoneOffset();
-            if (eK.dataLayer)
-              for (const eX of Object.entries(
-                Object.entries(dataLayer).reduce((eY, eZ) => ({
-                  ...eY[1],
-                  ...eZ[1],
-                }))
-              ))
-                zaraz.set(eX[0], eX[1], { scope: "page" });
-            eK.zarazData.q = [];
-            for (; eK.zaraz.q.length; ) {
-              const e_ = eK.zaraz.q.shift();
-              eK.zarazData.q.push(e_);
-            }
-            eS.defer = !0;
-            for (const fa of [localStorage, sessionStorage])
-              Object.keys(fa || {})
-                .filter((fc) => fc.startsWith("_zaraz_"))
-                .forEach((fb) => {
-                  try {
-                    eK.zarazData["z_" + fb.slice(7)] = JSON.parse(
-                      fa.getItem(fb)
-                    );
-                  } catch {
-                    eK.zarazData["z_" + fb.slice(7)] = fa.getItem(fb);
-                  }
-                });
-            eS.referrerPolicy = "origin";
-            eS.src =
-              "/cdn-cgi/zaraz/s.js?z=" +
-              btoa(encodeURIComponent(JSON.stringify(eK.zarazData)));
-            eR.parentNode.insertBefore(eS, eR);
-          };
-          ["complete", "interactive"].includes(eL.readyState)
-            ? zaraz.init()
-            : eK.addEventListener("DOMContentLoaded", zaraz.init);
-        })(w, d, 0, "script");
-      })(window, document);
-    </script>
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="./assets/css/slicknav.css" />
+    <link rel="stylesheet" href="./assets/css/animate.min.css" />
+    <link rel="stylesheet" href="./assets/css/magnific-popup.css" />
+    <link rel="stylesheet" href="./assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="./assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="./assets/css/slick.css" />
+    <link rel="stylesheet" href="./assets/css/nice-select.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <header>
@@ -376,7 +232,6 @@
                     >
                       <div class="hero-caption">
                         <!-- landing title !-->
-
                         <span
                           data-animation="fadeInUp"
                           data-delay=".2s"
@@ -384,10 +239,6 @@
                           style="animation-delay: 0.2s"
                         >
                         </span>
-                        
-                        
-                        
-                        
                       </div>
                     </div>
                   </div>
@@ -582,155 +433,6 @@ ganar grandes premios.
           <hr>
         </div>
       </section>
-<!--
-      <section class="home-blog section-padding compai">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-xl-8 col-lg-8 col-md-10">
-              <div class="section-tittle text-center mb-40">
-                <h2>Capacitaciones que ofrecemos</h2>
-                <!-- 
-                <p>
-                  Maecenas felis felis, vulputate sit amet mauris et, semper
-                  aliquam ligula. Integer efficitur tellus metus, sed feugiat
-                  leo posuere ac. Morbi vitae tincidunt mi, et malesuada massa.
-                </p>
-                -->
-                <!--
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-lg-6 col-md-6">
-              <div class="single-blogs mb-30">
-                <div class="blog-img">
-                  <img src="./VetCap_files/blog1.jpg" alt="" />
-                </div>
-                <div class="blog-caption">
-                  <h3>
-                    <a href="#"
-                      >Fisioterapia y Rehabilitacion Veterinaria</a
-                    >
-                  </h3>
-                  <p>
-                    La fisioterapia y la rehabilitación veterinaria se
-                    consideran un complemento terapéutico tanto para
-                    tratamientos médicos como posquirúrgicos de tipo locomotor.
-                    Pueden incluirse como terapia de analgesia integrada.
-                  </p>
-                  <a
-                    href="#"
-                    class="browse-btn"
-                    >Aprende Mas</a
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-6">
-              <div class="single-blogs">
-                <div class="blog-img">
-                  <img src="./VetCap_files/blog2.jpg" alt="" />
-                </div>
-                <div class="blog-caption">
-                  <h3>
-                    <a href="#"
-                      >Medicina Interna Veterinaria</a
-                    >
-                  </h3>
-                  <p>
-                    La medicina interna es una especialidad veterinaria que se
-                    dedica a la atención integral del paciente enfermo, enfocada
-                    al diagnóstico y el tratamiento no quirúrgico de las
-                    enfermedades que afectan a sus órganos y sistemas internos,
-                    así como a su prevención.
-                  </p>
-                  <a
-                    href="#"
-                    class="browse-btn"
-                    >Aprende Mas</a
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      -->
--->
-
-<!-- 
-      <section class="visit-three fix">
-        <div class="tailor-details">
-          <div class="section-tittle mb-40">
-            <h2>Fisioterapia y Rehabilitacion Veterinaria</h2>
-            <p>
-              Maecenas felis felis, vulputate sit amet mauris et, semper aliquam
-              ligula.<br />
-              Integer efficitur tellus metus, sed feugiat leo posuere.
-            </p>
-          </div>
-
-          <div class="single-gallery mb-15">
-            <div class="thumb-content-box d-flex">
-              <div class="thumb-content">
-                <div class="capt">
-                  <h3>First year students</h3>
-                  <p>
-                    Integer efficitur tellus metus, sed feugiat leo posuere
-                    ac.<br />
-                    Morbi vitae tincidunt mi, et malesuada massa.
-                  </p>
-                </div>
-                <a
-                  href="./projects.html"
-                  ><i class="ti-angle-right"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="single-gallery mb-15">
-            <div class="thumb-content-box d-flex">
-              <div class="thumb-content">
-                <div class="capt">
-                  <h3>Tuition &amp; fees</h3>
-                  <p>
-                    Integer efficitur tellus metus, sed feugiat leo posuere
-                    ac.<br />
-                    Morbi vitae tincidunt mi, et malesuada massa.
-                  </p>
-                </div>
-                <a
-                  href="./projects.html"
-                  ><i class="ti-angle-right"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-
-          <div class="single-gallery mb-15">
-            <div class="thumb-content-box d-flex">
-              <div class="thumb-content">
-                <div class="capt">
-                  <h3>International students</h3>
-                  <p>
-                    Integer efficitur tellus metus, sed feugiat leo posuere
-                    ac.<br />
-                    Morbi vitae tincidunt mi, et malesuada massa.
-                  </p>
-                </div>
-                <a
-                  href="./projects.html"
-                  ><i class="ti-angle-right"></i
-                ></a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="visit-team"></div>
-      </section>
--->
       <section class="class-offer-area section-padding border-bottom compai">
         <div class="container-fluid">
           <div class="row">
@@ -817,228 +519,6 @@ ganar grandes premios.
           </div>
         </div>
       </section>
-
-<!-- 
-      <section class="brand-area section-padding compai">
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-xl-8 col-lg-8 col-md-10">
-              <div class="section-tittle text-center mb-60">
-                <h2>Patrocinadores</h2>
-                <p>
-                  Maecenas felis felis, vulputate sit amet mauris et, semper
-                  aliquam ligula. Integer efficitur tellus metus, sed feugiat
-                  leo posuere.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div class="row justify-content-center align-items-end">
-            <div class="col-xl-8 col-lg-9">
-              <div
-                class="brand-active text-center slick-initialized slick-slider"
-              >
-                <div class="slick-list draggable">
-                  <div
-                    class="slick-track"
-                    style="
-                      opacity: 1;
-                      width: 2924px;
-                      transform: translate3d(-860px, 0px, 0px);
-                    "
-                  >
-                    <div
-                      class="single-brand slick-slide slick-cloned"
-                      data-slick-index="-5"
-                      aria-hidden="true"
-                      tabindex="-1"
-                      style="width: 172px"
-                    >
-                      <img src="./VetCap_files/brand2.png" alt="" />
-                    </div>
-                    <div
-                      class="single-brand slick-slide slick-cloned"
-                      data-slick-index="-4"
-                      aria-hidden="true"
-                      tabindex="-1"
-                      style="width: 172px"
-                    >
-                      <img src="./VetCap_files/brand3.png" alt="" />
-                    </div>
-                    <div
-                      class="single-brand slick-slide slick-cloned"
-                      data-slick-index="-3"
-                      aria-hidden="true"
-                      tabindex="-1"
-                      style="width: 172px"
-                    >
-                      <img src="./VetCap_files/brand4.png" alt="" />
-                    </div>
-                    <div
-                      class="single-brand slick-slide slick-cloned"
-                      data-slick-index="-2"
-                      aria-hidden="true"
-                      tabindex="-1"
-                      style="width: 172px"
-                    >
-                      <img src="./VetCap_files/brand2.png" alt="" />
-                    </div>
-                    <div
-                      class="single-brand slick-slide slick-cloned"
-                      data-slick-index="-1"
-                      aria-hidden="true"
-                      tabindex="-1"
-                      style="width: 172px"
-                    >
-                      <img src="./VetCap_files/brand3.png" alt="" />
-                    </div>
-                    <div
-                      class="single-brand slick-slide slick-current slick-active"
-                      data-slick-index="0"
-                      aria-hidden="false"
-                      tabindex="0"
-                      style="width: 172px"
-                    >
-                      <img src="./VetCap_files/brand1.png" alt="" />
-                    </div>
-                    <div
-                      class="single-brand slick-slide slick-active"
-                      data-slick-index="1"
-                      aria-hidden="false"
-                      tabindex="0"
-                      style="width: 172px"
-                    >
-                      <img src="./VetCap_files/brand2.png" alt="" />
-                    </div>
-                    <div
-                      class="single-brand slick-slide slick-active"
-                      data-slick-index="2"
-                      aria-hidden="false"
-                      tabindex="0"
-                      style="width: 172px"
-                    >
-                      <img src="./VetCap_files/brand3.png" alt="" />
-                    </div>
-                    <div
-                      class="single-brand slick-slide slick-active"
-                      data-slick-index="3"
-                      aria-hidden="false"
-                      tabindex="0"
-                      style="width: 172px"
-                    >
-                      <img src="./VetCap_files/brand4.png" alt="" />
-                    </div>
-                    <div
-                      class="single-brand slick-slide slick-active"
-                      data-slick-index="4"
-                      aria-hidden="false"
-                      tabindex="0"
-                      style="width: 172px"
-                    >
-                      <img src="./VetCap_files/brand2.png" alt="" />
-                    </div>
-                    <div
-                      class="single-brand slick-slide"
-                      data-slick-index="5"
-                      aria-hidden="true"
-                      tabindex="-1"
-                      style="width: 172px"
-                    >
-                      <img src="./VetCap_files/brand3.png" alt="" />
-                    </div>
-                    <div
-                      class="single-brand slick-slide slick-cloned"
-                      data-slick-index="6"
-                      aria-hidden="true"
-                      tabindex="-1"
-                      style="width: 172px"
-                    >
-                      <img src="./VetCap_files/brand1.png" alt="" />
-                    </div>
-                    <div
-                      class="single-brand slick-slide slick-cloned"
-                      data-slick-index="7"
-                      aria-hidden="true"
-                      tabindex="-1"
-                      style="width: 172px"
-                    >
-                      <img src="./VetCap_files/brand2.png" alt="" />
-                    </div>
-                    <div
-                      class="single-brand slick-slide slick-cloned"
-                      data-slick-index="8"
-                      aria-hidden="true"
-                      tabindex="-1"
-                      style="width: 172px"
-                    >
-                      <img src="./VetCap_files/brand3.png" alt="" />
-                    </div>
-                    <div
-                      class="single-brand slick-slide slick-cloned"
-                      data-slick-index="9"
-                      aria-hidden="true"
-                      tabindex="-1"
-                      style="width: 172px"
-                    >
-                      <img src="./VetCap_files/brand4.png" alt="" />
-                    </div>
-                    <div
-                      class="single-brand slick-slide slick-cloned"
-                      data-slick-index="10"
-                      aria-hidden="true"
-                      tabindex="-1"
-                      style="width: 172px"
-                    >
-                      <img src="./VetCap_files/brand2.png" alt="" />
-                    </div>
-                    <div
-                      class="single-brand slick-slide slick-cloned"
-                      data-slick-index="11"
-                      aria-hidden="true"
-                      tabindex="-1"
-                      style="width: 172px"
-                    >
-                      <img src="./VetCap_files/brand3.png" alt="" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="visit-one fix compai">
-        <div class="visit-team">
-          <div class="wrapper"></div>
-        </div>
-
-        <div class="tailor-details">
-          <div class="section-tittle section-tittle2 mb-25">
-            <h2>
-              TRUSTED BY OVER <br />
-              6000+ STUDENTS
-            </h2>
-            <p class="mb-30">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas
-              felis felis, vulputate sit amet mauris et, semper aliquam ligula.
-              Integer efficitur tellus metus, sed feugiat leo posuere ac. Morbi
-              vitae tincidunt malesuada massa.
-            </p>
-            <p class="mb-30">
-              Maecenas felis felis, vulputate sit amet mauris et, semper aliquam
-              ligula. Integer efficitur tellus metus, sed feugiat leo posuere
-              ac. Morbi vitae tincidunt mi, et malesuada massa.
-            </p>
-            <a
-              href="#"
-              class="browse-btn browse-btn2 mt-20"
-              >Join Now</a
-            >
-          </div>
-        </div>
-      </section>
-      -->
     </main>
     <footer>
       <div class="footer-wrapper gray-bg">
@@ -1214,7 +694,6 @@ ganar grandes premios.
         </div>
       </div>
     </footer>
-
     <div id="back-top">
       <a
         title="Go to Top"
@@ -1222,42 +701,8 @@ ganar grandes premios.
         ><i style="color: white !important;" class="fas fa-long-arrow-alt-up"></i
       ></a>
     </div>
-
-    
-    <script src="./js/jquery-1.12.4.min.js"></script>
-    
-
-    
-    <script src="./js/jquery.slicknav.min.js"></script>
-    
-
-    
-
-    
-
-    
-    <script src="./js/main.js"></script>
-    
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-
-      gtag("config", "UA-23581568-13");
-    </script>
-    <script
-      defer=""
-      src="./VetCap_files/beacon.min.js.download"
-      data-cf-beacon='{"rayId":"650134a09b662254","version":"2021.5.1","si":10}'
-    ></script>
-    <script
-      defer=""
-      src="./VetCap_files/vaafb692b2aea4879b33c060e79fe94621666317369993"
-      integrity="sha512-0ahDYl866UMhKuYcW078ScMalXqtFJggm7TmlUtp0UlD4eQk0Ixfnm5ykXKvGJNFjLMoortdseTfsRT8oCfgGA=="
-      data-cf-beacon='{"rayId":"7866d4e0ddc0acd7","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2022.11.3","si":100}'
-      crossorigin="anonymous"
-    ></script>
+    <script src="./assets/js/jquery-1.12.4.min.js"></script>
+    <script src="./assets/js/jquery.slicknav.min.js"></script>
+    <script src="./assets/js/main.js"></script>
   </body>
 </html>

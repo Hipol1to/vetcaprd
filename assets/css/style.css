@@ -1,6 +1,6 @@
 @font-face {
   font-family: "CustomFont";
-  src: url("./Fontspring.otf") format("opentype");
+  src: url("../fonts/Fontspring.otf") format("opentype");
 }
 
 body {
@@ -2902,25 +2902,25 @@ hr {
   background-image: url(../img/hero/h1_hero1.jpg) !important;
 }
 .slider-vescap {
-  background-image: url(../assets/img/Fundacion-Vetcapp.png) !important;
+  background-image: url(../img/Fundacion-Vetcapp.png) !important;
 }
 .slider-bg11 {
-  background-image: url(../assets/img/08.png) !important;
+  background-image: url(../img/08.png) !important;
 }
 .slider-bg22 {
-  background-image: url(../assets/img/09.png) !important;
+  background-image: url(../img/09.png) !important;
 }
 .slider-bg33 {
-  background-image: url(../assets/img/10.png) !important;
+  background-image: url(../img/10.png) !important;
 }
 .slider-bg44 {
-  background-image: url(../assets/img/11.png) !important;
+  background-image: url(../img/11.png) !important;
 }
 .slider-bg55 {
-  background-image: url(../assets/img/12.png) !important;
+  background-image: url(../img/12.png) !important;
 }
 .slider-bg66 {
-  background-image: url(../assets/img/13.png) !important;
+  background-image: url(../img/13.png) !important;
 }
 
 @media (max-width: 767px) {
@@ -3094,8 +3094,6 @@ hr {
   z-index: -1;
   background-repeat: no-repeat;
 }
-
-
 
 .hero-overly02 {
   position: relative;
