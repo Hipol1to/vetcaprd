@@ -6,6 +6,43 @@
 body {
   font-family: "CustomFont", Arial, sans-serif;
 }
+@font-face {
+  font-family: HelveticaBold;
+  src: url("../fonts/Helvetica-Bold.ttf");
+}
+#countdown {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.time-unit {
+  text-align: center;
+}
+
+.number {
+  display: inline-block;
+  background: black;
+  color: white;
+  font-size: 48px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.label {
+  font-size: 14px;
+  color: gray;
+}
+.centerr {
+  display: block;
+  margin-left: ;
+  margin-right: auto;
+  width: 50%;
+}
 .green-bar {
   display: flex;
   align-items: center;
@@ -1738,7 +1775,7 @@ hr {
   }
 }
 .section-tittle h2 {
-  color: #32404d;
+  color: #2d4a34;
   font-size: 27px;
   display: block;
   /* font-weight: 600; */
