@@ -6,40 +6,89 @@
 body {
   font-family: "CustomFont", Arial, sans-serif;
 }
+.rounded-button {
+  background-color: #2f5e34; /* Dark green background */
+  color: #f2a721; /* Yellow text color */
+  font-size: 18px; /* Adjust font size as needed */
+  font-weight: bold; /* Make text bold */
+  padding: 10px 30px; /* Adjust padding for size */
+  border: none; /* Remove border */
+  border-radius: 50px; /* Full rounded corners */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  text-transform: uppercase; /* Ensure text is uppercase */
+  transition: transform 0.2s, background-color 0.2s; /* Smooth hover effect */
+  transform: scale(1.3);
+}
+
+.rounded-button:hover {
+  background-color: #256b2a; /* Slightly darker green on hover */
+  transform: scale(1.05); /* Slight zoom on hover */
+}
+
+.rounded-button:active {
+  transform: scale(0.9); /* Pressed effect */
+}
 @font-face {
   font-family: HelveticaBold;
   src: url("../fonts/Helvetica-Bold.ttf");
 }
+.event-pic {
+  width: 500px;
+}
+@media screen and (max-width: 1920) {
+  .event-pic {
+    margin-left: 200px;
+  }
+}
+.timeer {
+  margin-left: 40px;
+}
+@media (max-width: 767px) {
+  .timeer {
+    margin-left: 0px;
+  }
+}
+@media (max-width: 767px) {
+  .event-pic {
+    width: 100%;
+  }
+}
 #countdown {
   display: flex;
   justify-content: center;
-  align-items: center;
-  gap: 20px;
-  font-family: Arial, sans-serif;
-}
-
-.time-unit {
-  text-align: center;
+  gap: 5px; /* Reduce space between the time units */
+  transform: scale(
+    0.8
+  ); /* Shrinks the entire timer (80% of the original size) */
 }
 
 .number {
-  display: inline-block;
   background: black;
   color: white;
-  font-size: 48px;
-  padding: 10px 20px;
+  font-size: 36px; /* Reduce font size */
+  padding: 5px 10px; /* Decrease padding for a smaller box */
   border-radius: 5px;
-  margin-bottom: 5px;
+  margin-bottom: 2px; /* Less space below */
   font-weight: bold;
 }
 
 .label {
-  font-size: 14px;
+  font-size: 12px; /* Reduce label size */
   color: gray;
+}
+@media (max-width: 767px) {
+  .marginnn {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+  }
+  .er-buston {
+    margin-top: 20px;
+    margin-left: 30% !important;
+  }
 }
 .centerr {
   display: block;
-  margin-left: ;
+  margin-left: auto;
   margin-right: auto;
   width: 50%;
 }
