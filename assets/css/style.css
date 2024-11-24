@@ -6,6 +6,168 @@
 body {
   font-family: "CustomFont", Arial, sans-serif;
 }
+/* Promo Bar Styles */
+.promo-bar {
+  display: flex;
+  align-items: center; /* Centers items vertically */
+  justify-content: center; /* Centers all sections horizontally */
+  background-color: black;
+  color: white;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  width: 100%; /* Full-width bar */
+  box-sizing: border-box; /* Include padding in width calculation */
+  gap: 40px; /* Even spacing between sections */
+  flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+}
+
+/* Text Section Styles */
+.text-section {
+  display: flex;
+  flex-direction: column; /* Stack text vertically */
+  align-items: center; /* Center text horizontally */
+  justify-content: center; /* Center text vertically */
+  text-align: center; /* Ensure centered text */
+  gap: 5px; /* Space between text lines */
+}
+
+.logo-info {
+  font-size: 14px;
+  color: lightgray;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.collection-title {
+  font-size: 72px; /* Default font size for large screens */
+  font-weight: bold;
+  color: #ffa500;
+}
+
+.collection-subtitle {
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Image Section */
+.image-section img {
+  max-width: 320px; /* Default image size */
+}
+
+/* Hashtag Section */
+.hashtag-section h2 {
+  font-size: 62px; /* Default font size for large screens */
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+/* Button Section */
+.button-section {
+  display: flex;
+  justify-content: center; /* Center button */
+}
+
+.button-section .rounded-button {
+  background-color: #fdfdfd;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 24px;
+  cursor: pointer;
+  margin-left: 30px;
+}
+
+.button-section .rounded-button:hover {
+  background-color: #fdfdfd;
+}
+
+/* RESPONSIVENESS */
+
+/* For screens 1280px and smaller */
+@media (max-width: 1280px) {
+  .collection-title {
+    font-size: 60px;
+  }
+  .hashtag-section h2 {
+    font-size: 50px;
+  }
+  .image-section img {
+    max-width: 250px;
+  }
+  .button-section .rounded-button {
+    font-size: 20px;
+    padding: 8px 18px;
+  }
+}
+
+/* For screens 1024px and smaller */
+@media (max-width: 1024px) {
+  .promo-bar {
+    flex-direction: column; /* Stack all sections vertically */
+    gap: 20px; /* Reduce spacing between sections */
+  }
+  .collection-title {
+    font-size: 50px;
+  }
+  .hashtag-section h2 {
+    font-size: 40px;
+  }
+  .image-section img {
+    max-width: 200px;
+  }
+  .button-section .rounded-button {
+    font-size: 18px;
+    padding: 8px 16px;
+  }
+}
+
+/* For screens 768px and smaller */
+@media (max-width: 768px) {
+  .collection-title {
+    font-size: 40px;
+  }
+  .hashtag-section h2 {
+    font-size: 30px;
+  }
+  .image-section img {
+    max-width: 150px;
+  }
+  .logo-info {
+    font-size: 12px;
+  }
+  .collection-subtitle {
+    font-size: 14px;
+  }
+  .button-section .rounded-button {
+    font-size: 16px;
+    padding: 6px 14px;
+    margin-left: 0; /* Center button under image */
+  }
+}
+
+/* For mobile devices (480px and smaller) */
+@media (max-width: 480px) {
+  .promo-bar {
+    gap: 10px; /* Reduce spacing further */
+  }
+  .collection-title {
+    font-size: 30px;
+  }
+  .hashtag-section h2 {
+    font-size: 20px;
+  }
+  .image-section img {
+    max-width: 120px;
+  }
+  .button-section .rounded-button {
+    font-size: 14px;
+    padding: 5px 12px;
+  }
+}
+
 .rounded-button {
   background-color: #2f5e34; /* Dark green background */
   color: #f2a721; /* Yellow text color */
@@ -83,7 +245,7 @@ body {
   }
   .er-buston {
     margin-top: 20px;
-    margin-left: 30% !important;
+    margin-left: 20% !important;
   }
 }
 .centerr {
@@ -176,6 +338,122 @@ body {
   }
 }
 
+/* For screens smaller than 768px (tablets and phones) */
+@media (max-width: 768px) {
+  .disvi {
+    margin-top: 5%;
+    margin-left: 12%;
+  }
+}
+
+/* For screens smaller than 480px (smaller phones) */
+@media (max-width: 480px) {
+  .disvi {
+    margin-top: 5%;
+    margin-left: 12%;
+  }
+}
+
+/* For screens smaller than 768px (tablets and phones) */
+@media (max-width: 768px) {
+  .money-pic {
+    width: 75px;
+    margin-left: 85px;
+  }
+}
+
+/* For screens smaller than 480px (smaller phones) */
+@media (max-width: 480px) {
+  .money-pic {
+    width: 75px;
+    margin-left: 85px;
+  }
+}
+/* Adjust font size for smaller desktop resolutions */
+@media screen and (max-width: 1378px) {
+  .money-pic {
+    width: 75px;
+    margin-left: 50px;
+  }
+}
+/* Adjust font size for smaller desktop resolutions */
+@media screen and (max-width: 1280px) {
+  .money-pic {
+    width: 75px;
+    margin-left: 50px;
+  }
+}
+
+/* Adjust font size for smaller desktop resolutions */
+@media screen and (max-width: 1920px) {
+  .money-pic {
+    width: 75px;
+    margin-left: 50px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .money-pic {
+    width: 75px;
+    margin-left: 50px;
+  }
+}
+/* For screens smaller than 768px (tablets and phones) */
+@media (max-width: 768px) {
+  .money-free {
+    color: #2d4a34;
+    font-size: 31px;
+    font-family: HelveticaBold;
+    white-space: nowrap !important;
+  }
+}
+
+/* For screens smaller than 480px (smaller phones) */
+@media (max-width: 480px) {
+  .money-free {
+    color: #2d4a34;
+    font-size: 31px;
+    font-family: HelveticaBold;
+    white-space: nowrap !important;
+  }
+}
+/* Adjust font size for smaller desktop resolutions */
+@media screen and (max-width: 1378px) {
+  .money-free {
+    color: #2d4a34;
+    font-size: 31px;
+    font-family: HelveticaBold;
+    white-space: nowrap !important;
+  }
+}
+/* Adjust font size for smaller desktop resolutions */
+@media screen and (max-width: 1280px) {
+  .money-free {
+    color: #2d4a34;
+    font-size: 31px;
+    font-family: HelveticaBold;
+    white-space: nowrap !important;
+  }
+}
+
+/* Adjust font size for smaller desktop resolutions */
+@media screen and (max-width: 1920px) {
+  .money-free {
+    color: #2d4a34;
+    font-size: 31px;
+    font-family: HelveticaBold;
+    white-space: nowrap !important;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .money-free {
+    color: #2d4a34;
+    font-size: 31px;
+    font-family: HelveticaBold;
+    white-space: nowrap !important;
+  }
+}
 @import url("https://fonts.googleapis.com/css2?family=Chivo:wght@300;400;700;900&display=swap");
 .gray-bg {
   background: #f1fbff;
