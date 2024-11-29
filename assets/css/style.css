@@ -6,6 +6,152 @@
 body {
   font-family: "CustomFont", Arial, sans-serif;
 }
+.vetcap-education-section {
+  font-family: Arial, sans-serif;
+  color: #2d5b2d;
+  background-color: #ffffff;
+  padding: 20px;
+  border: 1px solid #e0e0e0;
+}
+
+.vetcap-header {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap; /* Ensures elements stack on smaller screens */
+}
+
+.vetcap-title {
+  font-size: 4.5rem;
+  font-weight: bold;
+  line-height: 1.3;
+  color: #2d5b2d !important;
+  text-align: center; /* Center text on smaller screens */
+}
+
+.vetcap-logos {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap; /* Ensures logos adjust on smaller screens */
+  justify-content: center; /* Center logos */
+}
+
+.vetcap-logo {
+  max-width: 230px; /* Restricts the maximum width */
+  height: auto; /* Ensures height adjusts to maintain aspect ratio */
+  margin: auto;
+}
+
+.vetcap-description {
+  line-height: 1.6;
+  font-size: 1rem; /* Default size for readability */
+}
+
+.vetcap-description p {
+  margin-bottom: 15px;
+  color: #2d5b2d !important;
+  font-size: 26px !important;
+}
+
+.vetcap-partners {
+  margin-top: 30px;
+  text-align: center;
+  padding: 20px 0;
+  background: linear-gradient(
+    135deg,
+    #0b513a 25%,
+    #195d41 25%,
+    #195d41 50%,
+    #0b513a 50%,
+    #0b513a 75%,
+    #195d41 75%
+  );
+  background-size: 100px 100px;
+  color: #ffffff;
+}
+
+.vetcap-partners-title {
+  font-size: 2.5rem;
+  margin-bottom: 5px;
+}
+
+.vetcap-partner-logos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.vetcap-partner-logos img {
+  max-width: 200px;
+  height: auto;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1080px) {
+  .vetcap-title {
+    font-size: 3.5rem;
+  }
+
+  .vetcap-description p {
+    font-size: 22px !important;
+  }
+
+  .vetcap-logo {
+    max-width: 180px;
+  }
+
+  .vetcap-partners-title {
+    font-size: 2rem;
+  }
+
+  .vetcap-partner-logos img {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 768px) {
+  .vetcap-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .vetcap-title {
+    font-size: 3rem;
+  }
+
+  .vetcap-description p {
+    font-size: 20px !important;
+  }
+
+  .vetcap-logo {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .vetcap-title {
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  .vetcap-description p {
+    font-size: 18px !important;
+  }
+
+  .vetcap-logo {
+    max-width: 120px;
+  }
+
+  .vetcap-partners-title {
+    font-size: 1.8rem;
+  }
+
+  .vetcap-partner-logos img {
+    max-width: 100px;
+  }
+}
+
 /* Unique styles for the Vet One section */
 .vetone-section {
   display: flex;
