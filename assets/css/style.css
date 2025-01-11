@@ -170,13 +170,14 @@ body {
 }
 
 .info-box h2 {
-  font-size: 1.8rem;
+  font-size: 2.5rem;
   color: #214e1f;
 }
 
 .info-box p {
-  font-size: 1rem;
+  font-size: 1.5rem;
   margin: 10px 0;
+  color: #214e1f;
 }
 
 .info-box p span {
@@ -190,6 +191,7 @@ body {
 
 .contact strong {
   font-weight: bold;
+  color: #214e1f;
 }
 
 .countdown {
@@ -232,7 +234,7 @@ body {
 }
 
 .title {
-  font-size: 2.5rem;
+  font-size: 4rem;
   color: #214e1f;
   margin-bottom: 20px;
 }
@@ -264,8 +266,8 @@ body {
 }
 
 .image-placeholder {
-  width: 200px;
-  height: 200px;
+  width: 400px;
+  height: 400px;
   background: linear-gradient(#e9f7ef, #a9dfbf);
   border-radius: 20px;
   position: relative;
@@ -291,7 +293,7 @@ body {
 
 .price {
   font-size: 1.2rem;
-  color: #e67e22;
+  color: #e67e22 !important;
   margin: 10px 0;
 }
 
@@ -323,7 +325,7 @@ body {
 }
 
 .slider-capacitaciones-btn.prev-btn {
-  left: 10px;
+  /*left: 10px;*/
 }
 
 .slider-capacitaciones-btn.next-btn {
