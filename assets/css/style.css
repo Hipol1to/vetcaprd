@@ -6,6 +6,427 @@
 body {
   font-family: "CustomFont", Arial, sans-serif;
 }
+
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+}
+
+.modal-content {
+  position: relative;
+  background-color: #ffffff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  overflow-y: auto;
+}
+
+/* Close Button */
+.close {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
+  .modal-content {
+    margin: 15% auto;
+    padding: 15px;
+    width: 95%;
+    max-width: 600px;
+  }
+
+  .vetcap-logo {
+    width: 100%; /* Ensure the logo scales down on smaller devices */
+    height: auto;
+  }
+
+  .vetcap-description {
+    font-size: 1rem;
+    text-align: justify;
+  }
+
+  .event-card {
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .bus-icon {
+    width: 60px;
+    height: auto;
+    margin-bottom: 10px;
+  }
+
+  .countdown {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .countdown .time-unit {
+    text-align: center;
+  }
+
+  .btnee {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-content {
+    margin: 20% auto;
+    padding: 10px;
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .vetcap-description {
+    font-size: 0.9rem;
+  }
+
+  .bus-icon {
+    width: 50px;
+  }
+
+  .btnee {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+
+  .countdown {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .countdown .time-unit {
+    margin-bottom: 5px;
+  }
+}
+
+/* Modal Styles */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Black background with opacity */
+}
+
+.modal-content {
+  position: relative;
+  background-color: #ffffff;
+  margin: 6% auto;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 90%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Close Button */
+.close {
+  color: #aaa;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+/* Vetcap Section */
+.vetcap-tour-section {
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+  background-color: #ffffff;
+  text-align: center;
+  color: #002b67 !important;
+}
+
+/* Header */
+.vetcap-header {
+  margin-bottom: 40px;
+}
+
+.vetcap-logo {
+  max-width: 300px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.vetcap-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 5px 0;
+}
+
+/* Event Cards */
+.vetcap-events {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.event-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  max-width: 250px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.bus-icon {
+  width: 160px;
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.event-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: #002b67 !important;
+  font-family: "HelveticaBold";
+}
+
+.event-card p {
+  font-size: 0.8rem;
+  margin: 5px 0;
+}
+
+.event-card .countdown {
+  margin-top: 15px;
+}
+
+.time-unit {
+  display: inline-block;
+  text-align: center;
+  margin: 0 5px;
+}
+
+.time-unit .number {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #007233;
+}
+
+.time-unit .label {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* Buttons */
+.btnee {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.btnee-filled {
+  background-color: #f7931e;
+  color: #ffffff;
+  border: none;
+}
+
+.btnee-outline {
+  background-color: #ffffff;
+  color: #000000;
+  border: 2px solid #000000;
+}
+
+.btnee-filled:hover {
+  background-color: #d67a1a;
+}
+
+.btnee-outline:hover {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .vetcap-events {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Section Container */
+.vetcap-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background-color: #ffffff;
+  font-family: "HelveticaBold", Arial, sans-serif;
+}
+
+/* Main Container */
+.vetcap-container {
+  display: flex;
+  max-width: 1200px;
+  width: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* Left Section */
+.vetcap-left {
+  flex: 1;
+  position: relative;
+  text-align: center;
+}
+
+.vetcap-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.vetcap-badge {
+  position: absolute;
+  bottom: -9%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border: 2px solid #000;
+  border-radius: 50px;
+  padding: 5px 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 1.9rem;
+  font-weight: bold;
+  color: #007233;
+}
+
+.badge-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+/* Right Section */
+.vetcap-right {
+  flex: 2;
+  text-align: center;
+}
+
+.vetcap-logo {
+  max-width: 80%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.vetcap-description {
+  font-size: 1rem;
+  color: #002b67;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.vetcap-buttons {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Buttons */
+.btnnn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 50px !important;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.btn-outline {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
+}
+
+.btn-filled {
+  background-color: #000000 !important;
+  color: #ffb300 !important;
+  border: none !important;
+}
+
+.btn-filled:hover {
+  background-color: #d67a1a !important;
+  color: #ffffff !important;
+}
+
+.btn-outline:hover {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .vetcap-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .vetcap-right {
+    text-align: center;
+  }
+
+  .vetcap-logo {
+    margin: 0 auto;
+  }
+
+  .vetcap-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
 /* General section styles */
 .call-to-action-section {
   display: flex;
@@ -378,14 +799,14 @@ body {
 }
 
 .vetcap-logo {
-  max-width: 230px; /* Restricts the maximum width */
+  max-width: 530px; /* Restricts the maximum width */
   height: auto; /* Ensures height adjusts to maintain aspect ratio */
   margin: auto;
 }
 
 .vetcap-description {
   line-height: 1.6;
-  font-size: 1rem; /* Default size for readability */
+  font-size: 1.3rem; /* Default size for readability */
 }
 
 .vetcap-description p {
@@ -439,7 +860,7 @@ body {
   }
 
   .vetcap-logo {
-    max-width: 180px;
+    max-width: 280px;
   }
 
   .vetcap-partners-title {
@@ -466,7 +887,7 @@ body {
   }
 
   .vetcap-logo {
-    max-width: 150px;
+    max-width: 250px;
   }
 }
 
@@ -481,7 +902,7 @@ body {
   }
 
   .vetcap-logo {
-    max-width: 120px;
+    max-width: 320px;
   }
 
   .vetcap-partners-title {
@@ -847,6 +1268,16 @@ body {
   color: gray;
 }
 @media (max-width: 767px) {
+  .marginnnn {
+    margin-right: 50px !important;
+    margin-left: 0px !important;
+  }
+  .er-bustonn {
+    margin-top: 20px;
+    margin-left: 20%;
+  }
+}
+@media (max-width: 767px) {
   .marginnn {
     margin-right: 0px !important;
     margin-left: 0px !important;
@@ -1169,7 +1600,7 @@ h6 {
   text-transform: normal;
 }
 p {
-  font-family: "Chivo", sans-serif;
+  font-family: "HelveticaBold";
   color: #5d646a;
   font-size: 16px;
   line-height: 30px;
@@ -2882,7 +3313,7 @@ hr {
   font-family: "Chivo", sans-serif;
   text-transform: inherit !important;
   padding: 30px 35px;
-  color: #2e5653 !important;
+  color: #2e5653;
   cursor: pointer;
   display: inline-block;
   font-size: 16px !important;
@@ -2898,6 +3329,78 @@ hr {
   border: 0;
   overflow: hidden;
 }
+.btnn {
+  background: #007a5c;
+  font-family: "HelveticaBold";
+  text-transform: inherit !important;
+  padding: 30px 35px;
+  color: #2e5653;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px !important;
+  border-radius: 50px;
+  line-height: 1;
+  line-height: 0;
+  cursor: pointer;
+  -moz-user-select: none;
+  transition: color 0.4s linear;
+  position: relative;
+  border: 0;
+  overflow: hidden;
+}
+.btnn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 102%;
+  height: 102%;
+  background: #000000;
+  color: white;
+  z-index: 1;
+  border-radius: 0px;
+  transition: transform 0.5s;
+  transition-timing-function: ease;
+  transform-origin: 0 0;
+  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+  transform: scaleX(0);
+  border-radius: 0px;
+}
+.btnnn {
+  font-family: "Chivo", sans-serif;
+  text-transform: inherit !important;
+  padding: 30px 35px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px !important;
+  border-radius: 50px;
+  line-height: 1;
+  line-height: 0;
+  cursor: pointer;
+  -moz-user-select: none;
+  transition: color 0.4s linear;
+  position: relative;
+  border: 0;
+  overflow: hidden;
+}
+.btnnn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 102%;
+  height: 102%;
+  background: #000000;
+  color: white;
+  z-index: 1;
+  border-radius: 0px;
+  transition: transform 0.5s;
+  transition-timing-function: ease;
+  transform-origin: 0 0;
+  transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
+  transform: scaleX(0);
+  border-radius: 0px;
+}
 .btn::before {
   content: "";
   position: absolute;
@@ -2906,6 +3409,7 @@ hr {
   width: 102%;
   height: 102%;
   background: #ff6f00;
+  color: white;
   z-index: 1;
   border-radius: 0px;
   transition: transform 0.5s;
