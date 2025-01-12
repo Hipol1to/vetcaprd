@@ -589,9 +589,9 @@ body {
 }
 
 .btn-outline {
-  background-color: #000000 !important;
-  color: #ffffff !important;
-  border: 2px solid #ffffff !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #000000 !important;
 }
 
 .btn-filled {
@@ -606,6 +606,16 @@ body {
 }
 
 .btn-outline:hover {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+.btn-outlinee {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+}
+
+.btn-outlinee:hover {
   background-color: #ffffff !important;
   color: #000000 !important;
 }
