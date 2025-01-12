@@ -7,6 +7,206 @@ body {
   font-family: "CustomFont", Arial, sans-serif;
 }
 
+.vetcamp-sectionn {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.vetcamp-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.vetcamp-text {
+  flex: 1;
+  max-width: 50%;
+  margin-right: 20px;
+}
+
+.vetcamp-headerr {
+  margin-bottom: 20px;
+}
+
+.vetcamp-titlee {
+  font-size: 2em;
+  color: #f4a40b;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+
+.vetcamp-descriptionn {
+  font-size: 1.1em;
+  line-height: 1.5;
+  color: #333;
+}
+
+.vetcamp-contentt {
+  margin-top: 20px;
+  font-size: 1em;
+  line-height: 1.6;
+  color: #555;
+}
+
+.vetcamp-galleryy {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 10px; /* Smaller gap between images */
+  max-width: 45%;
+}
+
+.vetcamp-image {
+  width: 100%;
+}
+
+.vetcamp-image img {
+  width: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+}
+
+.vetcamp-image img:hover {
+  border-color: #f4a40b;
+  transform: scale(1.05);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .vetcamp-galleryy {
+    grid-template-columns: repeat(2, 1fr); /* Switch to 2 columns on smaller screens */
+    max-width: 100%;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .vetcamp-container {
+    flex-direction: column;
+  }
+
+  .vetcamp-text {
+    max-width: 100%;
+    margin-right: 0;
+  }
+
+  .vetcamp-image {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+
+/* Promo Bar Container */
+.promo-bar-container {
+  display: flex;
+  align-items: center; /* Vertically center elements */
+  justify-content: center; /* Horizontally center elements */
+  background-color: white;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  border: 5px solid #8d8a8a;
+  gap: 15px; /* Controls spacing between sections */
+}
+
+/* Logo Section */
+.promo-bar-logo-section img {
+  max-height: 120px;
+  object-fit: contain;
+}
+
+/* Middle Images */
+.promo-bar-middle-images {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Reduce the gap between images */
+}
+
+.promo-bar-middle-images img {
+  max-height: 160px;
+  object-fit: contain;
+}
+
+/* Action Section (Subtitle + Button) */
+.promo-bar-action-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align text to the start of the button */
+  gap: 10px;
+}
+
+.promo-bar-subtitle {
+  color: #c1293b;
+  font-family: Arial, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  text-align: right;
+  margin: 0; /* Removes any extra space */
+}
+
+/* Button Styling */
+.promo-bar-rounded-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  border: 2px solid #ee3a43;
+  color: #000;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.promo-bar-rounded-button:hover {
+  background: #ee3a43;
+  color: white;
+}
+
+.promo-bar-button-icon {
+  width: 30px;
+  height: 36px;
+  display: inline-block;
+  background-image: url('../img/shopping-bag-icon.png');
+  background-size: cover;
+}
+
+@media (max-width: 768px) {
+  .promo-bar-container {
+    flex-direction: column; /* Stack elements vertically on smaller screens */
+    align-items: center;
+    gap: 10px;
+  }
+
+  .promo-bar-middle-images {
+    gap: 5px;
+  }
+
+  .promo-bar-subtitle {
+    font-size: 2rem;
+    text-align: center; /* Center-align text on smaller screens */
+  }
+
+  .promo-bar-rounded-button {
+    font-size: 2rem;
+    padding: 6px 12px;
+  }
+}
+
+
+
+
+
+
 /* Modal Styles */
 .modal {
   display: none; /* Hidden by default */
@@ -55,7 +255,8 @@ body {
     margin: 15% auto;
     padding: 15px;
     width: 95%;
-    max-width: 600px;
+    max-width: 300px;
+    margin-top: 35% !important;
   }
 
   .vetcap-logo {
@@ -98,7 +299,7 @@ body {
 
 @media (max-width: 480px) {
   .modal-content {
-    margin: 20% auto;
+    margin: 40% auto;
     padding: 10px;
     width: 100%;
     max-width: 400px;
@@ -146,6 +347,7 @@ body {
   margin: 6% auto;
   padding: 20px;
   border-radius: 10px;
+  margin-top: 100px;
   width: 90%;
   max-width: 90%;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
@@ -192,6 +394,7 @@ body {
   font-size: 1rem;
   line-height: 1.6;
   margin: 5px 0;
+  text-transform: uppercase;
 }
 
 /* Event Cards */
@@ -317,6 +520,7 @@ body {
   flex: 1;
   position: relative;
   text-align: center;
+  margin-right: 10%;
 }
 
 .vetcap-image {
@@ -385,9 +589,9 @@ body {
 }
 
 .btn-outline {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-  border: 2px solid #000000 !important;
+  background-color: #000000 !important;
+  color: #ffffff !important;
+  border: 2px solid #ffffff !important;
 }
 
 .btn-filled {
@@ -402,8 +606,8 @@ body {
 }
 
 .btn-outline:hover {
-  background-color: #000000 !important;
-  color: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
 }
 
 /* Responsive Adjustments */
@@ -419,6 +623,7 @@ body {
 
   .vetcap-logo {
     margin: 0 auto;
+    margin-right: 0%;
   }
 
   .vetcap-buttons {
@@ -809,6 +1014,18 @@ body {
   font-size: 1.3rem; /* Default size for readability */
 }
 
+.vetcap-logoo {
+  max-width: 330px; /* Restricts the maximum width */
+  height: auto; /* Ensures height adjusts to maintain aspect ratio */
+  margin: auto;
+}
+
+.vetcap-descriptionn {
+  line-height: 1.6;
+  font-size: 1rem; /* Default size for readability */
+  color: #002b67 !important;k
+}
+
 .vetcap-description p {
   margin-bottom: 15px;
   color: #2d5b2d !important;
@@ -861,6 +1078,7 @@ body {
 
   .vetcap-logo {
     max-width: 280px;
+    margin-right: 0%;
   }
 
   .vetcap-partners-title {
@@ -888,6 +1106,7 @@ body {
 
   .vetcap-logo {
     max-width: 250px;
+    margin-right: 0%;
   }
 }
 
@@ -903,6 +1122,7 @@ body {
 
   .vetcap-logo {
     max-width: 320px;
+    margin-right: 0%;
   }
 
   .vetcap-partners-title {
@@ -1222,6 +1442,10 @@ body {
 @font-face {
   font-family: Helvetica;
   src: url("../fonts/Helvetica.ttf");
+}
+@font-face {
+  font-family: Nimbus;
+  src: url("../fonts/TAN-NIMBUS.ttf");
 }
 .event-pic {
   width: 500px;
@@ -3195,7 +3419,7 @@ hr {
 }
 @media (max-width: 575px) {
   .section-tittle h2 {
-    font-size: 24px;
+    font-size: 20px !important;
     text-align: center;
   }
 }
