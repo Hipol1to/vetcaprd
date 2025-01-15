@@ -1,0 +1,111 @@
+<?php
+//include config
+require_once('includes/config.php');
+
+//check if already logged in move to home page
+if( $user->is_logged_in() ){ header('Location: index.php'); exit(); }
+
+//process login form if submitted
+if(isset($_POST['submit'])){
+
+	if (! isset($_POST['usuario'])) {
+		$error[] = "Por favor completa todos los campos";
+	}
+
+	if (! isset($_POST['contraseña'])) {
+		$error[] = "Por favor completa todos los campos";
+	}
+
+	$username = $_POST['usuario'];
+	if ($user->isValidUsername($username)){
+		if (! isset($_POST['contraseña'])){
+			$error[] = 'Debes introducir una contraseña';
+		}
+
+		$password = $_POST['contraseña'];
+
+		if ($user->login($username, $password)){
+			$_SESSION['usuario'] = $username;
+			header('Location: index.php');
+			exit;
+
+		} else {
+			$error[] = 'Usuario o contraseña incorrecta, asegurate de haber activado tu cuenta';
+		}
+	}else{
+		$error[] = 'El usuario solo puede tener caracteres alfanumericos, entre 3-16 caracteres';
+	}
+
+}//end if submit
+
+//define page title
+$title = 'Iniciar Sesion';
+
+//include header template
+require('layout/header.php'); 
+?>
+    
+    <div class="containerrr">
+  <div class="form-containerrr">
+    <form role="form" method="post" action="" autocomplete="off">
+      <h2 style="color: #2e5653 !important;">Iniciar Sesión</h2>
+      <p style="color: #2e5653 !important;">¿Todavía no eres miembro? <a href="../unete-a-nosotros.php"><b style="color: #2e5653 !important;">Regístrate</b> </a></p>
+      <hr>
+
+      <?php
+      // Check for any errors
+      if (isset($error)) {
+        foreach ($error as $error) {
+          echo '<p style="color: white;" class="bg-danger">' . $error . '</p>';
+        }
+      }
+
+      if (isset($_GET['action'])) {
+        // Check the action
+        switch ($_GET['action']) {
+          case 'active':
+            echo "<h2 class='bg-success'>Tu cuenta ha sido activada. Puedes iniciar sesión.</h2>";
+            break;
+          case 'reset':
+            echo "<h2 class='bg-success'>Se ha enviado a tu correo un link de reinicio de contraseña.</h2>";
+            break;
+          case 'resetAccount':
+            echo "<h2 class='bg-success'>Contraseña cambiada correctamente. Puedes iniciar sesion.</h2>";
+            break;
+        }
+      }
+      ?>
+
+      <div class="form-group">
+        <input type="text" name="username" id="username" class="form-control input-lg" placeholder="Usuario" value="<?php if(isset($error)){ echo htmlspecialchars($_POST['usuario'], ENT_QUOTES); } ?>" tabindex="1">
+      </div>
+
+      <div class="form-group">
+        <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña" tabindex="3">
+      </div>
+
+      <div class="row">
+        <div class="col-xs-9 col-sm-9 col-md-9">
+          <a href="reset.php">¿Olvidaste tu contraseña?</a>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="row">
+        <div class="col-xs-6 col-md-6">
+          <input style="color:white!important;" type="submit" name="submit" value="Iniciar sesión" class="btn btn-primary btn-block btn-lg" tabindex="5">
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+
+  
+
+
+
+      
+    
