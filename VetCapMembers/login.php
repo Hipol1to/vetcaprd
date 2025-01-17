@@ -1,6 +1,6 @@
 <?php
 //include config
-require_once('includes/config.php');
+require_once('../includes/config.php');
 
 //check if already logged in move to home page
 if( $user->is_logged_in() ){ header('Location: index.php'); exit(); }
@@ -44,6 +44,31 @@ $title = 'Iniciar Sesion';
 //include header template
 require('layout/header.php'); 
 ?>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<style>
+  .containerrr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to left, #305454, #40546c, #305454) !important;
+  }
+
+  .form-containerrr {
+    max-width: 400px;
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(248, 249, 250, 0.8);
+    border-radius: 10px;
+  }
+
+  .form-containerrr h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2e5653 !important;
+  }
+</style>
     
     <div class="containerrr">
   <div class="form-containerrr">

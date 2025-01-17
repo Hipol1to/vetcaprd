@@ -31,8 +31,8 @@ try {
 }
 
 //include the user class, pass in the database connection
-include('includes/classes/user.php');
-include('includes/classes/phpmailer/mail.php');
+include('classes/user.php');
+include('classes/phpmailer/mail.php');
 $user = new User($db);
 function generateShortGUID() {
     return bin2hex(random_bytes(8)); // Generates a 16-character unique ID

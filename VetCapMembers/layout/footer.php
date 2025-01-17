@@ -2,7 +2,7 @@
     <footer class="footer">
   <div class="footer-container">
     <div class="logo">
-      <img src="../../assets/img/vetcap_white_logo.png" alt="Fundación VETCAP Logo"/>
+      <img src="../assets/img/vetcap_white_logo.png" alt="Fundación VETCAP Logo"/>
       <a style="font-size:30px; text-align: center !important;">FUNDACIÓN VETCAP</a>
       <br>
       <br>
@@ -27,12 +27,12 @@
   <div class="sponsors">
     <h3>NUESTROS PATROCINADORES</h3>
     <div class="sponsor-logos">
-      <img src="../../assets/img/espavet_white_logo.png" alt="Espavet Logo" />
-      <img src="../../assets/img/mallen_white_logo.png" alt="Mallen Mascotas Logo" />
-      <img src="../../assets/img/animal_food_line-white_logo.png" alt="Animal Food Line Logo" />
-      <img src="../../assets/img/ramvet_white_logo.png" alt="Ramvet Logo" />
-      <img src="../../assets/img/vibix_white_logo.png" alt="Vibix Logo" />
-      <img src="../../assets/img/noctua_group_white_logo.png" alt="Noctua Group Logo" />
+      <img src="../assets/img/espavet_white_logo.png" alt="Espavet Logo" />
+      <img src="../assets/img/mallen_white_logo.png" alt="Mallen Mascotas Logo" />
+      <img src="../assets/img/animal_food_line-white_logo.png" alt="Animal Food Line Logo" />
+      <img src="../assets/img/ramvet_white_logo.png" alt="Ramvet Logo" />
+      <img src="../assets/img/vibix_white_logo.png" alt="Vibix Logo" />
+      <img src="../assets/img/noctua_group_white_logo.png" alt="Noctua Group Logo" />
     </div>
   </div>
   <div class="footer-bottom">
@@ -56,8 +56,8 @@
         ><i style="color: white !important;" class="fas fa-long-arrow-alt-up"></i
       ></a>
     </div>
-    <script src="../../assets/js/jquery-1.12.4.min.js"></script>
-    <script src="../../assets/js/jquery.slicknav.min.js"></script>
-    <script src="../../assets/js/main.js"></script>
+    <script src="../assets/js/jquery-1.12.4.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/main.js"></script>
   </body>
 </html>

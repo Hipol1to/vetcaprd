@@ -110,7 +110,7 @@ error_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electron
   $to = $_POST['correo_electronico'];
   $subject = "Activa tu cuenta";
   $body = "<p>Gracias por registrarte en Fundacion Vetcap.</p>
-  <p>Para activar tu cuenta, por favor clica este enlace: <a href='".DIR."activate.php?x=$id&y=$activasion'>".DIR."activate.php?x=$id&y=$activasion</a></p>
+  <p>Para activar tu cuenta, por favor clica este enlace: <a href='".DIR."activa-tu-cuenta.php?x=$id&y=$activasion'>".DIR."activa-tu-cuenta.php?x=$id&y=$activasion</a></p>
   <p>Atentamente, el equipo de Fundacion Vetcap</p>";
 
   $mail = new Mail();
@@ -174,7 +174,24 @@ error_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electron
     <div class="text-container">
       <h1  style="color: #2d4a34;" class="cta-title">Regístrate en VetCap</h1>
       <form role="form" autocomplete="off" action="" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
-        <!-- Nombre -->
+      <?php
+      // Check for any errors
+      if (isset($error)) {
+        foreach ($error as $error) {
+          echo '<p style="color: white;" class="bg-danger">' . $error . '</p>';
+        }
+      }
+
+      if (isset($_GET['action'])) {
+        // Check the action
+        switch ($_GET['action']) {
+          case 'failed':
+            echo "<h2 class='bg-danger'>Tu cuenta no pudo ser activada. Quizas este link ha expirado. Por favor, intentalo de nuevo.</h2>";
+            break;
+        }
+      }
+      ?>  
+      <!-- Nombre -->
         <label style="color: #2d4a34;">
           Nombre:
           <input type="text" name="nombre" placeholder="Ingrese su nombre" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">

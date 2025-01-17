@@ -20,22 +20,22 @@
     <link
       rel="shortcut icon"
       type="image/x-icon"
-      href="../../assets/img/logo.jpg"
+      href="../assets/img/logo.jpg"
     />
-    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../../assets/css/owl.carousel.min.css" />
-    <link rel="stylesheet" href="../../assets/css/slicknav.css" />
-    <link rel="stylesheet" href="../../assets/css/animate.min.css" />
-    <link rel="stylesheet" href="../../assets/css/magnific-popup.css" />
-    <link rel="stylesheet" href="../../assets/css/fontawesome-all.min.css" />
-    <link rel="stylesheet" href="../../assets/css/themify-icons.css" />
-    <link rel="stylesheet" href="../../assets/css/slick.css" />
-    <link rel="stylesheet" href="../../assets/css/nice-select.css" />
-    <link rel="stylesheet" href="../../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="../assets/css/slicknav.css" />
+    <link rel="stylesheet" href="../assets/css/animate.min.css" />
+    <link rel="stylesheet" href="../assets/css/magnific-popup.css" />
+    <link rel="stylesheet" href="../assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="../assets/css/themify-icons.css" />
+    <link rel="stylesheet" href="../assets/css/slick.css" />
+    <link rel="stylesheet" href="../assets/css/nice-select.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
   </head>
   <body>
     <div class="green-bar">
-      <a href="../../unete-a-nosotros.php"><i>Únete a nosotros</i></a>
+      <a href="../unete-a-nosotros.php"><i>Únete a nosotros</i></a>
       <span>|</span>
       <a href="#"><i>Iniciar Sesión</i></a>
       <span>|</span>
@@ -51,27 +51,27 @@
         <div class="d-flex align-items-center justify-content-between flex-wrap position-relative">
           <div class="left-side d-flex align-items-center">
             <div class="logou">
-              <a href="../../index.php">
-                <img src="../../assets/img/logo.jpg" alt="" width="110" />
+              <a href="../index.php">
+                <img src="../assets/img/logo.jpg" alt="" width="110" />
               </a>
             </div>
             <div class="main-menu d-none d-lg-block">
               <nav>
                 <ul id="navigation">
                   <li>
-                    <a href="../../index.php">Inicio</a>
+                    <a href="../index.php">Inicio</a>
                   </li>
                   <li>
-                    <a href="../../capacitaciones.php">Capacitaciones</a>
+                    <a href="../capacitaciones.php">Capacitaciones</a>
                   </li>
                   <li>
-                    <a href="../../eventos.php">Eventos</a>
+                    <a href="../eventos.php">Eventos</a>
                   </li>
                   <li>
-                    <a href="../../sobre-nosotros.php">Patrocinadores</a>
+                    <a href="../sobre-nosotros.php">Patrocinadores</a>
                   </li>
                   <li>
-                    <a href="../../sobre-nosotros.php">Sobre nosotros</a>
+                    <a href="../sobre-nosotros.php">Sobre nosotros</a>
                   </li>
                 </ul>
               </nav>

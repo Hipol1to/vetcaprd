@@ -2,17 +2,17 @@
 require('includes/config.php');
 
 //collect values from the url
-$memberID = trim($_GET['x']);
+$userId = trim($_GET['x']);
 $active = trim($_GET['y']);
 
 //if id is number and the active token is not empty carry on
-if (is_numeric($memberID) && !empty($active)) {
+if (is_numeric($userId) && !empty($active)) {
 
 	//update users record set the active column to Yes where the memberID and active value match the ones provided in the array
-	$stmt = $db->prepare("UPDATE members SET active = 'Yes' WHERE memberID = :memberID AND active = :active");
+	$stmt = $db->prepare("UPDATE usuarios SET activo = 1 WHERE Id = :id AND activo = 0");
 	$stmt->execute(array(
-		':memberID' => $memberID,
-		':active' => $active
+		':id' => $userId,
+		':activo' => $active
 	));
 
 	//if the row was updated redirect the user
@@ -22,7 +22,7 @@ if (is_numeric($memberID) && !empty($active)) {
 		exit;
 
 	} else {
-		echo "Tu cuenta no pudo ser activada. Quizas este link ha expirado"; 
+		echo "Tu cuenta no pudo ser activada. Quizas este link ha expirado. Por favor, intentalo de nuevo"; 
 	}
 	
 }
