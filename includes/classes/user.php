@@ -23,9 +23,9 @@ class User
 	{
 		try {
 			if ($this->_ignoreCase) {
-				$stmt = $this->_db->prepare('SELECT nombre, activo, correo_electronico, usuario, contraseña, tipo_documento, cedula_validada, eventos_registrados, pasaporte_validado, puntos, rol from usuarios WHERE LOWER(usuario) = LOWER(:usuario) AND active="1" ');
+				$stmt = $this->_db->prepare('SELECT nombre, activo, correo_electronico, usuario, contrasena, tipo_documento, cedula_validada, eventos_registrados, pasaporte_validado, puntos, rol from usuarios WHERE LOWER(usuario) = LOWER(:usuario) AND activo="1" ');
 			} else {
-				$stmt = $this->_db->prepare('SELECT nombre, activo, correo_electronico, usuario, contraseña, tipo_documento, cedula_validada, eventos_registrados, pasaporte_validado, puntos, rol FROM usuarios WHERE usuario = :usuario AND active="1" ');
+				$stmt = $this->_db->prepare('SELECT nombre, activo, correo_electronico, usuario, contrasena, tipo_documento, cedula_validada, eventos_registrados, pasaporte_validado, puntos, rol FROM usuarios WHERE usuario = :usuario AND activo="1" ');
 			}
 			$stmt->execute(array('usuario' => $username));
 
@@ -65,10 +65,11 @@ class User
 
 		$row = $this->get_user_hash($username);
 
-		if (password_verify($password, $row['contraseña'])) {
+		if (password_verify($password, $row['contrasena'])) {
 
 			$_SESSION['loggedin'] = true;
 			$_SESSION['username'] = $row['usuario'];
+			$_SESSION['name'] = $row['nombre'];
 			$_SESSION['memberID'] = $row['Id'];
       $_SESSION['eventsRegistered'] = $row['eventsRegistered'];
       $jsonString = $_SESSION['eventsRegistered'];

@@ -8,24 +8,24 @@ if( $user->is_logged_in() ){ header('Location: index.php'); exit(); }
 //process login form if submitted
 if(isset($_POST['submit'])){
 
-	if (! isset($_POST['usuario'])) {
+	if (! isset($_POST['username'])) {
 		$error[] = "Por favor completa todos los campos";
 	}
 
-	if (! isset($_POST['contraseña'])) {
+	if (! isset($_POST['password'])) {
 		$error[] = "Por favor completa todos los campos";
 	}
 
-	$username = $_POST['usuario'];
+	$username = $_POST['username'];
 	if ($user->isValidUsername($username)){
 		if (! isset($_POST['contraseña'])){
 			$error[] = 'Debes introducir una contraseña';
 		}
 
-		$password = $_POST['contraseña'];
+		$password = $_POST['password'];
 
 		if ($user->login($username, $password)){
-			$_SESSION['usuario'] = $username;
+			$_SESSION['username'] = $username;
 			header('Location: index.php');
 			exit;
 
@@ -102,7 +102,7 @@ require('layout/header.php');
       ?>
 
       <div class="form-group">
-        <input type="text" name="username" id="username" class="form-control input-lg" placeholder="Usuario" value="<?php if(isset($error)){ echo htmlspecialchars($_POST['usuario'], ENT_QUOTES); } ?>" tabindex="1">
+        <input type="text" name="username" id="username" class="form-control input-lg" placeholder="Usuario" value="<?php if(isset($error)){ echo htmlspecialchars($_POST['username'], ENT_QUOTES); } ?>" tabindex="1">
       </div>
 
       <div class="form-group">
