@@ -13,6 +13,12 @@ $title = 'VetCap Usuarios';
 //include header template
 require('layout/header.php'); 
 ?>
+ <style>
+    /* Correctly hides elements */
+    .hidden {
+      display: none;
+    }
+  </style>
 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
     <p style="margin: 0;">
     <a class="btn-danger" style="text-decoration: none; font-weight: 550; text-align: left; color: white; padding: 10px 20px; background-color:rgb(238, 76, 76); border-radius: 5px; display: inline-block;" 
@@ -121,25 +127,36 @@ require('layout/header.php');
             <input type="file" name="captura_trasera_cedula" accept="application/pdf,image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
           </label>
 
+          <!-- Metodo de pago -->
+          <label style="color: #2d4a34; width: 100%; text-align: left;">
+          Selecciona tu metodo de pago preferido
+          <select id="metodo_de_pago" name="metodo_de_pago" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" onchange="toggleFields()">
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="Transferencia">Transferencia bancaria (adjuntar comprobante)</option>
+            <option value="Tarjeta">Tarjeta de débito/crédito</option>
+          </select>
+        </label>
+
+        <div id="paypal_button_container" class="hidden">
+        <div id="paypal-button-container"></div>
+        </div>
+
           <!-- Comprobante de Pago -->
+           <div id="comprobante_pago_field_container" class="hidden">
           <label style="color: #2d4a34; width: 100%; text-align: left;">
             Comprobante de pago (PDF o imagen):
             <input type="file" name="comprobante_pago" accept="application/pdf,image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
           </label>
-          
+          </div>
 
           <!-- Botón -->
           <button type="submit" name="submit" style="background-color: #2d4a34; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 16px;">
             SUBIR DOCUMENTOS
           </button>
         </form>
-        <script src="https://www.paypal.com/sdk/js?client-id=BAA_R1eIiSu80TjHqIoqe2IcFeh-2YN6EFZWrlU4Lgrd9zgcE8H-5e2RXNztfRPdgVrxZ05CojMR-Km-Fk&components=hosted-buttons&disable-funding=venmo&currency=USD"></script>
-<div id="paypal-container-4VGBTGGTXKX9U"></div>
-<script>
-  paypal.HostedButtons({
-    hostedButtonId: "4VGBTGGTXKX9U",
-  }).render("#paypal-container-4VGBTGGTXKX9U")
-</script>
+        
+
+
       </div>
     </div>
   </div>
@@ -491,7 +508,25 @@ require('layout/header.php');
   }
 </script>
 
+<script>
+    function toggleFields() {
+      const selectedOption = document.getElementById("metodo_de_pago").value;
 
+      // Hide all fields initially
+      document.getElementById("comprobante_pago_field_container").classList.add("hidden");
+      document.getElementById("paypal_button_container").classList.add("hidden");
+
+      // Show the relevant field based on the selected option
+      if (selectedOption === "Transferencia") {
+        document.getElementById("comprobante_pago_field_container").classList.remove("hidden");
+      } else if (selectedOption === "Tarjeta") {
+        document.getElementById("paypal_button_container").classList.remove("hidden");
+      }
+    }
+  </script>
+  <script src="https://www.sandbox.paypal.com/sdk/js?client-id=Ae15xLTKadxt1n17OTKnYK9GKc6TTcqvBM5CHt1IXAAKKwlTtx_RJ82ndJssVjy8ioL6Hw3bxz2teIqU&currency=USD&locale=es_DO"
+  data-shipping-preference="NO_SHIPPING"></script>
+  <script src="../assets/js/trx.js"></script>
 
 
 
