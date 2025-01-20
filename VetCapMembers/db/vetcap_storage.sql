@@ -104,7 +104,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `contrasena` varchar(255) DEFAULT NULL,
   `tipo_documento` varchar(20) DEFAULT NULL,
   `cedula_numero` varchar(20) DEFAULT NULL,
-  `captura_ruta` varchar(1020) DEFAULT NULL,
+  `cedula_ruta` varchar(1020) DEFAULT NULL,
   `cedula_validada` tinyint(1) DEFAULT '0',
   `pasaporte_numero` varchar(255) DEFAULT NULL,
   `pasaporte_ruta` varchar(1020) DEFAULT NULL,
@@ -130,7 +130,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 -- Dumping data for table `usuarios`
 --
 
-INSERT INTO `usuarios` (`Id`, `nombre`, `apellido`, `telefono`, `correo_electronico`, `usuario`, `contrasena`, `tipo_documento`, `cedula_numero`, `captura_ruta`, `cedula_validada`, `pasaporte_numero`, `pasaporte_ruta`, `eventos_registrados`, `fecha_nacimiento`, `pasaporte_validado`, `tipo_visitante`, `tipo_estudiante`, `universidad`, `suscrito_newsletter`, `suscrito_socials`, `puntos`, `EventosId`, `rol`, `activo`, `token_activacion`, `Fecha_creacion`, `Fecha_modificacion`) VALUES
+INSERT INTO `usuarios` (`Id`, `nombre`, `apellido`, `telefono`, `correo_electronico`, `usuario`, `contrasena`, `tipo_documento`, `cedula_numero`, `cedula_ruta`, `cedula_validada`, `pasaporte_numero`, `pasaporte_ruta`, `eventos_registrados`, `fecha_nacimiento`, `pasaporte_validado`, `tipo_visitante`, `tipo_estudiante`, `universidad`, `suscrito_newsletter`, `suscrito_socials`, `puntos`, `EventosId`, `rol`, `activo`, `token_activacion`, `Fecha_creacion`, `Fecha_modificacion`) VALUES
 ('dd7f0e28ab089d5c', 'prueba', 'registro', '8092343334', 'thelegendstutorials@gmail.com', 'sober', '$2y$10$1CCS3vhiyzmtPvgFWlFpreRgw/p51AmXw5ApDF5PowXnXAW84I7Uy', NULL, NULL, NULL, 0, NULL, NULL, NULL, '2025-01-14 04:00:00', 0, 'Visitante', 'Estudiante a mediados de carrea', 'ucateci', NULL, NULL, 0, NULL, 'cliente', 0, 'eb54f51097847ca27f9b03c0b4661ee3', '2025-01-17 01:36:37', '2025-01-17 01:36:37'),
 ('db7a0c5d235a8701', 'segunda prueba', 'registro', '8092343334', 'blackencio123@gmail.com', 'soberbia', '$2y$10$RHPD/JbSQNKyGQQBvDo1i.PhwfLKa6kFYwPFEgeusFjyi08/eld5a', NULL, NULL, NULL, 0, NULL, NULL, NULL, '2025-01-10 04:00:00', 0, 'Visitante', 'Estudiante de termino', 'ucateci', NULL, NULL, 0, NULL, 'cliente', 1, 'a766b746d44be739a2833370b2932729', '2025-01-17 17:58:17', '2025-01-17 18:03:31'),
 ('69358c73aedf255e', 'fwffw', 'efeg', '8298902312', 'blackencio123@gmail.com', 'soberbias', '$2y$10$Q0v0wgHNgjNaH.O1jF9JG.2de94NItdtFihB.zLpVOL3vvWXtL8NC', NULL, NULL, NULL, 0, NULL, NULL, NULL, '2025-01-15 04:00:00', 0, 'Estudiante veterinario', 'Estudiante de inicio', 'unapec', NULL, NULL, 0, NULL, 'cliente', 1, 'a3ae8bf942e8b10f5ad0d8e452ee8298', '2025-01-17 18:09:25', '2025-01-17 18:09:54');

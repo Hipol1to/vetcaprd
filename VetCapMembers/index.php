@@ -23,7 +23,7 @@ require('layout/header.php');
     <p style="margin: 0;">
     <a class="btn-danger" style="text-decoration: none; font-weight: 550; text-align: left; color: white; padding: 10px 20px; background-color:rgb(238, 76, 76); border-radius: 5px; display: inline-block;" 
        href="logout.php" 
-       onclick="return confirm('Are you sure you want to log out?');">
+       onclick="return confirm('¿Estás seguro que quieres cerrar sesión?');">
         Cerrar sesión
     </a>
 </p>
@@ -101,32 +101,61 @@ require('layout/header.php');
 </div>
 
 
-<div id="subscribe-events-modal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); display: flex; justify-content: center; align-items: center; z-index: 9999;">
+<div id="subscribe-events-modal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); justify-content: center; align-items: center; z-index: 9999;">
   <div class="modal-content" style="background: white; padding: 20px; border-radius: 8px; max-width: 90%; max-height: 90%; overflow-y: auto; position: relative; display: flex; flex-direction: column; align-items: center; text-align: center;">
     <span 
       onclick="closeSubscribeModal()" 
       style="position: absolute; top: 10px; right: 20px; font-size: 24px; cursor: pointer; color: #555;">
       &times;
     </span>
-    <h2 style="color: #2d4a34; margin-bottom: 20px;">Inscribir evento</h2>
+    <?php
+    $completeProffileContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Completa tu perfil</h2>
+    
+    <!-- Events List -->
+    <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
+      <!-- Event Container (Repeat this block for each event) -->
+      <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
+      <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+            Debes completar tu perfil antes de inscribirte en este evento, envía tu cedula de identidad o la de tu tutor legal.
+          </p>
+          <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+            Podrás inscribirte al evento una vez envies tu documento de identidad.
+          </p>
+          <br>
+        <form role="form" autocomplete="off" action="complete_proffile.php" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
+          <div class="form-group">
+            <label for="cedula">Número de Cédula:</label>
+            <input type="number" class="form-control" id="cedula" name="cedula_numero" required>
+          </div>
+          <!-- Captura Frontal de Cédula -->
+          <label style="color: #2d4a34; width: 100%; text-align: left;">
+            Captura frontal de cédula (imagen):
+            <input type="file" name="captura_frontal_cedula" accept="application/image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          </label>
+
+          <!-- Captura Trasera de Cédula -->
+          <label style="color: #2d4a34; width: 100%; text-align: left;">
+            Captura trasera de cédula (imagen):
+            <input type="file" name="captura_trasera_cedula" accept="application/image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          </label>
+          <br>
+          <!-- Botón -->
+          <button type="submit" name="submit" style="background-color: #2d4a34; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 16px;">
+            SUBIR DOCUMENTOS
+          </button>
+        </form>
+        
+
+
+      </div>
+    </div>';
+    $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscribir evento</h2>
     
     <!-- Events List -->
     <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
       <!-- Event Container (Repeat this block for each event) -->
       <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
         <form role="form" autocomplete="off" action="" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
-          <!-- Captura Frontal de Cédula -->
-          <label style="color: #2d4a34; width: 100%; text-align: left;">
-            Captura frontal de cédula (PDF o imagen):
-            <input type="file" name="captura_frontal_cedula" accept="application/pdf,image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-          </label>
-
-          <!-- Captura Trasera de Cédula -->
-          <label style="color: #2d4a34; width: 100%; text-align: left;">
-            Captura trasera de cédula (PDF o imagen):
-            <input type="file" name="captura_trasera_cedula" accept="application/pdf,image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-          </label>
-
           <!-- Metodo de pago -->
           <label style="color: #2d4a34; width: 100%; text-align: left;">
           Selecciona tu metodo de pago preferido
@@ -151,14 +180,73 @@ require('layout/header.php');
 
           <!-- Botón -->
           <button type="submit" name="submit" style="background-color: #2d4a34; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 16px;">
-            SUBIR DOCUMENTOS
+            INSCRIBIR
           </button>
         </form>
-        
-
-
+        <script src="https://www.sandbox.paypal.com/sdk/js?client-id=Ae15xLTKadxt1n17OTKnYK9GKc6TTcqvBM5CHt1IXAAKKwlTtx_RJ82ndJssVjy8ioL6Hw3bxz2teIqU&currency=USD&locale=es_DO"
+  data-shipping-preference="NO_SHIPPING"></script>
+  <script src="../assets/js/trx.js"></script>
       </div>
-    </div>
+    </div>';
+
+    if (isset($_GET['photoUploaded']) && isset($_SESSION['cedulaHavePath']) && $_SESSION['cedulaHavePath'] == 1) {
+      error_log("The user: '".$_SESSION['username']."' just uploaded the photos");
+      $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscribir evento</h2>
+    
+    <!-- Events List -->
+    <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
+      <!-- Event Container (Repeat this block for each event) -->
+      <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
+        <form role="form" autocomplete="off" action="" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
+          <!-- Metodo de pago -->
+          <label style="color: #2d4a34; width: 100%; text-align: left;">
+          Selecciona tu metodo de pago preferido
+          <select id="metodo_de_pago" name="metodo_de_pago" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" onchange="toggleFields()">
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="Transferencia">Transferencia bancaria (adjuntar comprobante)</option>
+            <option value="Tarjeta">Tarjeta de débito/crédito</option>
+          </select>
+        </label>
+
+        <div id="paypal_button_container" class="hidden">
+        <div id="paypal-button-container"></div>
+        </div>
+
+          <!-- Comprobante de Pago -->
+           <div id="comprobante_pago_field_container" class="hidden">
+          <label style="color: #2d4a34; width: 100%; text-align: left;">
+            Comprobante de pago (PDF o imagen):
+            <input type="file" name="comprobante_pago" accept="application/pdf,image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          </label>
+          </div>
+
+          <!-- Botón -->
+          <button type="submit" name="submit" style="background-color: #2d4a34; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 16px;">
+            INSCRIBIR
+          </button>
+        </form>
+        <script src="https://www.sandbox.paypal.com/sdk/js?client-id=Ae15xLTKadxt1n17OTKnYK9GKc6TTcqvBM5CHt1IXAAKKwlTtx_RJ82ndJssVjy8ioL6Hw3bxz2teIqU&currency=USD&locale=es_DO"
+  data-shipping-preference="NO_SHIPPING"></script>
+  <script src="../assets/js/trx.js"></script>
+  <script>document.getElementById(\'subscribe-events-modal\').style.display = \'flex\';</script>
+      </div>
+    </div>';
+
+    echo $subscribeEventContent;
+    } elseif (!$user->isUserCedulaUploaded($_SESSION['username'])) {
+      error_log("The user: '".$_SESSION['username']."' needs to complete his proffile");
+      echo $completeProffileContent;
+    } else {
+      error_log("The user: '".$_SESSION['username']."' can register to events");
+      echo $subscribeEventContent;
+    }
+    /*elseif (!$user->isUserCedulaValidated($_SESSION['username'])) {
+      echo $completeProffileContent;
+    } else {
+      echo $subscribeEventContent;
+    }*/
+    ?>
+    
   </div>
 </div>
 
@@ -524,9 +612,7 @@ require('layout/header.php');
       }
     }
   </script>
-  <script src="https://www.sandbox.paypal.com/sdk/js?client-id=Ae15xLTKadxt1n17OTKnYK9GKc6TTcqvBM5CHt1IXAAKKwlTtx_RJ82ndJssVjy8ioL6Hw3bxz2teIqU&currency=USD&locale=es_DO"
-  data-shipping-preference="NO_SHIPPING"></script>
-  <script src="../assets/js/trx.js"></script>
+  
 
 
 

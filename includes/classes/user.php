@@ -36,6 +36,66 @@ class User
 		}
 	}
 
+	private function get_cedula_validated($username)
+	{
+		try {
+			if ($this->_ignoreCase) {
+				$stmt = $this->_db->prepare('SELECT cedula_validada from usuarios WHERE LOWER(usuario) = LOWER(:usuario) AND activo="1" ');
+			} else {
+				$stmt = $this->_db->prepare('SELECT cedula_validada FROM usuarios WHERE usuario = :usuario AND activo="1" ');
+			}
+			$stmt->execute(array('usuario' => $username));
+
+			return $stmt->fetch();
+
+		} catch(PDOException $e) {
+			echo '<p class="bg-danger">'.$e->getMessage().'</p>';
+		}
+	}
+
+	private function get_cedula_path($username)
+	{
+		try {
+			if ($this->_ignoreCase) {
+				$stmt = $this->_db->prepare('SELECT cedula_ruta from usuarios WHERE LOWER(usuario) = LOWER(:usuario) AND activo="1" ');
+			} else {
+				$stmt = $this->_db->prepare('SELECT cedula_ruta FROM usuarios WHERE usuario = :usuario AND activo="1" ');
+			}
+			$stmt->execute(array('usuario' => $username));
+
+			return $stmt->fetch();
+
+		} catch(PDOException $e) {
+			echo '<p class="bg-danger">'.$e->getMessage().'</p>';
+		}
+	}
+
+	public function isUserCedulaUploaded($username)
+	{
+		$row = $this->get_cedula_path($username);
+
+		if (isset($row['cedula_ruta']) && $row['cedula_ruta'] != null && $row['cedula_ruta'] != "") {
+			return true;
+		} else {
+			return false;
+		}
+
+		
+	}
+
+	public function isUserCedulaValidated($username)
+	{
+		$row = $this->get_cedula_validated($username);
+
+		if (isset($row['cedula_validada']) && $row['cedula_validada'] == 1) {
+			return true;
+		} else {
+			return false;
+		}
+
+		
+	}
+
 	public function isValidUsername($username)
 	{
 		if (strlen($username) < 3) {
@@ -71,6 +131,8 @@ class User
 			$_SESSION['username'] = $row['usuario'];
 			$_SESSION['name'] = $row['nombre'];
 			$_SESSION['memberID'] = $row['Id'];
+			$_SESSION['cedulaValidated'] = $row['cedula_validada'];
+			$_SESSION['passportValidated'] = $row['pasaporte_validado'];
       $_SESSION['eventsRegistered'] = $row['eventsRegistered'];
       $jsonString = $_SESSION['eventsRegistered'];
       $datas = json_decode($jsonString, true); // Convert JSON to PHP associative array
