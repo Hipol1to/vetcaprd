@@ -366,6 +366,9 @@ La ceremonia de premiación se lleva a cabo en un evento formal, donde se reúne
     </div>
   </div>
 </section>
+<script src="./assets/js/modalEventos.js"></script>
+    <script src="./assets/js/modalVetGames.js"></script>
+    <script src="./assets/js/modalVetCamp.js"></script>
 
 
 

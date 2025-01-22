@@ -1,3 +1,4 @@
+function generateTransaction(eventId, ammount) {
 paypal
   .Buttons({
     fundingSource: paypal.FUNDING.CARD, // Show only credit card funding source
@@ -6,7 +7,7 @@ paypal
         purchase_units: [
           {
             amount: {
-              value: 5.0,
+              value: ammount,
               currency_code: "USD",
             },
             shipping_preference: "NO_SHIPPING"
@@ -43,7 +44,9 @@ paypal
       console.error("PayPal Button Error:", error);
     },
   })
-  .render("#paypal-button-container");
+  .render("#paypal-button-container-"+eventId);
+
+}
 
   function printTransaction(transaction) {
     let result = "";
