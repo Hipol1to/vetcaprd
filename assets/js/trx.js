@@ -25,7 +25,7 @@ paypal
           // Check if the status is COMPLETED or other
           if (transaction.status === "COMPLETED") {
             alert("Transaccion completada satisfactoriamente.");
-            registerTransaction(transaction);
+            registerTransaction(transaction, eventId);
           } else {
             alert(
               "Tu transaccion no pudo ser completada, status: " + transaction.status + ". Verifica tu balance e intenta de nuevo en unos minutos."
@@ -60,10 +60,11 @@ paypal
     alert(result);
   }
 
-  function registerTransaction(transaction) {
+  function registerTransaction(transaction, eventId) {
     // Extract transaction details
     const transactionData = {
       id: transaction.id,
+      eventId: eventId,
       status: transaction.status,
       currency_code: transaction.amount.currency_code,
       value: transaction.amount.value,
@@ -74,7 +75,7 @@ paypal
     };
   
     // Send transaction data via POST request
-    fetch("http://localhost/penpal/endpoint.php", {
+    fetch("http://localhost/vesca/VetCapMembers/register_trx.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

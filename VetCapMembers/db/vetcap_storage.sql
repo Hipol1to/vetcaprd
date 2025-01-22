@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 20, 2025 at 07:08 AM
+-- Generation Time: Jan 22, 2025 at 07:10 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -50,7 +50,9 @@ CREATE TABLE IF NOT EXISTS `eventos` (
   `Id` char(36) NOT NULL,
   `nombre` varchar(100) NOT NULL,
   `descripcion` varchar(1020) DEFAULT NULL,
+  `descripcion2` varchar(1020) DEFAULT NULL,
   `foto_evento` varchar(1020) NOT NULL,
+  `foto_titulo` varchar(1020) DEFAULT NULL,
   `precio_inscripcion` int(10) NOT NULL,
   `fecha_apertura_inscripcion` timestamp NULL DEFAULT NULL,
   `fecha_cierre_inscripcion` timestamp NULL DEFAULT NULL,
@@ -65,8 +67,30 @@ CREATE TABLE IF NOT EXISTS `eventos` (
 -- Dumping data for table `eventos`
 --
 
-INSERT INTO `eventos` (`Id`, `nombre`, `descripcion`, `foto_evento`, `precio_inscripcion`, `fecha_apertura_inscripcion`, `fecha_cierre_inscripcion`, `fecha_evento`, `Fecha_creacion`, `activo`, `Fecha_modificacion`) VALUES
-('unguid', 'VETCAP HORIZONS 2025', NULL, '../assets/img/horizon.png', 0, NULL, NULL, '2025-02-28 22:30:00', '2025-01-20 06:46:23', 0, '2025-01-20 06:46:23');
+INSERT INTO `eventos` (`Id`, `nombre`, `descripcion`, `descripcion2`, `foto_evento`, `foto_titulo`, `precio_inscripcion`, `fecha_apertura_inscripcion`, `fecha_cierre_inscripcion`, `fecha_evento`, `Fecha_creacion`, `activo`, `Fecha_modificacion`) VALUES
+('unguid', 'VETCAP HORIZONS 2025', 'vesca joraison eh una muvi', NULL, '../assets/img/horizon.png', NULL, 7500, NULL, NULL, '2025-02-28 22:30:00', '2025-01-20 06:46:23', 0, '2025-01-21 05:43:04'),
+('seroochochenta', 'VETCAmp', 'campamento y pile baina rara con lo animale waodiomio', NULL, '../assets/img/horizon.png', NULL, 7500, NULL, NULL, '2025-03-01 02:30:00', '2025-01-20 10:46:23', 1, '2025-01-21 09:43:04');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `finanzas`
+--
+
+DROP TABLE IF EXISTS `finanzas`;
+CREATE TABLE IF NOT EXISTS `finanzas` (
+  `Id` varchar(255) NOT NULL,
+  `nombre_titular_completo` varchar(255) NOT NULL,
+  `correo_electronico` varchar(255) NOT NULL,
+  `banco` varchar(10) NOT NULL,
+  `tipo_cuenta` varchar(30) NOT NULL,
+  `moneda` varchar(10) NOT NULL,
+  `ambiente` varchar(30) NOT NULL,
+  `cliente_id` varchar(1020) DEFAULT NULL,
+  `numero_cuenta` varchar(100) DEFAULT NULL,
+  `Fecha_creacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `Fecha_modificacion` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
