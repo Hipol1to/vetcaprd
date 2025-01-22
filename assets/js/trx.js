@@ -82,14 +82,59 @@ paypal
       },
       body: JSON.stringify(transactionData),
     })
+      .then((response) => {
+        if (response.status === 200) {
+          return response.json().then((data) => {
+            console.log("Status 200: Success", data);
+            alert("Transaction registered successfully: " + JSON.stringify(data));
+            registerUserToEvent(eventId);
+          });
+        } else if (response.status === 400) {
+          return response.json().then((data) => {
+            console.error("Status 400: Bad Request", data);
+            alert("Bad Request: " + JSON.stringify(data));
+          });
+        } else if (response.status === 500) {
+          return response.text().then((errorMessage) => {
+            console.error("Status 500: Internal Server Error", errorMessage);
+            alert("Internal Server Error: " + errorMessage);
+          });
+        } else {
+          console.warn("Unhandled status code:", response.status);
+          alert(`Unexpected status code: ${response.status}`);
+          return response.text().then((message) => console.log(message));
+        }
+      })
+      .catch((error) => {
+        console.error("Error during fetch:", error);
+        alert("Failed to register transaction. Please check the server.");
+      });
+    
+  }
+
+  function registerUserToEvent(eventId) {
+    const event = {
+      event_id: eventId,
+    };
+
+    // Send transaction data via POST request
+    fetch("http://localhost/vesca/VetCapMembers/register_user_event.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(event),
+    })
       .then((response) => response.json())
       .then((data) => {
         console.log("Response from API:", data);
-        alert("Transaction registered successfully: " + JSON.stringify(data));
+        alert("User registered on event successfully: " + JSON.stringify(data));
+
       })
       .catch((error) => {
-        console.error("Error registering transaction:", error);
-        alert("Failed to register transaction. Please check the server.");
+        console.error("Error registering user:", error);
+        alert("Failed to register user on event. Please check the server.");
       });
+
   }
   

@@ -23,9 +23,9 @@ class User
 	{
 		try {
 			if ($this->_ignoreCase) {
-				$stmt = $this->_db->prepare('SELECT nombre, activo, correo_electronico, usuario, contrasena, tipo_documento, cedula_validada, eventos_registrados, pasaporte_validado, puntos, rol from usuarios WHERE LOWER(usuario) = LOWER(:usuario) AND activo="1" ');
+				$stmt = $this->_db->prepare('SELECT Id, nombre, activo, correo_electronico, usuario, contrasena, tipo_documento, cedula_validada, pasaporte_validado, puntos, rol from usuarios WHERE LOWER(usuario) = LOWER(:usuario) AND activo="1" ');
 			} else {
-				$stmt = $this->_db->prepare('SELECT nombre, activo, correo_electronico, usuario, contrasena, tipo_documento, cedula_validada, eventos_registrados, pasaporte_validado, puntos, rol FROM usuarios WHERE usuario = :usuario AND activo="1" ');
+				$stmt = $this->_db->prepare('SELECT Id, nombre, activo, correo_electronico, usuario, contrasena, tipo_documento, cedula_validada, pasaporte_validado, puntos, rol FROM usuarios WHERE usuario = :usuario AND activo="1" ');
 			}
 			$stmt->execute(array('usuario' => $username));
 
