@@ -70,7 +70,7 @@
     <div id="countdown" class="countdown">
     <div class="time-unit">
       <span class="number" id="days">00</span>
-      <span class="label">DAYS</span>
+      <span class="label">DÍAS</span>
     </div>
     <div class="time-unit">
       <span class="number" id="hours">00</span>
@@ -82,7 +82,7 @@
     </div>
     <div class="time-unit">
       <span class="number" id="seconds">00</span>
-      <span class="label">SECS</span>
+      <span class="label">SEGS</span>
     </div>
   </div>
   </div>
@@ -116,7 +116,7 @@
     <div id="countdown" class="countdown">
     <div class="time-unit">
       <span class="number" id="days">00</span>
-      <span class="label">DAYS</span>
+      <span class="label">DÍAS</span>
     </div>
     <div class="time-unit">
       <span class="number" id="hours">00</span>
@@ -128,7 +128,7 @@
     </div>
     <div class="time-unit">
       <span class="number" id="seconds">00</span>
-      <span class="label">SECS</span>
+      <span class="label">SEGS</span>
     </div>
   </div>
   </div>
@@ -161,7 +161,7 @@
     <div id="countdown" class="countdown">
     <div class="time-unit">
       <span class="number" id="days">00</span>
-      <span class="label">DAYS</span>
+      <span class="label">DÍAS</span>
     </div>
     <div class="time-unit">
       <span class="number" id="hours">00</span>
@@ -173,7 +173,7 @@
     </div>
     <div class="time-unit">
       <span class="number" id="seconds">00</span>
-      <span class="label">SECS</span>
+      <span class="label">SEGS</span>
     </div>
   </div>
   </div>

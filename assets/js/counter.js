@@ -1,12 +1,13 @@
-// Set the target date and time
-const targetDate = new Date("2025-02-28T00:00:00").getTime();
-
-function updateCountdown() {
+function updateCountdown(eventId, timestamp) {
+  // Replace the space with 'T' to match the desired format
+  let dateString = ""+timestamp;
+  const formattedTimestampString = dateString.replace(" ", "T");
+  newTimestamp = new Date(formattedTimestampString).getTime();
   const now = new Date().getTime();
-  const timeLeft = targetDate - now;
+  const timeLeft = newTimestamp - now;
 
   if (timeLeft <= 0) {
-    document.getElementById("countdown").innerHTML = "Time's Up!";
+    document.getElementById("countdown-"+eventId).innerHTML = "Tiempo agotado!";
     clearInterval(timerInterval);
     return;
   }
@@ -19,21 +20,17 @@ function updateCountdown() {
   const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
-  // Update the DOM
-  document.getElementById("days").textContent = days
+  // Update the DOM 
+  document.getElementById("days-"+eventId).textContent = days
     .toString()
     .padStart(2, "0");
-  document.getElementById("hours").textContent = hours
+  document.getElementById("hours-"+eventId).textContent = hours
     .toString()
     .padStart(2, "0");
-  document.getElementById("minutes").textContent = minutes
+  document.getElementById("minutes-"+eventId).textContent = minutes
     .toString()
     .padStart(2, "0");
-  document.getElementById("seconds").textContent = seconds
+  document.getElementById("seconds-"+eventId).textContent = seconds
     .toString()
     .padStart(2, "0");
 }
-
-// Update every second
-const timerInterval = setInterval(updateCountdown, 1000);
-updateCountdown(); // Initial call

@@ -857,9 +857,9 @@ body {
 }
 
 .time-unit .number {
-  font-size: 1.5rem;
+  font-size: 1.0rem;
   font-weight: bold;
-  color: #214e1f;
+  color: #ffffff;
 }
 
 .time-unit .label {
@@ -1481,7 +1481,7 @@ body {
   }
 }
 .timeer {
-  margin-left: 40px;
+  /*margin-left: 40px;*/
 }
 @media (max-width: 767px) {
   .timeer {

@@ -115,7 +115,7 @@
                     <h2 style="font-size: 31px; font-family: HelveticaBold; white-space: nowrap !important;">28/2/2025 | 6:30PM</h2>
   <div class="time-unit timeer">
     <span class="number" id="days">00</span>
-    <span class="label">DAYS</span>
+    <span class="label">DÍAS</span>
   </div>
   <div class="time-unit">
     <span class="number" id="hours">00</span>
@@ -127,7 +127,7 @@
   </div>
   <div class="time-unit">
     <span class="number" id="seconds">00</span>
-    <span class="label">SECS</span>
+    <span class="label">SEGS</span>
   </div>
 </div>
 <div class="disvi"><button class="rounded-button marginnn er-buston" style="margin-left: 20px;">INSCRIBIRME</button><img  src="./assets/img/money_logo.png" class="money-pic" alt=""><a class="money-free">GRATIS</a></div>

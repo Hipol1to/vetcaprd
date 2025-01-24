@@ -24,7 +24,7 @@ paypal
           const transaction = details.purchase_units[0].payments.captures[0];
           // Check if the status is COMPLETED or other
           if (transaction.status === "COMPLETED") {
-            alert("Transaccion completada satisfactoriamente.");
+            //alert("Transaccion completada satisfactoriamente.");
             registerTransaction(transaction, eventId);
           } else {
             alert(
@@ -86,7 +86,7 @@ paypal
         if (response.status === 200) {
           return response.json().then((data) => {
             console.log("Status 200: Success", data);
-            alert("Transaction registered successfully: " + JSON.stringify(data));
+            //alert("Transaccion registrada correctamente");
             registerUserToEvent(eventId);
           });
         } else if (response.status === 400) {
@@ -128,7 +128,22 @@ paypal
       .then((response) => response.json())
       .then((data) => {
         console.log("Response from API:", data);
-        alert("User registered on event successfully: " + JSON.stringify(data));
+        setTimeout(() => {
+          if (confirm("Evento suscrito satisfactoriamente, la pagina se actualizara automaticamente en unos segundos")) {
+            console.log("User confirmed the action.");
+            setTimeout(() => {
+              console.log("User deffinitely confirmed the action.");
+              location.reload();
+            }, 500); // Delays the reload by 1 second
+          } else {
+            console.log("User canceled the action.");
+            alert("Evento suscrito satisfactoriamente, la pagina se actualizara automaticamente en unos segundos");
+            setTimeout(() => {
+              console.log("User subscribed.");
+              location.reload();
+            }, 5000); // Delays the reload by 1 second
+          }
+        }, 0); // Delay added to make sure it works consistently
 
       })
       .catch((error) => {
