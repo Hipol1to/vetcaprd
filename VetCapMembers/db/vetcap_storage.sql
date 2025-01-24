@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jan 22, 2025 at 08:09 PM
+-- Generation Time: Jan 24, 2025 at 07:39 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.14
 
@@ -135,6 +135,47 @@ CREATE TABLE IF NOT EXISTS `pagos` (
   KEY `usuario_id` (`usuario_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `pagos`
+--
+
+INSERT INTO `pagos` (`Id`, `monto`, `comprobante_pago_ruta`, `metodo_de_pago`, `pago_validado`, `evento_id`, `usuario_id`, `cuenta_remitente`, `banco_remitente`, `tipo_cuenta_remitente`, `cuenta_destinatario`, `banco_destinatario`, `tipo_cuenta_destinatario`, `fecha_de_pago`, `fecha_creacion`, `fecha_modificacion`) VALUES
+('6BD69344JM7512709', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-23 01:10:20', '2025-01-23 01:10:20', '2025-01-23 01:10:20'),
+('3L064225PM768942F', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-23 01:47:28', '2025-01-23 01:47:28', '2025-01-23 01:47:28'),
+('1JW09638GM040102K', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-23 17:10:37', '2025-01-23 17:10:37', '2025-01-23 17:10:37'),
+('6B564593E3159082G', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 18:26:22', '2025-01-24 18:26:22', '2025-01-24 18:26:22'),
+('1VB50508C4599611B', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'seroochochenta', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 18:31:00', '2025-01-24 18:31:00', '2025-01-24 18:31:00'),
+('2R102525N7701125X', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'seroochochenta', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 18:37:54', '2025-01-24 18:37:54', '2025-01-24 18:37:54'),
+('2UK84542M4662715Y', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 18:40:21', '2025-01-24 18:40:21', '2025-01-24 18:40:21'),
+('62P37190FB5050303', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 18:44:20', '2025-01-24 18:44:20', '2025-01-24 18:44:20'),
+('26N05294G8164734C', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 18:47:23', '2025-01-24 18:47:23', '2025-01-24 18:47:23'),
+('3NN197841P193493L', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 18:49:50', '2025-01-24 18:49:50', '2025-01-24 18:49:50'),
+('4AB58128YX7545409', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 18:50:46', '2025-01-24 18:50:46', '2025-01-24 18:50:46'),
+('3963303413565361M', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 18:52:48', '2025-01-24 18:52:48', '2025-01-24 18:52:48'),
+('0FS634478N748194R', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'seroochochenta', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 18:53:46', '2025-01-24 18:53:46', '2025-01-24 18:53:46'),
+('31682684MY886103L', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 18:54:32', '2025-01-24 18:54:32', '2025-01-24 18:54:32'),
+('48105191SA849654F', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 18:57:13', '2025-01-24 18:57:13', '2025-01-24 18:57:13'),
+('1BD33233LA1362426', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 19:02:21', '2025-01-24 19:02:21', '2025-01-24 19:02:21'),
+('4CE58412E64269836', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 19:04:40', '2025-01-24 19:04:40', '2025-01-24 19:04:40'),
+('3YL79174HG579944D', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 19:06:09', '2025-01-24 19:06:09', '2025-01-24 19:06:09'),
+('29X87160UF259904B', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'seroochochenta', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 19:08:07', '2025-01-24 19:08:07', '2025-01-24 19:08:07'),
+('6S976636NU040600P', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 19:10:29', '2025-01-24 19:10:29', '2025-01-24 19:10:29'),
+('16J82784D67945128', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 19:13:17', '2025-01-24 19:13:17', '2025-01-24 19:13:17'),
+('42A31436GC345784C', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 19:15:24', '2025-01-24 19:15:24', '2025-01-24 19:15:24'),
+('3LY08286DE4525122', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 19:16:39', '2025-01-24 19:16:39', '2025-01-24 19:16:39'),
+('4JA858358H590043C', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 19:21:23', '2025-01-24 19:21:23', '2025-01-24 19:21:23'),
+('6HT0710717971834U', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 19:24:55', '2025-01-24 19:24:55', '2025-01-24 19:24:55'),
+('4BX13613A96291704', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 19:26:33', '2025-01-24 19:26:33', '2025-01-24 19:26:33'),
+('1T787355BE811725X', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 19:28:06', '2025-01-24 19:28:06', '2025-01-24 19:28:06'),
+('0NB068636V3382116', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'seroochochenta', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 19:30:39', '2025-01-24 19:30:39', '2025-01-24 19:30:39'),
+('1FT93015VM733803B', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 19:35:13', '2025-01-24 19:35:13', '2025-01-24 19:35:13'),
+('5CK402543F0014359', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 19:36:54', '2025-01-24 19:36:54', '2025-01-24 19:36:54'),
+('0D707895L73978102', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'seroochochenta', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 20:58:53', '2025-01-24 20:58:53', '2025-01-24 20:58:53'),
+('59067998JE659264J', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 21:05:19', '2025-01-24 21:05:19', '2025-01-24 21:05:19'),
+('19085054NL475954P', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'seroochochenta', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 21:36:34', '2025-01-24 21:36:34', '2025-01-24 21:36:34'),
+('94B57643P4144105U', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'unguid', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 21:41:17', '2025-01-24 21:41:17', '2025-01-24 21:41:17'),
+('1PW24267CD372504V', '7500.00', NULL, 'Tarjeta de débito/crédito vía PayPal', 0, 'seroochochenta', '69358c73aedf255e', 'Verificar en PayPal con Id de Transaccion', 'PayPal', 'Tarjeta de débito/crédito', 'sb-1oqee33661271@business.example.com', 'PayPal', 'prueba', '2025-01-24 21:56:57', '2025-01-24 21:56:57', '2025-01-24 21:56:57');
+
 -- --------------------------------------------------------
 
 --
@@ -191,6 +232,8 @@ DROP TABLE IF EXISTS `usuario_eventos`;
 CREATE TABLE IF NOT EXISTS `usuario_eventos` (
   `usuario_id` char(36) NOT NULL,
   `evento_id` char(36) NOT NULL,
+  `Fecha_creacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Fecha_modificacion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`usuario_id`,`evento_id`),
   KEY `evento_id` (`evento_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
