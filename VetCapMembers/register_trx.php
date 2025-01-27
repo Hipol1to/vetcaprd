@@ -89,73 +89,74 @@ if (isset($data)) {
             </script>';
       sleep(5);
       header('Location: http://localhost/vesca/VetCapMembers/login.php');
-    exit(); 
-    }
-    try {
-        //insert into database with a prepared statement
-      
-        $stmt = $db->prepare('INSERT INTO pagos (Id,
-         monto, 
-         metodo_de_pago,
-         pago_validado, 
-         evento_id, 
-         usuario_id, 
-         cuenta_remitente, 
-         banco_remitente, 
-         tipo_cuenta_remitente, 
-         cuenta_destinatario, 
-         banco_destinatario, 
-         tipo_cuenta_destinatario, 
-         fecha_de_pago, fecha_creacion, fecha_modificacion) 
-         VALUES (:id, 
-         :monto, 
-         :metodoDePago,
-         :pagoValidado, 
-         :eventoId, 
-         :usuarioId, 
-         :cuentaRemitente, 
-         :bancoRemitente, 
-         :tipoCuentaRemitente, 
-         :cuentaDestinatario, 
-         :bancoDestinatario, 
-         :tipoCuentaDestinatario, 
-         :fechaDePago, 
-         :fechaDeCreacion, 
-         :fechaDeModificacion)');
-        if($stmt->execute(array(
-          ':id' => $id,
-          ':monto' => $trxAmount,
-          ':metodoDePago' => "Tarjeta de débito/crédito vía PayPal",
-          ':pagoValidado' => 1,
-          ':eventoId' => $eventId,
-          ':usuarioId' => $usuarioId,
-          ':cuentaRemitente' => "Verificar en PayPal con Id de Transaccion",
-          ':bancoRemitente' => "PayPal",
-          ':tipoCuentaRemitente' => "Tarjeta de débito/crédito",
-          ':cuentaDestinatario' => $receiverAccount['correo_electronico'],
-          ':bancoDestinatario' => $receiverAccount['banco'],
-          ':tipoCuentaDestinatario' => $receiverAccount['tipo_cuenta'],
-          ':fechaDePago' => $createdTime,
-          ':fechaDeCreacion' => $createdTime,
-          ':fechaDeModificacion' => $updatedTime
-        ))) {
-          $_SESSION['trxToken'] = uniqid();
-          http_response_code(200);
-          echo json_encode(["success" => true, "message" => "The transaction was succesfully registered.", "trxToken" => $_SESSION['trxToken']]);
-        } else {
-          http_response_code(500);
-          echo json_encode(["success" => false, "message" => "Failed to register the transaction."]);
+      exit(); 
+    } else {
+      try {
+          //insert into database with a prepared statement
+
+          $stmt = $db->prepare('INSERT INTO pagos (Id,
+           monto, 
+           metodo_de_pago,
+           pago_validado, 
+           evento_id, 
+           usuario_id, 
+           cuenta_remitente, 
+           banco_remitente, 
+           tipo_cuenta_remitente, 
+           cuenta_destinatario, 
+           banco_destinatario, 
+           tipo_cuenta_destinatario, 
+           fecha_de_pago, fecha_creacion, fecha_modificacion) 
+           VALUES (:id, 
+           :monto, 
+           :metodoDePago,
+           :pagoValidado, 
+           :eventoId, 
+           :usuarioId, 
+           :cuentaRemitente, 
+           :bancoRemitente, 
+           :tipoCuentaRemitente, 
+           :cuentaDestinatario, 
+           :bancoDestinatario, 
+           :tipoCuentaDestinatario, 
+           :fechaDePago, 
+           :fechaDeCreacion, 
+           :fechaDeModificacion)');
+          if($stmt->execute(array(
+            ':id' => $id,
+            ':monto' => $trxAmount,
+            ':metodoDePago' => "Tarjeta de débito/crédito vía PayPal",
+            ':pagoValidado' => 1,
+            ':eventoId' => $eventId,
+            ':usuarioId' => $usuarioId,
+            ':cuentaRemitente' => "Verificar en PayPal con Id de Transaccion",
+            ':bancoRemitente' => "PayPal",
+            ':tipoCuentaRemitente' => "Tarjeta de débito/crédito",
+            ':cuentaDestinatario' => $receiverAccount['correo_electronico'],
+            ':bancoDestinatario' => $receiverAccount['banco'],
+            ':tipoCuentaDestinatario' => $receiverAccount['tipo_cuenta'],
+            ':fechaDePago' => $createdTime,
+            ':fechaDeCreacion' => $createdTime,
+            ':fechaDeModificacion' => $updatedTime
+          ))) {
+            $_SESSION['trxToken'] = uniqid();
+            http_response_code(200);
+            echo json_encode(["success" => true, "message" => "The transaction was succesfully registered.", "trxToken" => $_SESSION['trxToken']]);
+          } else {
+            http_response_code(500);
+            echo json_encode(["success" => false, "message" => "Failed to register the transaction."]);
+          }
+
+        
+
+        
+        //else catch the exception and show the error.
+        } catch(PDOException $e) {
+            $error[] = $e->getMessage();
+            error_log($e->getMessage());
+            http_response_code(500);
+            echo json_encode(["success" => false, "message" => "Failed to register the transaction: ".$e->getMessage()]);
         }
-        
-      
-        
-      
-      //else catch the exception and show the error.
-      } catch(PDOException $e) {
-          $error[] = $e->getMessage();
-          error_log($e->getMessage());
-          http_response_code(500);
-          echo json_encode(["success" => false, "message" => "Failed to register the transaction: ".$e->getMessage()]);
       }
 } else {
   // Invalid or incomplete data

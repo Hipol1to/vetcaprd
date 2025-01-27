@@ -29,9 +29,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $cuenta_remitente = $_POST['addCuentaRemitente'] ?? '';
         $banco_remitente = $_POST['addEntidadBancariaRemitente'] ?? '';
         $tipo_cuenta_remitente = $_POST['editTipoCuentaRemitente'] ?? '';
-        $cuenta_destinatario = $_POST['addCuentaRemitente'] ?? '';; // Default value if required, adjust as necessary
-        $banco_destinatario = $_POST['addEntidadBancariaRemitente']; // Adjust as necessary
-        $tipo_cuenta_destinatario = $_POST['editTipoCuentaRemitente']; // Adjust as necessary
+        $cuenta_destinatario = $_POST['addCuentaDestinatario'] ?? '';; // Default value if required, adjust as necessary
+        $banco_destinatario = $_POST['addEntidadBancariaDestinatario']; // Adjust as necessary
+        $tipo_cuenta_destinatario = $_POST['editTipoCuentaDestinatario']; // Adjust as necessary
         $fecha_de_pago = date('Y-m-d H:i:s'); // Current timestamp
 
         // Prepare SQL statement

@@ -33,6 +33,8 @@
     <link rel="stylesheet" href="../assets/css/nice-select.css" />
     <link rel="stylesheet" href="../assets/css/style.css" />
     <script src="../assets/js/counter.js"></script>
+    <!-- Bootstrap Datepicker CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css" rel="stylesheet">
     <style>.capitalize-first::first-letter {
     text-transform: uppercase;
   }

@@ -59,5 +59,16 @@
     <script src="../assets/js/jquery-1.12.4.min.js"></script>
     <script src="../assets/js/jquery.slicknav.min.js"></script>
     <script src="../assets/js/main.js"></script>
+    <!-- Bootstrap Datepicker JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+<script>
+ $(document).ready(function(){
+  $('.datepicker').datepicker({
+    format: 'yyyy-mm-dd',
+    autoclose: true
+  });
+});
+</script>
   </body>
 </html>
