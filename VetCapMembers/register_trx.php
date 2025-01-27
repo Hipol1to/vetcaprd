@@ -96,7 +96,8 @@ if (isset($data)) {
       
         $stmt = $db->prepare('INSERT INTO pagos (Id,
          monto, 
-         metodo_de_pago, 
+         metodo_de_pago,
+         pago_validado, 
          evento_id, 
          usuario_id, 
          cuenta_remitente, 
@@ -108,7 +109,8 @@ if (isset($data)) {
          fecha_de_pago, fecha_creacion, fecha_modificacion) 
          VALUES (:id, 
          :monto, 
-         :metodoDePago, 
+         :metodoDePago,
+         :pagoValidado, 
          :eventoId, 
          :usuarioId, 
          :cuentaRemitente, 
@@ -124,6 +126,7 @@ if (isset($data)) {
           ':id' => $id,
           ':monto' => $trxAmount,
           ':metodoDePago' => "Tarjeta de débito/crédito vía PayPal",
+          ':pagoValidado' => 1,
           ':eventoId' => $eventId,
           ':usuarioId' => $usuarioId,
           ':cuentaRemitente' => "Verificar en PayPal con Id de Transaccion",

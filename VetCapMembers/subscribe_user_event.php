@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Execute the statement
         if ($stmt->execute()) {
             error_log("Payment information successfully inserted.");
-            try {
+            /*try {
                 // Prepare and execute the SQL query
                 $stmt = $db->prepare("INSERT INTO usuario_eventos (evento_id, usuario_id) VALUES (:eventoId, :usuarioId)");
                 $stmt->bindParam(':eventoId', $evento_id);
@@ -82,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             } catch (PDOException $e) {
                 error_log(json_encode(["success" => false, "message" => "Database error: " . $e->getMessage()]));
-            }
+            }*/
             header('Location: http://localhost/vesca/VetCapMembers/index.php');
             exit();
         } else {
