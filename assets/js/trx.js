@@ -1,4 +1,7 @@
 function generateTransaction(eventId, ammount) {
+  let ammountConverted = ammount / 61.50;
+  let extraFee = ammountConverted * 0.05;
+  let ammountToCharge = extraFee + ammountConverted;
 paypal
   .Buttons({
     fundingSource: paypal.FUNDING.CARD, // Show only credit card funding source
@@ -7,7 +10,7 @@ paypal
         purchase_units: [
           {
             amount: {
-              value: ammount,
+              value: parseFloat(ammountToCharge).toFixed(2),
               currency_code: "USD",
             },
             shipping_preference: "NO_SHIPPING"
@@ -87,34 +90,36 @@ paypal
           return response.json().then((data) => {
             console.log("Status 200: Success", data);
             //alert("Transaccion registrada correctamente");
-            registerUserToEvent(eventId);
+            let transactionToken = data.trxToken;
+            registerUserToEvent(eventId, transactionToken);
           });
         } else if (response.status === 400) {
           return response.json().then((data) => {
             console.error("Status 400: Bad Request", data);
-            alert("Bad Request: " + JSON.stringify(data));
+            alert("Lo sentimos, tu solicitud no pudo ser procesada, por favor contacta al administrador con este mensaje: " + JSON.stringify(data));
           });
         } else if (response.status === 500) {
           return response.text().then((errorMessage) => {
             console.error("Status 500: Internal Server Error", errorMessage);
-            alert("Internal Server Error: " + errorMessage);
+            alert("Lo sentimos, el servicio no está disponible, por favor contacta al administrador con este mensaje:" + errorMessage);
           });
         } else {
           console.warn("Unhandled status code:", response.status);
-          alert(`Unexpected status code: ${response.status}`);
+          alert(`Ha ocurrido un error inesperado, por favor contacta al administrador con este mensaje: ${response.status}`);
           return response.text().then((message) => console.log(message));
         }
       })
       .catch((error) => {
         console.error("Error during fetch:", error);
-        alert("Failed to register transaction. Please check the server.");
+        alert("Ha ocurrido un error durante tu solicitud, por favor contacta al administrador con este mensaje.");
       });
     
   }
 
-  function registerUserToEvent(eventId) {
+  function registerUserToEvent(eventId, trxToken) {
     const event = {
       event_id: eventId,
+      trx_token: trxToken,
     };
 
     // Send transaction data via POST request

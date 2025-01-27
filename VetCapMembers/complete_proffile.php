@@ -3,7 +3,14 @@ require_once('../includes/config.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     error_log("-----complete proffile process-----");
-    if (isset($_POST['cedula_numero']) && isset($_POST['captura_frontal_cedula']) && isset($_POST['captura_trasera_cedula'])) {
+    error_log($_POST['cedula_numero']);
+    error_log($_FILES['captura_frontal_cedula']);
+    error_log($_FILES['captura_trasera_cedula']);
+    if (isset($_POST['cedula_numero']) && isset($_FILES['captura_frontal_cedula']) && isset($_FILES['captura_trasera_cedula'])) {
+        error_log("la vaca");
+        error_log($_FILES['captura_frontal_cedula']);
+        error_log($_FILES['captura_trasera_cedula']);
+        error_log($_FILES['captura_frontal_cedula']);
         $cedulaNumber = $_POST['cedula_numero'];
         if (
             isset($_FILES['captura_frontal_cedula']) && 
@@ -11,6 +18,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             isset($_FILES['captura_trasera_cedula']) && 
             $_FILES['captura_trasera_cedula']['error'] === UPLOAD_ERR_OK
         ) {
+            error_log("muuu");
+            error_log($_FILES['captura_frontal_cedula']);
+            error_log($_FILES['captura_trasera_cedula']);
             $upload_directory = __DIR__ . "/uploads/";
             $front_file_name = uniqid() . '_front_' . $_FILES['captura_frontal_cedula']['name'];
             $back_file_name = uniqid() . '_back_' . $_FILES['captura_trasera_cedula']['name'];

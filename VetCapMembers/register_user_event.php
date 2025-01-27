@@ -11,8 +11,20 @@ $input = file_get_contents("php://input");
 $data = json_decode($input, true);
 
 if (isset($data['event_id']) && isset($_SESSION['memberID'])) {
+    $trxToken = $data['trx_token'];
     $eventId = $data['event_id'];
     $userId = $_SESSION['memberID'];
+    
+
+    if ($trxToken != $_SESSION['trxToken']) {
+        echo '<script>
+                alert("La información de la transacción es invalida, serás redirigido a la página principal");
+              </script>';
+        sleep(5);
+        header('Location: http://localhost/vesca/VetCapMembers/login.php');
+    exit(); 
+    }
+
 
     try {
         // Prepare and execute the SQL query

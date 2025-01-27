@@ -22,6 +22,27 @@ if (isset($data)) {
     $createdTime = $paypalCreatedTime->format('Y-m-d H:i:s');
     $updatedTime = $paypalUpdatedTime->format('Y-m-d H:i:s');
 
+    try {
+      $eventquery = $db->prepare("SELECT * FROM `eventos` WHERE Id = :eventoId");
+      $eventquery->bindParam(':eventoId', $eventId);
+      $eventquery->execute();
+      // Fetch only the first row
+      $eventRow = $eventquery->fetch(PDO::FETCH_ASSOC);
+      error_log("Fetching event info");
+      error_log(print_r($eventRow, true));
+      
+    } catch (Exception $e) {
+      die("Error fetching data: " . $e->getMessage());
+    }
+    $amount = $eventRow['precio_inscripcion']; // Replace this with the desired amount
+    $conversionRate = 61.50;
+    $amountConverted = $amount / $conversionRate;
+    $extraFee = $amountConverted * 0.05;
+    $amountToCharge = $amountConverted + $extraFee;
+    $amountToChargeFormatted = number_format($amountToCharge, 2);
+
+    error_log("Trx amount arrived :".$trxAmount);
+    error_log("Expected amount: ".$amountToChargeFormatted);
 
 
     try {
@@ -62,7 +83,14 @@ if (isset($data)) {
       error_log("------------SESSION DETAILS END------------");
       exit();
     }
-
+    if ($trxAmount != $amountToChargeFormatted) {
+      echo '<script>
+      alert("La información de la transacción es invalida, serás redirigido a la página principal");
+            </script>';
+      sleep(5);
+      header('Location: http://localhost/vesca/VetCapMembers/login.php');
+    exit(); 
+    }
     try {
         //insert into database with a prepared statement
       
@@ -108,8 +136,9 @@ if (isset($data)) {
           ':fechaDeCreacion' => $createdTime,
           ':fechaDeModificacion' => $updatedTime
         ))) {
+          $_SESSION['trxToken'] = uniqid();
           http_response_code(200);
-          echo json_encode(["success" => true, "message" => "The transaction was succesfully registered."]);
+          echo json_encode(["success" => true, "message" => "The transaction was succesfully registered.", "trxToken" => $_SESSION['trxToken']]);
         } else {
           http_response_code(500);
           echo json_encode(["success" => false, "message" => "Failed to register the transaction."]);

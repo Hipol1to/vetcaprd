@@ -368,10 +368,30 @@ $completeProffileContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Com
             Podrás inscribirte al evento una vez envies tu documento de identidad.
           </p>
           <br>
-        <form role="form" autocomplete="off" action="complete_proffile.php" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
+        <form role="form" autocomplete="off" action="complete_proffile.php" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px; width: 100%;" enctype="multipart/form-data">
           <div class="form-group">
             <label for="cedula">Número de Cédula:</label>
-            <input type="number" class="form-control" id="cedula" name="cedula_numero" required>
+            <label for="cedula">Cédula:</label>
+<input 
+    type="text" 
+    class="form-control" 
+    id="cedula" 
+    name="cedula_numero" 
+    maxlength="11" 
+    inputmode="numeric" 
+    required 
+    placeholder="Ingresa tu cédula"
+/>
+
+<script>
+    // Enforce numeric input only
+    const cedulaInput = document.getElementById(\'cedula\');
+    cedulaInput.addEventListener(\'input\', () => {
+        // Remove all non-numeric characters
+        cedulaInput.value = cedulaInput.value.replace(/\D/g, \'\');
+    });
+</script>
+
           </div>
           <!-- Captura Frontal de Cédula -->
           <label style="color: #2d4a34; width: 100%; text-align: left;">
@@ -395,7 +415,225 @@ $completeProffileContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Com
 
       </div>
     </div>';
+    $valueToSend = $evento['Id'];
+    error_log($valueToSend);
+    $theValue = encryptValue($valueToSend);
+    //error_log($theValue);
+    //$thecryptedValue = decryptValue($theValue);
+    //error_log($thecryptedValue);
+    $eventIdInpur = '<input type="hidden" name="eventId" value="'.$evento['Id'].'">';
+
 $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscribir evento</h2>
+    
+    <!-- Events List -->
+    <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
+      <!-- Event Container (Repeat this block for each event) -->
+      <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
+        <form role="form" autocomplete="off" action="subscribe_user_event.php" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px; width: 100%;" enctype="multipart/form-data">
+          <!-- Metodo de pago -->
+          <label style="color: #2d4a34; width: 100%; text-align: left;">
+          Selecciona tu metodo de pago preferido
+          <select id="metodo_de_pago_'.$evento['Id'].'" name="metodo_de_pago" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" amountRd="'.$evento['precio_inscripcion'].'" onchange="toggleFields(\''.$evento['Id'].'\')">
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="Transferencia">Transferencia bancaria (adjuntar comprobante)</option>
+            <option value="Tarjeta">Tarjeta de débito/crédito</option>
+          </select>
+        </label>
+
+
+        <!-- Precio -->
+          <div style="position: relative; text-align: center; justify-content: center; flex-direction: unset !important; bottom: 1% !important;" class="vetcap-badge">
+            <img style="width: 70px; height: auto;" src="../assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon">
+            <span>RD$'.$evento['precio_inscripcion'].'</span>
+          </div>
+
+
+        <div id="paypal-button-container-'.$evento['Id'].'" class="">
+        </div>
+
+        
+
+          <!-- Comprobante de Pago -->
+           <div id="comprobante_pago_field_container_'.$evento['Id'].'" class="hidden">
+
+
+
+           <label for="addMonto">Monto (RD$):</label>
+                <input type="number" class="form-control" id="addMonto" name="addMonto" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+
+<br>
+
+
+                <label for="addCuentaRemitente">Número de cuenta remitente:</label>
+                <input type="text" class="form-control" id="addCuentaRemitente" name="addCuentaRemitente" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+
+<br>
+
+                <label for="editTipoCuentaRemitente">Tipo de cuenta remitente:</label>
+                <select id="editTipoCuentaRemitente" name="editTipoCuentaRemitente" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                  <option value="" disabled="" selected="">Tipo de Cuenta</option>
+                    <option value="Cuenta de ahorros">Cuenta de ahorros</option>
+                    <option value="Cuenta corriente">Cuenta corriente</option>
+                </select>
+
+<br>
+<br>
+
+
+                <label for="addEntidadBancariaRemitente">Entidad bancaria remitente</label>
+  <select id="addEntidadBancariaRemitente" name="addEntidadBancariaRemitente" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" required>
+    <option value="Banreservas" disabled selected>Entidad Bancaria Remitente</option>
+    <option value="Banreservas">Banreservas</option>
+    <option value="Banco Popular Dominicano">Banco Popular Dominicano</option>
+    <option value="Banco BHD">Banco BHD</option>
+    <option value="Asociación Popular de Ahorros y Préstamos">Asociación Popular de Ahorros y Préstamos</option>
+    <option value="Scotiabank">Scotiabank</option>
+    <option value="Banco Santa Cruz">Banco Santa Cruz</option>
+    <option value="Asociación Cibao de Ahorros y Préstamos">Asociación Cibao de Ahorros y Préstamos</option>
+    <option value="Banco Promerica">Banco Promerica</option>
+    <option value="Banesco">Banesco</option>
+    <option value="Banco Caribe">Banco Caribe</option>
+    <option value="Banco Agrícola">Banco Agrícola</option>
+    <option value="Asociación La Nacional de Ahorros y Préstamos">Asociación La Nacional de Ahorros y Préstamos</option>
+    <option value="Citibank">Citibank</option>
+    <option value="Banco BDI">Banco BDI</option>
+    <option value="Banco Vimenca">Banco Vimenca</option>
+    <option value="Banco López de Haro">Banco López de Haro</option>
+    <option value="Bandex">Bandex</option>
+    <option value="Banco Ademi">Banco Ademi</option>
+    <option value="Banco Lafise">Banco Lafise</option>
+    <option value="Motor Crédit Banco de Ahorro y Crédito">Motor Crédit Banco de Ahorro y Crédito</option>
+    <option value="Alaver Asociación de Ahorros y Préstamos">Alaver Asociación de Ahorros y Préstamos</option>
+    <option value="Banfondesa">Banfondesa</option>
+    <option value="Banco Adopem">Banco Adopem</option>
+    <option value="Asociación Duarte">Asociación Duarte</option>
+    <option value="JMMB Bank">JMMB Bank</option>
+    <option value="Asociación Mocana">Asociación Mocana</option>
+    <option value="ABONAP">ABONAP</option>
+    <option value="Banco Unión">Banco Unión</option>
+    <option value="Banco BACC">Banco BACC</option>
+    <option value="Asociación Romana">Asociación Romana</option>
+    <option value="Asociación Peravia">Asociación Peravia</option>
+    <option value="Banco Confisa">Banco Confisa</option>
+    <option value="Leasing Confisa">Leasing Confisa</option>
+    <option value="Qik Banco Digital">Qik Banco Digital</option>
+    <option value="Banco Fihogar">Banco Fihogar</option>
+    <option value="Asociación Maguana de Ahorros y Préstamos">Asociación Maguana de Ahorros y Préstamos</option>
+    <option value="Banco Atlántico">Banco Atlántico</option>
+    <option value="Bancotui">Bancotui</option>
+    <option value="Banco Activo">Banco Activo</option>
+    <option value="Banco Gruficorp">Banco Gruficorp</option>
+    <option value="Corporación de Crédito Nordestana">Corporación de Crédito Nordestana</option>
+    <option value="Banco Óptima de Ahorro y Crédito">Banco Óptima de Ahorro y Crédito</option>
+    <option value="Banco Cofaci">Banco Cofaci</option>
+    <option value="Bonanza Banco">Bonanza Banco</option>
+    <option value="Corporación de Crédito Monumental">Corporación de Crédito Monumental</option>
+    <option value="Banco Empire">Banco Empire</option>
+    <option value="Corporación de Crédito Oficorp">Corporación de Crédito Oficorp</option>
+</select>
+
+<br>
+<br>
+
+
+            <label for="addCuentaRemitente">Número de cuenta destinatario:</label>
+                <input type="text" class="form-control" id="addCuentaDestinatario" name="addCuentaRemitente" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+
+<br>
+'.$eventIdInpur.'
+
+                <label for="editTipoCuentaRemitente">Tipo de Cuenta destinatario:</label>
+                <select id="editTipoCuentaRemitente" name="editTipoCuentaDestinatario" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                  <option value="" disabled="" selected="">Tipo de Cuenta</option>
+                    <option value="Cuenta de ahorros">Cuenta de ahorros</option>
+                    <option value="Cuenta corriente">Cuenta corriente</option>
+                </select>
+
+<br>
+<br>
+
+
+                <label for="addEntidadBancariaRemitente">Entidad Bancaria destinatario</label>
+  <select id="addEntidadBancariaRemitente" name="addEntidadBancariaDestinatario" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" required>
+    <option value="Banreservas" disabled selected>Entidad Bancaria Remitente</option>
+    <option value="Banreservas">Banreservas</option>
+    <option value="Banco Popular Dominicano">Banco Popular Dominicano</option>
+    <option value="Banco BHD">Banco BHD</option>
+    <option value="Asociación Popular de Ahorros y Préstamos">Asociación Popular de Ahorros y Préstamos</option>
+    <option value="Scotiabank">Scotiabank</option>
+    <option value="Banco Santa Cruz">Banco Santa Cruz</option>
+    <option value="Asociación Cibao de Ahorros y Préstamos">Asociación Cibao de Ahorros y Préstamos</option>
+    <option value="Banco Promerica">Banco Promerica</option>
+    <option value="Banesco">Banesco</option>
+    <option value="Banco Caribe">Banco Caribe</option>
+    <option value="Banco Agrícola">Banco Agrícola</option>
+    <option value="Asociación La Nacional de Ahorros y Préstamos">Asociación La Nacional de Ahorros y Préstamos</option>
+    <option value="Citibank">Citibank</option>
+    <option value="Banco BDI">Banco BDI</option>
+    <option value="Banco Vimenca">Banco Vimenca</option>
+    <option value="Banco López de Haro">Banco López de Haro</option>
+    <option value="Bandex">Bandex</option>
+    <option value="Banco Ademi">Banco Ademi</option>
+    <option value="Banco Lafise">Banco Lafise</option>
+    <option value="Motor Crédit Banco de Ahorro y Crédito">Motor Crédit Banco de Ahorro y Crédito</option>
+    <option value="Alaver Asociación de Ahorros y Préstamos">Alaver Asociación de Ahorros y Préstamos</option>
+    <option value="Banfondesa">Banfondesa</option>
+    <option value="Banco Adopem">Banco Adopem</option>
+    <option value="Asociación Duarte">Asociación Duarte</option>
+    <option value="JMMB Bank">JMMB Bank</option>
+    <option value="Asociación Mocana">Asociación Mocana</option>
+    <option value="ABONAP">ABONAP</option>
+    <option value="Banco Unión">Banco Unión</option>
+    <option value="Banco BACC">Banco BACC</option>
+    <option value="Asociación Romana">Asociación Romana</option>
+    <option value="Asociación Peravia">Asociación Peravia</option>
+    <option value="Banco Confisa">Banco Confisa</option>
+    <option value="Leasing Confisa">Leasing Confisa</option>
+    <option value="Qik Banco Digital">Qik Banco Digital</option>
+    <option value="Banco Fihogar">Banco Fihogar</option>
+    <option value="Asociación Maguana de Ahorros y Préstamos">Asociación Maguana de Ahorros y Préstamos</option>
+    <option value="Banco Atlántico">Banco Atlántico</option>
+    <option value="Bancotui">Bancotui</option>
+    <option value="Banco Activo">Banco Activo</option>
+    <option value="Banco Gruficorp">Banco Gruficorp</option>
+    <option value="Corporación de Crédito Nordestana">Corporación de Crédito Nordestana</option>
+    <option value="Banco Óptima de Ahorro y Crédito">Banco Óptima de Ahorro y Crédito</option>
+    <option value="Banco Cofaci">Banco Cofaci</option>
+    <option value="Bonanza Banco">Bonanza Banco</option>
+    <option value="Corporación de Crédito Monumental">Corporación de Crédito Monumental</option>
+    <option value="Banco Empire">Banco Empire</option>
+    <option value="Corporación de Crédito Oficorp">Corporación de Crédito Oficorp</option>
+</select>
+
+
+<br>
+<br>
+
+          <label style="color: #2d4a34; width: 100%; text-align: left;" for="addFechaDePago">Fecha de Pago:</label>
+            <input type="text" class="datepicker" id="addFechaDePago" name="addFechaDePago" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+
+
+
+<br>
+<br>
+          <label style="color: #2d4a34; width: 100%; text-align: left;">
+            Comprobante de pago (imagenn):
+            <input type="file" name="comprobante_pago" accept="image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          </label>
+          </div>
+
+          <!-- Botón -->
+          <button id="inscribir_button_'.$evento['Id'].'" class="hidden" type="submit" name="submit" style="background-color: #2d4a34; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 16px;">
+            INSCRIBIR
+          </button>
+        </form>
+  <!-- <script src="../assets/js/trx.js"></script> -->
+      </div>
+    </div>';
+
+    if (isset($_GET['photoUploaded']) && isset($_SESSION['cedulaHavePath']) && $_SESSION['cedulaHavePath'] == 1) {
+      error_log("The user: '".$_SESSION['username']."' just uploaded the photos");
+      $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscribir evento</h2>
     
     <!-- Events List -->
     <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
@@ -412,6 +650,14 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
           </select>
         </label>
 
+
+        <!-- Precio -->
+          <div style="position: relative; text-align: center; justify-content: center; flex-direction: unset !important; bottom: 1% !important;" class="vetcap-badge">
+            <img style="width: 70px; height: auto;" src="../assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon">
+            <span>RD$'.$evento['precio_inscripcion'].'</span>
+          </div>
+
+
         <div id="paypal-button-container-'.$evento['Id'].'" class="">
         </div>
 
@@ -423,73 +669,22 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
           </label>
           </div>
 
-          <!-- Precio -->
-          <div style="position: relative; text-align: center; justify-content: center; flex-direction: unset !important; bottom: 1% !important;" class="vetcap-badge">
-            <img style="width: 70px; height: auto;" src="../assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon">
-            <span>$RD$7,500</span>
-          </div>
-
           <!-- Botón -->
-          <button type="submit" name="submit" style="background-color: #2d4a34; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 16px;">
+          <button id="inscribir_button_'.$evento['Id'].'" class="hidden" type="submit" name="submit" style="background-color: #2d4a34; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 16px;">
             INSCRIBIR
           </button>
         </form>
   <!-- <script src="../assets/js/trx.js"></script> -->
-      </div>
-    </div>';
-
-    if (isset($_GET['photoUploaded']) && isset($_SESSION['cedulaHavePath']) && $_SESSION['cedulaHavePath'] == 1) {
-      error_log("The user: '".$_SESSION['username']."' just uploaded the photos");
-      $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscribir evento</h2>
-
-    <!-- Events List -->
-    <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
-      <!-- Event Container (Repeat this block for each event) -->
-      <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
-        <form role="form" autocomplete="off" action="" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
-          <!-- Metodo de pago -->
-          <label style="color: #2d4a34; width: 100%; text-align: left;">
-          Selecciona tu metodo de pago preferido
-          <select id="metodo_de_pago_'.$evento['Id'].'" name="metodo_de_pago" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" amountRd="'.$evento['precio_inscripcion'].'" onchange="toggleFields()">
-            <option value="" disabled selected>Selecciona una opción</option>
-            <option value="Transferencia">Transferencia bancaria (adjuntar comprobante)</option>
-            <option value="Tarjeta">Tarjeta de débito/crédito</option>
-          </select>
-        </label>
-
-        <div id="paypal-button-container-'.$evento['Id'].'" class="">
-
-          <!-- Comprobante de Pago -->
-           <div id="comprobante_pago_field_container_'.$evento['Id'].'" class="hidden">
-          <label style="color: #2d4a34; width: 100%; text-align: left;">
-            Comprobante de pago (imagen):
-            <input type="file" name="comprobante_pago" accept="image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-          </label>
-          </div>
-
-          <!-- Precio -->
-          <div style="position: relative; text-align: center; justify-content: center; flex-direction: unset !important; bottom: 1% !important;" class="vetcap-badge">
-            <img style="width: 70px; height: auto;" src="../assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon">
-            <span>$RD$7,500</span>
-          </div>
-
-          <!-- Botón -->
-          <button type="submit" name="submit" style="background-color: #2d4a34; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 16px;">
-            INSCRIBIR
-          </button>
-        </form>
-  <!-- <script src="../assets/js/trx.js"></script> -->
-  <script>document.getElementById(\'subscribe-events-modal\').style.display = \'flex\';</script>
       </div>
     </div>';
 
     error_log("tarann");
-    //echo $eventsModalHeader;
-    //echo $subscribeEventContent;
+    echo $eventsModalHeader;
+    echo $subscribeEventContent;
     } elseif (!$user->isUserCedulaUploaded($_SESSION['username'])) {
       error_log("The user: '".$_SESSION['username']."' needs to complete his proffile");
-      //echo $eventsModalHeader;
-      //echo $completeProffileContent;
+      echo $eventsModalHeader;
+      echo $completeProffileContent;
       error_log("tarannn");
     } else {
       error_log("The user: '".$_SESSION['username']."' can register to events");

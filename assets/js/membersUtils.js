@@ -7,17 +7,22 @@ function toggleFields(modalId) {
     
 
     let comprobanteDePagoContainer = document.getElementById("comprobante_pago_field_container_"+modalId);
+    let inscribirButton = document.getElementById("inscribir_button_"+modalId);
     let paypalButtonContainer = document.getElementById("paypal-button-container-"+modalId);
 
 
     // Hide all fields initially
     comprobanteDePagoContainer.classList.add("hidden");
+    inscribirButton.classList.add("hidden");
     paypalButtonContainer.classList.add("hidden");
 
     // Show the relevant field based on the selected option
     if (selectedOption === "Transferencia") {
       if (comprobanteDePagoContainer.classList.contains("hidden")) {
         comprobanteDePagoContainer.classList.remove("hidden");
+        if (inscribirButton.classList.contains("hidden")) {
+          inscribirButton.classList.remove("hidden");
+        }
       }
     } else if (selectedOption === "Tarjeta") {
       if (paypalButtonContainer.classList.contains("hidden")) {
