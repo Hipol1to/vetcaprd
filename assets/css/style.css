@@ -7,6 +7,278 @@ body {
   font-family: "CustomFont", Arial, sans-serif;
 }
 
+.partners-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.partner-card {
+  display: flex;
+  flex-wrap: wrap;
+  background: white;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.partner-logo {
+  flex: 1 1 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  min-width: 150px;
+}
+
+.partner-logo img {
+  max-width: 100%;
+  height: auto;
+}
+
+.partner-info {
+  flex: 3 1 300px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.partner-title {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.partner-desc {
+  font-family: "Helvetica";
+  font-size: 1rem;
+  color: #444;
+}
+
+.partner-title-small-text {
+font-family: "Helvetica";
+  font-size: 0.9rem;
+}
+
+.icons {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.icons img {
+  width: 20px;
+  height: 20px;
+}
+
+@media (max-width: 768px) {
+  .partner-card {
+      flex-direction: column;
+  }
+
+  .partner-logo {
+      text-align: center;
+  }
+}
+
+.custom-follow-section {
+  background-color: #ffffff;
+  border: 3px solid #2D4A2A;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-follow-container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  text-align: center;
+  gap: 90px;
+}
+
+/* Follow Title */
+.custom-follow-title {
+  font-family: Horizon;
+  font-size: 4rem;
+  font-weight: bold;
+  color: #2D4A2A;
+}
+
+/* Highlight */
+.custom-highlight {
+  font-family: Horizon;
+  color: #F5A623;
+}
+
+/* Text + Arrow */
+.custom-follow-text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2px;
+}
+
+.custom-follow-text {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #000;
+  white-space: nowrap;
+  margin-bottom: 0;
+}
+
+.custom-follow-arrow {
+  font-size: 1rem;
+  color: #2D4A2A;
+  font-weight: bold;
+  white-space: nowrap;
+  margin-top: -2px;
+  max-width: 90vw; /* Prevents arrow overflow */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Social Icons */
+.custom-social-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.custom-social-icon {
+  width: 55px;
+  height: auto;
+}
+
+.custom-social-handle {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #F5A623;
+}
+
+/* RESPONSIVE DESIGN */
+@media (max-width: 768px) {
+.custom-partners-title {
+  font-family: Horizon;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2d4a34;
+}
+.custom-partners-description {
+  font-size: 1rem;
+  color: #333;
+  max-width: 1300px;
+  margin: 0 auto;
+  margin-bottom: 2%;
+}
+  .custom-follow-container {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px; /* Reduce spacing */
+  }
+
+  .custom-follow-title {
+      font-size: 2.5rem;
+  }
+
+  .custom-follow-text {
+      font-size: 1rem;
+  }
+
+  .custom-follow-arrow {
+      font-size: 0.9rem;
+      max-width: 80vw; /* Prevents overflow */
+  }
+
+  .custom-social-icons {
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 5px;
+  }
+
+  .custom-social-icon {
+      width: 40px;
+  }
+
+  .custom-social-handle {
+      font-size: 0.9rem;
+  }
+}
+
+
+.custom-follow-text-container {
+  display: flex;
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center align the text and arrow */
+  text-align: center;
+  gap: 0px; /* Reduce spacing between text and arrow */
+}
+
+.custom-follow-text {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #000;
+  white-space: nowrap;
+  margin-bottom: 0; /* Remove extra margin */
+}
+
+.custom-follow-arrow {
+  font-size: 1rem;
+  color: #2D4A2A;
+  font-weight: bold;
+  white-space: nowrap;
+  margin-top: -2px; /* Adjust negative margin if needed */
+}
+
+.custom-partners-section {
+  text-align: center;
+  padding: 40px;
+  background-color: #ffffff;
+}
+.custom-partners-title {
+  font-family: Horizon;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #2d4a34;
+}
+.custom-partners-description {
+  font-size: 1.5rem;
+  color: #333;
+  max-width: 1300px;
+  margin: 0 auto;
+  margin-bottom: 2%;
+}
+.custom-sponsor-button {
+  font-family: Horizon;
+  background-color: #2d4a34;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.custom-partners-logos {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.custom-partner-logo {
+  max-width: 200px;
+  height: auto;
+}
+
 .vetcamp-sectionn {
   font-family: Arial, sans-serif;
   margin: 20px;
@@ -1471,6 +1743,10 @@ body {
 @font-face {
   font-family: Nimbus;
   src: url("../fonts/TAN-NIMBUS.ttf");
+}
+@font-face {
+  font-family: Horizon;
+  src: url("../fonts/horizon.otf");
 }
 .event-pic {
   width: 500px;

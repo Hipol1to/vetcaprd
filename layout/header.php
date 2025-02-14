@@ -76,7 +76,7 @@
                     <a href="./eventos.php">Eventos</a>
                   </li>
                   <li>
-                    <a href="./sobre-nosotros.php">Patrocinadores</a>
+                    <a href="./patrocinadores.php">Patrocinadores</a>
                   </li>
                   <li>
                     <a href="./sobre-nosotros.php">Sobre nosotros</a>
