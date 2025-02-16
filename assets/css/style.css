@@ -1845,9 +1845,9 @@ font-family: "Helvetica";
 .event-pic {
   width: 500px;
 }
-@media screen and (max-width: 1920) {
+@media screen and (max-width: 2560px) {
   .event-pic {
-    margin-left: 200px;
+    margin-left: 100px;
   }
 }
 .timeer {
@@ -2043,7 +2043,7 @@ font-family: "Helvetica";
 }
 
 /* Adjust font size for smaller desktop resolutions */
-@media screen and (max-width: 1920px) {
+@media screen and (max-width: 2560px) {
   .money-pic {
     width: 75px;
     margin-left: 50px;
@@ -2095,7 +2095,7 @@ font-family: "Helvetica";
 }
 
 /* Adjust font size for smaller desktop resolutions */
-@media screen and (max-width: 1920px) {
+@media screen and (max-width: 2560px) {
   .money-free {
     color: #2d4a34;
     font-size: 31px;
