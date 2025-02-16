@@ -26,7 +26,7 @@
 
   /* 2. slick Nav */
   // mobile_menu
-  var menu = $("ul#navigation");
+  var menu = $("ul#navigationn");
   if (menu.length) {
     menu.slicknav({
       prependTo: ".mobile_menu",

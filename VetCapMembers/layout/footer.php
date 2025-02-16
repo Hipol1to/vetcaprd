@@ -49,6 +49,7 @@
     </div>
   </div>
 </footer>
+
     <div id="back-top">
       <a
         title="Go to Top"
@@ -56,19 +57,9 @@
         ><i style="color: white !important;" class="fas fa-long-arrow-alt-up"></i
       ></a>
     </div>
+    <script src="../assets/js/slider.js"></script>
     <script src="../assets/js/jquery-1.12.4.min.js"></script>
     <script src="../assets/js/jquery.slicknav.min.js"></script>
     <script src="../assets/js/main.js"></script>
-    <!-- Bootstrap Datepicker JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-
-<script>
- $(document).ready(function(){
-  $('.datepicker').datepicker({
-    format: 'yyyy-mm-dd',
-    autoclose: true
-  });
-});
-</script>
   </body>
 </html>

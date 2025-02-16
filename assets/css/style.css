@@ -2142,7 +2142,7 @@ font-family: "Helvetica";
 }
 
 .menu-jevi {
-  background: #ffffff !important;
+  background: #2a5431 !important;
 }
 .section-bg2 {
   background: #305534;
@@ -4781,7 +4781,7 @@ hr {
 }
 @media (max-width: 575px) {
   .header-area .header-bottom {
-    padding: 15px 0px;
+    padding: 25px 0px;
   }
 }
 .header-area .header-bottom .left-side .main-menu {
@@ -4812,12 +4812,12 @@ hr {
   }
 }
 .header-area .header-bottom .left-side .main-menu ul > li a {
-  color: #2e5653;
+  color: #ffffff;
   font-family: "Chivo", sans-serif;
   font-weight: bold;
   padding: 28px 7px;
   display: block;
-  font-size: 18px;
+  font-size: 21px;
   -webkit-transition: all 0.3s ease-out 0s;
   -moz-transition: all 0.3s ease-out 0s;
   -ms-transition: all 0.3s ease-out 0s;
@@ -8900,4 +8900,8 @@ body {
     text-align: center;
     margin-bottom: 20px;
   }
+}
+
+.the-hidden {
+  display:none;
 }

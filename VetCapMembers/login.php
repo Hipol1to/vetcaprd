@@ -44,7 +44,6 @@ $title = 'Iniciar Sesion';
 //include header template
 require('layout/header.php'); 
 ?>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 <style>
   .containerrr {
     display: flex;
@@ -102,11 +101,11 @@ require('layout/header.php');
       ?>
 
       <div class="form-group">
-        <input type="text" name="username" id="username" class="form-control input-lg" placeholder="Usuario" value="<?php if(isset($error)){ echo htmlspecialchars($_POST['username'], ENT_QUOTES); } ?>" tabindex="1">
+      <input type="text" name="username" id="username" class="form-control input-lg" placeholder="Usuario" value="<?php if(isset($error)){ echo htmlspecialchars($_POST['username'], ENT_QUOTES); } ?>" tabindex="1" autocomplete="username">
       </div>
 
       <div class="form-group">
-        <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña" tabindex="3">
+      <input type="password" name="password" id="password" class="form-control input-lg" placeholder="Contraseña" tabindex="3" autocomplete="current-password">
       </div>
 
       <div class="row">
@@ -133,4 +132,6 @@ require('layout/header.php');
 
 
       
-    
+    <?php
+    require('layout/footer.php'); 
+     ?>
