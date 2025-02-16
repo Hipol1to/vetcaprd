@@ -56,7 +56,7 @@
             <img src="./assets/img/color-logos/main-logos/carval-main-logo.png" alt="Carval Logo">
         </div>
         <div class="partner-info">
-            <div class="partner-title">GRUPO CARVAL <span class="partner-title-small-text" style="color: #666;">/ PRINCIPAL PARTNER</span></div>
+            <div class="partner-title">GRUPO CARVAL <span class="partner-title-small-text" style="color: #666;">/ PATROCINADOR PRINCIPAL</span></div>
             <div class="partner-desc">
             Carval es una organización comprometida con asegurar el bienestar de los seres vivos, ofreciendo soluciones integrales que satisfacen las necesidades de sus grupos de interés a través de la innovación y la excelencia en el servicio. Dentro de su portafolio de productos, Carval ofrece la línea de vacunas Vibix, diseñada para proteger a perros y gatos contra diversas enfermedades. Estas vacunas se adaptan a las necesidades individuales de cada mascota, sin importar su historia o procedencia.
             </div>
@@ -72,7 +72,7 @@
             <img src="./assets/img/color-logos/main-logos/espavet-main-logo.png" alt="Espavet Logo">
         </div>
         <div class="partner-info">
-            <div class="partner-title">ESPAVET SRL <span class="partner-title-small-text" style="color: #666;">/ PRINCIPAL PARTNER</span></div>
+            <div class="partner-title">ESPAVET SRL <span class="partner-title-small-text" style="color: #666;">/ PATROCINADOR PRINCIPAL</span></div>
             <div class="partner-desc">
             Espavet S.R.L. es una empresa ubicada en Santo Domingo, República Dominicana, que se especializa en la distribución de productos veterinarios, equipos y medicamentos para animales. Ofrecen una amplia gama de productos destinados al cuidado y bienestar de las mascotas y animales de granja. Un ejemplo es NexGard es una reconocida marca de antiparasitarios para perros, conocida por sus tabletas masticables que eliminan pulgas y garrapatas. 
             </div>
@@ -88,7 +88,7 @@
             <img src="./assets/img/color-logos/main-logos/mallen-main-logo.png" alt="Mallen Mascotas Logo">
         </div>
         <div class="partner-info">
-            <div class="partner-title">MALLÉN MASCOTAS <span class="partner-title-small-text" style="color: #666;">/ PRINCIPAL PARTNER</span></div>
+            <div class="partner-title">MALLÉN MASCOTAS <span class="partner-title-small-text" style="color: #666;">/ PATROCINADOR PRINCIPAL</span></div>
             <div class="partner-desc">
             Mallén Mascotas es una división de Mallén Veterinaria, parte del Grupo Mallén, una empresa con más de 50 años de experiencia en la representación, distribución y promoción de productos farmacéuticos y cosméticos en la República Dominicana. Desde 1995, Mallén Veterinaria se ha dedicado a mejorar la salud y el bienestar de los animales, ofreciendo un amplio portafolio de marcas internacionales reconocidas por su investigación y desarrollo de alta calidad.
             </div>
@@ -104,7 +104,7 @@
             <img src="./assets/img/color-logos/main-logos/animal-foodline-main-logo.png" alt="Mallen Mascotas Logo">
         </div>
         <div class="partner-info">
-            <div class="partner-title">ANIMAL FOOD LINE <span class="partner-title-small-text" style="color: #666;"> / PRINCIPAL PARTNER</span></div>
+            <div class="partner-title">ANIMAL FOOD LINE <span class="partner-title-small-text" style="color: #666;"> / PATROCINADOR PRINCIPAL</span></div>
             <div class="partner-desc">
             Animal Food Line S.A. es una empresa ubicada en Santo Domingo, República Dominicana, dedicada a la distribución de productos alimenticios para animales. Fundada en 1995, se especializa en la comercialización de alimentos y suministros para mascotas, así como productos relacionados con la nutrición animal. 
             </div>
@@ -120,7 +120,7 @@
             <img src="./assets/img/color-logos/main-logos/colegio-main-logo.png" alt="Mallen Mascotas Logo">
         </div>
         <div class="partner-info">
-            <div class="partner-title">COLVET <span class="partner-title-small-text" style="color: #666;">/ PRINCIPAL PARTNER</span></div>
+            <div class="partner-title">COLVET <span class="partner-title-small-text" style="color: #666;">/ PATROCINADOR PRINCIPAL</span></div>
             <div class="partner-desc">
             El Colegio Dominicano de Médicos Veterinarios (Colvet) es una institución sin fines de lucro fundada en octubre de 2002, mediante la Ley 173-02. Su misión es regular y promover el ejercicio profesional de la medicina veterinaria en la República Dominicana, estableciendo normas de conducta y eficiencia para garantizar una práctica ética y profesional.
             </div>
@@ -136,7 +136,7 @@
             <img src="./assets/img/color-logos/main-logos/vetboca-main-logo.png" alt="Mallen Mascotas Logo">
         </div>
         <div class="partner-info">
-            <div class="partner-title">VETBOCA <span class="partner-title-small-text" style="color: #666;">/ PRINCIPAL PARTNER</span></div>
+            <div class="partner-title">VETBOCA <span class="partner-title-small-text" style="color: #666;">/ PATROCINADOR PRINCIPAL</span></div>
             <div class="partner-desc">
             Vetboca es una clínica veterinaria ubicada en la Calle Independencia #25, frente a Vimenpaq, en Santiago de los Caballeros, República Dominicana. Ofrecen una variedad de servicios para el cuidado de mascotas, tales como consultas veterinarias, vacunaciones, desparasitaciones, peluquería y estética para perros y gatos, así como psicología canina para abordar comportamientos y necesidades emocionales de los animales. 
             </div>
@@ -154,76 +154,107 @@
 
 
 
+<style>
+.vibix-banner-section {
+  background-color: #fff;
+  border: 4px solid #1e90ff;
+  display: flex;
+  align-items: center;
+  padding: 20px;
+}
+.vibix-banner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+.vibix-logo {
+  height: 80px;
+}
+.vibix-title {
+  font-family: "Helvetica";
+  font-weight: bold;
+  font-size: 2.2rem;
+  color: #1e90ff;
+  margin: 0 20px;
+}
+.vibix-products img {
+  height: 100px;
+}
+.vibix-dog img {
+  height: 100px;
+}
+.vibix-shield {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid orange;
+  border-radius: 50%;
+  padding: 10px;
+}
+.vibix-years {
+  font-family: "Helvetica";
+  font-weight: bold;
+  font-size: 20px;
+  color: orange;
+  font-weight: bold;
+}
+.vibix-virus {
+  height: 40px;
+}
+@media (max-width: 768px) {
+  .vibix-banner-section {
+    flex-direction: column;
+    padding: 10px;
+  }
+  .vibix-banner-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .vibix-title {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  .vibix-products img, .vibix-dog img {
+    height: 80px;
+  }
+  .vibix-shield {
+    padding: 5px;
+  }
+  .vibix-years {
+    font-size: 16px;
+  }
+  .vibix-virus {
+    height: 30px;
+  }
+}
+</style>
 
 
 
-<section class="vetcap-education-section">
-  <div class="vetcap-header">
-    <h1 style="margin-bottom: 0px !important;" class="vetcap-title">CURSOS<br>TALLERES &<br>DIPLOMADOS</h1>
-    <div class="vetcap-logos">
-      <img src="./assets/img/vetcap_logo_normal.png" alt="Fundación Vetcap" class="vetcap-logo" />
-      <img src="./assets/img/colegio_de_medicos_logo.png" alt="COLVET" class="vetcap-logo" />
+
+
+
+<section class="vibix-banner-section">
+  <div class="vibix-banner-container">
+    <img src="./assets/img/color-logos/vibix-logo.png" alt="Vibix Logo" class="vibix-logo">
+    <h2 class="vibix-title">Garantía de Inmunidad comprobada</h2>
+    <div class="vibix-products">
+      <img src="./assets/img/medicinas-vibix.png" alt="Vibix Products">
     </div>
-  </div>
-  <br>
-  <br>
-  <div class="vetcap-description">
-    <p>
-      Vetcap estará organizando una amplia variedad de diplomados, cursos y talleres diseñados
-      para fortalecer el conocimiento y las habilidades de profesionales y estudiantes en el ámbito veterinario.
-      Cada programa cuenta con el aval oficial del Colegio Médico Veterinario (COLVET), lo que asegura una formación
-      de alta calidad y con respaldo profesional. Con estas oportunidades de educación continua, Vetcap se compromete
-      a impulsar la excelencia en la práctica veterinaria en la República Dominicana.
-    </p>
-    <p><strong>¡Prepárate para ser parte de una experiencia educativa única y con certificación reconocida!</strong></p>
+    <div class="vibix-dog">
+      <img src="./assets/img/perro.png" alt="Dog">
+    </div>
+    <div class="vibix-dog">
+    <img src="./assets/img/3-years.png" alt="Virus Icon" class="vibix-virus">
+    </div>
   </div>
 </section>
-<div class="vetcap-partners">
-    <div class="vetcap-partner-logos">
-      <h2 class="vetcap-partners-title">MEET OUR PARTNERS</h2>
-      <img src="./assets/img/espavet_white_logo.png" alt="ESPAVET" />
-      <img src="./assets/img/mallen_white_logo.png" alt="MALLÉN MASCOTAS" />
-      <img src="./assets/img/animal_food_line-white_logo.png" alt="ANIMAL FOOD LINE" />
-      <img src="./assets/img/ramvet_white_logo.png" alt="RAMVET" />
-      <img src="./assets/img/vibix_white_logo.png" alt="VIBIX" />
-      <img src="./assets/img/noctua_group_white_logo.png" alt="NOCTUA" />
-    </div>
-  </div>
 
 
 
-<div class="promo-bar">
-  <div class="text-section">
-    <div class="logo-info">LOBO CORPORATION | FUNDACIÓN VETCAP</div>
-    <div class="collection-title">HIVE <a style="color:white;">& HOWL</a></div>
-    <div class="collection-subtitle">COLLECTION</div>
-  </div>
-  <div class="image-section">
-    <img src="./assets/img/vetcap_lobo.png" alt="Cap image">
-  </div>
-  <div class="hashtag-section">
-    <h2>#VETCAPXLOBO</h2>
-  </div>
-  <div class="button-section">
-    <button class="rounded-button">SHOP NOW</button>
-  </div>
-</div>
-<section class="call-to-action-section">
-  <div class="cta-content">
-    <div class="image-container">
-      <img src="./assets/img/ellos_te_necesitan.png" alt="Animals" class="cta-image" />
-    </div>
-    <div class="text-container">
-      <h1 class="cta-title">ELLOS TE NECESITAN</h1>
-      <p class="cta-quote">
-        "CAPACITARTE HOY ES EL PRIMER PASO PARA SER EL VETERINARIO QUE EL MUNDO
-        NECESITA MAÑANA."
-      </p>
-      <p class="cta-hashtag">#VETERINARIOSUNIDOS</p>
-      <button class="cta-button">LEER ARTÍCULO</button>
-    </div>
-  </div>
-</section>
+
+
 
 
       
