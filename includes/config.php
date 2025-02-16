@@ -54,6 +54,81 @@ function decryptValue($encryptedValue) {
     return openssl_decrypt($decoded, 'aes-256-cbc', $key, 0, $iv);
 }
 
+function getAllEvents($dbContext) {
+    try {
+        $query = $dbContext->prepare("SELECT * FROM `eventos` ORDER BY fecha_evento ASC");
+        $query->execute();
+        // Fetch only the first row
+        $_SESSION['nextEvent'] = $query->fetch(PDO::FETCH_ASSOC);
+        $eventos = $query->fetchAll(PDO::FETCH_ASSOC);
+        error_log("------STARTING SESSION LOG------");
+        error_log(print_r($_SESSION['nextEvent'], true));
+        return $eventos;
+      } catch (Exception $e) {
+        error_log("------ERROR START------");
+        error_log("There was an error while trying to get all events");
+        error_log($e->getMessage());
+        error_log("------ERROR END------");
+        die("Error fetching data: " . $e->getMessage());
+        return null;
+      }
+}
+
+function getUserEvents($dbContext) {
+    try {
+        $myEventsQuery = $dbContext->prepare("SELECT * FROM eventos LEFT JOIN usuario_eventos ON eventos.Id = usuario_eventos.evento_id WHERE usuario_eventos.usuario_id = :userId");
+        $myEventsQuery->bindParam(':userId', $_SESSION['memberID']);
+        $myEventsQuery->execute();
+        $misEventos = $myEventsQuery->fetchAll(PDO::FETCH_ASSOC);
+        return $misEventos;
+      } catch (Exception $e) {
+        error_log("------ERROR START------");
+        error_log("There was an error while trying to get user events");
+        error_log($e->getMessage());
+        error_log("------ERROR END------");
+        die("Error fetching data: " . $e->getMessage());
+        return null;
+      }
+}
+
+function getUserPendingEvents($dbContext) {
+    try {
+        $myPendingEventsQuery = $dbContext->prepare("SELECT DISTINCT eventos.* FROM eventos LEFT JOIN pagos ON eventos.Id = pagos.evento_id WHERE pagos.usuario_id = :userId AND pagos.pago_validado = 0");
+        $myPendingEventsQuery->bindParam(':userId', $_SESSION['memberID']);
+        $myPendingEventsQuery->execute();
+        $misPendingEventos = $myPendingEventsQuery->fetchAll(PDO::FETCH_ASSOC);
+        error_log("User events pending for verification:" . print_r($misPendingEventos, true));
+        return $misPendingEventos;
+      } catch (Exception $e) {
+        error_log("------ERROR START------");
+        error_log("There was an error while trying to get user pending events");
+        error_log($e->getMessage());
+        error_log("------ERROR END------");
+        die("Error fetching data: " . $e->getMessage());
+        return null;
+      }
+}
+
+function getDiplomadosEvents($dbContext) {
+    try {
+        $query = $dbContext->prepare("SELECT * FROM `eventos` ORDER BY fecha_evento ASC");
+        $query->execute();
+        // Fetch only the first row
+        $_SESSION['nextEvent'] = $query->fetch(PDO::FETCH_ASSOC);
+        $eventos = $query->fetchAll(PDO::FETCH_ASSOC);
+        error_log("------STARTING SESSION LOG------");
+        error_log(print_r($_SESSION['nextEvent'], true));
+        return $eventos;
+      } catch (Exception $e) {
+        error_log("------ERROR START------");
+        error_log("There was an error while trying to get all events");
+        error_log($e->getMessage());
+        error_log("------ERROR END------");
+        die("Error fetching data: " . $e->getMessage());
+        return null;
+      }
+}
+
 
 //include the user class, pass in the database connection
 include('classes/user.php');

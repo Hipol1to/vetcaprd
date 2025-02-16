@@ -216,6 +216,8 @@
   </div>
 </section>
 
+<script src="./assets/js/capacitacionesSlider.js"></script>
+<script src="./assets/js/counterCapacitaciones.js"></script>
 
       
 <?php 

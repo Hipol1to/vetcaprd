@@ -12,35 +12,11 @@ if (! $user->is_logged_in()){
 //include header template
 require('layout/header.php'); 
 $eventosList = [["modalName", 0]];
-try {
-  $query = $db->prepare("SELECT * FROM `eventos` ORDER BY fecha_evento ASC");
-  $query->execute();
-  // Fetch only the first row
-  $nextEvent = $query->fetch(PDO::FETCH_ASSOC);
-  $eventos = $query->fetchAll(PDO::FETCH_ASSOC);
-  error_log("------STARTING SESSION LOG------");
-  error_log(print_r($nextEvent, true));
-  
-} catch (Exception $e) {
-  die("Error fetching data: " . $e->getMessage());
-}
-try {
-  $myEventsQuery = $db->prepare("SELECT * FROM eventos LEFT JOIN usuario_eventos ON eventos.Id = usuario_eventos.evento_id WHERE usuario_eventos.usuario_id = :userId");
-  $myEventsQuery->bindParam(':userId', $_SESSION['memberID']);
-  $myEventsQuery->execute();
-  $misEventos = $myEventsQuery->fetchAll(PDO::FETCH_ASSOC);
-} catch (Exception $e) {
-  die("Error fetching data: " . $e->getMessage());
-}
-try {
-  $myPendingEventsQuery = $db->prepare("SELECT DISTINCT eventos.* FROM eventos LEFT JOIN pagos ON eventos.Id = pagos.evento_id WHERE pagos.usuario_id = :userId AND pagos.pago_validado = 0");
-  $myPendingEventsQuery->bindParam(':userId', $_SESSION['memberID']);
-  $myPendingEventsQuery->execute();
-  $misPendingEventos = $myPendingEventsQuery->fetchAll(PDO::FETCH_ASSOC);
-  error_log("User events pending for verification:" . print_r($misPendingEventos, true));
-} catch (Exception $e) {
-  die("Error fetching data: " . $e->getMessage());
-}
+$eventos = getAllEvents($db);
+$nextEvent = $_SESSION['nextEvent'];
+
+$misEventos = getUserEvents($db);
+$misPendingEventos = getUserPendingEvents($db);
 ?>
  <style>
     /* Correctly hides elements */
@@ -1378,7 +1354,8 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
   </script> 
 <script src="../assets/js/membersUtils.js"></script>
 
-
+<script src="../assets/js/capacitacionesSlider.js"></script>
+<script src="../assets/js/counterDiplomados.js"></script>
 
       <?php 
 //include header template
