@@ -99,7 +99,7 @@
                         <a href="../index.php"><img src="../assets/img/icons/white/instagram-white-logo.png" alt="" width="20px" /></a>
                         <a href="../index.php"><img src="../assets/img/icons/white/youtube-white-logo.png" alt="" width="20px" /></a>
                         <a href="../VetCapMembers/login.php"><img src="../assets/img/icons/white/user-white-icon.png" alt="" width="20px" /></a>
-                        <a id="theUserr" style="display: none; margin-left: -15px; margin-top: 1px; font-size:20px; white-space: nowrap; color: white; font-family: Helvetica" href="../VetCapMembers/login.php">Iniciar sesión</a>
+                        <a id="theUserr" style="display: none; margin-left: -15px; margin-top: 1px; font-size:20px; white-space: nowrap; color: white; font-family: Helvetica" href="../VetCapMembers/login.php"> <?php if (isset($_SESSION['name'])) {echo '&nbsp;'.htmlspecialchars($_SESSION['name']); } else {echo 'Iniciar sesión';} ?></a>
                         <script>
   function checkMobileView() {
     const desktopElement = document.getElementById('theUserr');
