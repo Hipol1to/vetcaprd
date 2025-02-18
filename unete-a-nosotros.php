@@ -121,7 +121,7 @@ error_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electron
   $mail->send();
 
   //redirect to index page
-  header('Location: unete-a-nosotros.php?action=joined');
+  header('Location: login.php?action=joined');
   exit;
 
 //else catch the exception and show the error.

@@ -109,19 +109,16 @@ function getUserPendingEvents($dbContext) {
       }
 }
 
-function getDiplomadosEvents($dbContext) {
+function getAllCourses($dbContext) {
     try {
-        $query = $dbContext->prepare("SELECT * FROM `eventos` ORDER BY fecha_evento ASC");
+        $query = $dbContext->prepare("SELECT * FROM `diplomados` ORDER BY fecha_inicio_diplomado ASC");
         $query->execute();
-        // Fetch only the first row
-        $_SESSION['nextEvent'] = $query->fetch(PDO::FETCH_ASSOC);
-        $eventos = $query->fetchAll(PDO::FETCH_ASSOC);
+        $diplomados = $query->fetchAll(PDO::FETCH_ASSOC);
         error_log("------STARTING SESSION LOG------");
-        error_log(print_r($_SESSION['nextEvent'], true));
-        return $eventos;
+        return $diplomados;
       } catch (Exception $e) {
         error_log("------ERROR START------");
-        error_log("There was an error while trying to get all events");
+        error_log("There was an error while trying to get all the courses");
         error_log($e->getMessage());
         error_log("------ERROR END------");
         die("Error fetching data: " . $e->getMessage());
@@ -129,6 +126,481 @@ function getDiplomadosEvents($dbContext) {
       }
 }
 
+function getUserCourses($dbContext) {
+    try {
+        $myCoursesQuery = $dbContext->prepare("SELECT * FROM diplomados LEFT JOIN usuario_diplomados ON diplomados.Id = usuario_diplomados.diplomado_id WHERE usuario_diplomados.usuario_id = :userId");
+        $myCoursesQuery->bindParam(':userId', $_SESSION['memberID']);
+        $myCoursesQuery->execute();
+        $misDiplomados = $myCoursesQuery->fetchAll(PDO::FETCH_ASSOC);
+        return $misDiplomados;
+      } catch (Exception $e) {
+        error_log("------ERROR START------");
+        error_log("There was an error while trying to get user courses");
+        error_log($e->getMessage());
+        error_log("------ERROR END------");
+        die("Error fetching data: " . $e->getMessage());
+        return null;
+      }
+}
+
+function getUserPendingCourses($dbContext) {
+    try {
+        $myPendingCoursesQuery = $dbContext->prepare("SELECT DISTINCT diplomados.* FROM diplomados LEFT JOIN pagos ON diplomados.Id = pagos.diplomado_id WHERE pagos.usuario_id = :userId AND pagos.pago_validado = 0");
+        $myPendingCoursesQuery->bindParam(':userId', $_SESSION['memberID']);
+        $myPendingCoursesQuery->execute();
+        $misPendingCourses = $myPendingCoursesQuery->fetchAll(PDO::FETCH_ASSOC);
+        error_log("User courses pending for verification:" . print_r($misPendingCourses, true));
+        return $misPendingCourses;
+      } catch (Exception $e) {
+        error_log("------ERROR START------");
+        error_log("There was an error while trying to get user pending courses");
+        error_log($e->getMessage());
+        error_log("------ERROR END------");
+        die("Error fetching data: " . $e->getMessage());
+        return null;
+      }
+}
+
+function renderDiplomadosSlider($diplomadosArray, $misPendingDiplomados, $misDiplomados) {
+    $diplomadosSliderContainerHeader = '
+    <div class="slider-capacitaciones-container">
+   <div class="slider-capacitaciones">
+    ';
+    echo $diplomadosSliderContainerHeader;
+    foreach ($diplomadosArray as $theDiplomado) {
+        $eventosList = $_SESSION['eventosListForPayment'];
+        array_push($eventosList, [$theDiplomado['Id'], 0]);
+        $_SESSION['eventosListForPayment'] = $eventosList;
+        $onclick = getOnclickForDiplomados($misDiplomados, $theDiplomado, $misPendingDiplomados);
+        $diplomadoSlide = '
+<div class="slide">
+    <div class="diplomado-container">
+            <div class="image-box">
+               <div class="image-placeholder">
+                  <span class="month">MARZO</span>
+               </div>
+               <div class="disvi"><button class="rounded-button marginnnn er-bustonn" onclick="'.$onclick.'" style="margin-top: 20px; ">INSCRIBIRME</button></div>
+            </div>
+            <div class="info-box">
+               <h2 class="course-title">'.$theDiplomado['nombre'].'</h2>
+               <p class="mode"><span>Modalidad: </span>'.$theDiplomado['modalidad'].'</p>
+               <p class="duration">
+                  <span>Duración</span>
+                  <br />
+                  Inicio: '.$theDiplomado['fecha_inicio_diplomado'].'
+                  <br />
+                  Fin: '.$theDiplomado['fecha_fin_diplomado'].'
+               </p>
+               <p class="price">RD$'.$theDiplomado['precio_inscripcion'].'</p>
+               <p class="contact">
+                  Para más información, contáctanos al
+                  <br />
+                  <strong>(809) 344-5048</strong>
+               </p>
+            </div>
+            <div id="countdown-'.$theDiplomado['Id'].'" class="countdown">
+               <div class="time-unit">
+                  <span class="number" id="days-'.$theDiplomado['Id'].'">00</span>
+                  <span class="label">DÍAS</span>
+               </div>
+               <div class="time-unit">
+                  <span class="number" id="hours-'.$theDiplomado['Id'].'">00</span>
+                  <span class="label">HRS</span>
+               </div>
+               <div class="time-unit">
+                  <span class="number" id="minutes-'.$theDiplomado['Id'].'">00</span>
+                  <span class="label">MINS</span>
+               </div>
+               <div class="time-unit">
+                  <span class="number" id="seconds-'.$theDiplomado['Id'].'">00</span>
+                  <span class="label">SEGS</span>
+               </div>
+            </div>
+         </div>
+</div>
+<script>
+  let diplomadoId_'.$theDiplomado['Id'].' = "'.$theDiplomado['Id'].'";
+  let eventTimestamp_'.$theDiplomado['Id'].' = "'.$theDiplomado['fecha_cierre_inscripcion'].'";
+  // Update every second
+  console.log(diplomadoId_'.$theDiplomado['Id'].');
+  console.log(eventTimestamp_'.$theDiplomado['Id'].');
+  
+  const timerInterval_'.$theDiplomado['Id'].' = setInterval(() => updateCountdown(diplomadoId_'.$theDiplomado['Id'].', eventTimestamp_'.$theDiplomado['Id'].'), 1000);
+updateCountdown(diplomadoId_'.$theDiplomado['Id'].', eventTimestamp_'.$theDiplomado['Id'].');
+</script>
+    ';
+    echo $diplomadoSlide;
+    }
+    $diplomadosSliderContainerFooter = '
+    </div>
+   <button class="slider-capacitaciones-btn prev-btn">&lt;</button>
+   <button class="slider-capacitaciones-btn next-btn">&gt;</button>
+</div>
+    ';
+    echo $diplomadosSliderContainerFooter;
+
+    foreach ($diplomadosArray as $theDiplomado) {
+        renderCoursePaymentModal($theDiplomado);
+    }
+}
+
+function getOnclickForDiplomados($misDiplomados, $currentDiplomado, $misPendingDiplomados) {
+    $isAttributeWritten = false;
+    $onClick = ''; // Initialize $onClick to avoid undefined variable issues
+    error_log("aaaaaaaaaaaaaaa");
+
+    foreach ($misDiplomados as $possibleDiplomado) {
+        error_log($possibleDiplomado['Id']);
+        error_log($currentDiplomado['Id']);
+        if ($possibleDiplomado['Id'] == $currentDiplomado['Id']) {
+            $onClick = 'alert(\'Ya estás inscrito a este curso.\')';
+            $isAttributeWritten = true;
+        }
+    }
+
+    foreach ($misPendingDiplomados as $possiblePendingDiplomado) {
+      error_log($possiblePendingDiplomado['Id']);
+      if ($possiblePendingDiplomado['Id'] == $currentDiplomado['Id']) {
+          $onClick = 'alert(\'Ya solicitaste inscribirte a este curso, estamos revisando tu solicitud.\')';
+          $isAttributeWritten = true;
+      }
+  }
+  if (!$isAttributeWritten && $currentDiplomado['precio_inscripcion'] == 0.00) {
+    $onClick = 'registerUserToFreeCourse(\'' . $currentDiplomado['Id'] . '\')';
+    $isAttributeWritten = true;
+  }
+
+    // Fallback if $onClick is not set in the loop
+    if (!$isAttributeWritten) {
+      $onClick = 'openSubscribeModal(\'' . $currentDiplomado['Id'] . '\')';
+    }
+    return $onClick;
+}
+
+function renderCoursePaymentModal($currentDiplomado) {
+    $diplomadosModalHeader = '
+    <div id="subscribe-events-modal'.$currentDiplomado['Id'].'" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); justify-content: center; align-items: center; z-index: 9999;">
+      <div class="modal-content" style="background: white; padding: 20px; border-radius: 8px; max-width: 90%; max-height: 90%; overflow-y: auto; position: relative; display: flex; flex-direction: column; align-items: center; text-align: center;">
+        <span 
+          onclick="closeSubscribeModal(\''.$currentDiplomado['Id'].'\')" 
+          style="position: absolute; top: 10px; right: 20px; font-size: 24px; cursor: pointer; color: #555;">
+          &times;
+        </span>';
+    
+    $completeProffileContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Completa tu perfil</h2>
+    
+    <!-- Events List -->
+    <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
+      <!-- Event Container (Repeat this block for each event) -->
+      <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
+      <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+            Debes completar tu perfil antes de inscribirte en este curso, envía tu cedula de identidad o la de tu tutor legal.
+          </p>
+          <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+            Podrás inscribirte al evento una vez envies tu documento de identidad.
+          </p>
+          <br>
+        <form role="form" autocomplete="off" action="complete_proffile.php" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px; width: 100%;" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="cedula">Número de Cédula:</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="cedula" 
+                name="cedula_numero" 
+                maxlength="11" 
+                inputmode="numeric" 
+                required 
+                placeholder="Ingresa tu cédula"
+            />
+            <script>
+                // Enforce numeric input only
+                const cedulaInput = document.getElementById(\'cedula\');
+                cedulaInput.addEventListener(\'input\', () => {
+                    // Remove all non-numeric characters
+                    cedulaInput.value = cedulaInput.value.replace(/\D/g, \'\');
+                });
+            </script>
+          </div>
+          <!-- Captura Frontal de Cédula -->
+          <label style="color: #2d4a34; width: 100%; text-align: left;">
+            Captura frontal de cédula (imagen):
+            <input type="file" name="captura_frontal_cedula" accept="application/image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          </label>
+
+          <!-- Captura Trasera de Cédula -->
+          <label style="color: #2d4a34; width: 100%; text-align: left;">
+            Captura trasera de cédula (imagen):
+            <input type="file" name="captura_trasera_cedula" accept="application/image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          </label>
+          <br>
+          <!-- Botón -->
+          <button type="submit" name="submit" style="background-color: #2d4a34; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 16px;">
+            SUBIR DOCUMENTOS
+          </button>
+        </form>
+      </div>
+    </div>';
+
+    $diplomadoIdInpur = '<input type="hidden" name="eventId" value="'.$currentDiplomado['Id'].'">';
+
+    $subscribeDiplomadoContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscribir curso</h2>
+    
+    <!-- Events List -->
+    <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
+      <!-- Event Container (Repeat this block for each event) -->
+      <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
+        <form role="form" autocomplete="off" action="subscribe_user_event.php" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px; width: 100%;" enctype="multipart/form-data">
+          <!-- Metodo de pago -->
+          <label style="color: #2d4a34; width: 100%; text-align: left;">
+          Selecciona tu metodo de pago preferido
+          <select id="metodo_de_pago_'.$currentDiplomado['Id'].'" name="metodo_de_pago" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" amountRd="'.$currentDiplomado['precio_inscripcion'].'" onchange="toggleFields(\''.$currentDiplomado['Id'].'\')">
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="Transferencia">Transferencia bancaria (adjuntar comprobante)</option>
+            <option value="Tarjeta">Tarjeta de débito/crédito</option>
+          </select>
+        </label>
+
+        <!-- Precio -->
+          <div style="position: relative; text-align: center; justify-content: center; flex-direction: unset !important; bottom: 1% !important;" class="vetcap-badge">
+            <img style="width: 70px; height: auto;" src="../assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon">
+            <span>RD$'.$currentDiplomado['precio_inscripcion'].'</span>
+          </div>
+
+        <div id="paypal-button-container-'.$currentDiplomado['Id'].'" class="">
+        </div>
+
+          <!-- Comprobante de Pago -->
+           <div id="comprobante_pago_field_container_'.$currentDiplomado['Id'].'" class="hidden">
+           <label for="addMonto">Monto (RD$):</label>
+                <input type="number" class="form-control" id="addMonto" name="addMonto" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+
+<br>
+
+                <label for="addCuentaRemitente">Número de cuenta remitente:</label>
+                <input type="text" class="form-control" id="addCuentaRemitente" name="addCuentaRemitente" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+
+<br>
+
+                <label for="editTipoCuentaRemitente">Tipo de cuenta remitente:</label>
+                <select id="editTipoCuentaRemitente" name="editTipoCuentaRemitente" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                  <option value="" disabled="" selected="">Tipo de Cuenta</option>
+                    <option value="Cuenta de ahorros">Cuenta de ahorros</option>
+                    <option value="Cuenta corriente">Cuenta corriente</option>
+                </select>
+
+<br>
+<br>
+
+                <label for="addEntidadBancariaRemitente">Entidad bancaria remitente</label>
+  <select id="addEntidadBancariaRemitente" name="addEntidadBancariaRemitente" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" required>
+    <option value="Banreservas" disabled selected>Entidad Bancaria Remitente</option>
+    <option value="Banreservas">Banreservas</option>
+    <option value="Banco Popular Dominicano">Banco Popular Dominicano</option>
+    <option value="Banco BHD">Banco BHD</option>
+    <option value="Asociación Popular de Ahorros y Préstamos">Asociación Popular de Ahorros y Préstamos</option>
+    <option value="Scotiabank">Scotiabank</option>
+    <option value="Banco Santa Cruz">Banco Santa Cruz</option>
+    <option value="Asociación Cibao de Ahorros y Préstamos">Asociación Cibao de Ahorros y Préstamos</option>
+    <option value="Banco Promerica">Banco Promerica</option>
+    <option value="Banesco">Banesco</option>
+    <option value="Banco Caribe">Banco Caribe</option>
+    <option value="Banco Agrícola">Banco Agrícola</option>
+    <option value="Asociación La Nacional de Ahorros y Préstamos">Asociación La Nacional de Ahorros y Préstamos</option>
+    <option value="Citibank">Citibank</option>
+    <option value="Banco BDI">Banco BDI</option>
+    <option value="Banco Vimenca">Banco Vimenca</option>
+    <option value="Banco López de Haro">Banco López de Haro</option>
+    <option value="Bandex">Bandex</option>
+    <option value="Banco Ademi">Banco Ademi</option>
+    <option value="Banco Lafise">Banco Lafise</option>
+    <option value="Motor Crédit Banco de Ahorro y Crédito">Motor Crédit Banco de Ahorro y Crédito</option>
+    <option value="Alaver Asociación de Ahorros y Préstamos">Alaver Asociación de Ahorros y Préstamos</option>
+    <option value="Banfondesa">Banfondesa</option>
+    <option value="Banco Adopem">Banco Adopem</option>
+    <option value="Asociación Duarte">Asociación Duarte</option>
+    <option value="JMMB Bank">JMMB Bank</option>
+    <option value="Asociación Mocana">Asociación Mocana</option>
+    <option value="ABONAP">ABONAP</option>
+    <option value="Banco Unión">Banco Unión</option>
+    <option value="Banco BACC">Banco BACC</option>
+    <option value="Asociación Romana">Asociación Romana</option>
+    <option value="Asociación Peravia">Asociación Peravia</option>
+    <option value="Banco Confisa">Banco Confisa</option>
+    <option value="Leasing Confisa">Leasing Confisa</option>
+    <option value="Qik Banco Digital">Qik Banco Digital</option>
+    <option value="Banco Fihogar">Banco Fihogar</option>
+    <option value="Asociación Maguana de Ahorros y Préstamos">Asociación Maguana de Ahorros y Préstamos</option>
+    <option value="Banco Atlántico">Banco Atlántico</option>
+    <option value="Bancotui">Bancotui</option>
+    <option value="Banco Activo">Banco Activo</option>
+    <option value="Banco Gruficorp">Banco Gruficorp</option>
+    <option value="Corporación de Crédito Nordestana">Corporación de Crédito Nordestana</option>
+    <option value="Banco Óptima de Ahorro y Crédito">Banco Óptima de Ahorro y Crédito</option>
+    <option value="Banco Cofaci">Banco Cofaci</option>
+    <option value="Bonanza Banco">Bonanza Banco</option>
+    <option value="Corporación de Crédito Monumental">Corporación de Crédito Monumental</option>
+    <option value="Banco Empire">Banco Empire</option>
+    <option value="Corporación de Crédito Oficorp">Corporación de Crédito Oficorp</option>
+</select>
+
+<br>
+<br>
+
+            <label for="addCuentaRemitente">Número de cuenta destinatario:</label>
+                <input type="text" class="form-control" id="addCuentaDestinatario" name="addCuentaDestinatario" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+
+<br>
+'.$diplomadoIdInpur.'
+
+                <label for="editTipoCuentaRemitente">Tipo de Cuenta destinatario:</label>
+                <select id="editTipoCuentaRemitente" name="editTipoCuentaDestinatario" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                  <option value="" disabled="" selected="">Tipo de Cuenta</option>
+                    <option value="Cuenta de ahorros">Cuenta de ahorros</option>
+                    <option value="Cuenta corriente">Cuenta corriente</option>
+                </select>
+
+<br>
+<br>
+
+                <label for="addEntidadBancariaRemitente">Entidad Bancaria destinatario</label>
+  <select id="addEntidadBancariaRemitente" name="addEntidadBancariaDestinatario" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" required>
+    <option value="Banreservas" disabled selected>Entidad Bancaria Remitente</option>
+    <option value="Banreservas">Banreservas</option>
+    <option value="Banco Popular Dominicano">Banco Popular Dominicano</option>
+    <option value="Banco BHD">Banco BHD</option>
+    <option value="Asociación Popular de Ahorros y Préstamos">Asociación Popular de Ahorros y Préstamos</option>
+    <option value="Scotiabank">Scotiabank</option>
+    <option value="Banco Santa Cruz">Banco Santa Cruz</option>
+    <option value="Asociación Cibao de Ahorros y Préstamos">Asociación Cibao de Ahorros y Préstamos</option>
+    <option value="Banco Promerica">Banco Promerica</option>
+    <option value="Banesco">Banesco</option>
+    <option value="Banco Caribe">Banco Caribe</option>
+    <option value="Banco Agrícola">Banco Agrícola</option>
+    <option value="Asociación La Nacional de Ahorros y Préstamos">Asociación La Nacional de Ahorros y Préstamos</option>
+    <option value="Citibank">Citibank</option>
+    <option value="Banco BDI">Banco BDI</option>
+    <option value="Banco Vimenca">Banco Vimenca</option>
+    <option value="Banco López de Haro">Banco López de Haro</option>
+    <option value="Bandex">Bandex</option>
+    <option value="Banco Ademi">Banco Ademi</option>
+    <option value="Banco Lafise">Banco Lafise</option>
+    <option value="Motor Crédit Banco de Ahorro y Crédito">Motor Crédit Banco de Ahorro y Crédito</option>
+    <option value="Alaver Asociación de Ahorros y Préstamos">Alaver Asociación de Ahorros y Préstamos</option>
+    <option value="Banfondesa">Banfondesa</option>
+    <option value="Banco Adopem">Banco Adopem</option>
+    <option value="Asociación Duarte">Asociación Duarte</option>
+    <option value="JMMB Bank">JMMB Bank</option>
+    <option value="Asociación Mocana">Asociación Mocana</option>
+    <option value="ABONAP">ABONAP</option>
+    <option value="Banco Unión">Banco Unión</option>
+    <option value="Banco BACC">Banco BACC</option>
+    <option value="Asociación Romana">Asociación Romana</option>
+    <option value="Asociación Peravia">Asociación Peravia</option>
+    <option value="Banco Confisa">Banco Confisa</option>
+    <option value="Leasing Confisa">Leasing Confisa</option>
+    <option value="Qik Banco Digital">Qik Banco Digital</option>
+    <option value="Banco Fihogar">Banco Fihogar</option>
+    <option value="Asociación Maguana de Ahorros y Préstamos">Asociación Maguana de Ahorros y Préstamos</option>
+    <option value="Banco Atlántico">Banco Atlántico</option>
+    <option value="Bancotui">Bancotui</option>
+    <option value="Banco Activo">Banco Activo</option>
+    <option value="Banco Gruficorp">Banco Gruficorp</option>
+    <option value="Corporación de Crédito Nordestana">Corporación de Crédito Nordestana</option>
+    <option value="Banco Óptima de Ahorro y Crédito">Banco Óptima de Ahorro y Crédito</option>
+    <option value="Banco Cofaci">Banco Cofaci</option>
+    <option value="Bonanza Banco">Bonanza Banco</option>
+    <option value="Corporación de Crédito Monumental">Corporación de Crédito Monumental</option>
+    <option value="Banco Empire">Banco Empire</option>
+    <option value="Corporación de Crédito Oficorp">Corporación de Crédito Oficorp</option>
+</select>
+
+<br>
+<br>
+
+          <label style="color: #2d4a34; width: 100%; text-align: left;" for="addFechaDePago">Fecha de Pago:</label>
+            <input type="text" class="datepicker" id="addFechaDePago" name="addFechaDePago" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+
+<br>
+<br>
+          <label style="color: #2d4a34; width: 100%; text-align: left;">
+            Comprobante de pago (imagenn):
+            <input type="file" name="comprobante_pago" accept="image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          </label>
+          </div>
+
+          <!-- Botón -->
+          <button id="inscribir_button_'.$currentDiplomado['Id'].'" class="hidden" type="submit" name="submit" style="background-color: #2d4a34; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 16px;">
+            INSCRIBIR
+          </button>
+        </form>
+      </div>
+    </div>';
+
+    if (isset($_GET['photoUploaded']) && isset($_SESSION['cedulaHavePath']) && $_SESSION['cedulaHavePath'] == 1) {
+      error_log("The user: '".$_SESSION['username']."' just uploaded the photos");
+      $subscribeDiplomadoContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscribir curso</h2>
+    
+    <!-- Events List -->
+    <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
+      <!-- Event Container (Repeat this block for each event) -->
+      <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
+        <form role="form" autocomplete="off" action="" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
+          <!-- Metodo de pago -->
+          <label style="color: #2d4a34; width: 100%; text-align: left;">
+          Selecciona tu metodo de pago preferido
+          <select id="metodo_de_pago_'.$currentDiplomado['Id'].'" name="metodo_de_pago" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" amountRd="'.$currentDiplomado['precio_inscripcion'].'" onchange="toggleFields(\''.$currentDiplomado['Id'].'\')">
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="Transferencia">Transferencia bancaria (adjuntar comprobante)</option>
+            <option value="Tarjeta">Tarjeta de débito/crédito</option>
+          </select>
+        </label>
+
+        <!-- Precio -->
+          <div style="position: relative; text-align: center; justify-content: center; flex-direction: unset !important; bottom: 1% !important;" class="vetcap-badge">
+            <img style="width: 70px; height: auto;" src="../assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon">
+            <span>RD$'.$currentDiplomado['precio_inscripcion'].'</span>
+          </div>
+
+        <div id="paypal-button-container-'.$currentDiplomado['Id'].'" class="">
+        </div>
+
+          <!-- Comprobante de Pago -->
+           <div id="comprobante_pago_field_container_'.$currentDiplomado['Id'].'" class="hidden">
+          <label style="color: #2d4a34; width: 100%; text-align: left;">
+            Comprobante de pago (imagenn):
+            <input type="file" name="comprobante_pago" accept="image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          </label>
+          </div>
+
+          <!-- Botón -->
+          <button id="inscribir_button_'.$currentDiplomado['Id'].'" class="hidden" type="submit" name="submit" style="background-color: #2d4a34; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 16px;">
+            INSCRIBIR
+          </button>
+        </form>
+      </div>
+    </div>';
+
+    error_log("tarann");
+    echo $diplomadosModalHeader;
+    echo $subscribeDiplomadoContent;
+    } elseif (!true) {
+      error_log("The user: '".$_SESSION['username']."' needs to complete his proffile");
+      echo $diplomadosModalHeader;
+      echo $completeProffileContent;
+      error_log("tarannn");
+    } else {
+      error_log("The user: '".$_SESSION['username']."' can register to courses");
+      echo $diplomadosModalHeader;
+      echo $subscribeDiplomadoContent;
+      error_log("tarannnn");
+    }
+
+    $diplomadoModalFooter = '</div>
+    </div>
+    </div>';
+    echo $diplomadoModalFooter;
+}
 
 //include the user class, pass in the database connection
 include('classes/user.php');

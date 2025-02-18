@@ -91,10 +91,13 @@ require('layout/header.php');
             echo "<h2 class='bg-success'>Tu cuenta ha sido activada. Puedes iniciar sesión.</h2>";
             break;
           case 'reset':
-            echo "<h2 class='bg-success'>Se ha enviado a tu correo un link de reinicio de contraseña.</h2>";
+            echo "<h2 class='bg-success'>Se ha enviado a tu correo un link para cambiar tu contraseña.</h2>";
             break;
           case 'resetAccount':
             echo "<h2 class='bg-success'>Contraseña cambiada correctamente. Puedes iniciar sesion.</h2>";
+            break;
+          case 'joined':
+            echo "<h2 class='bg-success'>Registro satisfactorio, revisa tu correo electronico para activar tu cuenta.</h2>";
             break;
         }
       }
@@ -110,7 +113,7 @@ require('layout/header.php');
 
       <div class="row">
         <div class="col-xs-9 col-sm-9 col-md-9">
-          <a href="reset.php">¿Olvidaste tu contraseña?</a>
+          <a href="reiniciar_contraseña.php">¿Olvidaste tu contraseña?</a>
         </div>
       </div>
 

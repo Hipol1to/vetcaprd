@@ -126,3 +126,49 @@ function toggleFields(modalId) {
           });
   }
   }
+
+  function registerUserToFreeCourse(courseId) {
+    if(confirm("¿Estás seguro que quieres inscribirte a este curso?")) {
+      const course = {
+          course_id: courseId,
+        };
+    
+        // Send transaction data via POST request
+        fetch("http://localhost/vesca/VetCapMembers/subscribe_user_free_course.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(course),
+        })
+          .then((response) => {
+            if (response.status === 200) {
+              return response.json().then(() => {
+                if(confirm("Curso suscrito satisfactoriamente, la pagina se actualizara automaticamente en unos segundos.")) {
+                  location.reload(true);
+                } else {
+                  location.reload(true);
+                }
+              });
+            } else if (response.status === 400) {
+              return response.json().then((data) => {
+                console.error("Status 400: Bad Request", data);
+                alert("Lo sentimos, tu solicitud no pudo ser procesada, por favor contacta al administrador con este mensaje: " + JSON.stringify(data));
+              });
+            } else if (response.status === 500) {
+              return response.text().then((errorMessage) => {
+                console.error("Status 500: Internal Server Error", errorMessage);
+                alert("Lo sentimos, el servicio no está disponible, por favor contacta al administrador con este mensaje:" + errorMessage);
+              });
+            } else {
+              console.warn("Unhandled status code:", response.status);
+              alert(`Ha ocurrido un error inesperado, por favor contacta al administrador con este mensaje: ${response.status}`);
+              return response.text().then((message) => console.log(message));
+            }
+          })
+          .catch((error) => {
+            console.error("Error registering user:", error);
+            alert("Hubo un error al inscribir el curso, contacta al administrador con este mensaje: "+error);
+          });
+  }
+  }
