@@ -36,20 +36,22 @@ if (isset($_POST['submit'])){
 
 		try {
 
-			$stmt = $db->prepare("UPDATE usuarios SET token_reinicio = :token, reinicio_completo='No' WHERE correo_electronico = :email");
+			$stmt = $db->prepare("UPDATE usuarios SET token_reinicio = :token, reinicio_completo=0 WHERE correo_electronico = :email");
 			$stmt->execute(array(
-				':email' => $row['email'],
+				':email' => $row['correo_electronico'],
 				':token' => $token
 			));
 
 			//send email
-			$to = $row['email'];
-			$subject = "Reinicio de contraseña";
-			$body = "<p>Recibimos una solicitud de cambbio de contraseña.</p>
+			$to = $row['correo_electronico'];
+			$subject = "Cambio de contraseña";
+			$body = "<p>Recibimos una solicitud de cambio de contraseña.</p>
 			<p>Si crees que fué un error, por favor ignora este correo.</p>
-			<p>Para reiniciar tu contraseña haz click en el siguiente link: <a href='".DIR."resetPassword.php?key=$token'>".DIR."resetPassword.php?key=$token</a></p>";
+			<p>Para reiniciar tu contraseña haz click en el siguiente link: <a href='".DIR."/VetCapMembers/cambiar_contrasena.php?key=$token'>".DIR."/VetCapMembers/cambiar_contrasena.php?key=$token</a></p>";
 
 			$mail = new Mail();
+			$mail->CharSet = 'UTF-8';
+        	$mail->Encoding = 'base64';
 			$mail->setFrom(SITEEMAIL);
 			$mail->addAddress($to);
 			$mail->subject($subject);

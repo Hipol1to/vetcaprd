@@ -33,6 +33,9 @@ class Mail extends PHPMailer
     {
         $this->AltBody = strip_tags(stripslashes($this->Body))."\n\n";
         $this->AltBody = str_replace("&nbsp;", "\n\n", $this->AltBody);
+        echo mb_detect_encoding($this->Subject, 'UTF-8, ISO-8859-1, Windows-1252', true);
+        echo $this->Subject;
+
         return parent::send();
     }
 }

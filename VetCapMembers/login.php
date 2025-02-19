@@ -18,7 +18,7 @@ if(isset($_POST['submit'])){
 
 	$username = $_POST['username'];
 	if ($user->isValidUsername($username)){
-		if (! isset($_POST['contraseña'])){
+		if (! isset($_POST['password'])){
 			$error[] = 'Debes introducir una contraseña';
 		}
 
@@ -113,7 +113,7 @@ require('layout/header.php');
 
       <div class="row">
         <div class="col-xs-9 col-sm-9 col-md-9">
-          <a href="reiniciar_contraseña.php">¿Olvidaste tu contraseña?</a>
+          <a href="olvidaste_tu_contrasena.php">¿Olvidaste tu contraseña?</a>
         </div>
       </div>
 
