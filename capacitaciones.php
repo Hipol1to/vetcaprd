@@ -1,5 +1,7 @@
 <?php
+      require_once('includes/config.php');
       require('layout/header.php'); 
+      $diplomados = getAllCourses($db);
        ?>
 <section class="vetcap-education-section">
   <div class="vetcap-header">
@@ -37,151 +39,11 @@
 
 
 
-      <section class="slider-capacitaciones-section">
+  <section class="slider-capacitaciones-section">
   <h1 class="title">Diplomados</h1>
-  <div class="slider-capacitaciones-container">
-    
-    <div class="slider-capacitaciones">
-      <div class="slide">
-        <div class="diplomado-container">
-    <div class="image-box">
-      <div class="image-placeholder">
-        <span class="month">MARZO</span>
-      </div>
-      <div class="disvi"><button class="rounded-button marginnnn er-bustonn" style="margin-top: 20px; ">INSCRIBIRME</button></div>
-    </div>
-    <div class="info-box">
-      <h2 class="course-title">Diplomado de Avicultura</h2>
-      <p class="mode"><span>Modalidad</span> Virtual | Presencial</p>
-      <p class="duration">
-        <span>Duración</span>
-        <br />
-        Inicio: 1/3/2025
-        <br />
-        Fin: 1/6/2025
-      </p>
-      <p class="price">RD$19,999</p>
-      <p class="contact">
-        Para más información, contáctanos al
-        <br />
-        <strong>(809) 344-5048</strong>
-      </p>
-    </div>
-    <div id="countdown" class="countdown">
-    <div class="time-unit">
-      <span class="number" id="days">00</span>
-      <span class="label">DÍAS</span>
-    </div>
-    <div class="time-unit">
-      <span class="number" id="hours">00</span>
-      <span class="label">HRS</span>
-    </div>
-    <div class="time-unit">
-      <span class="number" id="minutes">00</span>
-      <span class="label">MINS</span>
-    </div>
-    <div class="time-unit">
-      <span class="number" id="seconds">00</span>
-      <span class="label">SEGS</span>
-    </div>
-  </div>
-  </div>
-  
-      </div>
-      <div class="slide">
-        <div class="diplomado-container">
-    <div class="image-box">
-      <div class="image-placeholder">
-        <span class="month">MARZO</span>
-      </div>
-      <div class="disvi"><button class="rounded-button marginnnn er-bustonn" style="margin-top: 20px; ">INSCRIBIRME</button></div>
-    </div>
-    <div class="info-box">
-      <h2 class="course-title">Curso intensivo de Clínica Básica</h2>
-      <p class="mode"><span>Modalidad</span> Virtual | Presencial</p>
-      <p class="duration">
-        <span>Duración</span>
-        <br />
-        Inicio: 1/3/2025
-        <br />
-        Fin: 1/6/2025
-      </p>
-      <p class="price">RD$4,999</p>
-      <p class="contact">
-        Para más información, contáctanos al
-        <br />
-        <strong>(809) 344-5048</strong>
-      </p>
-    </div>
-    <div id="countdown" class="countdown">
-    <div class="time-unit">
-      <span class="number" id="days">00</span>
-      <span class="label">DÍAS</span>
-    </div>
-    <div class="time-unit">
-      <span class="number" id="hours">00</span>
-      <span class="label">HRS</span>
-    </div>
-    <div class="time-unit">
-      <span class="number" id="minutes">00</span>
-      <span class="label">MINS</span>
-    </div>
-    <div class="time-unit">
-      <span class="number" id="seconds">00</span>
-      <span class="label">SEGS</span>
-    </div>
-  </div>
-  </div>
-      </div>
-      <div class="slide">
-        <div class="diplomado-container">
-    <div class="image-box">
-      <div class="image-placeholder">
-        <span class="month">JULIO</span>
-      </div>
-      <div class="disvi"><button class="rounded-button marginnnn er-bustonn" style="margin-top: 20px; ">INSCRIBIRME</button></div>
-    </div>
-    <div class="info-box">
-      <h2 class="course-title">Diplomado de Medicina Interna</h2>
-      <p class="mode"><span>Modalidad</span> Virtual | Presencial</p>
-      <p class="duration">
-        <span>Duración</span>
-        <br />
-        Inicio: 1/3/2025
-        <br />
-        Fin: 1/6/2025
-      </p>
-      <p class="price">RD$19,999</p>
-      <p class="contact">
-        Para más información, contáctanos al
-        <br />
-        <strong>(809) 344-5048</strong>
-      </p>
-    </div>
-    <div id="countdown" class="countdown">
-    <div class="time-unit">
-      <span class="number" id="days">00</span>
-      <span class="label">DÍAS</span>
-    </div>
-    <div class="time-unit">
-      <span class="number" id="hours">00</span>
-      <span class="label">HRS</span>
-    </div>
-    <div class="time-unit">
-      <span class="number" id="minutes">00</span>
-      <span class="label">MINS</span>
-    </div>
-    <div class="time-unit">
-      <span class="number" id="seconds">00</span>
-      <span class="label">SEGS</span>
-    </div>
-  </div>
-  </div>
-      </div>
-    </div>
-    <button class="slider-capacitaciones-btn prev-btn">&lt;</button>
-    <button class="slider-capacitaciones-btn next-btn">&gt;</button>
-  </div>
+  <?php
+    renderDiplomadosSliderWithoutPayments($diplomados);
+   ?>
 </section>
 <div class="promo-bar">
   <div class="text-section">

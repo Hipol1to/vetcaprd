@@ -1,7 +1,6 @@
 <?php
 ob_start();
 session_start();
-
 //set timezone
 date_default_timezone_set('Europe/London');
 
@@ -242,6 +241,86 @@ updateCountdown(diplomadoId_'.$theDiplomado['Id'].', eventTimestamp_'.$theDiplom
     foreach ($diplomadosArray as $theDiplomado) {
         renderCoursePaymentModal($theDiplomado);
     }
+}
+
+function renderDiplomadosSliderWithoutPayments($diplomadosArray) {
+  $diplomadosSliderContainerHeader = '
+  <div class="slider-capacitaciones-container">
+ <div class="slider-capacitaciones">
+  ';
+  echo $diplomadosSliderContainerHeader;
+  $onclick = 'onclick="location.href=\''.DIR.'VetCapMembers/login.php\'" type="button"';
+  foreach ($diplomadosArray as $theDiplomado) {
+      $diplomadoSlide = '
+<div class="slide">
+  <div class="diplomado-container">
+          <div class="image-box">
+             <div class="image-placeholder">
+                <span class="month">MARZO</span>
+             </div>
+             <div class="disvi"><button class="rounded-button marginnnn er-bustonn" '.$onclick.' style="margin-top: 20px; ">INSCRIBIRME</button></div>
+          </div>
+          <div class="info-box">
+             <h2 class="course-title">'.$theDiplomado['nombre'].'</h2>
+             <p class="mode"><span>Modalidad: </span>'.$theDiplomado['modalidad'].'</p>
+             <p class="duration">
+                <span>Duración</span>
+                <br />
+                Inicio: '.$theDiplomado['fecha_inicio_diplomado'].'
+                <br />
+                Fin: '.$theDiplomado['fecha_fin_diplomado'].'
+             </p>
+             <p class="price">RD$'.$theDiplomado['precio_inscripcion'].'</p>
+             <p class="contact">
+                Para más información, contáctanos al
+                <br />
+                <strong>(809) 344-5048</strong>
+             </p>
+          </div>
+          <div id="countdown-'.$theDiplomado['Id'].'" class="countdown">
+             <div class="time-unit">
+                <span class="number" id="days-'.$theDiplomado['Id'].'">00</span>
+                <span class="label">DÍAS</span>
+             </div>
+             <div class="time-unit">
+                <span class="number" id="hours-'.$theDiplomado['Id'].'">00</span>
+                <span class="label">HRS</span>
+             </div>
+             <div class="time-unit">
+                <span class="number" id="minutes-'.$theDiplomado['Id'].'">00</span>
+                <span class="label">MINS</span>
+             </div>
+             <div class="time-unit">
+                <span class="number" id="seconds-'.$theDiplomado['Id'].'">00</span>
+                <span class="label">SEGS</span>
+             </div>
+          </div>
+       </div>
+</div>
+<script>
+let diplomadoId_'.$theDiplomado['Id'].' = "'.$theDiplomado['Id'].'";
+let eventTimestamp_'.$theDiplomado['Id'].' = "'.$theDiplomado['fecha_cierre_inscripcion'].'";
+// Update every second
+console.log(diplomadoId_'.$theDiplomado['Id'].');
+console.log(eventTimestamp_'.$theDiplomado['Id'].');
+
+const timerInterval_'.$theDiplomado['Id'].' = setInterval(() => updateCountdown(diplomadoId_'.$theDiplomado['Id'].', eventTimestamp_'.$theDiplomado['Id'].'), 1000);
+updateCountdown(diplomadoId_'.$theDiplomado['Id'].', eventTimestamp_'.$theDiplomado['Id'].');
+</script>
+  ';
+  echo $diplomadoSlide;
+  }
+  $diplomadosSliderContainerFooter = '
+  </div>
+ <button class="slider-capacitaciones-btn prev-btn">&lt;</button>
+ <button class="slider-capacitaciones-btn next-btn">&gt;</button>
+</div>
+  ';
+  echo $diplomadosSliderContainerFooter;
+
+  foreach ($diplomadosArray as $theDiplomado) {
+      renderCoursePaymentModal($theDiplomado);
+  }
 }
 
 function getOnclickForDiplomados($misDiplomados, $currentDiplomado, $misPendingDiplomados) {
@@ -585,12 +664,20 @@ function renderCoursePaymentModal($currentDiplomado) {
     echo $diplomadosModalHeader;
     echo $subscribeDiplomadoContent;
     } elseif (!true) {
-      error_log("The user: '".$_SESSION['username']."' needs to complete his proffile");
+      if (isset($_SESSION['username'])) {
+        error_log("The user: '".$_SESSION['username']."' needs to complete his proffile");
+      } else {
+        error_log("Tried to print that user needs to complete his proffile but SESSION is not defined");
+      }
       echo $diplomadosModalHeader;
       echo $completeProffileContent;
       error_log("tarannn");
     } else {
-      error_log("The user: '".$_SESSION['username']."' can register to courses");
+      if (isset($_SESSION['username'])) {
+        error_log("The user: '".$_SESSION['username']."' can register to courses");
+      } else {
+        error_log("Tried to print that user can register to courses but SESSION is not defined");
+      }
       echo $diplomadosModalHeader;
       echo $subscribeDiplomadoContent;
       error_log("tarannnn");
