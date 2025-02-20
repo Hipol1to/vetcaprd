@@ -1,5 +1,9 @@
       <?php
+      require_once('includes/config.php');
       require('layout/header.php'); 
+      $eventosList = [["modalName", 0]];
+      $eventos = getAllEvents($db);
+      $nextEvent = $_SESSION['nextEvent'];
        ?>
       <section class="slider-area-001 position-relative" style="">
   <div class="slider-active-001">
@@ -93,13 +97,13 @@
     </div>
 
 
-      <section class="about-area section-bg section-padding">
-        <h2 style="font-size: 90px; font-family: HelveticaBold; text-align: center; color: #2d4a34;">PROXIMO EVENTO</h2>
+    <section style="padding-top: 30px; padding-bottom: 10px;" class="about-area section-bg section-padding">
+        <h2 style="font-size: 70px; font-family: HelveticaBold; text-align: center; color: #2d4a34; margin-bottom: 0%;">PROXIMO EVENTO</h2>
         <div class="container">
           <div class="row align-items-center">
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
               <div class="about-img about-img1">
-                <img src="./assets/img/horizon.png" alt="" class="event-pic"/>
+                <img src="<?php  echo str_replace("../", "", $nextEvent['foto_evento']);; ?>" alt="" class="event-pic"/>
               </div>
             </div>
             <div
@@ -108,29 +112,64 @@
               <div class="about-caption about-caption1">
                 <div class="section-tittle m-0">
                   <!-- second section !-->
-                  <img src="./assets/img/centro_de_cultura_logo.png" style="width: 400px;" alt="">
-                  <h2 style="font-size: 78px; font-family: HelveticaBold;">VETCAP HORIZONS 2025</h2>
+                  <img src="./assets/img/centro_de_cultura_logo.png" style="width: 300px;" alt="">
+                  <h2 style="font-size: 50px; font-family: HelveticaBold;"><?php echo $nextEvent['nombre']; ?></h2>
+                  <p style="color: #2d5b2d;" class="capitalize-first vetcap-description">
+      <?= htmlspecialchars($nextEvent['descripcion']) ?>
+      </p>
                   
-                  <div id="countdown" class="marginnn" style="margin-right: 100px;">
-                    <h2 style="font-size: 31px; font-family: HelveticaBold; white-space: nowrap !important;">28/2/2025 | 6:30PM</h2>
+                  <div id="<?php echo 'countdown-'.$nextEvent['Id']?>" class="marginnn" style="margin-right: 100px;">
+                  
+                    <h2 style="font-size: 31px; font-family: HelveticaBold; white-space: nowrap !important;">
+                    <?php 
+                    $timestamp = $nextEvent['fecha_evento'];
+                    $dateTime = new DateTime($timestamp);
+
+                    // Format the date and time
+                    $formatted = $dateTime->format('j/n/Y | g:ia');
+                    
+                    // Convert "am/pm" to uppercase (optional)
+                    $formatted = strtoupper($formatted);
+                    
+                    echo $formatted; // Outputs: 28/2/2025 | 6:30PM
+                    ?></h2>
   <div class="time-unit timeer">
-    <span class="number" id="days">00</span>
+    <span class="number" id="<?php echo 'days-'.$nextEvent['Id']?>">00</span>
     <span class="label">DÍAS</span>
   </div>
   <div class="time-unit">
-    <span class="number" id="hours">00</span>
+    <span class="number" id="<?php echo 'hours-'.$nextEvent['Id']?>">00</span>
     <span class="label">HRS</span>
   </div>
   <div class="time-unit">
-    <span class="number" id="minutes">00</span>
+    <span class="number" id="<?php echo 'minutes-'.$nextEvent['Id']?>">00</span>
     <span class="label">MINS</span>
   </div>
   <div class="time-unit">
-    <span class="number" id="seconds">00</span>
+    <span class="number" id="<?php echo 'seconds-'.$nextEvent['Id']?>">00</span>
     <span class="label">SEGS</span>
   </div>
 </div>
-<div class="disvi"><button class="rounded-button marginnn er-buston" style="margin-left: 20px;">INSCRIBIRME</button><img  src="./assets/img/money_logo.png" class="money-pic" alt=""><a class="money-free">GRATIS</a></div>
+<script>
+  let nextEventId = "<?= $nextEvent['Id']?>";
+  let nextEventTimestamp = "<?= $nextEvent['fecha_evento']?>";
+  // Update every second
+  console.log(nextEventId);
+  console.log(nextEventTimestamp);
+  
+  const timerInterval = setInterval(() => updateCountdown(nextEventId, nextEventTimestamp), 1000);
+updateCountdown(nextEventId, nextEventTimestamp);
+</script>
+<br>
+<?php
+$isAttributeWritten = false;
+$onClick = 'onclick="location.href=\''.DIR.'VetCapMembers/login.php\'" type="button"';
+$nextEventSubscribeButton = '<div class="disvi"><button '.$onClick.'  class="rounded-button marginnn er-buston" style="width: auto !important; margin-left: 20px;width: 70px; height: auto;">INSCRIBIRME</button>';
+$nextEventPriceText = $nextEvent['precio_inscripcion'] == 0.00 ? "GRATIS" : "RD$".$nextEvent['precio_inscripcion'];
+echo $nextEventSubscribeButton;
+ ?>
+
+<img  src="./assets/img/money_logo.png" class="money-pic" alt=""><a class="money-free"><?php echo $nextEventPriceText; ?></a></div>
 
 
                   <p class="mb-30">
