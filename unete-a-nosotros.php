@@ -28,8 +28,8 @@ $apellido = $_POST['apellido'];
 $correo_electronico = $_POST['correo_electronico'];
 $telefono = $_POST['telefono'];
 $tipo_visitante = $_POST['tipo_visitante'];
-$tipo_estudiante = $_POST['tipo_estudiante'];
-$universidad = $_POST['universidad'];
+$tipo_estudiante = isset($_POST['tipo_estudiante'])? $_POST['tipo_estudiante'] : 'No estudiante';
+$universidad = isset($_POST['universidad'])? $_POST['universidad'] : 'No universidad';
 $contrasena = $_POST['contrasena'];
 $fecha_nacimiento = $_POST['fecha_nacimiento'];
 
@@ -37,12 +37,13 @@ $fecha_nacimiento = $_POST['fecha_nacimiento'];
 if (! $user->isValidUsername($username)){
 $error[] = 'El usuario solo puede tener caracteres alfanumericos, entre 3-16 caracteres';
 } else {
-$stmt = $db->prepare('SELECT usuario FROM `usuarios` WHERE usuario = :username');
-$stmt->execute(array(':username' => $username));
+$stmt = $db->prepare('SELECT usuario FROM `usuarios` WHERE usuario = :username AND correo_electronico = :email');
+$stmt->execute(array(':username' => $username,
+                     ':email' => $correo_electronico));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 if (! empty($row['usuario'])){
-  $error[] = 'Este nombre de usuario ya esta en uso';
+  $error[] = 'Este nombre de usuario o correo electrónico ya esta en uso';
 }
 }
 
@@ -121,7 +122,7 @@ error_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electron
   $mail->send();
 
   //redirect to index page
-  header('Location: login.php?action=joined');
+  header('Location: VetCapMembers/login.php?action=joined');
   exit;
 
 //else catch the exception and show the error.
@@ -135,6 +136,12 @@ error_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electron
 
       require('layout/header.php'); 
        ?>
+       <style>
+    /* Correctly hides elements */
+    .hidden {
+      display: none;
+    }
+  </style>
 <section class="call-to-action-section">
   <div class="cta-content">
     <div class="image-container">
@@ -218,7 +225,7 @@ error_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electron
         <!-- Motivación -->
         <label style="color: #2d4a34;">
           ¿Qué te motiva a unirte a VetCap?
-          <select name="tipo_visitante" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          <select id="tipo_visitante" name="tipo_visitante" onchange="toggleRegisterFields()" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
             <option value="" disabled selected>Selecciona una opción</option>
             <option value="Estudiante veterinario">Soy estudiante veterinario</option>
             <option value="Visitante">Solo estoy de visita</option>
@@ -227,32 +234,86 @@ error_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electron
         </label>
 
         <!-- Etapa de Estudios -->
+        <div id="estudiosFieldContainer" class="hidden">
         <label style="color: #2d4a34;">
           ¿En qué etapa de tus estudios estás?
-          <select name="tipo_estudiante" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          <select id="tipo_estudiante" name="tipo_estudiante" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
             <option value="" disabled selected>Selecciona una opción</option>
             <option value="Estudiante de inicio">He comenzado hace poco</option>
             <option value="Estudiante a mediados de carrea">Estoy a mediados de carrera</option>
             <option value="Estudiante de termino">Soy estudiante de término</option>
           </select>
         </label>
+        </div>
 
         <!-- Universidad -->
+         <div id="universidadFieldContainer" class="hidden">
         <label style="color: #2d4a34;">
           ¿En qué universidad estudias?
-          <select name="universidad" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-            <option value="" disabled selected>Selecciona una universidad</option>
-            <option value="ucateci">Universidad Católica del Cibao</option>
-            <option value="unapec">Universidad APEC</option>
-            <option value="uasd">Universidad Autónoma de Santo Domingo</option>
-            <!-- Add all other universities here -->
-          </select>
+          <select id="universidad" name="universidad" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+    <option value="" disabled selected>Selecciona una universidad</option>
+    <option value="Puerto Plata Business School">Puerto Plata Business School</option>
+    <option value="Universidad Autónoma de Santo Domingo">Universidad Autónoma de Santo Domingo</option>
+    <option value="Universidad Católica del Cibao">Universidad Católica del Cibao</option>
+    <option value="Pontificia Universidad Católica Madre y Maestra">Pontificia Universidad Católica Madre y Maestra</option>
+    <option value="Universidad Católica Nordestana">Universidad Católica Nordestana</option>
+    <option value="Universidad Nacional Pedro Henríquez Ureña">Universidad Nacional Pedro Henríquez Ureña</option>
+    <option value="Universidad Acción Pro-Educación y Cultura">Universidad Acción Pro-Educación y Cultura</option>
+    <option value="Universidad Central del Este">Universidad Central del Este</option>
+    <option value="Instituto Tecnológico de Santo Domingo">Instituto Tecnológico de Santo Domingo</option>
+    <option value="Universidad INCE">Universidad INCE</option>
+    <option value="Universidad Tecnológica de Santiago">Universidad Tecnológica de Santiago</option>
+    <option value="Universidad Dominicana Organización y Método">Universidad Dominicana Organización y Método</option>
+    <option value="Universidad Iberoamericana">Universidad Iberoamericana</option>
+    <option value="Universidad Adventista Dominicana">Universidad Adventista Dominicana</option>
+    <option value="Universidad Interamericana">Universidad Interamericana</option>
+    <option value="Instituto Tecnológico del Cibao Oriental">Instituto Tecnológico del Cibao Oriental</option>
+    <option value="Universidad Tecnológica del Sur">Universidad Tecnológica del Sur</option>
+    <option value="Universidad Católica Santo Domingo">Universidad Católica Santo Domingo</option>
+    <option value="Universidad Eugenio María de Hostos">Universidad Eugenio María de Hostos</option>
+    <option value="Universidad Central Dominicana de Estudios Profesionales">Universidad Central Dominicana de Estudios Profesionales</option>
+    <option value="Universidad Odontológica Dominicana">Universidad Odontológica Dominicana</option>
+    <option value="Facultad Latinoamericana de Ciencias Sociales">Facultad Latinoamericana de Ciencias Sociales</option>
+    <option value="Universidad Nacional Evangélica">Universidad Nacional Evangélica</option>
+    <option value="Universidad ISA">Universidad ISA</option>
+    <option value="Universidad Cultural Dominico Americana">Universidad Cultural Dominico Americana</option>
+    <option value="Universidad Federico Henríquez y Carvajal">Universidad Federico Henríquez y Carvajal</option>
+    <option value="Universidad de la Tercera Edad">Universidad de la Tercera Edad</option>
+    <option value="Universidad Abierta para Adultos">Universidad Abierta para Adultos</option>
+    <option value="Universidad Católica Tecnológica de Barahona">Universidad Católica Tecnológica de Barahona</option>
+    <option value="Universidad del Caribe">Universidad del Caribe</option>
+    <option value="Universidad Experimental Félix Adam">Universidad Experimental Félix Adam</option>
+    <option value="Universidad Agroforestal Fernando Arturo de Meriño">Universidad Agroforestal Fernando Arturo de Meriño</option>
+    <option value="Universidad Psicología Industrial Dominicana">Universidad Psicología Industrial Dominicana</option>
+    <option value="Instituto Tecnológico Mercy Jácquez">Instituto Tecnológico Mercy Jácquez</option>
+    <option value="Instituto Técnico Superior Oscus San Valero">Instituto Técnico Superior Oscus San Valero</option>
+    <option value="Universidad Nacional Tecnológica">Universidad Nacional Tecnológica</option>
+    <option value="Instituto Cristiano de Estudios Superiores Especializados">Instituto Cristiano de Estudios Superiores Especializados</option>
+    <option value="Academia de Diseño de Santo Domingo">Academia de Diseño de Santo Domingo</option>
+    <option value="Instituto Superior de Tecnología Universal">Instituto Superior de Tecnología Universal</option>
+    <option value="Barna Escuela de Negocios">Barna Escuela de Negocios</option>
+    <option value="Universidad Católica del Este">Universidad Católica del Este</option>
+    <option value="Instituto Global de Altos Estudios en Ciencias Sociales">Instituto Global de Altos Estudios en Ciencias Sociales</option>
+    <option value="Instituto Especializado de Estudios Superiores de la Policía Nacional">Instituto Especializado de Estudios Superiores de la Policía Nacional</option>
+    <option value="Instituto De Servicios Psicosociales y Educativos">Instituto De Servicios Psicosociales y Educativos</option>
+    <option value="Instituto Superior de Formación Docente Salomé Ureña">Instituto Superior de Formación Docente Salomé Ureña</option>
+    <option value="Instituto Superior de Estudios Especializados en Ciencias Sociales y Humanidades Luis Heredia Bonetti">Instituto Superior de Estudios Especializados en Ciencias Sociales y Humanidades Luis Heredia Bonetti</option>
+    <option value="Instituto Superior Para la Defensa">Instituto Superior Para la Defensa</option>
+    <option value="Instituto Stevens de Tecnología Internacional">Instituto Stevens de Tecnología Internacional</option>
+    <option value="Instituto Tecnológico de las Américas">Instituto Tecnológico de las Américas</option>
+    <option value="Instituto Especializado de Estudios Superiores Loyola">Instituto Especializado de Estudios Superiores Loyola</option>
+    <option value="Academia Superior de Ciencias Aeronáuticas">Academia Superior de Ciencias Aeronáuticas</option>
+</select>
+
         </label>
+        </div>
 
         <!-- Fecha de Nacimiento -->
         <label style="color: #2d4a34;">
           Fecha de Nacimiento:
-          <input type="date" name="fecha_nacimiento" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          <input type="date" name="fecha_nacimiento" required 
+       style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" 
+       onclick="this.showPicker()">
         </label>
 
         <!-- Usuario -->
@@ -282,6 +343,41 @@ error_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electron
   </div>
 </section>
 
+<script>
+  function toggleRegisterFields() {
+    let tipoVisitanteField = document.getElementById("tipo_visitante"); 
+    let optionSelected = tipoVisitanteField.value;
+    let careerStageContainer = document.getElementById("estudiosFieldContainer");
+    let universityContainer = document.getElementById("universidadFieldContainer");
+    let careerStageField = document.getElementById("tipo_estudiante");
+    let universityField = document.getElementById("universidad");
+
+    if (optionSelected === "Estudiante veterinario") {
+      console.log("sor");
+      
+      if (careerStageContainer.classList.contains("hidden")) {
+        console.log("tajiden");
+        careerStageContainer.classList.remove("hidden");
+        careerStageField.required = true;
+      }
+      if (universityContainer.classList.contains("hidden")) {
+        universityContainer.classList.remove("hidden");
+        universityField.required = true;
+      }
+    } else {
+      console.log("nosor");
+      if (!careerStageContainer.classList.contains("hidden")) {
+        console.log("notajiden");
+        careerStageContainer.classList.add("hidden");
+        careerStageField.required = false;
+      }
+      if (!universityContainer.classList.contains("hidden")) {
+        universityContainer.classList.add("hidden");
+        universityField.required = false;
+      }
+    }
+  }
+</script>
 
 <?php 
 //include header template
