@@ -18,8 +18,10 @@
   const setTheme = theme => {
     if (theme === 'auto' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       document.documentElement.setAttribute('data-coreui-theme', 'dark');
+      document['eltema'] = 'dark';
     } else {
       document.documentElement.setAttribute('data-coreui-theme', theme);
+      document['eltema'] = 'light';
     }
     const event = new Event('ColorSchemeChange');
     document.documentElement.dispatchEvent(event);
@@ -52,5 +54,8 @@
       });
     }
   });
+let currentTheme = getStoredTheme();
+console.log(currentTheme);
+
 })();
 //# sourceMappingURL=color-modes.js.map
