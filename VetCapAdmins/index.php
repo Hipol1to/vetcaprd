@@ -63,7 +63,7 @@ require('layout/header.php');
                         <svg class="icon">
                           <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-arrow-top"></use>
                         </svg>)</span></div>
-                    <div>Conversion Rate</div>
+                    <div>data</div>
                   </div>
                   <div class="dropdown">
                     <button class="btn btn-transparent text-white p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -88,7 +88,7 @@ require('layout/header.php');
                         <svg class="icon">
                           <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-arrow-bottom"></use>
                         </svg>)</span></div>
-                    <div>Sessions</div>
+                    <div>Data</div>
                   </div>
                   <div class="dropdown">
                     <button class="btn btn-transparent text-white p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

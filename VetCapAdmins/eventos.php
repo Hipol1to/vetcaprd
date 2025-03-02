@@ -47,7 +47,7 @@ $stmt->execute();
                 echo "<td>$" . number_format($row['precio_inscripcion'], 2) . "</td>";
                 echo "<td>" . ($row['activo'] ? 'Activo' : 'Inactivo') . "</td>";
                 echo "<td>
-                    <a href='detalle_evento.php?id=" . htmlspecialchars($row['Id']) . "' target='_blank' class='btn btn-info'>Ver Detalle</a>
+                    <a href='detalle_evento.php?id=" . htmlspecialchars($row['Id']) . "' class='btn btn-info'>Ver Detalle</a>
                     <button class='btn btn-warning' onclick='editarEvento(\"" . htmlspecialchars($row['Id']) . "\")'>Editar</button>
                     <button class='btn btn-danger' onclick='eliminarEvento(\"" . htmlspecialchars($row['Id']) . "\")'>Eliminar</button>
                 </td>";
@@ -104,7 +104,7 @@ $stmt->execute();
 <script>
 // Open edit modal and fill form with event data
 function editarEvento(eventId) {
-    fetch("detalle_evento.php?id=" + eventId)
+    fetch("fetch_evento.php?id=" + eventId)
         .then(response => response.json())
         .then(data => {
             document.getElementById("eventId").value = data.Id;
@@ -151,6 +151,62 @@ function eliminarEvento(eventId) {
           <!-- /.row-->
         </div>
       </div>
+      <script>
+      let theEventosTable = document.getElementById("eventosAllDataTable");
+      let getStoredThemee = () => localStorage.getItem('coreui-free-bootstrap-admin-template-theme');
+      if (theEventosTable && theEventosTable.classList) {
+        if (window.matchMedia('(prefers-color-scheme: '+getStoredThemee()+')').matches) {
+            if(!theEventosTable.classList.contains('table-dark')) {
+              theEventosTable.classList.add('table-dark');
+            }
+          } else {
+            if(theEventosTable.classList.contains('table-dark')) {
+              theEventosTable.classList.remove('table-dark');
+            }
+            }
+      }
+
+      const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const table = document.getElementById('eventosAllDataTable');
+          
+      if (theEventosTable && theEventosTable.classList && isDarkMode) {
+          table.classList.add('table-dark');
+      } else {
+          if (theEventosTable && theEventosTable.classList && !isDarkMode) {
+            table.classList.add('table-light');
+        }
+      }
+
+      function setTableTheme(theTheme) {
+        let eventosTable = document.getElementById("eventosAllDataTable");
+        if (theTheme === 'dark' && theEventosTable && theEventosTable.classList && !eventosTable.classList.contains('table-dark')) {
+        eventosTable.classList.add('table-dark');
+      }
+      if (theTheme === 'light' && theEventosTable && theEventosTable.classList && eventosTable.classList.contains('table-dark')) {
+        eventosTable.classList.remove('table-dark');
+      }
+      if (theTheme === 'auto') {        
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          if(theEventosTable && theEventosTable.classList && !eventosTable.classList.contains('table-dark')) {
+             eventosTable.classList.add('table-dark');
+          }
+        } else {
+          if(theEventosTable && theEventosTable.classList && eventosTable.classList.contains('table-dark')) {
+            eventosTable.classList.remove('table-dark');
+          }
+          }
+      }
+      }
+    </script>
+    <script>
+        new DataTable('#eventosAllDataTable', {
+    layout: {
+        topStart: {
+            buttons: ['copy', 'excel', 'pdf', 'colvis']
+        }
+    }
+});
+    </script>
       <?php 
 //include header template
 require('layout/footer.php'); 
