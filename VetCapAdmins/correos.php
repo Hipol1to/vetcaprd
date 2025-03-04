@@ -65,29 +65,29 @@ require('layout/header.php');
 
 <!-- Create Email Modal -->
 <div class="modal fade" id="crearCorreoModal" tabindex="-1" aria-labelledby="crearCorreoLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen"> <!-- Added modal-xl for extra large size -->
+    <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="crearCorreoLabel">Crear Correo</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
-                <form id="crearCorreoForm" enctype="multipart/form-data">
+                <form id="crearCorreoForm" action="enviar_correo.php" method="POST" enctype="multipart/form-data">
                     <div class="mb-3">
                         <label for="emailDestinatario" class="form-label">Destinatario</label>
-                        <input type="email" class="form-control" id="emailDestinatario" required>
+                        <input type="email" class="form-control" id="emailDestinatario" name="emailDestinatario" required>
                     </div>
                     <div class="mb-3">
                         <label for="emailTitulo" class="form-label">Título</label>
-                        <input type="text" class="form-control" id="emailTitulo" required>
+                        <input type="text" class="form-control" id="emailTitulo" name="emailTitulo" required>
                     </div>
                     <div class="mb-3">
                         <label for="emailMensaje" class="form-label">Mensaje</label>
-                        <textarea class="form-control" id="emailMensaje" required></textarea>
+                        <textarea class="form-control" id="emailMensaje" name="emailMensaje"></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="emailAdjunto" class="form-label">Adjunto</label>
-                        <input type="file" class="form-control" id="emailAdjunto">
+                        <input type="file" class="form-control" id="emailAdjunto" name="emailAdjunto">
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
@@ -97,25 +97,45 @@ require('layout/header.php');
 </div>
 
 
+
 <script>
     tinymce.init({
-        selector: '#emailMensaje',
-        plugins: 'lists link image table code help wordcount',
-        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist | link image'
-    });
+  selector: '#emailMensaje',
+  height: 400,
+  menubar: true,
+  toolbar: 'undo redo | formatselect | fontselect fontsizeselect | bold italic underline strikethrough | forecolor backcolor removeformat | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image media table | superscript subscript charmap emoticons | hr pagebreak | code fullscreen preview print',
+  plugins: 'advlist autolink lists link image charmap preview anchor pagebreak searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking save table directionality emoticons help',
+  content_style: "body { font-family:Arial, sans-serif; font-size:14px }",
+  language: 'es', // Spanish
+  branding: false,
+  resize: true,
 
-    document.getElementById("crearCorreoForm").addEventListener("submit", function(event) {
-        event.preventDefault();
-        const formData = new FormData(this);
-        fetch("enviar_correo.php", {
-            method: "POST",
-            body: formData
-        }).then(response => response.text())
-          .then(data => {
-              alert(data);
-              location.reload();
-          });
-    });
+  // Enable image uploads
+  images_upload_url: '/vesca/VetCapAdmins/subir_adjuntos.php',  // Change to your backend upload URL
+  automatic_uploads: true,
+  file_picker_types: 'image file media',
+
+  // Enable file picking
+  file_picker_callback: function (callback, value, meta) {
+    var input = document.createElement('input');
+    input.setAttribute('type', 'file');
+    if (meta.filetype === 'image') {
+      input.setAttribute('accept', 'image/*');
+    } else if (meta.filetype === 'media') {
+      input.setAttribute('accept', 'video/*,audio/*');
+    }
+    input.onchange = function () {
+      var file = this.files[0];
+      var reader = new FileReader();
+      reader.onload = function () {
+        callback(reader.result, { alt: file.name });
+      };
+      reader.readAsDataURL(file);
+    };
+    input.click();
+  }
+});
+
 </script>
 
 
@@ -240,3 +260,10 @@ new DataTable('#emailsTable', {
 // Include footer template
 require('layout/footer.php'); 
 ?>
+
+ 
+<?php if (isset($_GET['enviado']) && $_GET['enviado'] == 1) {?>
+    <script>
+        alert("El mensaje fue enviado satisfactoriamente");
+    </script>
+<?php } ?>
