@@ -17,15 +17,14 @@ require('layout/header.php');
         $stmt = $db->prepare($query);
         $stmt->execute();
         ?>
-
-<table id="pagosAllDataTable" class="table table-striped" style="width:100%">
+        
+        <table id="pagosAllDataTable" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
                     <th>Monto</th>
+                    <th>Comprobante</th>
                     <th>Método de Pago</th>
                     <th>Pago Validado</th>
-                    <th>Cuenta Remitente</th>
-                    <th>Banco Remitente</th>
                     <th>Fecha de Pago</th>
                     <th>Acciones</th>
                 </tr>
@@ -36,66 +35,29 @@ require('layout/header.php');
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                         echo "<tr>";
                         echo "<td>$" . number_format($row['monto'], 2) . "</td>";
+                        echo "<td>" . (!empty($row['comprobante_pago_ruta']) ? "<a href='" . htmlspecialchars($row['comprobante_pago_ruta']) . "' target='_blank'>Ver Comprobante</a>" : "No disponible") . "</td>";
                         echo "<td>" . htmlspecialchars($row['metodo_de_pago']) . "</td>";
-                        echo "<td>" . ($row['pago_validado'] == 1 ? 'Sí' : 'No') . "</td>";
-                        echo "<td>" . htmlspecialchars($row['cuenta_remitente']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['banco_remitente']) . "</td>";
+                        echo "<td>" . ($row['pago_validado'] ? 'Sí' : 'No') . "</td>";
                         echo "<td>" . date("Y-m-d H:i:s", strtotime($row['fecha_de_pago'])) . "</td>";
                         echo "<td>
-                            <a href='detalle_pago.php?id=" . htmlspecialchars($row['Id']) . "' class='btn btn-info'>Ver Detalle</a>
-                            <button class='btn btn-warning' onclick='editarPago(" . htmlspecialchars($row['Id']) . ")'>Editar</button>
-                            <button class='btn btn-danger' onclick='eliminarPago(" . htmlspecialchars($row['Id']) . ")'>Eliminar</button>
+                            <button class='btn btn-warning' onclick='validarPago(\"" . htmlspecialchars($row['Id']) . "\")'>Validar</button>
+                            <button class='btn btn-danger' onclick='eliminarPago(\"" . htmlspecialchars($row['Id']) . "\")'>Eliminar</button>
                         </td>";
                         echo "</tr>";
                     }
                 } else {
-                    echo "<tr><td >No hay pagos registrados</td>";
-                    echo "<td ></td>";
-                    echo "<td ></td>";
-                    echo "<td ></td>";
-                    echo "<td ></td>";
-                    echo "<td ></td>";
-                    echo "<td ></td></tr>";
+                    echo "<tr><td colspan='1'>No hay pagos registrados</td>";
+                    echo "<td colspan='1'></td>";
+                    echo "<td colspan='1'></td>";
+                    echo "<td colspan='1'></td>";
+                    echo "<td colspan='1'></td>";
+                    echo "<td colspan='1'></td></tr>";
                 }
                 ?>
             </tbody>
         </table>
-
-        <!-- Modal for Editing Payment -->
-        <div class="modal fade" id="editPagoModal" tabindex="-1" aria-labelledby="editPagoLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="editPagoLabel">Editar Pago</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="editPagoForm">
-                            <input type="hidden" id="pagoId" name="pagoId">
-                            <div class="form-group">
-                                <label for="pagoMonto">Monto</label>
-                                <input type="number" class="form-control" id="pagoMonto" name="monto" step="0.01" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="pagoMetodo">Método de Pago</label>
-                                <input type="text" class="form-control" id="pagoMetodo" name="metodo_de_pago" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="pagoValidado">Pago Validado</label>
-                                <select class="form-control" id="pagoValidado" name="pago_validado">
-                                    <option value="1">Sí</option>
-                                    <option value="0">No</option>
-                                </select>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
-
 <script>
       let theEventosTable = document.getElementById("pagosAllDataTable");
       let getStoredThemee = () => localStorage.getItem('coreui-free-bootstrap-admin-template-theme');
@@ -144,31 +106,19 @@ require('layout/header.php');
       }
     </script>
 <script>
-function editarPago(pagoId) {
-    fetch("detalle_pago.php?id=" + pagoId)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("pagoId").value = data.Id;
-            document.getElementById("pagoMonto").value = data.monto;
-            document.getElementById("pagoMetodo").value = data.metodo_de_pago;
-            document.getElementById("pagoValidado").value = data.pago_validado;
-            $("#editPagoModal").modal("show");
-        });
+// Validate payment
+function validarPago(pagoId) {
+    if (confirm("¿Estás seguro de que quieres validar este pago?")) {
+        fetch("validar_pago.php?id=" + pagoId, { method: "GET" })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                location.reload();
+            });
+    }
 }
 
-document.getElementById("editPagoForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    fetch("editar_pago.php", {
-        method: "POST",
-        body: new FormData(this),
-    })
-    .then(response => response.text())
-    .then(data => {
-        alert(data);
-        location.reload();
-    });
-});
-
+// Delete payment
 function eliminarPago(pagoId) {
     if (confirm("¿Estás seguro de que quieres eliminar este pago?")) {
         fetch("eliminar_pago.php?id=" + pagoId, { method: "GET" })
@@ -182,13 +132,13 @@ function eliminarPago(pagoId) {
 </script>
 
 <script>
-new DataTable('#pagosAllDataTable', {
-    layout: {
-        topStart: {
-            buttons: ['copy', 'excel', 'pdf', 'colvis']
+    new DataTable('#pagosAllDataTable', {
+        layout: {
+            topStart: {
+                buttons: ['copy', 'excel', 'pdf', 'colvis']
+            }
         }
-    }
-});
+    });
 </script>
 
 <?php 
