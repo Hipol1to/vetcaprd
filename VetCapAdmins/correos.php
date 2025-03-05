@@ -74,8 +74,8 @@ require('layout/header.php');
                                         <td>" . htmlspecialchars($row['nombre_lista']) . "</td>
                                         <td>" . htmlspecialchars($row['descripcion']) . "</td>
                                         <td>
-                                            <button class='btn btn-warning btn-editar' data-id='{$row['id']}' data-bs-toggle='modal' data-bs-target='#editarContenedorModal'>Editar</button>
-                                            <button class='btn btn-danger btn-eliminar' data-id='{$row['id']}'>Eliminar</button>
+                                            <button class='btn btn-warning btn-editar editar-lista' data-id='{$row['id']}' data-bs-toggle='modal' data-bs-target='#editarContenedorModal'>Editar</button>
+                                            <button class='btn btn-danger btn-eliminar eliminar-lista' data-id='{$row['id']}'>Eliminar</button>
                                         </td>
                                       </tr>";
                             }
@@ -88,7 +88,7 @@ require('layout/header.php');
             </div>
             <script>
 document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".btn-eliminar").forEach(button => {
+    document.querySelectorAll(".eliminar-lista").forEach(button => {
         button.addEventListener("click", function () {
             const listaId = this.getAttribute("data-id");
             const row = this.closest("tr");
@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
 </div>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll(".btn-editar").forEach(button => {
+    document.querySelectorAll(".editar-lista").forEach(button => {
         button.addEventListener("click", function () {
             let listaId = this.getAttribute("data-id");
 
@@ -255,7 +255,7 @@ document.getElementById("editarContenedorForm").addEventListener("submit", funct
     </div>
 
     <?php
-    $query = "SELECT Id, email FROM direcciones_email";
+    $query = "SELECT HEX(id) AS id, email FROM direcciones_email";
     $stmt = $db->prepare($query);
     $stmt->execute();
     ?>
@@ -266,14 +266,113 @@ document.getElementById("editarContenedorForm").addEventListener("submit", funct
             if ($stmt->rowCount() > 0) {
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     echo "<tr><td>" . htmlspecialchars($row['email']) . "</td>
-                        <td><button class='btn btn-warning'>Editar</button> 
-                        <button class='btn btn-danger'>Eliminar</button></td></tr>";
+                            <td>
+                                <button class='btn btn-warning btn-editar editar-email' data-id='{$row['id']}' data-bs-toggle='modal' data-bs-target='#editarSingleEmailModal'>Editar</button>
+                                <button class='btn btn-danger btn-eliminar borrar-email' data-id='{$row['id']}'>Eliminar</button>
+                            </td>
+                        </tr>";
                 }
             } else echo "<tr><td colspan='2'>No hay direcciones registradas</td></tr>";
             ?>
         </tbody>
     </table>
 </div>
+ <!-- Modal: Editar Lista -->
+ <div class="modal fade" id="editarSingleEmailModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar correo electrónico</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editarEmailForm">
+                    <input type="hidden" name="email_id" id="edit-email-id">
+                    <div class="mb-3">
+                        <label class="form-label">Correo electrónico</label>
+                        <input type="text" class="form-control" name="correo_electronico" id="edit-correo-electronico" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".editar-email").forEach(button => {
+        button.addEventListener("click", function () {
+            let emailId = this.getAttribute("data-id");
+
+            fetch("fetch_direcciones.php?email_id=" + emailId)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    
+                    document.getElementById("edit-email-id").value = data.id;
+                    document.getElementById("edit-correo-electronico").value = data.email;
+                });
+        });
+    });
+});
+
+document.getElementById("editarEmailForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent the form from submitting the traditional way
+
+    let formData = new FormData(this);
+
+    fetch('actualizar_direccion.php', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            if(confirm(data.message)) {
+                  location.reload(true);
+                } else {
+                  location.reload(true);
+                }
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error al actualizar la lista.');
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".borrar-email").forEach(button => {
+        button.addEventListener("click", function () {
+            const emailId = this.getAttribute("data-id");
+            const row = this.closest("tr");
+
+            if (confirm("¿Estás seguro de que deseas eliminar esta direccion de correo?")) {
+                fetch(`eliminar_direccion.php?emailId=${emailId}`)
+                    .then(response => response.text())
+                    .then(data => {
+                        if (data === "Correo electrónico eliminado correctamente") {
+                            row.remove();
+                            alert("Correo electrónico eliminada correctamente.");
+                        } else {
+                            alert("Error al eliminar la dirección de correo electrónico.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        alert("Error al eliminar la lista.");
+                    });
+            }
+        });
+    });
+});
+
+</script>
+
+
 
 <!-- Modal: Añadir Correo Electrónico -->
 <div class="modal fade" id="addEmailModal" tabindex="-1">
