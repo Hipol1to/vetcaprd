@@ -8,11 +8,28 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $destinatario = $_POST['emailDestinatario'] ?? 'No recibido';
+    $listaId = $_POST['listaId'] ?? null;
     $titulo = $_POST['emailTitulo'] ?? 'No recibido';
     $mensaje = $_POST['emailMensaje'] ?? 'No recibido';
+
+    if (!$listaId) {
+        die("Error: No se ha seleccionado una lista válida.");
+    }
+
+    // Fetch all email addresses from the selected list
+    $stmt = $db->prepare("
+        SELECT de.email 
+        FROM direcciones_email de
+        JOIN direcciones_email_registradas der ON de.id = der.direccion_id
+        WHERE der.lista_id = UNHEX(?)
+    ");
+    $stmt->execute([$listaId]);
+    $emails = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    if (empty($emails)) {
+        die("Error: No hay correos en la lista seleccionada.");
+    }
 
     // Initialize PHPMailer
     $mail = new PHPMailer(true);
@@ -28,7 +45,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Email Details
         $mail->setFrom('thelegendstutorials@gmail.com', 'Fundacion VetCap');
-        $mail->addAddress($destinatario);
+
+        // Add multiple recipients
+        foreach ($emails as $email) {
+            $mail->addAddress($email);
+        }
 
         // 🟢 1. Handle Base64 Images
         preg_match_all('/<img[^>]+src="data:image\/(png|jpeg|jpg|gif);base64,([^"]+)"[^>]*>/i', $mensaje, $matches, PREG_SET_ORDER);
@@ -73,30 +94,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Body    = $mensaje;
 
         // Send Email
-        $mail->send();
+        if ($mail->send()) {
+            // Save email to database
+            $emailId = uniqid(); // Generate unique email ID
+            $remitente = 'thelegendstutorials@gmail.com';
 
-        $emailId = uniqid(); // Generate unique email ID
-        $remitente = 'thelegendstutorials@gmail.com';
+            // Convert attachments to a string for database storage
+            $attachmentsPaths = []; // Add logic to populate this array if needed
+            $attachmentsString = !empty($attachmentsPaths) ? implode(',', $attachmentsPaths) : null;
 
-        // Convert attachments to a string for database storage
-        $attachmentsString = !empty($attachmentsPaths) ? implode(',', $attachmentsPaths) : null;
+            $stmt = $db->prepare("INSERT INTO emails (Id, titulo, mensaje, remitente, destinatario, adjuntos_ruta) 
+                                   VALUES (:Id, :titulo, :mensaje, :remitente, :destinatario, :adjuntos_ruta)");
+            $stmt->execute([
+                ':Id' => $emailId,
+                ':titulo' => $titulo,
+                ':mensaje' => $mensaje,
+                ':remitente' => $remitente,
+                ':destinatario' => implode(',', $emails), // Store all recipients as a comma-separated string
+                ':adjuntos_ruta' => $attachmentsString
+            ]);
 
-        $stmt = $db->prepare("INSERT INTO emails (Id, titulo, mensaje, remitente, destinatario, adjuntos_ruta) 
-                               VALUES (:Id, :titulo, :mensaje, :remitente, :destinatario, :adjuntos_ruta)");
-        $stmt->execute([
-            ':Id' => $emailId,
-            ':titulo' => $titulo,
-            ':mensaje' => $mensaje,
-            ':remitente' => $remitente,
-            ':destinatario' => $destinatario,
-            ':adjuntos_ruta' => $attachmentsString
-        ]);
-
-        //Redirect if succeed
-        header('Location: correos.php?enviado=1'); 
+            // Redirect if succeed
+            header('Location: correos.php?enviado=1');
+            exit;
+        } else {
+            echo "Error al enviar el correo.";
+        }
     } catch (Exception $e) {
         echo "Error al enviar el correo: {$mail->ErrorInfo}";
     }
 }
-
 ?>

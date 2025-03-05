@@ -75,7 +75,7 @@ require('layout/header.php');
                                         <td>" . htmlspecialchars($row['descripcion']) . "</td>
                                         <td>
                                             <button class='btn btn-warning btn-editar' data-id='{$row['id']}' data-bs-toggle='modal' data-bs-target='#editarContenedorModal'>Editar</button>
-                                            <button class='btn btn-danger'>Eliminar</button>
+                                            <button class='btn btn-danger btn-eliminar' data-id='{$row['id']}'>Eliminar</button>
                                         </td>
                                       </tr>";
                             }
@@ -86,6 +86,34 @@ require('layout/header.php');
                     </tbody>
                 </table>
             </div>
+            <script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".btn-eliminar").forEach(button => {
+        button.addEventListener("click", function () {
+            const listaId = this.getAttribute("data-id");
+            const row = this.closest("tr");
+
+            if (confirm("¿Estás seguro de que deseas eliminar esta lista?")) {
+                fetch(`eliminar_lista.php?id=${listaId}`)
+                    .then(response => response.text())
+                    .then(data => {
+                        if (data === "Evento eliminado correctamente") {
+                            row.remove();
+                            alert("Lista eliminada correctamente.");
+                        } else {
+                            alert("Error al eliminar la lista.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        alert("Error al eliminar la lista.");
+                    });
+            }
+        });
+    });
+});
+</script>
+
 
             <!-- Modal: Editar Lista -->
 <div class="modal fade" id="editarContenedorModal" tabindex="-1">
@@ -183,6 +211,34 @@ require('layout/header.php');
         document.getElementById("edit-emailsContainer").appendChild(div);
     });
 });
+
+document.getElementById("editarContenedorForm").addEventListener("submit", function (e) {
+    e.preventDefault(); // Prevent the form from submitting the traditional way
+
+    let formData = new FormData(this);
+
+    fetch('actualizar_lista.php', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.status === 'success') {
+            if(confirm(data.message)) {
+                  location.reload(true);
+                } else {
+                  location.reload(true);
+                }
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error al actualizar la lista.');
+    });
+});
+
 
 </script>
 
@@ -328,22 +384,6 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
-
-/*document.addEventListener("DOMContentLoaded", function() {
-    document.querySelector("#crearContenedorForm").addEventListener("submit", function(e) {
-        e.preventDefault();
-        const formData = new FormData(this);
-
-        fetch("registrar_lista.php", {
-            method: "POST",
-            body: formData
-        }).then(response => response.text()).then(result => {
-            alert(result);
-            location.reload();
-        }).catch(error => console.error("Error:", error));
-    });
-});*/
-
 </script>
 
 
@@ -355,15 +395,18 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="crearCorreoLabel">Nuevo mensaje</h5>
+                <h5 class="modal-title" id="crearCorreoLabel">Enviar a Lista</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
                 <form id="crearCorreoForm" action="enviar_correo.php" method="POST" enctype="multipart/form-data">
+                    <!-- Autocomplete Search for Email List -->
                     <div class="mb-3">
-                        <label for="emailDestinatario" class="form-label">Destinatario</label>
-                        <input type="email" class="form-control" id="emailDestinatario" name="emailDestinatario" required>
+                        <label for="emailLista" class="form-label">Lista de Direcciones</label>
+                        <input type="text" class="form-control" id="emailLista" name="emailLista" placeholder="Buscar lista..." required>
+                        <input type="hidden" id="listaId" name="listaId"> <!-- Hidden field for ID -->
                     </div>
+
                     <div class="mb-3">
                         <label for="emailTitulo" class="form-label">Título</label>
                         <input type="text" class="form-control" id="emailTitulo" name="emailTitulo" required>
@@ -382,6 +425,57 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
     </div>
 </div>
+
+<!-- AJAX Script for Autocomplete -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function() {
+    $("#emailLista").on("input", function() {
+        var query = $(this).val();
+        if (query.length >= 2) {
+            $.ajax({
+                url: "buscar_listas.php",
+                method: "POST",
+                data: { query: query },
+                success: function(data) {
+                    // Remove any existing dropdown
+                    $(".list-group").remove();
+
+                    // Create new dropdown
+                    var suggestions = data; // data is already parsed
+                    var dropdown = "<ul class='list-group'>";
+                    suggestions.forEach(function(item) {
+                        dropdown += `<li class='list-group-item list-item' data-id='${item.id}'>${item.nombre_lista}</li>`;
+                    });
+                    dropdown += "</ul>";
+                    $("#emailLista").after(dropdown);
+
+                    // Handle click on dropdown items
+                    $(".list-item").click(function() {
+                        $("#emailLista").val($(this).text());
+                        $("#listaId").val($(this).attr("data-id"));
+                        $(".list-group").remove();
+                    });
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error("AJAX Error:", textStatus, errorThrown);
+                }
+            });
+        } else {
+            // If the query is too short, remove the dropdown
+            $(".list-group").remove();
+        }
+    });
+
+    // Close dropdown when clicking outside
+    $(document).click(function(e) {
+        if (!$(e.target).closest(".list-group, #emailLista").length) {
+            $(".list-group").remove();
+        }
+    });
+});
+</script>
+
 
 
 
