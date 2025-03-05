@@ -12,54 +12,341 @@ require('layout/header.php');
                 <h1>Correos</h1>
             </div>
             <div class="col-sm-6 text-end">
-                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearCorreoModal">Crear Correo</button>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearCorreoModal">Nuevo mensaje</button>
             </div>
         </div>
 
-        <?php
-        // Query to fetch all emails
-        $query = "SELECT Id, titulo, mensaje, remitente, destinatario, adjuntos_ruta FROM emails";
-        $stmt = $db->prepare($query);
-        $stmt->execute();
-        ?>
+        <!-- Tab Navigation -->
+        <ul class="nav nav-tabs" id="emailTabs" role="tablist">
+            <li class="nav-item"><button class="nav-link active" id="correos-tab" data-bs-toggle="tab" data-bs-target="#correos">Correos</button></li>
+            <li class="nav-item"><button class="nav-link" id="contenedores-tab" data-bs-toggle="tab" data-bs-target="#contenedores">Listas de direcciones</button></li>
+            <li class="nav-item"><button class="nav-link" id="direcciones-tab" data-bs-toggle="tab" data-bs-target="#direcciones">Direcciones registradas</button></li>
+        </ul>
 
-        <table id="emailsTable" class="table table-striped" style="width:100%">
-            <thead>
-                <tr>
-                    <th>Título</th>
-                    <th>Mensaje</th>
-                    <th>Remitente</th>
-                    <th>Destinatario</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
+        <!-- Tab Content -->
+        <div class="tab-content mt-3" id="emailTabsContent">
+            <!-- Correos Tab -->
+            <div class="tab-pane fade show active" id="correos">
                 <?php
-                if ($stmt->rowCount() > 0) {
-                    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        echo "<tr>";
-                        echo "<td>" . htmlspecialchars($row['titulo']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['mensaje']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['remitente']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['destinatario']) . "</td>";
-                        echo "<td>
-                            <button class='btn btn-warning' onclick='editarCorreo(\"" . htmlspecialchars($row['Id']) . "\")'>Editar</button>
-                            <button class='btn btn-danger' onclick='eliminarCorreo(\"" . htmlspecialchars($row['Id']) . "\")'>Eliminar</button>
-                        </td>";
-                        echo "</tr>";
-                    }
-                } else {
-                    echo "<tr><td>No hay correos registrados</td>";
-                    echo "<td></td>";
-                    echo "<td></td>";
-                    echo "<td></td>";
-                    echo "<td></td></tr>";
-                }
+                $query = "SELECT Id, titulo, mensaje, remitente, destinatario FROM emails";
+                $stmt = $db->prepare($query);
+                $stmt->execute();
                 ?>
-            </tbody>
-        </table>
+                <table class="table table-striped">
+                    <thead><tr><th>Título</th><th>Mensaje</th><th>Remitente</th><th>Destinatario</th><th>Acciones</th></tr></thead>
+                    <tbody>
+                        <?php
+                        if ($stmt->rowCount() > 0) {
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                echo "<tr><td>" . htmlspecialchars($row['titulo']) . "</td>
+                                    <td>" . htmlspecialchars($row['mensaje']) . "</td>
+                                    <td>" . htmlspecialchars($row['remitente']) . "</td>
+                                    <td>" . htmlspecialchars($row['destinatario']) . "</td>
+                                    <td><button class='btn btn-warning'>Editar</button> <button class='btn btn-danger'>Eliminar</button></td></tr>";
+                            }
+                        } else echo "<tr><td colspan='5'>No hay correos registrados</td></tr>";
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Contenedores Tab -->
+            <div class="tab-pane fade" id="contenedores">
+                <div class="text-end mb-2">
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#crearContenedorModal">Agregar nueva lista</button>
+                </div>
+
+                <?php
+                $query = "SELECT HEX(id) AS id, nombre_lista, descripcion FROM lista_direcciones_email";
+                $stmt = $db->prepare($query);
+                $stmt->execute();
+                ?>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr><th>Nombre de Lista</th><th>Descripción</th><th>Acciones</th></tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                        if ($stmt->rowCount() > 0) {
+                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                                echo "<tr>
+                                        <td>" . htmlspecialchars($row['nombre_lista']) . "</td>
+                                        <td>" . htmlspecialchars($row['descripcion']) . "</td>
+                                        <td>
+                                            <button class='btn btn-warning btn-editar' data-id='{$row['id']}' data-bs-toggle='modal' data-bs-target='#editarContenedorModal'>Editar</button>
+                                            <button class='btn btn-danger'>Eliminar</button>
+                                        </td>
+                                      </tr>";
+                            }
+                        } else {
+                            echo "<tr><td colspan='3'>No hay listas registradas</td></tr>";
+                        }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Modal: Editar Lista -->
+<div class="modal fade" id="editarContenedorModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar lista</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editarContenedorForm">
+                    <input type="hidden" name="lista_id" id="edit-lista-id">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre de Lista</label>
+                        <input type="text" class="form-control" name="nombre_lista" id="edit-nombre-lista" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descripción</label>
+                        <textarea class="form-control" name="descripcion" id="edit-descripcion"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Direcciones de Email</label>
+                        <div id="edit-emailsContainer"></div>
+                        <button type="button" class="btn btn-success mt-2" id="add-edit-email">Añadir Correo</button>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Actualizar</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".btn-editar").forEach(button => {
+        button.addEventListener("click", function () {
+            let listaId = this.getAttribute("data-id");
+
+            fetch("fetch_lista.php?lista_id=" + listaId)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("edit-lista-id").value = data.lista_id;
+                    document.getElementById("edit-nombre-lista").value = data.nombre_lista;
+                    document.getElementById("edit-descripcion").value = data.descripcion;
+
+                    let emailsContainer = document.getElementById("edit-emailsContainer");
+                    emailsContainer.innerHTML = ""; // Clear previous emails
+
+                    data.emails.forEach(email => {
+                        let div = document.createElement("div");
+                        div.classList.add("input-group", "mb-2");
+
+                        let input = document.createElement("input");
+                        input.type = "email";
+                        input.classList.add("form-control");
+                        input.name = "emails[]";
+                        input.value = email;
+                        input.required = true;
+
+                        let button = document.createElement("button");
+                        button.type = "button";
+                        button.classList.add("btn", "btn-danger");
+                        button.innerText = "X";
+                        button.addEventListener("click", function () {
+                            div.remove();
+                        });
+
+                        div.appendChild(input);
+                        div.appendChild(button);
+                        emailsContainer.appendChild(div);
+                    });
+                });
+        });
+    });
+
+    document.getElementById("add-edit-email").addEventListener("click", function () {
+        let div = document.createElement("div");
+        div.classList.add("input-group", "mb-2");
+
+        let input = document.createElement("input");
+        input.type = "email";
+        input.classList.add("form-control");
+        input.name = "emails[]";
+        input.required = true;
+
+        let button = document.createElement("button");
+        button.type = "button";
+        button.classList.add("btn", "btn-danger");
+        button.innerText = "X";
+        button.addEventListener("click", function () {
+            div.remove();
+        });
+
+        div.appendChild(input);
+        div.appendChild(button);
+        document.getElementById("edit-emailsContainer").appendChild(div);
+    });
+});
+
+</script>
+
+
+
+
+
+
+
+<!-- Direcciones Registradas Tab -->
+<div class="tab-pane fade" id="direcciones">
+    <div class="text-end mb-2">
+        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addEmailModal">Añadir Correo Electrónico</button>
+    </div>
+
+    <?php
+    $query = "SELECT Id, email FROM direcciones_email";
+    $stmt = $db->prepare($query);
+    $stmt->execute();
+    ?>
+    <table class="table table-striped">
+        <thead><tr><th>Email</th><th>Acciones</th></tr></thead>
+        <tbody>
+            <?php
+            if ($stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    echo "<tr><td>" . htmlspecialchars($row['email']) . "</td>
+                        <td><button class='btn btn-warning'>Editar</button> 
+                        <button class='btn btn-danger'>Eliminar</button></td></tr>";
+                }
+            } else echo "<tr><td colspan='2'>No hay direcciones registradas</td></tr>";
+            ?>
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal: Añadir Correo Electrónico -->
+<div class="modal fade" id="addEmailModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Añadir Correo Electrónico</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addEmailForm">
+                    <div class="mb-3">
+                        <label class="form-label">Correo Electrónico</label>
+                        <input type="email" class="form-control" name="email" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Handle form submission (AJAX to save email)
+    document.querySelector("#addEmailForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        fetch("registrar_direccion.php", {
+            method: "POST",
+            body: formData
+        }).then(response => response.text()).then(result => {
+            alert(result);
+            location.reload();
+        });
+    });
+});
+</script>
+
+<!-- Modal: Crear Contenedor -->
+<div class="modal fade" id="crearContenedorModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Crear lista</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="crearContenedorForm">
+                    <div class="mb-3">
+                        <label class="form-label">Nombre de Lista</label>
+                        <input type="text" class="form-control" name="nombre_lista" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Descripción</label>
+                        <textarea class="form-control" name="descripcion"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Direcciones de Email</label>
+                        <div id="emailsContainer">
+                            <div class="input-group mb-2">
+                                <input type="email" class="form-control" name="emails[]" required>
+                                <button type="button" class="btn btn-success add-email">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Add new email input field
+    document.querySelector("#emailsContainer").addEventListener("click", function(e) {
+        if (e.target.classList.contains("add-email")) {
+            const newInputGroup = document.createElement("div");
+            newInputGroup.classList.add("input-group", "mb-2");
+            newInputGroup.innerHTML = `
+                <input type="email" class="form-control" name="emails[]" required>
+                <button type="button" class="btn btn-danger remove-email">-</button>
+            `;
+            e.target.closest("#emailsContainer").appendChild(newInputGroup);
+        }
+    });
+
+    // Remove an email input field
+    document.querySelector("#emailsContainer").addEventListener("click", function(e) {
+        if (e.target.classList.contains("remove-email")) {
+            e.target.closest(".input-group").remove();
+        }
+    });
+
+    // Handle form submission (AJAX for better UX)
+    document.querySelector("#crearContenedorForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        fetch("registrar_lista.php", {
+            method: "POST",
+            body: formData
+        }).then(response => response.text()).then(result => {
+            alert(result);
+            location.reload();
+        });
+    });
+});
+
+/*document.addEventListener("DOMContentLoaded", function() {
+    document.querySelector("#crearContenedorForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+
+        fetch("registrar_lista.php", {
+            method: "POST",
+            body: formData
+        }).then(response => response.text()).then(result => {
+            alert(result);
+            location.reload();
+        }).catch(error => console.error("Error:", error));
+    });
+});*/
+
+</script>
+
+
 
 
 
@@ -68,7 +355,7 @@ require('layout/header.php');
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="crearCorreoLabel">Crear Correo</h5>
+                <h5 class="modal-title" id="crearCorreoLabel">Nuevo mensaje</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
