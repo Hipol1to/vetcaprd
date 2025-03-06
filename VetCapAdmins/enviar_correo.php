@@ -11,7 +11,11 @@ use PHPMailer\PHPMailer\SMTP;
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $listaId = $_POST['listaId'] ?? null;
     $titulo = $_POST['emailTitulo'] ?? 'No recibido';
-    $mensaje = $_POST['emailMensaje'] ?? 'No recibido';
+    $mensaje = iconv('UTF-8', 'ISO-8859-1//TRANSLIT', $_POST['emailMensaje']); // Sanitize the input
+    $attachmentsString = $_POST['emailAdjunto'] ?? 'No recibido';
+    error_log("Received lista_id: " . $listaId);
+    error_log("Received titulo: " . $titulo);
+    error_log("Received mensaje: " . $mensaje);
 
     if (!$listaId) {
         die("Error: No se ha seleccionado una lista válida.");
@@ -19,13 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Fetch all email addresses from the selected list
     $stmt = $db->prepare("
-        SELECT de.email 
-        FROM direcciones_email de
-        JOIN direcciones_email_registradas der ON de.id = der.direccion_id
-        WHERE der.lista_id = UNHEX(?)
+        SELECT direccion_email 
+        FROM direcciones_email_registradas 
+        WHERE lista_id = UNHEX(?)
     ");
     $stmt->execute([$listaId]);
     $emails = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    error_log("Query result: " . json_encode($emails));
 
     if (empty($emails)) {
         die("Error: No hay correos en la lista seleccionada.");
@@ -54,17 +58,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // 🟢 1. Handle Base64 Images
         preg_match_all('/<img[^>]+src="data:image\/(png|jpeg|jpg|gif);base64,([^"]+)"[^>]*>/i', $mensaje, $matches, PREG_SET_ORDER);
 
+        $imagePaths = []; // Store paths of saved images
+
         foreach ($matches as $index => $match) {
             $imageType = $match[1];  // Extract image type (png, jpeg, etc.)
             $imageData = base64_decode($match[2]);  // Decode Base64
             $imageCid  = "image" . $index;  // Unique CID for each image
 
-            // Save image as a temporary file
-            $tempImagePath = sys_get_temp_dir() . "/embedded_image_$index.$imageType";
-            file_put_contents($tempImagePath, $imageData);
+            // Save image to a directory
+            $imageFileName = "image_$index.$imageType";
+            $imagePath = "path/to/images/$imageFileName"; // Adjust the path as needed
+            file_put_contents($imagePath, $imageData);
 
-            // Embed the image in email
-            $mail->addEmbeddedImage($tempImagePath, $imageCid, "image$index.$imageType");
+            // Store the image path for later use
+            $imagePaths[$imageCid] = $imagePath;
 
             // Replace Base64 `src` with `cid:imageX`
             $mensaje = str_replace($match[0], '<img src="cid:' . $imageCid . '">', $mensaje);
@@ -93,25 +100,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $mail->Subject = $titulo;
         $mail->Body    = $mensaje;
 
-        // Send Email
+        // 🟢 Send the Email
         if ($mail->send()) {
-            // Save email to database
+            $imagePaths[$imageCid] = $filePath;
+
+            
+            // Save the message and image paths to the database
             $emailId = uniqid(); // Generate unique email ID
             $remitente = 'thelegendstutorials@gmail.com';
 
-            // Convert attachments to a string for database storage
-            $attachmentsPaths = []; // Add logic to populate this array if needed
-            $attachmentsString = !empty($attachmentsPaths) ? implode(',', $attachmentsPaths) : null;
+            // Convert image paths to a string for database storage
+            $imagePathsString = !empty($imagePaths) ? json_encode($imagePaths) : null;
 
-            $stmt = $db->prepare("INSERT INTO emails (Id, titulo, mensaje, remitente, destinatario, adjuntos_ruta) 
-                                   VALUES (:Id, :titulo, :mensaje, :remitente, :destinatario, :adjuntos_ruta)");
+            $stmt = $db->prepare("INSERT INTO emails (Id, titulo, mensaje, remitente, destinatario, adjuntos_ruta, image_paths) 
+                                   VALUES (:Id, :titulo, :mensaje, :remitente, :destinatario, :adjuntos_ruta, :image_paths)");
             $stmt->execute([
                 ':Id' => $emailId,
                 ':titulo' => $titulo,
                 ':mensaje' => $mensaje,
                 ':remitente' => $remitente,
                 ':destinatario' => implode(',', $emails), // Store all recipients as a comma-separated string
-                ':adjuntos_ruta' => $attachmentsString
+                ':adjuntos_ruta' => $attachmentsString,
+                ':image_paths' => $imagePathsString
             ]);
 
             // Redirect if succeed

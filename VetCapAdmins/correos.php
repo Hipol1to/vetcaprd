@@ -27,28 +27,112 @@ require('layout/header.php');
         <div class="tab-content mt-3" id="emailTabsContent">
             <!-- Correos Tab -->
             <div class="tab-pane fade show active" id="correos">
-                <?php
-                $query = "SELECT Id, titulo, mensaje, remitente, destinatario FROM emails";
-                $stmt = $db->prepare($query);
-                $stmt->execute();
-                ?>
-                <table class="table table-striped">
-                    <thead><tr><th>Título</th><th>Mensaje</th><th>Remitente</th><th>Destinatario</th><th>Acciones</th></tr></thead>
-                    <tbody>
-                        <?php
-                        if ($stmt->rowCount() > 0) {
-                            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                                echo "<tr><td>" . htmlspecialchars($row['titulo']) . "</td>
-                                    <td>" . htmlspecialchars($row['mensaje']) . "</td>
-                                    <td>" . htmlspecialchars($row['remitente']) . "</td>
-                                    <td>" . htmlspecialchars($row['destinatario']) . "</td>
-                                    <td><button class='btn btn-warning'>Editar</button> <button class='btn btn-danger'>Eliminar</button></td></tr>";
-                            }
-                        } else echo "<tr><td colspan='5'>No hay correos registrados</td></tr>";
-                        ?>
-                    </tbody>
-                </table>
+    <?php
+    $query = "SELECT Id, titulo, mensaje, remitente, destinatario, image_paths FROM emails";
+    $stmt = $db->prepare($query);
+    $stmt->execute();
+    ?>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Mensaje</th>
+                <th>Remitente</th>
+                <th>Destinatario</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php
+            if ($stmt->rowCount() > 0) {
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $mensaje = $row['mensaje'];
+                    $imagePaths = json_decode($row['image_paths'], true);
+                
+                    if ($imagePaths) {
+                        foreach ($imagePaths as $cid => $path) {
+                            $mensaje = str_replace('src="cid:' . $cid . '"', 'src="' . $path . '"', $mensaje);
+                        }
+                    }
+                
+                    echo "<tr>
+                            <td>" . htmlspecialchars($row['titulo']) . "</td>
+                            <td><button class='btn btn-info btn-sm' data-bs-toggle='modal' data-bs-target='#mensajeModal' data-mensaje='" . htmlspecialchars($mensaje) . "'>Ver Mensaje</button></td>
+                            <td>" . htmlspecialchars($row['remitente']) . "</td>
+                            <td>" . htmlspecialchars($row['destinatario']) . "</td>
+                            <td>
+                                <button class='btn btn-warning'>Editar</button>
+                                <button class='btn btn-danger eliminar-mensaje' data-id='{$row['Id']}'>Eliminar</button>
+                            </td>
+                          </tr>";
+                }
+            } else {
+                echo "<tr><td colspan='5'>No hay correos registrados</td></tr>";
+            }
+            ?>
+        </tbody>
+    </table>
+</div>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".eliminar-mensaje").forEach(button => {
+        button.addEventListener("click", function () {
+            const mensajeId = this.getAttribute("data-id");
+            const row = this.closest("tr");
+
+            if (confirm("¿Estás seguro de que deseas eliminar este mensaje?")) {
+                fetch(`eliminar_mensaje.php?id=${mensajeId}`)
+                    .then(response => response.text())
+                    .then(data => {
+                        if (data === "Mensaje eliminado correctamente") {
+                            row.remove();
+                            alert("Mensaje eliminado correctamente.");
+                        } else {
+                            alert("Error al eliminar el mensaje.");
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Error:", error);
+                        alert("Error al eliminar el mensaje.");
+                    });
+            }
+        });
+    });
+});
+</script>
+
+<!-- Modal for Displaying Message -->
+<div class="modal fade" id="mensajeModal" tabindex="-1" aria-labelledby="mensajeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mensajeModalLabel">Mensaje</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
+            <div class="modal-body" id="modalMensajeContent">
+                <!-- The HTML message will be rendered here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    // Add event listener to all "Ver Mensaje" buttons
+    document.querySelectorAll("[data-bs-target='#mensajeModal']").forEach(button => {
+        button.addEventListener("click", function () {
+            // Get the HTML message from the data-mensaje attribute
+            const mensaje = this.getAttribute("data-mensaje");
+
+            // Set the modal content
+            document.getElementById("modalMensajeContent").innerHTML = mensaje;
+        });
+    });
+});
+</script>
 
             <!-- Contenedores Tab -->
             <div class="tab-pane fade" id="contenedores">
