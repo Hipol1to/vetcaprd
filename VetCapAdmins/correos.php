@@ -61,7 +61,6 @@ require('layout/header.php');
                             <td>" . htmlspecialchars($row['remitente']) . "</td>
                             <td>" . htmlspecialchars($row['destinatario']) . "</td>
                             <td>
-                                <button class='btn btn-warning'>Editar</button>
                                 <button class='btn btn-danger eliminar-mensaje' data-id='{$row['Id']}'>Eliminar</button>
                             </td>
                           </tr>";
@@ -588,6 +587,8 @@ document.addEventListener("DOMContentLoaded", function() {
                         <label for="emailLista" class="form-label">Lista de Direcciones</label>
                         <input type="text" class="form-control" id="emailLista" name="emailLista" placeholder="Buscar lista..." required>
                         <input type="hidden" id="listaId" name="listaId"> <!-- Hidden field for ID -->
+                        <!-- Dropdown for all lists -->
+                        <div id="listDropdown" class="list-group" style="max-height: 200px; overflow-y: auto; display: none;"></div>
                     </div>
 
                     <div class="mb-3">
@@ -609,52 +610,92 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
 </div>
 
-<!-- AJAX Script for Autocomplete -->
+<!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- JavaScript -->
 <script>
 $(document).ready(function() {
+    console.log("Document ready!");
+
+    // Fetch all lists on page load
+    fetchAllLists();
+
+    // Function to fetch all lists
+    function fetchAllLists() {
+        console.log("Fetching all lists...");
+        $.ajax({
+            url: "buscar_listas.php",
+            method: "POST",
+            data: { query: "" }, // Empty query to fetch all lists
+            dataType: "json", // Ensure the response is parsed as JSON
+            success: function(data) {
+                console.log("Lists fetched:", data);
+                populateDropdown(data);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error("AJAX Error:", textStatus, errorThrown);
+            }
+        });
+    }
+
+    // Function to populate the dropdown with lists
+    function populateDropdown(suggestions) {
+        console.log("Populating dropdown with:", suggestions);
+        var dropdown = "<ul class='list-group'>";
+        suggestions.forEach(function(item) {
+            dropdown += `<li class='list-group-item list-item' data-id='${item.id}'>${item.nombre_lista}</li>`;
+        });
+        dropdown += "</ul>";
+        $("#listDropdown").html(dropdown).show();
+    }
+
+    // Filter lists as the user types
     $("#emailLista").on("input", function() {
-        var query = $(this).val();
-        if (query.length >= 2) {
-            $.ajax({
-                url: "buscar_listas.php",
-                method: "POST",
-                data: { query: query },
-                success: function(data) {
-                    // Remove any existing dropdown
-                    $(".list-group").remove();
+        var query = $(this).val().toLowerCase();
+        console.log("User typed:", query);
 
-                    // Create new dropdown
-                    var suggestions = data; // data is already parsed
-                    var dropdown = "<ul class='list-group'>";
-                    suggestions.forEach(function(item) {
-                        dropdown += `<li class='list-group-item list-item' data-id='${item.id}'>${item.nombre_lista}</li>`;
+        if (query === "") {
+            // If the input is empty, fetch all lists
+            fetchAllLists();
+        } else {
+            // Filter the existing lists
+            var filteredLists = [];
+            $(".list-item").each(function() {
+                var listName = $(this).text().toLowerCase();
+                if (listName.includes(query)) {
+                    filteredLists.push({
+                        id: $(this).attr("data-id"),
+                        nombre_lista: $(this).text()
                     });
-                    dropdown += "</ul>";
-                    $("#emailLista").after(dropdown);
-
-                    // Handle click on dropdown items
-                    $(".list-item").click(function() {
-                        $("#emailLista").val($(this).text());
-                        $("#listaId").val($(this).attr("data-id"));
-                        $(".list-group").remove();
-                    });
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.error("AJAX Error:", textStatus, errorThrown);
                 }
             });
-        } else {
-            // If the query is too short, remove the dropdown
-            $(".list-group").remove();
+
+            console.log("Filtered lists:", filteredLists);
+            populateDropdown(filteredLists);
         }
+    });
+
+    // Handle click on dropdown items
+    $(document).on("click", ".list-item", function() {
+        console.log("List item clicked:", $(this).text());
+        $("#emailLista").val($(this).text());
+        $("#listaId").val($(this).attr("data-id"));
+        $("#listDropdown").hide();
     });
 
     // Close dropdown when clicking outside
     $(document).click(function(e) {
-        if (!$(e.target).closest(".list-group, #emailLista").length) {
-            $(".list-group").remove();
+        if (!$(e.target).closest("#listDropdown, #emailLista").length) {
+            console.log("Clicked outside, hiding dropdown.");
+            $("#listDropdown").hide();
         }
+    });
+
+    // Show dropdown when input is focused
+    $("#emailLista").on("focus", function() {
+        console.log("Input focused, showing dropdown.");
+        $("#listDropdown").show();
     });
 });
 </script>

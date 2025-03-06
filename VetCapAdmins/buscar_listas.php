@@ -3,12 +3,8 @@ require_once('../includes/config.php');
 
 header('Content-Type: application/json');
 
-if (!isset($_POST['query']) || empty(trim($_POST['query']))) {
-    echo json_encode([]);
-    exit;
-}
-
-$query = trim($_POST['query']);
+// Check if the query parameter is set
+$query = isset($_POST['query']) ? trim($_POST['query']) : '';
 error_log("Received query: " . $query);
 
 try {
@@ -17,9 +13,16 @@ try {
         throw new Exception("Database connection failed.");
     }
 
-    // Prepare statement with case-insensitive search
-    $stmt = $db->prepare("SELECT HEX(id) AS id, nombre_lista FROM lista_direcciones_email WHERE nombre_lista LIKE ?");
-    $stmt->execute(["%$query%"]);
+    // Prepare the SQL query
+    if (empty($query)) {
+        // Fetch all lists if the query is empty
+        $stmt = $db->prepare("SELECT HEX(id) AS id, nombre_lista FROM lista_direcciones_email");
+        $stmt->execute();
+    } else {
+        // Fetch filtered lists if the query is not empty
+        $stmt = $db->prepare("SELECT HEX(id) AS id, nombre_lista FROM lista_direcciones_email WHERE nombre_lista LIKE ?");
+        $stmt->execute(["%$query%"]);
+    }
 
     // Fetch results
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
