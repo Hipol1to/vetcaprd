@@ -577,20 +577,37 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="crearCorreoLabel">Enviar a Lista</h5>
+                <h5 class="modal-title" id="crearCorreoLabel">Enviar Correo</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
                 <form id="crearCorreoForm" action="enviar_correo.php" method="POST" enctype="multipart/form-data">
-                    <!-- Autocomplete Search for Email List -->
+                    <!-- Tipo Destinatario Dropdown -->
                     <div class="mb-3">
+                        <label for="tipoDestinatario" class="form-label">Tipo Destinatario</label>
+                        <select class="form-select" id="tipoDestinatario" name="tipoDestinatario">
+                            <option value="" selected disabled>Seleccione una opción</option>
+                            <option value="direccion">Dirección de correo electrónico</option>
+                            <option value="lista">Lista de direcciones de correo electrónico</option>
+                        </select>
+                    </div>
+
+                    <!-- Destinatario Text Field (Hidden by Default) -->
+                    <div class="mb-3" id="destinatarioField" style="display: none;">
+                        <label for="destinatario" class="form-label">Destinatario</label>
+                        <input type="text" class="form-control" id="destinatario" name="destinatario" placeholder="Ingrese el correo electrónico">
+                        <div id="emailDropdown" class="list-group" style="max-height: 200px; overflow-y: auto; display: none;"></div>
+                    </div>
+
+                    <!-- Lista de Direcciones Field (Hidden by Default) -->
+                    <div class="mb-3" id="listaDireccionesField" style="display: none;">
                         <label for="emailLista" class="form-label">Lista de Direcciones</label>
-                        <input type="text" class="form-control" id="emailLista" name="emailLista" placeholder="Buscar lista..." required>
-                        <input type="hidden" id="listaId" name="listaId"> <!-- Hidden field for ID -->
-                        <!-- Dropdown for all lists -->
+                        <input type="text" class="form-control" id="emailLista" name="emailLista" placeholder="Buscar lista...">
+                        <input type="hidden" id="listaId" name="listaId">
                         <div id="listDropdown" class="list-group" style="max-height: 200px; overflow-y: auto; display: none;"></div>
                     </div>
 
+                    <!-- Rest of the Form Fields -->
                     <div class="mb-3">
                         <label for="emailTitulo" class="form-label">Título</label>
                         <input type="text" class="form-control" id="emailTitulo" name="emailTitulo" required>
@@ -609,6 +626,81 @@ document.addEventListener("DOMContentLoaded", function() {
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+    console.log("Document ready!");
+
+    // Show/hide fields based on Tipo Destinatario selection
+    $("#tipoDestinatario").change(function() {
+        var selectedOption = $(this).val();
+        if (selectedOption === "direccion") {
+            $("#destinatarioField").show();
+            $("#listaDireccionesField").hide();
+        } else if (selectedOption === "lista") {
+            $("#destinatarioField").hide();
+            $("#listaDireccionesField").show();
+        } else {
+            $("#destinatarioField").hide();
+            $("#listaDireccionesField").hide();
+        }
+    });
+
+    // Autocomplete for Destinatario (Email Addresses)
+    $("#destinatario").on("input", function() {
+        var query = $(this).val();
+        if (query.length >= 2) {
+            $.ajax({
+                url: "buscar_emails.php", // New PHP script for email addresses
+                method: "POST",
+                data: { query: query },
+                dataType: "json",
+                success: function(data) {
+                    console.log("Emails fetched:", data);
+                    populateEmailDropdown(data);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.error("AJAX Error:", textStatus, errorThrown);
+                }
+            });
+        } else {
+            $("#emailDropdown").hide();
+        }
+    });
+
+    // Function to populate the email dropdown
+    function populateEmailDropdown(suggestions) {
+        var dropdown = "<ul class='list-group'>";
+        suggestions.forEach(function(item) {
+            dropdown += `<li class='list-group-item email-item' data-email='${item.email}'>${item.email}</li>`;
+        });
+        dropdown += "</ul>";
+        $("#emailDropdown").html(dropdown).show();
+
+        // Handle click on email dropdown items
+        $(document).on("click", ".email-item", function() {
+            $("#destinatario").val($(this).text());
+            $("#emailDropdown").hide();
+        });
+    }
+
+    // Close dropdown when clicking outside
+    $(document).click(function(e) {
+        if (!$(e.target).closest("#emailDropdown, #destinatario").length) {
+            $("#emailDropdown").hide();
+        }
+    });
+
+    // Show dropdown when Destinatario input is focused
+    $("#destinatario").on("focus", function() {
+        if ($(this).val().length >= 2) {
+            $("#emailDropdown").show();
+        }
+    });
+
+    // Existing code for listaDireccionesField (autocomplete for lists)
+    // ...
+});
+</script>
 
 <!-- jQuery -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

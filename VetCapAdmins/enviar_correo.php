@@ -9,30 +9,50 @@ use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $listaId = $_POST['listaId'] ?? null;
+    $tipoDestinatario = $_POST['tipoDestinatario'] ?? null; // Get the selected recipient type
+    $listaId = $_POST['listaId'] ?? null; // Only used for list recipients
+    $destinatario = $_POST['destinatario'] ?? null; // Only used for single recipient
     $titulo = $_POST['emailTitulo'] ?? 'No recibido';
     $mensaje = iconv('UTF-8', 'ISO-8859-1//TRANSLIT', $_POST['emailMensaje']); // Sanitize the input
     $attachmentsString = $_POST['emailAdjunto'] ?? 'No recibido';
-    error_log("Received lista_id: " . $listaId);
+    error_log("Received tipoDestinatario: " . $tipoDestinatario);
+    error_log("Received listaId: " . $listaId);
+    error_log("Received destinatario: " . $destinatario);
     error_log("Received titulo: " . $titulo);
     error_log("Received mensaje: " . $mensaje);
 
-    if (!$listaId) {
-        die("Error: No se ha seleccionado una lista válida.");
+    // Validate recipient type
+    if (!$tipoDestinatario) {
+        die("Error: No se ha seleccionado un tipo de destinatario válido.");
     }
 
-    // Fetch all email addresses from the selected list
-    $stmt = $db->prepare("
-        SELECT direccion_email 
-        FROM direcciones_email_registradas 
-        WHERE lista_id = UNHEX(?)
-    ");
-    $stmt->execute([$listaId]);
-    $emails = $stmt->fetchAll(PDO::FETCH_COLUMN);
-    error_log("Query result: " . json_encode($emails));
+    // Fetch recipient(s) based on the selected type
+    $emails = [];
+    if ($tipoDestinatario === "lista") {
+        // Fetch emails from the selected list
+        if (!$listaId) {
+            die("Error: No se ha seleccionado una lista válida.");
+        }
+
+        $stmt = $db->prepare("
+            SELECT direccion_email 
+            FROM direcciones_email_registradas 
+            WHERE lista_id = UNHEX(?)
+        ");
+        $stmt->execute([$listaId]);
+        $emails = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    } elseif ($tipoDestinatario === "direccion") {
+        // Use the single recipient
+        if (!$destinatario) {
+            die("Error: No se ha proporcionado un destinatario válido.");
+        }
+        $emails = [$destinatario]; // Single recipient as an array
+    }
+
+    error_log("Recipients: " . json_encode($emails));
 
     if (empty($emails)) {
-        die("Error: No hay correos en la lista seleccionada.");
+        die("Error: No hay correos válidos para enviar.");
     }
 
     // Initialize PHPMailer
@@ -50,7 +70,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Email Details
         $mail->setFrom('thelegendstutorials@gmail.com', 'Fundacion VetCap');
 
-        // Add multiple recipients
+        // Add recipients
         foreach ($emails as $email) {
             $mail->addAddress($email);
         }
@@ -103,8 +123,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // 🟢 Send the Email
         if ($mail->send()) {
             $imagePaths[$imageCid] = $filePath;
-
-            
             // Save the message and image paths to the database
             $emailId = uniqid(); // Generate unique email ID
             $remitente = 'thelegendstutorials@gmail.com';
