@@ -43,6 +43,7 @@
     <!-- We use those styles to show code examples, you should remove them in your application.-->
     <link href="css/examples.css" rel="stylesheet">
     <script src="js/config.js"></script>
+    <script src="js/tableTheme.js"></script>
     <script src="js/color-modes.js"></script>
     <link href="vendors/@coreui/chartjs/css/coreui-chartjs.css" rel="stylesheet">
   </head>

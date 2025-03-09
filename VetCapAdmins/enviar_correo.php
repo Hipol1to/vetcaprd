@@ -13,7 +13,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $listaId = $_POST['listaId'] ?? null; // Only used for list recipients
     $destinatario = $_POST['destinatario'] ?? null; // Only used for single recipient
     $titulo = $_POST['emailTitulo'] ?? 'No recibido';
-    $mensaje = iconv('UTF-8', 'ISO-8859-1//TRANSLIT', $_POST['emailMensaje']); // Sanitize the input
+    if (isset($_POST['emailMensaje'])) {
+        error_log($_POST['emailMensaje']);
+    }
+    try {
+        $mensaje = iconv('UTF-8', 'ISO-8859-1//TRANSLIT', $_POST['emailMensaje']); // Sanitize the input
+    } catch (\Throwable $th) {
+        $_GET['invalido'] = 1;
+        header('Location: correos.php');
+        exit;
+    }
     $attachmentsString = $_POST['emailAdjunto'] ?? 'No recibido';
     error_log("Received tipoDestinatario: " . $tipoDestinatario);
     error_log("Received listaId: " . $listaId);
@@ -143,7 +152,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ]);
 
             // Redirect if succeed
-            header('Location: correos.php?enviado=1');
+            $_GET['enviado'] = 1;
+            header('Location: correos.php');
             exit;
         } else {
             echo "Error al enviar el correo.";

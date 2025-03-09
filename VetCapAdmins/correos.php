@@ -32,7 +32,7 @@ require('layout/header.php');
     $stmt = $db->prepare($query);
     $stmt->execute();
     ?>
-    <table class="table table-striped">
+    <table id="emailsTable" class="table table-striped">
         <thead>
             <tr>
                 <th>Título</th>
@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 $stmt->execute();
                 ?>
 
-                <table class="table table-striped">
+                <table id="adressListTable" class="table table-striped">
                     <thead>
                         <tr><th>Nombre de Lista</th><th>Descripción</th><th>Acciones</th></tr>
                     </thead>
@@ -342,7 +342,7 @@ document.getElementById("editarContenedorForm").addEventListener("submit", funct
     $stmt = $db->prepare($query);
     $stmt->execute();
     ?>
-    <table class="table table-striped">
+    <table id="theEmailsTable" class="table table-striped">
         <thead><tr><th>Email</th><th>Acciones</th></tr></thead>
         <tbody>
             <?php
@@ -617,8 +617,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         <textarea class="form-control" id="emailMensaje" name="emailMensaje"></textarea>
                     </div>
                     <div class="mb-3">
-                        <label for="emailAdjunto" class="form-label">Adjunto</label>
-                        <input type="file" class="form-control" id="emailAdjunto" name="emailAdjunto">
+                        
                     </div>
                     <button type="submit" class="btn btn-primary">Enviar</button>
                 </form>
@@ -897,7 +896,8 @@ function eliminarCorreo(emailId) {
 }
 </script>
 <script>
-      let theEventosTable = document.getElementById("emailsTable");
+    function setInitialTableTheme(tableId) {
+        let theEventosTable = document.getElementById(tableId);
       let getStoredThemee = () => localStorage.getItem('coreui-free-bootstrap-admin-template-theme');
       if (theEventosTable && theEventosTable.classList) {
         if (window.matchMedia('(prefers-color-scheme: '+getStoredThemee()+')').matches) {
@@ -911,40 +911,30 @@ function eliminarCorreo(emailId) {
             }
       }
 
-      const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      const table = document.getElementById('emailsTable');
+      let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      let table = document.getElementById(tableId);
           
-      if (theEventosTable && theEventosTable.classList && isDarkMode) {
-          table.classList.add('table-dark');
-      } else {
-          if (theEventosTable && theEventosTable.classList && !isDarkMode) {
-            table.classList.add('table-light');
-        }
-      }
-
-      function setTableTheme(theTheme) {
-        let eventosTable = document.getElementById("emailsTable");
-        if (theTheme === 'dark' && theEventosTable && theEventosTable.classList && !eventosTable.classList.contains('table-dark')) {
-        eventosTable.classList.add('table-dark');
-      }
-      if (theTheme === 'light' && theEventosTable && theEventosTable.classList && eventosTable.classList.contains('table-dark')) {
-        eventosTable.classList.remove('table-dark');
-      }
-      if (theTheme === 'auto') {        
-        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-          if(theEventosTable && theEventosTable.classList && !eventosTable.classList.contains('table-dark')) {
-             eventosTable.classList.add('table-dark');
-          }
-        } else {
-          if(theEventosTable && theEventosTable.classList && eventosTable.classList.contains('table-dark')) {
-            eventosTable.classList.remove('table-dark');
-          }
-          }
-      }
-      }
+    }
+    setInitialTableTheme("emailsTable");
+    setInitialTableTheme("adressListTable");
+    setInitialTableTheme("theEmailsTable");
     </script>
 <script>
 new DataTable('#emailsTable', {
+    layout: {
+        topStart: {
+            buttons: ['copy', 'excel', 'pdf', 'colvis']
+        }
+    }
+});
+new DataTable('#adressListTable', {
+    layout: {
+        topStart: {
+            buttons: ['copy', 'excel', 'pdf', 'colvis']
+        }
+    }
+});
+new DataTable('#theEmailsTable', {
     layout: {
         topStart: {
             buttons: ['copy', 'excel', 'pdf', 'colvis']
@@ -963,4 +953,11 @@ require('layout/footer.php');
     <script>
         alert("El mensaje fue enviado satisfactoriamente");
     </script>
+    <?php $_GET['enviado'] = 0; ?>
+<?php } ?>
+<?php if (isset($_GET['invalido']) && $_GET['invalido'] == 1) {?>
+    <script>
+        alert("Mensaje invalido, por favor evita los caracteres especiales en tu mensaje y los archivos adjuntos");
+    </script>
+    <?php $_GET['invalido'] = 0; ?>
 <?php } ?>
