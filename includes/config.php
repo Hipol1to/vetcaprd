@@ -55,7 +55,7 @@ function decryptValue($encryptedValue) {
 
 function getAllEvents($dbContext) {
     try {
-        $query = $dbContext->prepare("SELECT * FROM `eventos` ORDER BY fecha_evento ASC");
+        $query = $dbContext->prepare("SELECT * FROM `eventos` WHERE activo = 1 ORDER BY fecha_evento ASC");
         $query->execute();
         // Fetch only the first row
         $_SESSION['nextEvent'] = $query->fetch(PDO::FETCH_ASSOC);
@@ -75,7 +75,7 @@ function getAllEvents($dbContext) {
 
 function getUserEvents($dbContext) {
     try {
-        $myEventsQuery = $dbContext->prepare("SELECT * FROM eventos LEFT JOIN usuario_eventos ON eventos.Id = usuario_eventos.evento_id WHERE usuario_eventos.usuario_id = :userId");
+        $myEventsQuery = $dbContext->prepare("SELECT * FROM eventos LEFT JOIN usuario_eventos ON eventos.Id = usuario_eventos.evento_id WHERE usuario_eventos.usuario_id = :userId AND activo = 1");
         $myEventsQuery->bindParam(':userId', $_SESSION['memberID']);
         $myEventsQuery->execute();
         $misEventos = $myEventsQuery->fetchAll(PDO::FETCH_ASSOC);
@@ -92,7 +92,7 @@ function getUserEvents($dbContext) {
 
 function getUserPendingEvents($dbContext) {
     try {
-        $myPendingEventsQuery = $dbContext->prepare("SELECT DISTINCT eventos.* FROM eventos LEFT JOIN pagos ON eventos.Id = pagos.evento_id WHERE pagos.usuario_id = :userId AND pagos.pago_validado = 0");
+        $myPendingEventsQuery = $dbContext->prepare("SELECT DISTINCT eventos.* FROM eventos LEFT JOIN pagos ON eventos.Id = pagos.evento_id WHERE pagos.usuario_id = :userId AND pagos.pago_validado = 0 AND activo = 1");
         $myPendingEventsQuery->bindParam(':userId', $_SESSION['memberID']);
         $myPendingEventsQuery->execute();
         $misPendingEventos = $myPendingEventsQuery->fetchAll(PDO::FETCH_ASSOC);
@@ -110,7 +110,7 @@ function getUserPendingEvents($dbContext) {
 
 function getAllCourses($dbContext) {
     try {
-        $query = $dbContext->prepare("SELECT * FROM `diplomados` ORDER BY fecha_inicio_diplomado ASC");
+        $query = $dbContext->prepare("SELECT * FROM `diplomados` WHERE activo = 1 ORDER BY fecha_inicio_diplomado ASC");
         $query->execute();
         $diplomados = $query->fetchAll(PDO::FETCH_ASSOC);
         error_log("------STARTING SESSION LOG------");
@@ -127,7 +127,7 @@ function getAllCourses($dbContext) {
 
 function getUserCourses($dbContext) {
     try {
-        $myCoursesQuery = $dbContext->prepare("SELECT * FROM diplomados LEFT JOIN usuario_diplomados ON diplomados.Id = usuario_diplomados.diplomado_id WHERE usuario_diplomados.usuario_id = :userId");
+        $myCoursesQuery = $dbContext->prepare("SELECT * FROM diplomados LEFT JOIN usuario_diplomados ON diplomados.Id = usuario_diplomados.diplomado_id WHERE usuario_diplomados.usuario_id = :userId AND activo = 1");
         $myCoursesQuery->bindParam(':userId', $_SESSION['memberID']);
         $myCoursesQuery->execute();
         $misDiplomados = $myCoursesQuery->fetchAll(PDO::FETCH_ASSOC);
@@ -144,7 +144,7 @@ function getUserCourses($dbContext) {
 
 function getUserPendingCourses($dbContext) {
     try {
-        $myPendingCoursesQuery = $dbContext->prepare("SELECT DISTINCT diplomados.* FROM diplomados LEFT JOIN pagos ON diplomados.Id = pagos.diplomado_id WHERE pagos.usuario_id = :userId AND pagos.pago_validado = 0");
+        $myPendingCoursesQuery = $dbContext->prepare("SELECT DISTINCT diplomados.* FROM diplomados LEFT JOIN pagos ON diplomados.Id = pagos.diplomado_id WHERE pagos.usuario_id = :userId AND pagos.pago_validado = 0 AND activo = 1");
         $myPendingCoursesQuery->bindParam(':userId', $_SESSION['memberID']);
         $myPendingCoursesQuery->execute();
         $misPendingCourses = $myPendingCoursesQuery->fetchAll(PDO::FETCH_ASSOC);

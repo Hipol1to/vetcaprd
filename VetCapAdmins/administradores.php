@@ -10,14 +10,14 @@ require('layout/header.php');
           <div class="row">
           <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Usuarios</h1>
+            <h1>Administradores</h1>
           </div>
           <div class="col-sm-6">
           </div>
         </div>
         <?php
         // Query to fetch all users
-        $query = "SELECT id, nombre, correo_electronico, telefono FROM usuarios";
+        $query = "SELECT id, nombre, correo_electronico, telefono FROM usuarios WHERE rol = 'administrador'";
         $stmt = $db->prepare($query);
         $stmt->execute();
         ?>

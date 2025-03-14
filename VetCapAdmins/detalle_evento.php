@@ -52,32 +52,113 @@ require('layout/header.php');
         <div class="tab-content mt-3">
             <!-- Event Details Tab -->
             <div class="tab-pane fade show active" id="details">
-                <form>
+                <form method="POST" action="actualizar_evento.php">
                     <div class="form-group">
                         <label for="nombre">Nombre del Evento</label>
-                        <input type="text" class="form-control" id="nombre" value="<?= htmlspecialchars($event['nombre']) ?>" readonly>
+                        <input type="text" class="form-control" id="nombre" name="nombre" value="<?= htmlspecialchars($event['nombre']) ?>">
                     </div>
                     
                     <div class="form-group">
                         <label for="descripcion">Descripción</label>
-                        <textarea class="form-control" id="descripcion" rows="3" readonly><?= htmlspecialchars($event['descripcion']) ?></textarea>
+                        <textarea class="form-control" id="descripcion" name="descripcion" rows="3"><?= htmlspecialchars($event['descripcion']) ?></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="precio">Precio de Inscripción</label>
-                        <input type="text" class="form-control" id="precio" value="<?= number_format($event['precio_inscripcion'], 2) ?>" readonly>
+                        <label for="descripcion2">Descripción 2</label>
+                        <textarea class="form-control" id="descripcion2" name="descripcion2" rows="3"><?= htmlspecialchars($event['descripcion2']) ?></textarea>
+                    </div>
+
+                    <div class="form-group">
+    <label for="foto_evento">Foto del Evento</label>
+    <input type="file" class="form-control-file" id="foto_evento_file" name="foto_evento_file" accept="image/*">
+    <input type="hidden" id="foto_evento" name="foto_evento" value="<?= htmlspecialchars($event['foto_evento']) ?>">
+    <small class="form-text text-muted">Sube una imagen para actualizar la foto del evento.</small>
+    <img src="<?= htmlspecialchars($event['foto_evento']) ?>" alt="Foto del Evento" class="img-thumbnail mt-2" style="max-width: 200px;" id="foto_evento_preview">
+</div>
+
+<div class="form-group">
+    <label for="foto_titulo">Foto del Título</label>
+    <input type="file" class="form-control-file" id="foto_titulo_file" name="foto_titulo_file" accept="image/*">
+    <input type="hidden" id="foto_titulo" name="foto_titulo" value="<?= htmlspecialchars($event['foto_titulo']) ?>">
+    <small class="form-text text-muted">Sube una imagen para actualizar la foto del título.</small>
+    <img src="<?= htmlspecialchars($event['foto_titulo']) ?>" alt="Foto del Título" class="img-thumbnail mt-2" style="max-width: 200px;" id="foto_titulo_preview">
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function () {
+    // Function to handle file upload
+    function uploadFile(fileInput, hiddenInput, previewImage) {
+        const file = fileInput.files[0];
+        if (!file) return;
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        $.ajax({
+            url: 'upload_image.php', // PHP script to handle the upload
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response.success) {
+                    // Update the hidden input with the new image path
+                    $(hiddenInput).val(response.filePath);
+                    // Update the image preview
+                    $(previewImage).attr('src', response.filePath);
+                    alert('Imagen subida correctamente.');
+                } else {
+                    alert('Error al subir la imagen: ' + response.message);
+                }
+            },
+            error: function () {
+                alert('Error al subir la imagen.');
+            }
+        });
+    }
+
+    // Event listener for foto_evento file input
+    $('#foto_evento_file').on('change', function () {
+        uploadFile(this, '#foto_evento', '#foto_evento_preview');
+    });
+
+    // Event listener for foto_titulo file input
+    $('#foto_titulo_file').on('change', function () {
+        uploadFile(this, '#foto_titulo', '#foto_titulo_preview');
+    });
+});
+</script>
+
+                    <div class="form-group">
+                        <label for="precio_inscripcion">Precio de Inscripción</label>
+                        <input type="number" step="0.01" class="form-control" id="precio_inscripcion" name="precio_inscripcion" value="<?= htmlspecialchars($event['precio_inscripcion']) ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha_apertura_inscripcion">Fecha de Apertura de Inscripción</label>
+                        <input type="datetime-local" class="form-control" id="fecha_apertura_inscripcion" name="fecha_apertura_inscripcion" value="<?= date('Y-m-d\TH:i', strtotime($event['fecha_apertura_inscripcion'])) ?>" onclick="this.showPicker()">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fecha_cierre_inscripcion">Fecha de Cierre de Inscripción</label>
+                        <input type="datetime-local" class="form-control" id="fecha_cierre_inscripcion" name="fecha_cierre_inscripcion" value="<?= date('Y-m-d\TH:i', strtotime($event['fecha_cierre_inscripcion'])) ?>" onclick="this.showPicker()">
                     </div>
 
                     <div class="form-group">
                         <label for="fecha_evento">Fecha del Evento</label>
-                        <input type="text" class="form-control" id="fecha_evento" value="<?= date('d-m-Y H:i', strtotime($event['fecha_evento'])) ?>" readonly>
+                        <input type="datetime-local" class="form-control" id="fecha_evento" name="fecha_evento" value="<?= date('Y-m-d\TH:i', strtotime($event['fecha_evento'])) ?>" onclick="this.showPicker()">
                     </div>
 
                     <div class="form-group">
                         <label for="activo">Estado</label>
-                        <input type="text" class="form-control" id="activo" value="<?= $event['activo'] ? 'Activo' : 'Inactivo' ?>" readonly>
+                        <select class="form-control" id="activo" name="activo">
+                            <option value="1" <?= $event['activo'] ? 'selected' : '' ?>>Activo</option>
+                            <option value="0" <?= !$event['activo'] ? 'selected' : '' ?>>Inactivo</option>
+                        </select>
                     </div>
 
+                    <input type="hidden" name="id" value="<?= htmlspecialchars($event['Id']) ?>">
+                    <button type="submit" class="btn btn-primary">Guardar cambios</button>
                     <a href="eventos.php" class="btn btn-secondary">Volver</a>
                 </form>
             </div>
