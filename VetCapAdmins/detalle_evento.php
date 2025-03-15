@@ -73,7 +73,7 @@ require('layout/header.php');
     <input type="file" class="form-control-file" id="foto_evento_file" name="foto_evento_file" accept="image/*">
     <input type="hidden" id="foto_evento" name="foto_evento" value="<?= htmlspecialchars($event['foto_evento']) ?>">
     <small class="form-text text-muted">Sube una imagen para actualizar la foto del evento.</small>
-    <img src="<?= htmlspecialchars($event['foto_evento']) ?>" alt="Foto del Evento" class="img-thumbnail mt-2" style="max-width: 200px;" id="foto_evento_preview">
+    <img src="http://localhost/vesca<?= htmlspecialchars($event['foto_evento']) ?>" alt="Foto del Evento" class="img-thumbnail mt-2" style="max-width: 200px;" id="foto_evento_preview">
 </div>
 
 <div class="form-group">
@@ -81,7 +81,7 @@ require('layout/header.php');
     <input type="file" class="form-control-file" id="foto_titulo_file" name="foto_titulo_file" accept="image/*">
     <input type="hidden" id="foto_titulo" name="foto_titulo" value="<?= htmlspecialchars($event['foto_titulo']) ?>">
     <small class="form-text text-muted">Sube una imagen para actualizar la foto del título.</small>
-    <img src="<?= htmlspecialchars($event['foto_titulo']) ?>" alt="Foto del Título" class="img-thumbnail mt-2" style="max-width: 200px;" id="foto_titulo_preview">
+    <img src="http://localhost/vesca<?= htmlspecialchars($event['foto_titulo']) ?>" alt="Foto del Título" class="img-thumbnail mt-2" style="max-width: 200px;" id="foto_titulo_preview">
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -164,35 +164,71 @@ $(document).ready(function () {
             </div>
 
             <!-- Payments Tab -->
-            <div class="tab-pane fade" id="payments">
-                <h4>Pagos Registrados</h4>
-                <?php if (!empty($pagos)): ?>
-                    <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>ID Pago</th>
-                                <th>Nombre</th>
-                                <th>Email</th>
-                                <th>Monto</th>
-                                <th>Fecha de Pago</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($pagos as $pago): ?>
-                                <tr>
-                                    <td><?= htmlspecialchars($pago['id']) ?></td>
-                                    <td><?= htmlspecialchars($pago['nombre']) ?></td>
-                                    <td><?= htmlspecialchars($pago['email']) ?></td>
-                                    <td>$<?= number_format($pago['monto'], 2) ?></td>
-                                    <td><?= date('d-m-Y H:i', strtotime($pago['fecha_pago'])) ?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                <?php else: ?>
-                    <p>No hay pagos registrados para este evento.</p>
-                <?php endif; ?>
-            </div>
+<div class="tab-pane fade" id="payments">
+    <h4>Pagos Registrados</h4>
+    <?php if (!empty($pagos)): ?>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Monto</th>
+                    <th>Comprobante</th>
+                    <th>Método de Pago</th>
+                    <th>Pago Validado</th>
+                    <th>Fecha de Pago</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($pagos as $pago): ?>
+                    <tr>
+                        <td>$<?= number_format($pago['monto'], 2) ?></td>
+                        <td>
+                            <?php if (!empty($pago['comprobante_pago_ruta'])): ?>
+                                <a href="http://localhost/vesca<?= htmlspecialchars($pago['comprobante_pago_ruta']) ?>" target="_blank">Ver Comprobante</a>
+                            <?php else: ?>
+                                No disponible
+                            <?php endif; ?>
+                        </td>
+                        <td><?= htmlspecialchars($pago['metodo_de_pago']) ?></td>
+                        <td><?= $pago['pago_validado'] ? 'Sí' : 'No' ?></td>
+                        <td><?= date('d-m-Y H:i', strtotime($pago['fecha_de_pago'])) ?></td>
+                        <td>
+                            <button class="btn btn-warning" onclick="validarPago('<?= htmlspecialchars($pago['Id']) ?>')">Validar</button>
+                            <button class="btn btn-danger" onclick="eliminarPago('<?= htmlspecialchars($pago['Id']) ?>')">Eliminar</button>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+        <script>
+// Validate payment
+function validarPago(pagoId) {
+    if (confirm("¿Estás seguro de que quieres validar este pago?")) {
+        fetch("validar_pago.php?id=" + pagoId, { method: "GET" })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                location.reload();
+            });
+    }
+}
+
+// Delete payment
+function eliminarPago(pagoId) {
+    if (confirm("¿Estás seguro de que quieres eliminar este pago?")) {
+        fetch("eliminar_pago.php?id=" + pagoId, { method: "GET" })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                location.reload();
+            });
+    }
+}
+</script>
+    <?php else: ?>
+        <p>No hay pagos registrados para este evento.</p>
+    <?php endif; ?>
+</div>
 
             <!-- Registered Users Tab -->
             <div class="tab-pane fade" id="users">
@@ -212,7 +248,7 @@ $(document).ready(function () {
                                 <tr>
                                     <td><?= htmlspecialchars($usuario['Id']) ?></td>
                                     <td><?= htmlspecialchars($usuario['nombre']) ?></td>
-                                    <td><?= htmlspecialchars($usuario['email']) ?></td>
+                                    <td><?= htmlspecialchars($usuario['correo_electronico']) ?></td>
                                     <td><?= htmlspecialchars($usuario['telefono']) ?></td>
                                 </tr>
                             <?php endforeach; ?>

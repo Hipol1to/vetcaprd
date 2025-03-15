@@ -14,8 +14,13 @@ require('layout/header.php');
           <div class="row mb-2">
           <div class="col-sm-6">
             <h1>Eventos</h1>
+            <!-- Add "Crear nuevo evento" button -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#crearEventoModal">
+                    Crear nuevo evento
+                </button>
           </div>
           <div class="col-sm-6">
+            
           </div>
         </div>
         <?php
@@ -59,6 +64,63 @@ $stmt->execute();
         ?>
     </tbody>
 </table>
+
+<div class="modal fade" id="crearEventoModal" tabindex="-1" aria-labelledby="crearEventoLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="crearEventoLabel">Crear Nuevo Evento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="crearEventoForm" action="crear_evento.php" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="nombre">Nombre del Evento</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción</label>
+                        <textarea class="form-control" id="descripcion" name="descripcion" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="foto_evento">Foto del Evento</label>
+                        <input type="file" class="form-control" id="foto_evento" name="foto_evento" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label for="foto_titulo">Foto del Título</label>
+                        <input type="file" class="form-control" id="foto_titulo" name="foto_titulo" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label for="precio_inscripcion">Precio de Inscripción</label>
+                        <input type="number" step="0.01" class="form-control" id="precio_inscripcion" name="precio_inscripcion" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha_evento">Fecha del Evento</label>
+                        <input type="datetime-local" class="form-control" id="fecha_evento" name="fecha_evento" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha_apertura_inscripcion">Fecha de Apertura de Inscripción</label>
+                        <input type="datetime-local" class="form-control" id="fecha_apertura_inscripcion" name="fecha_apertura_inscripcion" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha_cierre_inscripcion">Fecha de Cierre de Inscripción</label>
+                        <input type="datetime-local" class="form-control" id="fecha_cierre_inscripcion" name="fecha_cierre_inscripcion" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="activo">Estado</label>
+                        <select class="form-control" id="activo" name="activo">
+                            <option value="1">Activo</option>
+                            <option value="0">Inactivo</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Crear</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 
 <!-- Modal for Editing Event -->
 <div class="modal fade" id="editEventModal" tabindex="-1" aria-labelledby="editEventLabel" aria-hidden="true">

@@ -2,6 +2,7 @@ function toggleFields(modalId) {
     let metodoDePagoModal = document.getElementById("metodo_de_pago_"+modalId); 
     const selectedOption = metodoDePagoModal.value;
     const eventPrice = metodoDePagoModal.getAttribute("amountRd");
+    console.log("ers");    
     console.log(modalId);
     console.log(eventPrice);
     

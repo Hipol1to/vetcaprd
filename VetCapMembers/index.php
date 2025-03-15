@@ -100,7 +100,7 @@ $misPendingCourses = getUserPendingCourses($db);
       <div class="event-container" style="display: flex; flex-direction: row; align-items: start; gap: 20px; margin-bottom: 20px;">
         <div class="event-image-container" style="flex: 1; max-width: 150px;">
           <img 
-            src="'.$theEvent['foto_evento'].'" 
+            src="http://localhost/vesca'.$theEvent['foto_evento'].'" 
             alt="Event Photo" 
             style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"
           />
@@ -113,11 +113,13 @@ $misPendingCourses = getUserPendingCourses($db);
           <p class="event-price" style="color: #007BFF; font-size: 1rem; font-weight: bold;">Precio de Suscripción: RD$'.$theEvent['precio_inscripcion'].'</p>
           <p class="event-date" style="color: #555; font-size: 1rem;">Fecha y Hora: '.$theEvent['fecha_evento'].'</p>
         </div>
-        <a class="btn-danger" style="cursor: pointer; text-decoration: none; font-weight: 550; text-align: left; color: white; padding: 10px 20px; background-color:rgb(238, 76, 76); border-radius: 5px; display: inline-block;" 
+        
+        
+      </div>';
+      $desinscribirButton = '<a class="btn-danger" style="cursor: pointer; text-decoration: none; font-weight: 550; text-align: left; color: white; padding: 10px 20px; background-color:rgb(238, 76, 76); border-radius: 5px; display: inline-block;" 
        onclick="unsubscribeEvent(\''.$theEvent['Id'].'\')">
         Desinscribir
-    </a>
-      </div>';
+    </a>';
             }
             if (!$userHasEvents) {
               echo '<p style="text-align: center; margin-bottom: 20px;">Aún no estás suscrito a ningún evento.</p>';
@@ -144,7 +146,7 @@ $misPendingCourses = getUserPendingCourses($db);
 <div class="event-container" style="display: flex; flex-direction: row; align-items: start; gap: 20px; margin-bottom: 20px;">
 <div class="event-image-container" style="flex: 1; max-width: 150px;">
   <img 
-    src="'.$thePendingEvent['foto_evento'].'" 
+    src="http://localhost/vesca'.$thePendingEvent['foto_evento'].'" 
     alt="Event Photo" 
     style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"
   />
@@ -199,7 +201,7 @@ $misPendingCourses = getUserPendingCourses($db);
           <div class="row align-items-center">
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
               <div class="about-img about-img1">
-                <img src="<?php  echo $nextEvent['foto_evento']; ?>" alt="" class="event-pic"/>
+                <img src="http://localhost/vesca<?php  echo $nextEvent['foto_evento']; ?>" alt="" class="event-pic"/>
               </div>
             </div>
             <div
@@ -207,8 +209,8 @@ $misPendingCourses = getUserPendingCourses($db);
             >
               <div class="about-caption about-caption1">
                 <div class="section-tittle m-0">
-                  <!-- second section !-->
-                  <img src="./assets/img/centro_de_cultura_logo.png" style="width: 300px;" alt="">
+                  <!-- second section 
+                  <img src="http://localhost/vesca/assets/img/centro_de_cultura_logo.png" style="width: 300px;" alt=""> !-->
                   <h2 style="font-size: 50px; font-family: HelveticaBold;"><?php echo $nextEvent['nombre']; ?></h2>
                   <p style="color: #2d5b2d;" class="capitalize-first vetcap-description">
       <?= htmlspecialchars($nextEvent['descripcion']) ?>
@@ -250,6 +252,7 @@ $misPendingCourses = getUserPendingCourses($db);
   let nextEventId = "<?= $nextEvent['Id']?>";
   let nextEventTimestamp = "<?= $nextEvent['fecha_evento']?>";
   // Update every second
+  console.log("wer");
   console.log(nextEventId);
   console.log(nextEventTimestamp);
   
@@ -287,7 +290,7 @@ $nextEventPriceText = $nextEvent['precio_inscripcion'] == 0.00 ? "GRATIS" : "RD$
 echo $nextEventSubscribeButton;
  ?>
 
-<img  src="./assets/img/money_logo.png" class="money-pic" alt=""><a class="money-free"><?php echo $nextEventPriceText; ?></a></div>
+<img  src="http://localhost/vesca/assets/img/money_logo.png" class="money-pic" alt=""><a class="money-free"><?php echo $nextEventPriceText; ?></a></div>
 
 
                   <p class="mb-30">
@@ -302,6 +305,7 @@ echo $nextEventSubscribeButton;
 
 
 <?php
+error_log("telomando".$nextEvent['Id']);
 array_push($eventosList, [$nextEvent['Id'], 0]);
 $eventsModalHeader = '
     <div id="subscribe-events-modal'.$nextEvent['Id'].'" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); justify-content: center; align-items: center; z-index: 9999;">
@@ -667,7 +671,6 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
 
 <?php if (!empty($eventos)) : ?>
   <?php error_log("taran");
-        $eventosList = [["modalName", 0]];
     ?>
                 <?php foreach ($eventos as $evento) : ?>
                   <?php error_log("Retrieved records: " . print_r($eventos, true));
@@ -678,9 +681,9 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
   <div class="vetcap-container">
     <!-- Left Section -->
     <div class="vetcap-left">
-      <img src="<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
+      <img src="http://localhost/vesca<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
       <div class="vetcap-badge">
-        <img style="width: 70px; height: auto;" src="../assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
+        <img style="width: 70px; height: auto;" src="http://localhost/vesca/assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
         <span>RD$<?= htmlspecialchars($evento['precio_inscripcion']) ?></span>
       </div>
     </div>
@@ -688,7 +691,7 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
     <div class="vetcap-right">
     <?php
             if (isset($evento['foto_titulo'])) {
-              echo '<img style="max-width: 330px;" src="'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
+              echo '<img style="max-width: 330px;" src="http://localhost/vesca'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
             } else {
               error_log("foto titulo");
               echo '<h2 style="font-size: 50px; font-family: HelveticaBold;" class="course-title">'.$evento['nombre'].'</h2>';
@@ -730,14 +733,14 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
   </div>
 </div>
 <script>
-  let eventtId_<?php echo $evento['Id']; ?> = "<?= $evento['Id']?>";
-  let eventTimestamp_<?php echo $evento['Id']; ?> = "<?= $evento['fecha_evento']?>";
+  let eventtId_<?php echo str_replace("-", "_", $evento['Id']); ?> = "<?= $evento['Id']?>";
+  let eventTimestamp_<?php echo str_replace("-", "_", $evento['Id']); ?> = "<?= $evento['fecha_evento']?>";
   // Update every second
-  console.log(eventtId_<?php echo $evento['Id']; ?>);
-  console.log(eventTimestamp_<?php echo $evento['Id']; ?>);
+  console.log(eventtId_<?php echo str_replace("-", "_", $evento['Id']); ?>);
+  console.log(eventTimestamp_<?php echo str_replace("-", "_", $evento['Id']); ?>);
   
-  const timerInterval_<?php echo $evento['Id']; ?> = setInterval(() => updateCountdown(eventtId_<?php echo $evento['Id']; ?>, eventTimestamp_<?php echo $evento['Id']; ?>), 1000);
-updateCountdown(eventtId_<?php echo $evento['Id']; ?>, eventTimestamp_<?php echo $evento['Id']; ?>);
+  const timerInterval_<?php echo str_replace("-", "_", $evento['Id']); ?> = setInterval(() => updateCountdown(eventtId_<?php echo str_replace("-", "_", $evento['Id']); ?>, eventTimestamp_<?php echo str_replace("-", "_", $evento['Id']); ?>), 1000);
+updateCountdown(eventtId_<?php echo str_replace("-", "_", $evento['Id']); ?>, eventTimestamp_<?php echo str_replace("-", "_", $evento['Id']); ?>);
 </script>
 <br>
       <button onclick="location.href='http://localhost/vesca/eventos.php';" id="conocer-mas" style="color: black" class="btnn btn-outline">CONOCER MÁS</button>

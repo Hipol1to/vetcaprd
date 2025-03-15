@@ -688,6 +688,94 @@ function renderCoursePaymentModal($currentDiplomado) {
     </div>';
     echo $diplomadoModalFooter;
 }
+function printAllEvents($eventos) {
+  ?>
+    <?php if (!empty($eventos)) : ?>
+                <?php foreach ($eventos as $evento) : ?>
+                  <?php error_log("Retrieved records: " . print_r($eventos, true));
+                  ?>
+                  <section class="vetcap-section">
+  <div class="vetcap-container">
+    <!-- Left Section -->
+    <div class="vetcap-left">
+      <img src="http://localhost/vesca<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
+      <div class="vetcap-badge">
+        <img style="width: 70px; height: auto;" src="http://localhost/vesca/assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
+        <span>RD$<?= htmlspecialchars($evento['precio_inscripcion']) ?></span>
+      </div>
+    </div>
+    <!-- Right Section -->
+    <div class="vetcap-right">
+    <?php
+            if (isset($evento['foto_titulo'])) {
+              echo '<img style="max-width: 330px;" src="http://localhost/vesca'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
+            } else {
+              error_log("foto titulo");
+              echo '<h2 style="font-size: 50px; font-family: HelveticaBold;" class="course-title">'.$evento['nombre'].'</h2>';
+            }
+        ?>
+      <p style="color: #2d5b2d;" class="vetcap-description">
+      <?= htmlspecialchars($evento['descripcion']) ?>
+      </p>
+      <div id="<?php echo 'countdown-'.$evento['Id']?>" class="marginnn" style="margin-right: 0px;">
+                  
+                    <h2 style="color: #2d4a34; font-size: 31px; font-family: HelveticaBold; white-space: nowrap !important;">
+                    <?php 
+                    $eventTimestamp = $evento['fecha_evento'];
+                    $dateTimeEvent = new DateTime($eventTimestamp);
+
+                    // Format the date and time
+                    $formattedDateEvent = $dateTimeEvent->format('j/n/Y | g:ia');
+                    
+                    // Convert "am/pm" to uppercase (optional)
+                    $formattedDateEvent = strtoupper($formattedDateEvent);
+                    
+                    echo $formattedDateEvent; // Outputs: 28/2/2025 | 6:30PM
+                    ?></h2>
+  <div class="time-unit timeer">
+    <span class="number" id="<?php echo 'days-'.$evento['Id']?>">00</span>
+    <span class="label">DÍAS</span>
+  </div>
+  <div class="time-unit">
+    <span class="number" id="<?php echo 'hours-'.$evento['Id']?>">00</span>
+    <span class="label">HRS</span>
+  </div>
+  <div class="time-unit">
+    <span class="number" id="<?php echo 'minutes-'.$evento['Id']?>">00</span>
+    <span class="label">MINS</span>
+  </div>
+  <div class="time-unit">
+    <span class="number" id="<?php echo 'seconds-'.$evento['Id']?>">00</span>
+    <span class="label">SEGS</span>
+  </div>
+</div>
+<script>
+  let eventtId_<?php echo str_replace("-", "_", $evento['Id']); ?> = "<?= $evento['Id']?>";
+  let eventTimestamp_<?php echo str_replace("-", "_", $evento['Id']); ?> = "<?= $evento['fecha_evento']?>";
+  // Update every second
+  console.log(eventtId_<?php echo str_replace("-", "_", $evento['Id']); ?>);
+  console.log(eventTimestamp_<?php echo str_replace("-", "_", $evento['Id']); ?>);
+  
+  const timerInterval_<?php echo str_replace("-", "_", $evento['Id']); ?> = setInterval(() => updateCountdown(eventtId_<?php echo str_replace("-", "_", $evento['Id']); ?>, eventTimestamp_<?php echo str_replace("-", "_", $evento['Id']); ?>), 1000);
+updateCountdown(eventtId_<?php echo str_replace("-", "_", $evento['Id']); ?>, eventTimestamp_<?php echo str_replace("-", "_", $evento['Id']); ?>);
+</script>
+<br>
+      <?php 
+    $isAttributeWritten = false;
+    $onClick = 'location.href=\''.DIR.'VetCapMembers/login.php\'" type="button"'; // Initialize $onClick to avoid undefined variable issues
+    error_log("aaaaaaaaaaaaaaa");
+?>
+      <button onclick="<?php echo $onClick; ?>" class="btnnn btn-filled">INSCRIBIRME</button>
+    </div>
+  </div>
+</section>
+<br><br>                    
+                <?php endforeach; ?>                
+            <?php endif; ?>
+</section>
+
+  <?php
+}
 
 //include the user class, pass in the database connection
 include('classes/user.php');
