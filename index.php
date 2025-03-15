@@ -86,15 +86,21 @@
   </div>
   <div class="slider-dots-001"></div>
 </section>
-<div class="white-bar">
-      <img src="./assets/img/tiktok_logo.png" alt="TikTok logo" style="max-width: 60px;">
-      <a style="margin-right: 17px;"></a>
-      <img src="./assets/img/x_logo.png" alt="X logo" style="max-width: 45px;">
-      <a style="margin-right: 26px;"></a>
-      <img src="./assets/img/instagram_logo.png" alt="Instagram logo" style="max-width: 45px;">
-      <a style="margin-right: 30px;"></a>
-      <img src="./assets/img/youtube_logo.png" alt="YouTube logo" style="max-width: 48px;">
-    </div>
+<div class="scrolling-bar">
+  <div class="scrolling-images">
+  <img src="./assets/img/lobo-promo.png" alt="Image 2">  
+  <img src="./assets/img/follow-us-promo.png" alt="Image 1">
+    <img src="./assets/img/nuestros-sponsors-promo.png" alt="Image 3">
+    <img src="./assets/img/mallen-promo.png" alt="Image 4">
+    <img src="./assets/img/vibix-promo.png" alt="Image 5">
+    <!-- Duplicate images for seamless loop -->
+    <img src="./assets/img/follow-us-promo.png" alt="Image 1">
+    <img src="./assets/img/lobo-promo.png" alt="Image 2">
+    <img src="./assets/img/nuestros-sponsors-promo.png" alt="Image 3">
+    <img src="./assets/img/mallen-promo.png" alt="Image 4">
+    <img src="./assets/img/vibix-promo.png" alt="Image 5">
+  </div>
+</div>
 
 
     <section style="padding-top: 30px; padding-bottom: 10px;" class="about-area section-bg section-padding">
@@ -240,6 +246,34 @@ echo $nextEventSubscribeButton;
         </div>
     </div>
 </section>
+
+
+
+
+<style>
+  .scrolling-bar {
+    width: 100%;
+    height: 100px; /* Adjust based on your image height */
+    overflow: hidden;
+    position: relative;
+    background-color: black;
+  }
+
+  .scrolling-images {
+    display: flex;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap; /* Ensure images stay in one line */
+  }
+
+  .scrolling-images img {
+    height: 100%;
+    width: auto;
+    flex-shrink: 0;
+  }
+</style>
   <?php 
 //include header template
 require('layout/footer.php'); 

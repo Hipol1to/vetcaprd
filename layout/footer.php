@@ -1,4 +1,23 @@
 </main>
+<script>
+  const scrollingImages = document.querySelector('.scrolling-images');
+  let position = 0;
+  const scrollSpeed = 1; // Adjust scrolling speed
+
+  function scrollAnimation() {
+    position -= scrollSpeed; // Move left
+    if (Math.abs(position) >= scrollingImages.scrollWidth / 2) {
+      position = 0; // Reset when halfway for seamless loop
+    }
+    scrollingImages.style.transform = `translateX(${position}px)`;
+    requestAnimationFrame(scrollAnimation);
+  }
+
+  // Wait for images to load before starting animation
+  window.onload = () => {
+    scrollAnimation();
+  };
+</script>
 <footer class="footer" style="background-color: #2E4D31; color: white; padding: 40px 20px; text-align: center;">
   <div class="footer-container" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; max-width: 1200px; margin: auto;">
     <div class="logo" style="flex: 1; text-align: left;">

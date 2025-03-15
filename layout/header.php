@@ -40,6 +40,30 @@
   .capitalize-first {
     text-transform: lowercase;
   }</style>
+  <style>
+  .scrolling-bar {
+    width: 100%;
+    height: 100px; /* Adjust based on your image height */
+    overflow: hidden;
+    position: relative;
+    background-color: black;
+  }
+
+  .scrolling-images {
+    display: flex;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    white-space: nowrap; /* Ensure images stay in one line */
+  }
+
+  .scrolling-images img {
+    height: 100%;
+    width: auto;
+    flex-shrink: 0;
+  }
+</style>
   </head>
   <body>
     <header>
