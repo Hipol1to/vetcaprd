@@ -113,19 +113,19 @@ printAllEvents($eventos);
 
 
 
-  <section class="vetcap-section">
-  <div class="vetcap-container">
+  <!-- <section class="vetcap-section">
+  <div class="vetcap-container"> -->
     <!-- Left Section -->
-    <div class="vetcap-left">
+    <!-- <div class="vetcap-left">
       <img src="./assets/img/vetcap_tour_template.png" alt="Illustration" class="vetcap-image vetcap-logo" />
       <div class="vetcap-badge">
         <img style="width: 70px; height: auto;" src="./assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
         <span>GRATIS</span>
       </div>
-    </div>
+    </div> -->
 
     <!-- Right Section -->
-    <div class="vetcap-right">
+    <!-- <div class="vetcap-right">
       <img src="./assets/img/vetcap-tour-logo.png" alt="Vetcap Tour Logo" class="vetcap-logo" />
       <br>
       <br>
@@ -138,8 +138,8 @@ printAllEvents($eventos);
         REGIONES DEL PAÍS, BRINDANDO ACCESO A FORMACIÓN CONTINUA DE MANERA
         ACCESIBLE.
       </p>
-      <div id="vetcap-tour-modal" class="modal">
-  <div class="modal-content">
+      <div id="vetcap-tour-modal" class="modal"> -->
+  <!-- <div class="modal-content">
     <span class="close">&times;</span>
     <section class="vetcap-tour-section">
       <div class="vetcap-header">
@@ -155,7 +155,7 @@ printAllEvents($eventos);
       </div>
       <div class="vetcap-events">
         <!-- Event Cards (Same as before) -->
-        <div class="event-card">
+        <!-- <div class="event-card">
           <img src="./assets/img/vetcap-tour-blue-bus.png" alt="Blue Bus" class="bus-icon" />
           <h3>UNIVERSIDAD ISA</h3>
           <p>Santiago de los Caballeros, RD</p>
@@ -179,27 +179,27 @@ printAllEvents($eventos);
               <span class="label">SEGS</span>
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- Event 2 -->
-    <div class="event-card">
+    <!-- <div class="event-card">
       <img src="./assets/img/vetcap-tour-gray-bus.png" alt="Gray Bus" class="bus-icon" />
       <h3>UNIVERSIDAD CENTRAL DEL ESTE</h3>
       <p>San Pedro de Macorís, RD</p>
       <p>04/4/2025</p>
       <button class="btnee btnee-outline">NOTIFICARME</button>
-    </div>
+    </div> -->
 
     <!-- Event 3 -->
-    <div class="event-card">
+    <!-- <div class="event-card">
       <img src="./assets/img/vetcap-tour-gray-bus.png" alt="Gray Bus" class="bus-icon" />
       <h3>UNIVERSIDAD NACIONAL PEDRO HENRÍQUEZ UREÑA</h3>
       <p>Santo Domingo, RD</p>
       <p>16/5/2025</p>
       <button class="btnee btnee-outline">NOTIFICARME</button>
-    </div>
+    </div> -->
 
     <!-- Event 4 -->
-    <div class="event-card">
+    <!-- <div class="event-card">
       <img src="./assets/img/vetcap-tour-gray-bus.png" alt="Gray Bus" class="bus-icon" />
       <h3>UNIVERSIDAD TECNOLÓGICA DE SANTIAGO - UTESA</h3>
       <p>Santiago de los Caballeros, RD</p>
@@ -214,7 +214,7 @@ printAllEvents($eventos);
         <button class="btnnn btn-filled">INSCRIBIRME</button>
     </div>
   </div>
-</section>
+</section> -->
 
 
 
@@ -241,19 +241,19 @@ printAllEvents($eventos);
   </div>
 </div>
 
-<section class="vetcap-section">
-  <div class="vetcap-container">
+<!-- <section class="vetcap-section">
+  <div class="vetcap-container"> -->
     <!-- Left Section -->
-    <div class="vetcap-left">
+    <!-- <div class="vetcap-left">
       <img src="./assets/img/vetcap_tour_template.png" alt="Illustration" class="vetcap-image vetcap-logo" />
       <div class="vetcap-badge">
         <img style="width: 70px; height: auto;" src="./assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
         <span>RD$5,500</span>
       </div>
-    </div>
+    </div> -->
 
     <!-- Right Section -->
-    <div class="vetcap-right">
+    <!-- <div class="vetcap-right">
       <img src="./assets/img/vetgames-logo.png" alt="Vetcap Tour Logo" class="vetcap-logo" />
       <br>
       <br>
@@ -290,29 +290,29 @@ El costo de inscripción es de RD$5,500 por equipo, y los participantes deben el
         <button class="btnnn btn-filled">INSCRIBIRME</button>
     </div>
   </div>
-</section>
+</section> -->
 
 
-<div class="promo-bar-container">
+<!-- <div class="promo-bar-container"> -->
   <!-- Logo Section -->
-  <div class="promo-bar-logo-section">
+  <!-- <div class="promo-bar-logo-section">
     <img
       class="promo-bar-logo"
       src="./assets/img/mallen-mascotas-logo.png"
       alt="Mallén Mascotas Logo"
     />
-  </div>
+  </div> -->
 
   <!-- Middle Image Section -->
-  <div class="promo-bar-middle-images">
+  <!-- <div class="promo-bar-middle-images">
     <img 
       src="./assets/img/royal-canin.png" 
       alt="Dog and Cat" 
     />
-  </div>
+  </div> -->
 
   <!-- Subtitle and Button Section -->
-   <div class="promo-bar-action-section">
+   <!-- <div class="promo-bar-action-section">
     <span class="promo-bar-subtitle">Breed health nutrition</span>
   </div>
   <div class="promo-bar-action-section">
@@ -320,23 +320,23 @@ El costo de inscripción es de RD$5,500 por equipo, y los participantes deben el
       <i class="promo-bar-button-icon"></i> SHOP NOW
     </button>
   </div>
-</div>
+</div> -->
 
 
 
-<section class="vetcap-section">
-  <div class="vetcap-container">
+<!-- <section class="vetcap-section">
+  <div class="vetcap-container"> -->
     <!-- Left Section -->
-    <div class="vetcap-left">
+    <!-- <div class="vetcap-left">
       <img src="./assets/img/vetcap_tour_template.png" alt="Illustration" class="vetcap-image vetcap-logo" />
       <div class="vetcap-badge">
         <img style="width: 70px; height: auto;" src="./assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
         <span>$RD$7,500</span>
       </div>
-    </div>
+    </div> -->
 
     <!-- Right Section -->
-    <div class="vetcap-right">
+    <!-- <div class="vetcap-right">
       <img style="max-width: 330px;" src="./assets/img/vetcamp-logo-2025.png" alt="Vetcap Tour Logo" class="vetcap-logo" />
       <br>
       <br>
@@ -388,17 +388,17 @@ El costo de inscripción es de RD$5,500 por equipo, y los participantes deben el
 
 
 <section style="background-color: black;" class="vetcap-section">
-  <div class="vetcap-container">
+  <div class="vetcap-container"> -->
     <!-- Left Section -->
-    <div class="vetcap-left">
+    <!-- <div class="vetcap-left">
       <img src="./assets/img/golden-vet-logo.png" alt="Illustration" class="vetcap-image vetcap-logo" />
       <p style="font-size: 3.3rem; line-height: 0.8; font-family: Nimbus; color: #f8af12; margin-top: 10px;">Golden Vet</p>
         <p style="font-size: 2.3rem; line-height: 0.8; font-family: Nimbus; margin-bottom: 22px; color: white;">Awards</p>
         <p style="font-size: 2.3rem; line-height: 0.8; font-family: Nimbus; color: white !important;">20<a style="font-size: 2.3rem; line-height: 0.8; font-family: Nimbus; color: #f8af12 !important;">25</a></p>
-    </div>
+    </div> -->
 
     <!-- Right Section -->
-    <div class="vetcap-right">
+    <!-- <div class="vetcap-right">
       <p style="color: white; font-size: 1rem;" class="vetcap-description">
         Los Golden Vet Awards son una iniciativa de la Fundación VetCap destinada a reconocer y celebrar la excelencia en el sector veterinario de la República Dominicana. Estos premios destacan a profesionales y empresas que han realizado contribuciones significativas al desarrollo y fortalecimiento de la medicina veterinaria en el país.
 Las categorías de los Golden Vet Awards abarcan diversas áreas de la práctica veterinaria, permitiendo una evaluación integral de los aportes realizados por individuos y organizaciones.</p>
@@ -414,7 +414,7 @@ La ceremonia de premiación se lleva a cabo en un evento formal, donde se reúne
       <button  id="notificarme-golden-vet" style="color: black; line-height: 1.3;" class="btnn btn-outlinee">NOTIFICARME CUANDO ESTÉ DISPONIBLE</button>
     </div>
   </div>
-</section>
+</section> -->
 <script src="./assets/js/modalEventos.js"></script>
     <script src="./assets/js/modalVetGames.js"></script>
     <script src="./assets/js/modalVetCamp.js"></script>

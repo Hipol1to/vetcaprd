@@ -1521,7 +1521,7 @@ font-family: "Helvetica";
 }
 
 .vetone-left-image {
-  width: 100%;
+  width: 90%;
   border-radius: 8px;
 }
 
@@ -1570,14 +1570,14 @@ font-family: "Helvetica";
 
 .vetone-right-headinga {
   color: #3d6b3d;
-  font-size: 45px;
+  font-size: 35px;
   margin-bottom: 10px;
   font-family: Horizon;
 }
 
 .vetone-right-heading {
   color: #3d6b3d;
-  font-size: 65px;
+  font-size: 55px;
   margin-bottom: 10px;
   font-family: Horizon;
 }
