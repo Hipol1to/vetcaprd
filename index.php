@@ -98,7 +98,7 @@
 
 
     <section style="padding-top: 30px; padding-bottom: 10px;" class="about-area section-bg section-padding">
-        <h2 style="font-size: 70px; font-family: HelveticaBold; text-align: center; color: #2d4a34; margin-bottom: 0%;">PROXIMO EVENTO</h2>
+        <h2 style="font-size: 50px; font-family: Horizon; text-align: center; color: #2d4a34; margin-bottom: 0%;">PROXIMO EVENTO</h2>
         <div class="container">
           <div class="row align-items-center">
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
@@ -112,8 +112,8 @@
               <div class="about-caption about-caption1">
                 <div class="section-tittle m-0">
                   <!-- second section !-->
-                  <img src="./assets/img/centro_de_cultura_logo.png" style="width: 300px;" alt="">
-                  <h2 style="font-size: 50px; font-family: HelveticaBold;"><?php echo $nextEvent['nombre']; ?></h2>
+                  <!-- <img src="./assets/img/centro_de_cultura_logo.png" style="width: 300px;" alt=""> -->
+                  <h2 style="font-size: 30px; font-family: Horizon;"><?php echo $nextEvent['nombre']; ?></h2>
                   <p style="color: #2d5b2d;" class="capitalize-first vetcap-description">
       <?= htmlspecialchars($nextEvent['descripcion']) ?>
       </p>
@@ -197,22 +197,49 @@ echo $nextEventSubscribeButton;
     <button class="rounded-button">SHOP NOW</button>
   </div>
 </div>
+
 <section class="vetone-section">
     <div class="vetone-left-container">
-      <img class="vetone-left-image" src="./assets/img/vetone_pic.png" alt="Group studying">
-      <button class="vetone-left-button">CONOCER MÁS</button>
+      <img class="vetone-left-image" src="./assets/img/vetone-piccc.png" alt="Group studying">
     </div>
     <div class="vetone-right-container">
-      <img class="vetone-right-logo" src="./assets/img/vetone_logo.png" alt="Vet One Logo">
-      <h2 class="vetone-right-heading">AHORRA EN TUS CAPACITACIONES</h2>
-      <p class="vetone-right-description">
-        Vuélvete miembro de Vetone y obtén descuento y contenido exclusivo con 
-        capacitaciones y artículos de la fundación Vetcap.
+      <h2 style="font-size: -10%;" class="vetone-right-headinga">AMAMOS</h2>
+      <h2 class="vetone-right-heading">NUESTROS</h2>
+      <h2 class="vetone-right-heading">PARTNERS</h2>
+      <p style="color: black;" class="vetone-right-description">
+      Conoce a quienes hacen esto posible:
       </p>
       <br>
-      <a href="#" class="vetone-right-cta">¡ADQUIERE TU MEMBRESÍA ANUAL!</a>
+      <img class="vetone-right-logo" src="./assets/img/color-logos/vibix-logo.png" alt="Vet One Logo"> <img style="margin-left: 50px;" class="vetone-right-logo" src="./assets/img/color-logos/espavet-logo.png" alt="Vet One Logo">
+      <br>
+      <img class="vetone-right-logo" src="./assets/img/color-logos/mallen-logo.png" alt="Vet One Logo"> <img style="margin-left: 50px;" class="vetone-right-logo" src="./assets/img/color-logos/animal-food-line-logo.png" alt="Vet One Logo">
+      <hr style="height: 3px;
+    width: 75%;
+    color: #1d351d;">
+      <img style="margin-left: 25px;" class="vetone-right-logowrr" src="./assets/img/color-logos/colegio-de-medicos-veterinarios-logo.png" alt="Vet One Logo"> <img style="margin-left: 25px;" class="vetone-right-logowr" src="./assets/img/color-logos/patas-parriba-logo.png" alt="Vet One Logo">
+      <img style="margin-left: 20px;" class="vetone-right-logowr" src="./assets/img/color-logos/ccoagro-logo.png" alt="Vet One Logo"> 
+      <br>
+      <img style="margin-left: 50px;" class="vetone-right-logowr" src="./assets/img/color-logos/vetboca-logo.png" alt="Vet One Logo">  <img style="margin-left: 50px;" class="vetone-right-logowr" src="./assets/img/color-logos/noctua-logo.png" alt="Vet One Logo">
+      <br>
     </div>
   </section>
+  <section style="margin-bottom:0%" class="custom-follow-section">
+    <div class="custom-follow-container">
+        <p class="custom-follow-title">
+            SIGUE<span class="custom-highlight">NOS</span>
+</p>
+<div class="custom-follow-text-container">
+    <p class="custom-follow-text">No te pierdas de nada de lo que hacemos</p>
+    <div class="custom-follow-arrow">-----------------------------------------------------------------------------&gt;</div>
+</div>
+        <div class="custom-social-icons">
+            <img src="./assets/img/tiktok_logo.png" alt="TikTok" class="custom-social-icon">
+            <img src="./assets/img/instagram_logo.png" alt="Instagram" class="custom-social-icon">
+            <img src="./assets/img/youtube_logo.png" alt="YouTube" class="custom-social-icon">
+            <span class="custom-social-handle">@vetcaprd</span>
+        </div>
+    </div>
+</section>
   <?php 
 //include header template
 require('layout/footer.php'); 

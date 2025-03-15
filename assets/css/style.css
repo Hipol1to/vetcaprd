@@ -1033,7 +1033,7 @@ font-family: "Helvetica";
   font-size: 4rem;
   color: #6a28b9;
   margin-bottom: 20px;
-  font-family: "HelveticaBold" !important;
+  /*font-family: "HelveticaBold" !important;*/
 }
 
 .cta-quote {
@@ -1550,19 +1550,36 @@ font-family: "Helvetica";
 
 /* Right section styles */
 .vetone-right-container {
-  text-align: center;
+  text-align: left;
   width: 50%;
+  margin-left: 5%;
+}
+.vetone-right-logowr {
+  width: 135px;
+  margin-bottom: 20px;
+}
+.vetone-right-logowrr {
+  width: 100px;
+  margin-bottom: 20px;
 }
 
 .vetone-right-logo {
-  width: 400px;
+  width: 200px;
   margin-bottom: 20px;
+}
+
+.vetone-right-headinga {
+  color: #3d6b3d;
+  font-size: 45px;
+  margin-bottom: 10px;
+  font-family: Horizon;
 }
 
 .vetone-right-heading {
   color: #3d6b3d;
-  font-size: 58px;
+  font-size: 65px;
   margin-bottom: 10px;
+  font-family: Horizon;
 }
 
 .vetone-right-description {
@@ -1608,9 +1625,16 @@ font-family: "Helvetica";
     margin-bottom: 15px;
   }
 
+  .vetone-right-headinga {
+    font-size: 26px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
   .vetone-right-heading {
     font-size: 36px;
     margin-bottom: 10px;
+    text-align: center;
   }
 
   .vetone-right-description {

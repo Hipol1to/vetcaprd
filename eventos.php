@@ -5,7 +5,7 @@
   $nextEvent = $_SESSION['nextEvent'];
 ?>
       <section style="padding-top: 30px; padding-bottom: 10px;" class="about-area section-bg section-padding">
-        <h2 style="font-size: 70px; font-family: HelveticaBold; text-align: center; color: #2d4a34; margin-bottom: 0%;">PROXIMO EVENTO</h2>
+        <h2 style="font-size: 50px; font-family: Horizon; text-align: center; color: #2d4a34; margin-bottom: 0%;">PROXIMO EVENTO</h2>
         <div class="container">
           <div class="row align-items-center">
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
@@ -19,8 +19,8 @@
               <div class="about-caption about-caption1">
                 <div class="section-tittle m-0">
                   <!-- second section !-->
-                  <img src="./assets/img/centro_de_cultura_logo.png" style="width: 300px;" alt="">
-                  <h2 style="font-size: 50px; font-family: HelveticaBold;"><?php echo $nextEvent['nombre']; ?></h2>
+                  <!-- <img src="./assets/img/centro_de_cultura_logo.png" style="width: 300px;" alt=""> -->
+                  <h2 style="font-size: 30px; font-family: Horizon;"><?php echo $nextEvent['nombre']; ?></h2>
                   <p style="color: #2d5b2d;" class="capitalize-first vetcap-description">
       <?= htmlspecialchars($nextEvent['descripcion']) ?>
       </p>

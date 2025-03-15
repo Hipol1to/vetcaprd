@@ -142,44 +142,11 @@ error_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electron
       display: none;
     }
   </style>
-<section class="call-to-action-section">
-  <div class="cta-content">
-    <div class="image-container">
-      <img src="./assets/img/registrate.png" alt="Animals" class="cta-image" />
-    </div>
-    <div class="text-container">
-      <h1 style="color: #2d4a34;" class="cta-title">Unete a VetCap</h1>
-      <p style="color: #2d4a34;" class="cta-quote">
-        Unete a una comunidad apasionada por la veterinaria
-      </p>
-      <a href="#lobo-promo"><button style="color: white;" class="cta-button2">REGISTRARME</button></a>
-    </div>
-  </div>
-</section>
-
-
-<div id="lobo-promo" class="promo-bar">
-  <div class="text-section">
-    <div class="logo-info">LOBO CORPORATION | FUNDACIÓN VETCAP</div>
-    <div class="collection-title">HIVE <a style="color:white;">& HOWL</a></div>
-    <div class="collection-subtitle">COLLECTION</div>
-  </div>
-  <div class="image-section">
-    <img src="./assets/img/vetcap_lobo.png" alt="Cap image">
-  </div>
-  <div class="hashtag-section">
-    <h2>#VETCAPXLOBO</h2>
-  </div>
-  <div class="button-section">
-    <button class="rounded-button">SHOP NOW</button>
-  </div>
-</div>
-
-
 <section  class="call-to-action-section">
   <div class="cta-content">
     <div class="text-container">
-      <h1  style="color: #2d4a34;" class="cta-title">Regístrate en VetCap</h1>
+      <h1  style="color: #2d4a34; font-family:Horizon;" class="cta-title">CREA <a style="color:orange;">TU</a> CUENTA</h1>
+      <br><br><br>
       <form role="form" autocomplete="off" action="" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
       <?php
       // Check for any errors
@@ -199,33 +166,57 @@ error_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electron
       }
       ?>  
       <!-- Nombre -->
-        <label style="color: #2d4a34;">
+        <label style="color: #2d4a34; font-family:Horizon; font-size:30px; text-align:left;">
           Nombre:
-          <input type="text" name="nombre" placeholder="Ingrese su nombre" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          <input type="text" name="nombre" placeholder="Ingrese su nombre" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 25px; font-family: 'Helvetica';
+    font-size: 20px; margin-bottom: 12px;">
         </label>
 
         <!-- Apellido -->
-        <label style="color: #2d4a34;">
+        <label style="color: #2d4a34; font-family:Horizon; font-size:30px; text-align:left;">
           Apellido:
-          <input type="text" name="apellido" placeholder="Ingrese su apellido" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          <input type="text" name="apellido" placeholder="Ingrese su apellido" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 25px; font-family: 'Helvetica';
+    font-size: 20px; margin-bottom: 12px;">
         </label>
 
         <!-- Correo Electrónico -->
-        <label style="color: #2d4a34;">
+        <label style="color: #2d4a34; font-family:Horizon; font-size:30px; text-align:left;">
           Correo Electrónico:
-          <input type="email" name="correo_electronico" placeholder="Ingrese su correo electrónico" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          <input type="email" name="correo_electronico" placeholder="Ingrese su correo electrónico" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 25px; font-family: 'Helvetica';
+    font-size: 20px; margin-bottom: 12px;">
         </label>
 
         <!-- Teléfono -->
-        <label style="color: #2d4a34;">
+        <label style="color: #2d4a34; font-family:Horizon; font-size:30px; text-align:left;">
           Teléfono:
-          <input type="number" name="telefono" placeholder="Ingrese su número de teléfono" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          <input type="number" name="telefono" placeholder="Ingrese su número de teléfono" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 25px; font-family: 'Helvetica';
+    font-size: 20px; margin-bottom: 12px;">
         </label>
 
+        <!-- Usuario -->
+        <label style="color: #2d4a34; font-family:Horizon; font-size:30px; text-align:left;">
+          Usuario:
+          <input type="text" name="usuario" placeholder="Ingrese su usuario" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 25px; font-family: 'Helvetica';
+    font-size: 20px; margin-bottom: 12px;">
+        </label>
+
+        <!-- contrasena -->
+        <label style="color: #2d4a34; font-family:Horizon; font-size:30px; text-align:left;">
+          contraseña:
+          <input type="password" name="contrasena" placeholder="Ingrese su contrasena" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 25px; font-family: 'Helvetica';
+    font-size: 20px; margin-bottom: 12px;">
+        </label>
+          <input type="password" name="confirmacioncontrasena" placeholder="Confirme su contrasena" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 25px; font-family: 'Helvetica';
+    font-size: 20px; margin-bottom: 12px;">
+        </label>
+
+
+
         <!-- Motivación -->
-        <label style="color: #2d4a34;">
+        <label style="color: #2d4a34; font-family:Horizon; font-size:30px; text-align:left;">
           ¿Qué te motiva a unirte a VetCap?
-          <select id="tipo_visitante" name="tipo_visitante" onchange="toggleRegisterFields()" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          <select id="tipo_visitante" name="tipo_visitante" onchange="toggleRegisterFields()" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 25px; font-family: 'Helvetica';
+    font-size: 20px; margin-bottom: 12px;">
             <option value="" disabled selected>Selecciona una opción</option>
             <option value="Estudiante veterinario">Soy estudiante veterinario</option>
             <option value="Visitante">Solo estoy de visita</option>
@@ -235,9 +226,10 @@ error_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electron
 
         <!-- Etapa de Estudios -->
         <div id="estudiosFieldContainer" class="hidden">
-        <label style="color: #2d4a34;">
+        <label style="color: #2d4a34; font-family:Horizon; font-size:30px; text-align:left;">
           ¿En qué etapa de tus estudios estás?
-          <select id="tipo_estudiante" name="tipo_estudiante" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          <select id="tipo_estudiante" name="tipo_estudiante" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 25px; font-family: 'Helvetica';
+    font-size: 20px; margin-bottom: 12px;">
             <option value="" disabled selected>Selecciona una opción</option>
             <option value="Estudiante de inicio">He comenzado hace poco</option>
             <option value="Estudiante a mediados de carrea">Estoy a mediados de carrera</option>
@@ -248,9 +240,10 @@ error_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electron
 
         <!-- Universidad -->
          <div id="universidadFieldContainer" class="hidden">
-        <label style="color: #2d4a34;">
+        <label style="color: #2d4a34; font-family:Horizon; font-size:30px; text-align:left;">
           ¿En qué universidad estudias?
-          <select id="universidad" name="universidad" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+          <select id="universidad" name="universidad" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 25px; font-family: 'Helvetica';
+    font-size: 20px; margin-bottom: 12px;">
     <option value="" disabled selected>Selecciona una universidad</option>
     <option value="Puerto Plata Business School">Puerto Plata Business School</option>
     <option value="Universidad Autónoma de Santo Domingo">Universidad Autónoma de Santo Domingo</option>
@@ -309,30 +302,14 @@ error_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electron
         </div>
 
         <!-- Fecha de Nacimiento -->
-        <label style="color: #2d4a34;">
+        <label style="color: #2d4a34; font-family:Horizon; font-size:30px; text-align:left;">
           Fecha de Nacimiento:
           <input type="date" name="fecha_nacimiento" required 
-       style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" 
+       style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 25px; font-family: 'Helvetica';
+    font-size: 20px;" 
        onclick="this.showPicker()">
         </label>
 
-        <!-- Usuario -->
-        <label style="color: #2d4a34;">
-          Usuario:
-          <input type="text" name="usuario" placeholder="Ingrese su usuario" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-        </label>
-
-        <!-- contrasena -->
-        <label style="color: #2d4a34;">
-          contrasena:
-          <input type="password" name="contrasena" placeholder="Ingrese su contrasena" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-        </label>
-
-        <!-- Confirmar contrasena -->
-        <label style="color: #2d4a34;">
-          Confirmar contrasena:
-          <input type="password" name="confirmacioncontrasena" placeholder="Confirme su contrasena" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-        </label>
 
         <!-- Botón -->
         <button type="submit" name="submit" style="background-color: #2d4a34; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 16px;">
