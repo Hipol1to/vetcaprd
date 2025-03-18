@@ -1,0 +1,49 @@
+
+.u-section-1 .u-text-1 {
+  margin-bottom: 0;
+  font-family: horizon;
+  font-size: 3rem;
+  margin-left: calc(((100% - 1140px) / 2));
+}
+
+.u-section-1 .u-line-1 {
+  /* margin-top: 443px; */
+  margin-bottom: 0;
+  transform-origin: left center;
+  border-style: dashed;
+}
+
+.u-section-1 .u-text-2 {
+  font-family: horizon;
+  font-size: 2.25rem;
+  margin: 36px auto 60px;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-text-1 {
+    margin-left: calc(((100% - 940px) / 2));
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-text-1 {
+    margin-left: calc(((100% - 720px) / 2));
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-text-1 {
+    margin-left: calc(((100% - 540px) / 2));
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-text-1 {
+    margin-left: calc(((100% - 340px) / 2));
+  }
+}@font-face {
+  font-family: 'horizon';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/horizon.otf);
+}

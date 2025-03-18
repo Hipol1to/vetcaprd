@@ -1,5 +1,11 @@
-<?php
+<?php 
 require_once('../includes/config.php');
+
+//if not logged in redirect to login page
+if (! $user->is_logged_in() || !isset($_SESSION['rol']) || $_SESSION['rol'] != "administrador" ){
+    header('Location: login.php'); 
+    exit(); 
+}
 require_once dirname(__DIR__) . '/includes/classes/PHPMailer/Exception.php';
 require_once dirname(__DIR__) . '/includes/classes/PHPMailer/PHPMailer.php';
 require_once dirname(__DIR__) . '/includes/classes/PHPMailer/SMTP.php';

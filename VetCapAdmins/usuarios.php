@@ -1,5 +1,11 @@
-<?php
-//include header template
+<?php 
+require_once('../includes/config.php');
+
+//if not logged in redirect to login page
+if (! $user->is_logged_in() || !isset($_SESSION['rol']) || $_SESSION['rol'] != "administrador" ){
+    header('Location: login.php'); 
+    exit(); 
+}
 require('layout/header.php'); 
  ?>
       <div class="body flex-grow-1">

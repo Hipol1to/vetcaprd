@@ -1,0 +1,30 @@
+.u-section-1 .u-text-1 {
+  font-family: horizon;
+  font-size: 2.25rem;
+  margin: 50px auto 0;
+}
+
+.u-section-1 .u-text-2 {
+  margin: 30px 162px 0px;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-text-2 {
+    margin-left: 62px;
+    margin-right: 62px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-text-2 {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}.u-section-2 .u-sheet-1 {
+  min-height: 410px;
+}@font-face {
+  font-family: 'horizon';
+  font-style: normal;
+  font-weight: 400;
+  src: url(fonts/horizon.otf);
+}

@@ -21,23 +21,23 @@
 <footer class="footer" style="background-color: #2E4D31; color: white; padding: 40px 20px; text-align: center;">
   <div class="footer-container" style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; max-width: 1200px; margin: auto;">
     <div class="logo" style="flex: 1; text-align: left;">
-      <img src="./assets/img/color-logos/vetcap-logo.png" alt="VETCAP Logo" style="max-width: 250px;"/>
+      <img src="../assets/img/color-logos/vetcap-logo.png" alt="VETCAP Logo" style="max-width: 250px;"/>
     </div>
     <div class="partners" style="flex: 2; text-align: center;">
       <h3>PRINCIPAL PARTNERS</h3>
       <div style="margin-right: 10px;" class="sponsor-logos">
-        <img src="./assets/img/espavet_white_logo.png" alt="Espavet Logo" />
-        <img src="./assets/img/vibix_white_logo.png" alt="Vibix Logo" />
-        <img src="./assets/img/mallen_white_logo.png" alt="Mallen Mascotas Logo" />
-        <img src="./assets/img/animal_food_line-white_logo.png" alt="Animal Food Line Logo" />
+        <img src="../assets/img/espavet_white_logo.png" alt="Espavet Logo" />
+        <img src="../assets/img/vibix_white_logo.png" alt="Vibix Logo" />
+        <img src="../assets/img/mallen_white_logo.png" alt="Mallen Mascotas Logo" />
+        <img src="../assets/img/animal_food_line-white_logo.png" alt="Animal Food Line Logo" />
       </div>
       <br>
       <h3>OFICIAL PARTNERS</h3>
       <div class="sponsor-logos">
-        <img src="./assets/img/noctua_group_white_logo.png" alt="Noctua Group Logo" />
-        <img src="./assets/img/colegio-white-logo.png" alt="Vetboca Logo" />
-        <img src="./assets/img/patas-parriba-white-logo.png" alt="Vetboca Logo" />
-        <img src="./assets/img/ccoagro-white-logo.png" alt="Ccoagro Logo" />
+        <img src="../assets/img/noctua_group_white_logo.png" alt="Noctua Group Logo" />
+        <img src="../assets/img/colegio-white-logo.png" alt="Vetboca Logo" />
+        <img src="../assets/img/patas-parriba-white-logo.png" alt="Vetboca Logo" />
+        <img src="../assets/img/ccoagro-white-logo.png" alt="Ccoagro Logo" />
       </div>
     </div>
     <div class="contact" style="flex: 1; text-align: left; font-size: 30px;">
@@ -52,14 +52,13 @@
     </div>
   </div>
   <div class="footer-bottom" style="border-top: 1px solid white; margin-top: 20px; padding-top: 10px;">
-    <p style="color:white; font-size:20px;">COPYRIGHT ® 2024 ENCIOSYSTEMS INC. TODOS LOS DERECHOS RESERVADOS.</p>
+    <p style="color:white; font-size:20px;">COPYRIGHT ® 2025 ENCIOSYSTEMS INC. TODOS LOS DERECHOS RESERVADOS.</p>
     <div class="links">
       <a href="#" style="color: white;">CONDICIONES DE USO</a> |
       <a href="#" style="color: white;">POLÍTICAS DE COOKIES</a>
     </div>
   </div>
 </footer>
-
 
     <div id="back-top">
       <a
@@ -68,9 +67,8 @@
         ><i style="color: white !important;" class="fas fa-long-arrow-alt-up"></i
       ></a>
     </div>
-    <script src="./assets/js/slider.js"></script>
-    <script src="./assets/js/jquery-1.12.4.min.js"></script>
-    <script src="./assets/js/jquery.slicknav.min.js"></script>
-    <script src="./assets/js/main.js"></script>
+    <script src="../assets/js/jquery-1.12.4.min.js"></script>
+    <script src="../assets/js/jquery.slicknav.min.js"></script>
+    <script src="../assets/js/main.js"></script>
   </body>
 </html>

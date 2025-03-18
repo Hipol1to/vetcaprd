@@ -1521,7 +1521,7 @@ font-family: "Helvetica";
 }
 
 .vetone-left-image {
-  width: 90%;
+  width: 100%;
   border-radius: 8px;
 }
 
@@ -8880,7 +8880,7 @@ body {
 .sponsor-logos {
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 20px;
 }
 

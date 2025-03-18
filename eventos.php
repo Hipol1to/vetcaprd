@@ -1,12 +1,72 @@
 <?php
   require_once('includes/config.php');
-  require('layout/header.php'); 
+  require('layout/header2.php'); 
   $eventos = getAllEvents($db);
   $nextEvent = $_SESSION['nextEvent'];
 ?>
-      <section style="padding-top: 30px; padding-bottom: 10px;" class="about-area section-bg section-padding">
-        <h2 style="font-size: 50px; font-family: Horizon; text-align: center; color: #2d4a34; margin-bottom: 0%;">PROXIMO EVENTO</h2>
-        <div class="container">
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en"><head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Proximo Evento, Eventos Futuros​">
+    <meta name="description" content="">
+    <title>Eventos</title>
+    <link rel="stylesheet" href="nicepage.css" media="screen">
+<link rel="stylesheet" href="Eventos.css" media="screen">
+    <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
+    <link rel="stylesheet" href="indexcapa.css" media="screen">
+    <meta name="generator" content="Nicepage 7.5.2, nicepage.com">
+    
+    
+    
+    
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": ""
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Eventos">
+    <meta property="og:type" content="website">
+  <meta data-intl-tel-input-cdn-path="intlTelInput/"></head>
+  <body data-path-to-root="./" data-include-products="true" class="u-body u-xl-mode" data-lang="en"><header class="u-clearfix u-header u-header" id="header"><div class="u-clearfix u-sheet u-valign-middle-xs u-sheet-1">
+        <nav class="u-menu u-menu-one-level u-offcanvas u-menu-1">
+          <div class="menu-collapse" style="font-size: 1rem; letter-spacing: 0px;">
+            <a class="u-button-style u-custom-left-right-menu-spacing u-custom-padding-bottom u-custom-top-bottom-menu-spacing u-hamburger-link u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base u-hamburger-link-1" href="#">
+              <svg class="u-svg-link" viewBox="0 0 24 24"><use xlink:href="#menu-hamburger"></use></svg>
+              <svg class="u-svg-content" version="1.1" id="menu-hamburger" viewBox="0 0 16 16" x="0px" y="0px" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg"><g><rect y="1" width="16" height="2"></rect><rect y="7" width="16" height="2"></rect><rect y="13" width="16" height="2"></rect>
+</g></svg>
+            </a>
+          </div>
+          <div class="u-custom-menu u-nav-container">
+            <ul class="u-nav u-unstyled u-nav-1"><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="capacitaciones.php" style="padding: 10px 22px;">Capacitaciones</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="eventos.php" style="padding: 10px 22px;">Eventos</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="patrocinadores.php" style="padding: 10px 22px;">Patrocinadores</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="sobre-nosotros.php" style="padding: 10px 22px;">Sobre Nosotros</a>
+</li></ul>
+          </div>
+          <div class="u-custom-menu u-nav-container-collapse">
+            <div class="u-black u-container-style u-inner-container-layout u-opacity u-opacity-95 u-sidenav">
+              <div class="u-inner-container-layout u-sidenav-overflow">
+                <div class="u-menu-close"></div>
+                <ul class="u-align-center u-nav u-popupmenu-items u-unstyled u-nav-2"><li class="u-nav-item"><a class="u-button-style u-nav-link" href="capacitaciones.php">Capacitaciones</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="eventos.php">Eventos</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="patrocinadores.php">Patrocinadores</a>
+</li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="sobre-nosotros.php">Sobre Nosotros</a>
+</li></ul>
+              </div>
+            </div>
+            <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
+          </div>
+        </nav>
+        <img class="u-image u-image-contain u-image-default u-image-1" src="images/3.png" alt="" data-image-width="1918" data-image-height="720" data-href="./" data-page-id="72255026" title="LandingPage">
+      </div></header>
+    <section class="u-clearfix u-section-1" id="block-6">
+      <h1 class="u-custom-font u-text u-text-custom-color-1 u-text-default u-title u-text-1">Proximo <span class="u-text-custom-color-3">Evento</span>
+      </h1>
+      <div class="container">
           <div class="row align-items-center">
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
               <div class="about-img about-img1">
@@ -87,341 +147,136 @@ echo $nextEventSubscribeButton;
             </div>
           </div>
         </div>
-      </section>
-
-      <div class="vetcap-partners">
-    <div class="vetcap-partner-logos">
-      <h2 class="vetcap-partners-title">MEET OUR PARTNERS</h2>
-      <img src="./assets/img/espavet_white_logo.png" alt="ESPAVET" />
-      <img src="./assets/img/mallen_white_logo.png" alt="MALLÉN MASCOTAS" />
-      <img src="./assets/img/animal_food_line-white_logo.png" alt="ANIMAL FOOD LINE" />
-      <img src="./assets/img/ramvet_white_logo.png" alt="RAMVET" />
-      <img src="./assets/img/vibix_white_logo.png" alt="VIBIX" />
-      <img src="./assets/img/noctua_group_white_logo.png" alt="NOCTUA" />
-    </div>
-  </div>
+        
 
 
 
-<?php
+
+
+        <section class="u-align-center u-clearfix u-container-align-center u-valign-middle u-section-4" id="block-4">
+      <div class="u-carousel u-expanded-width u-gallery u-gallery-slider u-layout-carousel u-lightbox u-no-transition u-show-text-on-hover u-gallery-1" id="carousel-2023" data-interval="750" data-u-ride="carousel" data-pause="false">
+        <ol class="u-absolute-hcenter u-carousel-indicators u-carousel-indicators-1">
+          <li data-u-target="#carousel-2023" data-u-slide-to="0" class="u-active u-shape-circle" style="width: 10px; height: 10px;"></li>
+          <li data-u-target="#carousel-2023" data-u-slide-to="1" class="u-shape-circle" style="width: 10px; height: 10px;"></li>
+        </ol>
+        <div class="u-carousel-inner u-gallery-inner" role="listbox">
+          <div class="u-active u-carousel-item u-effect-fade u-gallery-item u-carousel-item-1" data-href="https://mallenmascotas.com/" data-target="_blank">
+            <div class="u-back-slide" data-image-width="7917" data-image-height="834">
+              <img class="u-back-image u-expanded" src="images/Banner-MM-VETCAP-1900x200_px.png">
+            </div>
+            <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-1"></div>
+          </div>
+          <div class="u-carousel-item u-effect-fade u-gallery-item u-carousel-item-2">
+            <div class="u-back-slide" data-image-width="7917" data-image-height="834">
+              <img class="u-back-image u-expanded" src="images/banners-MMMesadetrabajo1300x.png">
+            </div>
+            <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-2">
+              <h3 class="u-gallery-heading">Sample Title</h3>
+              <p class="u-gallery-text">Sample Text</p>
+            </div>
+          </div>
+        </div>
+        <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-hidden u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-1" href="#carousel-2023" role="button" data-u-slide="prev">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+          </span>
+          <span class="sr-only">
+            <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+          </span>
+        </a>
+        <a class="u-absolute-vcenter u-carousel-control u-carousel-control-next u-hidden u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-2" href="#carousel-2023" role="button" data-u-slide="next">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+          </span>
+          <span class="sr-only">
+            <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+          </span>
+        </a>
+      </div>
+    </section>
+
+
+
+
+
+
+
+      <div class="u-border-1 u-border-custom-color-3 u-expanded-width u-line u-line-horizontal u-line-1"></div>
+      <h1 class="u-custom-font u-text u-text-custom-color-1 u-text-default u-title u-text-2">Eventos Futuros </h1>
+      <br>
+      <?php
 
 printAllEvents($eventos);
 
 ?>
-
-
-
-
-
-  <!-- <section class="vetcap-section">
-  <div class="vetcap-container"> -->
-    <!-- Left Section -->
-    <!-- <div class="vetcap-left">
-      <img src="./assets/img/vetcap_tour_template.png" alt="Illustration" class="vetcap-image vetcap-logo" />
-      <div class="vetcap-badge">
-        <img style="width: 70px; height: auto;" src="./assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
-        <span>GRATIS</span>
-      </div>
-    </div> -->
-
-    <!-- Right Section -->
-    <!-- <div class="vetcap-right">
-      <img src="./assets/img/vetcap-tour-logo.png" alt="Vetcap Tour Logo" class="vetcap-logo" />
-      <br>
-      <br>
-      <p class="vetcap-description">
-        UNA SERIE DE CHARLAS GRATUITAS A NIVEL NACIONAL, DIRIGIDAS TANTO A
-        ESTUDIANTES COMO A MÉDICOS VETERINARIOS.
-      </p>
-      <p class="vetcap-description">
-        EL OBJETIVO DEL VETCAP TOUR ES ACERCAR LA CAPACITACIÓN A DIFERENTES
-        REGIONES DEL PAÍS, BRINDANDO ACCESO A FORMACIÓN CONTINUA DE MANERA
-        ACCESIBLE.
-      </p>
-      <div id="vetcap-tour-modal" class="modal"> -->
-  <!-- <div class="modal-content">
-    <span class="close">&times;</span>
-    <section class="vetcap-tour-section">
-      <div class="vetcap-header">
-        <img src="./assets/img/vetcap-tour-logo.png" alt="Vetcap Tour Logo" class="vetcap-logoo" />
-        <div>
-        <p class="vetcap-descriptionn">
-          UNA SERIE DE CHARLAS GRATUITAS A NIVEL NACIONAL, DIRIGIDAS TANTO A ESTUDIANTES COMO A MÉDICOS VETERINARIOS.
-        </p>
-        <p class="vetcap-descriptionn">
-          EL OBJETIVO DEL VETCAP TOUR ES ACERCAR LA CAPACITACIÓN A DIFERENTES REGIONES DEL PAÍS, BRINDANDO ACCESO A FORMACIÓN CONTINUA DE MANERA ACCESIBLE.
-        </p>
-        </div>
-      </div>
-      <div class="vetcap-events">
-        <!-- Event Cards (Same as before) -->
-        <!-- <div class="event-card">
-          <img src="./assets/img/vetcap-tour-blue-bus.png" alt="Blue Bus" class="bus-icon" />
-          <h3>UNIVERSIDAD ISA</h3>
-          <p>Santiago de los Caballeros, RD</p>
-          <p>21/2/2025 | 10:30AM</p>
-          <button class="btnee btnee-filled">REGISTRARME</button>
-          <div id="countdown" class="countdown">
-            <div class="time-unit">
-              <span class="number" id="days">00</span>
-              <span class="label">DÍAS</span>
+    </section>
+    
+    
+    <section class="u-align-center u-clearfix u-container-align-center u-valign-middle u-section-4" id="block-4">
+      <div class="u-carousel u-expanded-width u-gallery u-gallery-slider u-layout-carousel u-lightbox u-no-transition u-show-text-on-hover u-gallery-1" id="carousel-2023" data-interval="750" data-u-ride="carousel" data-pause="false">
+        <ol class="u-absolute-hcenter u-carousel-indicators u-carousel-indicators-1">
+          <li data-u-target="#carousel-2023" data-u-slide-to="0" class="u-active u-shape-circle" style="width: 10px; height: 10px;"></li>
+          <li data-u-target="#carousel-2023" data-u-slide-to="1" class="u-shape-circle" style="width: 10px; height: 10px;"></li>
+        </ol>
+        <div class="u-carousel-inner u-gallery-inner" role="listbox">
+          <div class="u-active u-carousel-item u-effect-fade u-gallery-item u-carousel-item-1" data-href="https://mallenmascotas.com/" data-target="_blank">
+            <div class="u-back-slide" data-image-width="7917" data-image-height="834">
+              <img class="u-back-image u-expanded" src="images/Banner-MM-VETCAP-1900x200_px.png">
             </div>
-            <div class="time-unit">
-              <span class="number" id="hours">00</span>
-              <span class="label">HRS</span>
+            <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-1"></div>
+          </div>
+          <div class="u-carousel-item u-effect-fade u-gallery-item u-carousel-item-2">
+            <div class="u-back-slide" data-image-width="7917" data-image-height="834">
+              <img class="u-back-image u-expanded" src="images/banners-MMMesadetrabajo1300x.png">
             </div>
-            <div class="time-unit">
-              <span class="number" id="minutes">00</span>
-              <span class="label">MINS</span>
-            </div>
-            <div class="time-unit">
-              <span class="number" id="seconds">00</span>
-              <span class="label">SEGS</span>
+            <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-2">
+              <h3 class="u-gallery-heading">Sample Title</h3>
+              <p class="u-gallery-text">Sample Text</p>
             </div>
           </div>
-        </div> -->
-        <!-- Event 2 -->
-    <!-- <div class="event-card">
-      <img src="./assets/img/vetcap-tour-gray-bus.png" alt="Gray Bus" class="bus-icon" />
-      <h3>UNIVERSIDAD CENTRAL DEL ESTE</h3>
-      <p>San Pedro de Macorís, RD</p>
-      <p>04/4/2025</p>
-      <button class="btnee btnee-outline">NOTIFICARME</button>
-    </div> -->
-
-    <!-- Event 3 -->
-    <!-- <div class="event-card">
-      <img src="./assets/img/vetcap-tour-gray-bus.png" alt="Gray Bus" class="bus-icon" />
-      <h3>UNIVERSIDAD NACIONAL PEDRO HENRÍQUEZ UREÑA</h3>
-      <p>Santo Domingo, RD</p>
-      <p>16/5/2025</p>
-      <button class="btnee btnee-outline">NOTIFICARME</button>
-    </div> -->
-
-    <!-- Event 4 -->
-    <!-- <div class="event-card">
-      <img src="./assets/img/vetcap-tour-gray-bus.png" alt="Gray Bus" class="bus-icon" />
-      <h3>UNIVERSIDAD TECNOLÓGICA DE SANTIAGO - UTESA</h3>
-      <p>Santiago de los Caballeros, RD</p>
-      <p>06/6/2025</p>
-      <button class="btnee btnee-outline">NOTIFICARME</button>
-    </div>
-      </div>
-    </section>
-  </div>
-</div>
-      <button  id="conocer-mas-vetcap_tour" style="color: black" class="btnn btn-outline">CONOCER MÁS</button>
-        <button class="btnnn btn-filled">INSCRIBIRME</button>
-    </div>
-  </div>
-</section> -->
-
-
-
-
-
-
-
-
-
-      <div class="promo-bar">
-  <div class="text-section">
-    <div class="logo-info">LOBO CORPORATION | FUNDACIÓN VETCAP</div>
-    <div class="collection-title">HIVE <a style="color:white;">& HOWL</a></div>
-    <div class="collection-subtitle">COLLECTION</div>
-  </div>
-  <div class="image-section">
-    <img src="./assets/img/vetcap_lobo.png" alt="Cap image">
-  </div>
-  <div class="hashtag-section">
-    <h2>#VETCAPXLOBO</h2>
-  </div>
-  <div class="button-section">
-    <button class="rounded-button">SHOP NOW</button>
-  </div>
-</div>
-
-<!-- <section class="vetcap-section">
-  <div class="vetcap-container"> -->
-    <!-- Left Section -->
-    <!-- <div class="vetcap-left">
-      <img src="./assets/img/vetcap_tour_template.png" alt="Illustration" class="vetcap-image vetcap-logo" />
-      <div class="vetcap-badge">
-        <img style="width: 70px; height: auto;" src="./assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
-        <span>RD$5,500</span>
-      </div>
-    </div> -->
-
-    <!-- Right Section -->
-    <!-- <div class="vetcap-right">
-      <img src="./assets/img/vetgames-logo.png" alt="Vetcap Tour Logo" class="vetcap-logo" />
-      <br>
-      <br>
-      <p class="vetcap-description">
-        Los Vetgames 2025, organizados por Vetcap, serán una competencia nacional en la que equipos de 2 a 5 personas, entre estudiantes y profesionales veterinarios, se enfrentarán en una serie de preguntas sobre temas clave de medicina veterinaria. Con etapas regionales en Santiago y Santo Domingo, cada equipo competirá por un prize pool de RD$100,000 y la oportunidad de llegar a la gran final en el Vetcamp 2025. 
-      </p>
-      <div id="vetgames-modal" class="modal">
-  <div class="modal-content">
-    <span class="close closee">&times;</span>
-    <section class="vetcap-tour-section">
-      <div class="vetcap-header">
-        <img src="./assets/img/vetgames-logo.png" alt="Vetcap Tour Logo" class="vetcap-logoo" />
-        <div>
-          <br>
-        <p style="font-size: 1.3rem; line-height: 1.3;" class="vetcap-descriptionn">
-          Los Vetgames son una competencia nacional creada por Vetcap para celebrarse entre julio y agosto del 2025. La competencia está diseñada para equipos de 2 a 5 personas, ya sean estudiantes o profesionales, y se asemeja a programas como “Dame la pasta”, “Preguntados” o “Quiero ser millonario”. Los equipos responderán preguntas en diferentes categorías para acumular puntos y avanzar en el torneo.</p>
-
-<p style="font-size: 1.3rem; line-height: 1.3;" class="vetcap-descriptionn">
-La competencia está dividida en dos regiones: Región Norte (Sede: Santiago de los Caballeros) y Región Sureste (Sede: Santo Domingo), con un máximo de 25 equipos por región, sumando 50 equipos en total. Los mejores equipos de cada región se enfrentarán en una gran final que tendrá lugar en el Vetcamp 2025, con la oportunidad de ganar premios en efectivo. El prize pool es de RD$100,000 y está dividido de la siguiente manera: Campeón nacional RD$44,000, Subcampeón nacional RD$32,000, y Subcampeones regionales RD$12,000 cada uno.</p>
-
-  <p style="font-size: 1.3rem; line-height: 1.3;" class="vetcap-descriptionn">
-Las preguntas abarcan temas de fisiología, nutrición, anatomía, patología y laboratorio, enfocados en especies como perros, gatos, bovinos, equinos, pollos y cerdos. Las preguntas están clasificadas en tres niveles de dificultad: Blue (20s con opciones), Green (40s con opción múltiple), y Red (60s sin opciones). Los equipos tendrán 40 segundos para responder cada pregunta, y la divulgación de respuestas conllevará expulsión inmediata del torneo.</p>
-
-<p style="font-size: 1.3rem; line-height: 1.3;" class="vetcap-descriptionn">
-El costo de inscripción es de RD$5,500 por equipo, y los participantes deben elegir un nombre, logo de animal y camisetas obligatorias. Además, los ganadores regionales recibirán acceso gratuito al Vetcamp 2025, donde se coronará al equipo campeón nacional.
-        </p>
         </div>
+        <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-hidden u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-1" href="#carousel-2023" role="button" data-u-slide="prev">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+          </span>
+          <span class="sr-only">
+            <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+          </span>
+        </a>
+        <a class="u-absolute-vcenter u-carousel-control u-carousel-control-next u-hidden u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-2" href="#carousel-2023" role="button" data-u-slide="next">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+          </span>
+          <span class="sr-only">
+            <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+          </span>
+        </a>
       </div>
-      
     </section>
-  </div>
-</div>
-      <button  id="conocer-mas-vetgames" style="color: black" class="btnn btn-outline">CONOCER MÁS</button>
-        <button class="btnnn btn-filled">INSCRIBIRME</button>
-    </div>
-  </div>
-</section> -->
-
-
-<!-- <div class="promo-bar-container"> -->
-  <!-- Logo Section -->
-  <!-- <div class="promo-bar-logo-section">
-    <img
-      class="promo-bar-logo"
-      src="./assets/img/mallen-mascotas-logo.png"
-      alt="Mallén Mascotas Logo"
-    />
-  </div> -->
-
-  <!-- Middle Image Section -->
-  <!-- <div class="promo-bar-middle-images">
-    <img 
-      src="./assets/img/royal-canin.png" 
-      alt="Dog and Cat" 
-    />
-  </div> -->
-
-  <!-- Subtitle and Button Section -->
-   <!-- <div class="promo-bar-action-section">
-    <span class="promo-bar-subtitle">Breed health nutrition</span>
-  </div>
-  <div class="promo-bar-action-section">
-    <button class="promo-bar-rounded-button">
-      <i class="promo-bar-button-icon"></i> SHOP NOW
-    </button>
-  </div>
-</div> -->
-
-
-
-<!-- <section class="vetcap-section">
-  <div class="vetcap-container"> -->
-    <!-- Left Section -->
-    <!-- <div class="vetcap-left">
-      <img src="./assets/img/vetcap_tour_template.png" alt="Illustration" class="vetcap-image vetcap-logo" />
-      <div class="vetcap-badge">
-        <img style="width: 70px; height: auto;" src="./assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
-        <span>$RD$7,500</span>
-      </div>
-    </div> -->
-
-    <!-- Right Section -->
-    <!-- <div class="vetcap-right">
-      <img style="max-width: 330px;" src="./assets/img/vetcamp-logo-2025.png" alt="Vetcap Tour Logo" class="vetcap-logo" />
-      <br>
-      <br>
-      <p style="color: #2d5b2d;" class="vetcap-description">
-        El VetCamp es un campamento educativo diseñado para estudiantes y profesionales de veterinaria. Mediante talleres, charlas y actividades con expertos del sector, los participantes desarrollan habilidades clave y amplían su red profesional, contribuyendo a su preparación en el campo veterinario.
-      </p>
-      <div id="vetcamp-modal" class="modal">
-  <div class="modal-content">
-    <span class="close closeee">&times;</span>
-    <section class="vetcamp-sectionn">
-  <div class="vetcamp-container">
-    <div class="vetcamp-text">
-      <div class="vetcamp-headerr">
-        <img style="max-width: 330px;" src="./assets/img/vetcamp-logo-2025.png" alt="Vetcap Tour Logo" class="vetcap-logo" />
-        <p class="vetcamp-descriptionn">
-          El VetCamp de la Fundación Vetcap es un campamento educativo especializado, dirigido a estudiantes y profesionales de veterinaria en la República Dominicana que desean complementar su formación académica con experiencias prácticas y profundizar en diversas áreas de la medicina veterinaria. Este programa incluye una combinación de talleres interactivos, charlas impartidas por expertos, y actividades de aprendizaje práctico, todas diseñadas para proporcionar una comprensión sólida de temas clave en el campo veterinario, tales como medicina interna, cirugía, anestesia, y manejo de especies. 
-        </p>
-      </div>
-
-      <div class="vetcamp-contentt">
-        <p>
-          A través del VetCamp, los participantes también tienen la oportunidad de conectarse con profesionales experimentados y otros estudiantes interesados en el desarrollo profesional, ampliando así su red de contactos en el ámbito veterinario. Este campamento no solo mejora sus conocimientos y habilidades técnicas, sino que también fomenta un ambiente de colaboración y aprendizaje continuo, esencial para su crecimiento y éxito en la carrera veterinaria.
-        </p>
-      </div>
-    </div>
-
-    <div class="vetcamp-galleryy">
-      <div class="vetcamp-image"><img src="./assets/img/vetcamp-conocer-mas/1.png" alt="VetCamp Speaker">
-        <div class="vetcamp-image"><img src="./assets/img/vetcamp-conocer-mas/4.png" alt="VetCamp Workshop"></div>
-        <div class="vetcamp-image"><img style="width: 205%;" src="./assets/img/vetcamp-conocer-mas/6.png" alt="VetCamp Networking"></div></div>
-      <div class="vetcamp-image"><img src="./assets/img/vetcamp-conocer-mas/2.png" alt="VetCamp Audience">
-        <div class="vetcamp-image"><img src="./assets/img/vetcamp-conocer-mas/5.png" alt="VetCamp Networking"></div></div>
-      <div class="vetcamp-image"><img style="width: 92%;" src="./assets/img/vetcamp-conocer-mas/3.png" alt="VetCamp Event">
-        <div class="vetcamp-image"><img src="./assets/img/vetcamp-conocer-mas/7.png" alt="VetCamp Networking"></div></div>
-      
-      
-    </div>
-  </div>
-</section>
-  </div>
-</div>
-      <button  id="conocer-mas-vetcamp" style="color: black" class="btnn btn-outline">CONOCER MÁS</button>
-        <button class="btnnn btn-filled">INSCRIBIRME</button>
-    </div>
-  </div>
-</section>
-
-
-
-
-<section style="background-color: black;" class="vetcap-section">
-  <div class="vetcap-container"> -->
-    <!-- Left Section -->
-    <!-- <div class="vetcap-left">
-      <img src="./assets/img/golden-vet-logo.png" alt="Illustration" class="vetcap-image vetcap-logo" />
-      <p style="font-size: 3.3rem; line-height: 0.8; font-family: Nimbus; color: #f8af12; margin-top: 10px;">Golden Vet</p>
-        <p style="font-size: 2.3rem; line-height: 0.8; font-family: Nimbus; margin-bottom: 22px; color: white;">Awards</p>
-        <p style="font-size: 2.3rem; line-height: 0.8; font-family: Nimbus; color: white !important;">20<a style="font-size: 2.3rem; line-height: 0.8; font-family: Nimbus; color: #f8af12 !important;">25</a></p>
-    </div> -->
-
-    <!-- Right Section -->
-    <!-- <div class="vetcap-right">
-      <p style="color: white; font-size: 1rem;" class="vetcap-description">
-        Los Golden Vet Awards son una iniciativa de la Fundación VetCap destinada a reconocer y celebrar la excelencia en el sector veterinario de la República Dominicana. Estos premios destacan a profesionales y empresas que han realizado contribuciones significativas al desarrollo y fortalecimiento de la medicina veterinaria en el país.
-Las categorías de los Golden Vet Awards abarcan diversas áreas de la práctica veterinaria, permitiendo una evaluación integral de los aportes realizados por individuos y organizaciones.</p>
-
-<p style="color: white; font-size: 1rem;" class="vetcap-description">
-La ceremonia de premiación se lleva a cabo en un evento formal, donde se reúnen líderes del sector, profesionales, educadores y empresas para celebrar los logros de los galardonados. Este evento no solo sirve como reconocimiento, sino también como una plataforma para el networking y el intercambio de ideas que promueven el crecimiento continuo de la medicina veterinaria en la República Dominicana.
-      </p>
-      <div id="vetcamp-modal" class="modal">
-  <div class="modal-content">
-    <span class="close closeee">&times;</span>
-  </div>
-</div>
-      <button  id="notificarme-golden-vet" style="color: black; line-height: 1.3;" class="btnn btn-outlinee">NOTIFICARME CUANDO ESTÉ DISPONIBLE</button>
-    </div>
-  </div>
-</section> -->
-<script src="./assets/js/modalEventos.js"></script>
-    <script src="./assets/js/modalVetGames.js"></script>
-    <script src="./assets/js/modalVetCamp.js"></script>
-
-
-
-<?php 
-//include header template
-require('layout/footer.php'); 
-?>
+    <footer class="u-align-center u-clearfix u-container-align-center u-custom-color-1 u-footer u-footer" id="footer"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-1" src="images/logodeVETCAP2025.png" alt="" data-image-width="320" data-image-height="320"><p class="u-custom-font u-text u-text-1">Principal Partner</p><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-2" src="images/31.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-3" src="images/21.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-4" src="images/12.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-5" src="images/4.png" alt="" data-image-width="500" data-image-height="500"><p class="u-custom-font u-text u-text-2">Official Partner</p><p class="u-custom-font u-text u-text-custom-color-3 u-text-3"> Contáctanos</p><a href="" class="u-active-none u-align-center u-btn u-btn-rectangle u-button-style u-hover-none u-none u-btn-1">
+        <span class="u-icon"><svg class="u-svg-content" viewBox="0 0 405.333 405.333" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M373.333,266.88c-25.003,0-49.493-3.904-72.704-11.563c-11.328-3.904-24.192-0.896-31.637,6.699l-46.016,34.752    c-52.8-28.181-86.592-61.952-114.389-114.368l33.813-44.928c8.512-8.512,11.563-20.971,7.915-32.64    C142.592,81.472,138.667,56.96,138.667,32c0-17.643-14.357-32-32-32H32C14.357,0,0,14.357,0,32    c0,205.845,167.488,373.333,373.333,373.333c17.643,0,32-14.357,32-32V298.88C405.333,281.237,390.976,266.88,373.333,266.88z"></path></svg></span>&nbsp;​+1 (809) 344-5048
+      </a><a href="mailto:info@vetcaprd.com" class="u-active-none u-btn u-btn-rectangle u-button-style u-hover-none u-none u-text-white u-btn-2">
+        <span class="u-icon u-text-white"><svg class="u-svg-content" viewBox="0 0 24 16" x="0px" y="0px" style="width: 1em; height: 1em;"><path fill="currentColor" d="M23.8,1.1l-7.3,6.8l7.3,6.8c0.1-0.2,0.2-0.6,0.2-0.9V2C24,1.7,23.9,1.4,23.8,1.1z M21.8,0H2.2
+	c-0.4,0-0.7,0.1-1,0.2L10.6,9c0.8,0.8,2.2,0.8,3,0l9.2-8.7C22.6,0.1,22.2,0,21.8,0z M0.2,1.1C0.1,1.4,0,1.7,0,2V14
+	c0,0.3,0.1,0.6,0.2,0.9l7.3-6.8L0.2,1.1z M15.5,9l-1.1,1c-1.3,1.2-3.6,1.2-4.9,0l-1-1l-7.3,6.8c0.2,0.1,0.6,0.2,1,0.2H22
+	c0.4,0,0.6-0.1,1-0.2L15.5,9z"></path></svg></span>&nbsp;info@vetcaprd.com
+      </a><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-6" src="images/9.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-7" src="images/5.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-8" src="images/7.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-9" src="images/8.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-10" src="images/6.png" alt="" data-image-width="500" data-image-height="500"><div class="u-border-2 u-border-white u-expanded-width-xs u-line u-line-horizontal u-line-1"></div><p class="u-custom-font u-text u-text-default u-text-4"> Copyright ® 2025 EncioSystems Inc. Todos los derechos reservados.</p></footer>
+    
+  
+</body></html>

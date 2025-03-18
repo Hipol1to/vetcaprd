@@ -57,7 +57,7 @@
                     <a href="../index.html">Inicio</a>
                   </li>
                   <li>
-                    <a href="../capacitaciones.html">Capacitaciones</a>
+                    <a href="../capacitaciones.php">Capacitaciones</a>
                   </li>
                   <li>
                     <a href="../vetcamps.html">VetCamps</a>

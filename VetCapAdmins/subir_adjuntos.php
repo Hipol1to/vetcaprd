@@ -1,4 +1,12 @@
-<?php
+<?php 
+require_once('../includes/config.php');
+
+//if not logged in redirect to login page
+if (! $user->is_logged_in() || !isset($_SESSION['rol']) || $_SESSION['rol'] != "administrador" ){
+    header('Location: login.php'); 
+    exit(); 
+}
+
 if (!empty($_FILES['file']['name'])) {
     $targetDir = "docuploads/"; // Folder to save files
     $targetFile = $targetDir . basename($_FILES["file"]["name"]);

@@ -131,6 +131,7 @@ class User
 			$_SESSION['username'] = $row['usuario'];
 			$_SESSION['name'] = $row['nombre'];
 			$_SESSION['memberID'] = $row['Id'];
+			$_SESSION['rol'] = $row['rol'];
 			$_SESSION['cedulaValidated'] = $row['cedula_validada'];
 			$_SESSION['passportValidated'] = $row['pasaporte_validado'];
       $_SESSION['eventsRegistered'] = $row['eventsRegistered'];
