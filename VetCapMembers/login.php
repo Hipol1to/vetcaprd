@@ -26,11 +26,15 @@ if(isset($_POST['submit'])){
 
 		if ($user->login($username, $password)){
 			$_SESSION['username'] = $username;
-			header('Location: index.php');
+      if (!isset($_SESSION['rol']) || $_SESSION['rol'] != "administrador" ) {
+        header('Location: index.php');
+      } else {
+        header('Location: ../VetCapAdmins/index.php');
+      }
 			exit;
 
 		} else {
-			$error[] = 'Usuario o contraseña incorrecta, asegurate de haber activado tu cuenta';
+			$error[] = 'Credenciales incorrectas, asegurate de haber activado tu cuenta';
 		}
 	}else{
 		$error[] = 'El usuario solo puede tener caracteres alfanumericos, entre 3-16 caracteres';

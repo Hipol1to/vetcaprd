@@ -69,8 +69,9 @@
         <img src="./assets/img/color-logos/vibix-logo.png" alt="Vibix" class="custom-partner-logo">
         <img src="./assets/img/color-logos/mallen-logo.png" alt="Mallén Mascotas" class="custom-partner-logo">
         <img src="./assets/img/color-logos/animal-food-line-logo.png" alt="Animal Food Line" class="custom-partner-logo">
-        <img src="./assets/img/color-logos/noctua-logo.png" alt="Noctua Group" class="custom-partner-logo">
         <img src="./assets/img/color-logos/colegio-de-medicos-veterinarios-logo.png" alt="VetBoca" class="custom-partner-logo">
+        <img src="./assets/img/color-logos/noctua-logo.png" alt="Noctua Group" class="custom-partner-logo">
+        <img src="./assets/img/color-logos/noctua-logo.png" alt="Noctua Group" class="custom-partner-logo">
         <img src="./assets/img/color-logos/vetboca-logo.png" alt="VetBoca" class="custom-partner-logo">
     </div>
     </section>
@@ -96,8 +97,8 @@
               <img class="u-back-image u-expanded" src="images/banners-MMMesadetrabajo1300x.png">
             </div>
             <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-2">
-              <h3 class="u-gallery-heading">Sample Title</h3>
-              <p class="u-gallery-text">Sample Text</p>
+              <!-- <h3 class="u-gallery-heading">Sample Title</h3>
+              <p class="u-gallery-text">Sample Text</p> -->
             </div>
           </div>
         </div>
@@ -250,8 +251,8 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
               <img class="u-back-image u-expanded" src="images/banners-MMMesadetrabajo1300x.png">
             </div>
             <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-2">
-              <h3 class="u-gallery-heading">Sample Title</h3>
-              <p class="u-gallery-text">Sample Text</p>
+              <!-- <h3 class="u-gallery-heading">Sample Title</h3>
+              <p class="u-gallery-text">Sample Text</p> -->
             </div>
           </div>
         </div>

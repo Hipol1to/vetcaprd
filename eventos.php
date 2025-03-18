@@ -171,8 +171,8 @@ echo $nextEventSubscribeButton;
               <img class="u-back-image u-expanded" src="images/banners-MMMesadetrabajo1300x.png">
             </div>
             <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-2">
-              <h3 class="u-gallery-heading">Sample Title</h3>
-              <p class="u-gallery-text">Sample Text</p>
+              <!-- <h3 class="u-gallery-heading">Sample Title</h3>
+              <p class="u-gallery-text">Sample Text</p> -->
             </div>
           </div>
         </div>

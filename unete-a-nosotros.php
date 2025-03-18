@@ -145,7 +145,7 @@ error_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electron
 <section  class="call-to-action-section">
   <div class="cta-content">
     <div class="text-container">
-      <h1  style="color: #2d4a34; font-family:Horizon;" class="cta-title">CREA <a style="color:orange;">TU</a> CUENTA</h1>
+      <h1  style="color: #2d4a34; font-family:Horizon;" class="cta-title">CREA <a style="color:orange;" class="cta-title">TU</a> CUENTA</h1>
       <br><br><br>
       <form role="form" autocomplete="off" action="" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
       <?php

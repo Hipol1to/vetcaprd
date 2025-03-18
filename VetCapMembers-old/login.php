@@ -30,7 +30,7 @@ if(isset($_POST['submit'])){
 			exit;
 
 		} else {
-			$error[] = 'Usuario o contraseña incorrecta, asegurate de haber activado tu cuenta';
+			$error[] = 'Credenciales incorrectas, asegurate de haber activado tu cuenta';
 		}
 	}else{
 		$error[] = 'El usuario solo puede tener caracteres alfanumericos, entre 3-16 caracteres';
