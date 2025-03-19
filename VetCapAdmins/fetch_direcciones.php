@@ -8,7 +8,7 @@ if (! $user->is_logged_in() || !isset($_SESSION['rol']) || $_SESSION['rol'] != "
 }
 
 if (isset($_GET['email_id'])) {
-    error_log("Received email_id: " . $_GET['email_id']); // Log the email_id for debugging
+    write_log("Received email_id: " . $_GET['email_id']); // Log the email_id for debugging
 
     // Prepare the query with UNHEX() applied to the parameter
     $query = "SELECT HEX(id) as id, email FROM direcciones_email WHERE id = UNHEX(?)";
@@ -23,7 +23,7 @@ if (isset($_GET['email_id'])) {
     // Log and return the result
     echo json_encode($event);
 } else {
-    error_log("No email_id provided.");
+    write_log("No email_id provided.");
     echo json_encode(['error' => 'No email_id provided.']);
 }
 ?>

@@ -4,7 +4,12 @@
     <meta charset="utf-8">
     <meta name="keywords" content="​Transform your health with personalized nutrition plans, ​How It Works, ​90 Day Body &amp;amp; Mind Transformation Program, ​I’m ​Saundra Miers,a nutrition consultant, ​Solution In Easy Steps Successful life, How to Cook Healthy, ​What People Say?, ​The core of my work, ​Be healthy, enjoy life!">
     <meta name="description" content="">
-    <title>LandingPage</title>
+    <title>Fundacion VetCap</title>
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="assets/img/color-logos/vetcap-logo.png"
+    />
     <link rel="stylesheet" href="nicepage.css" media="screen">
 <link rel="stylesheet" href="index.css" media="screen">
     <script class="u-script" type="text/javascript" src="jquery.js" defer=""></script>
@@ -71,6 +76,10 @@
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="eventos.php" style="padding: 10px 22px;">Eventos</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="patrocinadores.php" style="padding: 10px 22px;">Patrocinadores</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="sobre-nosotros.php" style="padding: 10px 22px;">Sobre Nosotros</a>
+</li><li class="u-nav-item"><div style="float: right; display: flex; flex-wrap: nowrap; gap: 10%;">
+                        <a href="./VetCapMembers/login.php"><img src="./assets/img/icons/user-black-icon.png" alt="" width="20px" />
+                        <a id="theUserr" style="display: block; margin-left: -8.5px; margin-top: 4px; font-size:20px; white-space: nowrap; color: black; font-family: Helvetica" href="./VetCapMembers/login.php"><?php if (isset($_SESSION['name'])) {echo htmlspecialchars($_SESSION['name']); } else {echo 'Iniciar sesión';} ?></a></a>
+                    </div>
 </li></ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
@@ -81,6 +90,10 @@
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="eventos.php">Eventos</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="patrocinadores.php">Patrocinadores</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="sobre-nosotros.php">Sobre Nosotros</a>
+</li><li class="u-nav-item"><div style="float: right; display: flex; flex-wrap: nowrap; gap: 10%;">
+                        <a href="./VetCapMembers/login.php"><img src="./assets/img/icons/white/user-white-icon.png" alt="" width="20px" />
+                        <a id="theUserr" style="display: block; margin-left: -8.5px; margin-top: 4px; font-size:20px; white-space: nowrap; color: white; font-family: Helvetica" href="./VetCapMembers/login.php"><?php if (isset($_SESSION['name'])) {echo htmlspecialchars($_SESSION['name']); } else {echo 'Iniciar sesión';} ?></a></a>
+                    </div>
 </li></ul>
               </div>
             </div>

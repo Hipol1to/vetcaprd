@@ -10,7 +10,7 @@ if (! $user->is_logged_in() || !isset($_SESSION['rol']) || $_SESSION['rol'] != "
 header('Content-Type: application/json');
 
 $query = isset($_POST['query']) ? trim($_POST['query']) : '';
-error_log("Received query: " . $query);
+write_log("Received query: " . $query);
 
 try {
     // Ensure database connection is established
@@ -31,11 +31,11 @@ try {
 
     // Fetch results
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    error_log("Query results: " . json_encode($results));
+    write_log("Query results: " . json_encode($results));
 
     echo json_encode($results);
 } catch (Exception $e) {
-    error_log("Error: " . $e->getMessage());
+    write_log("Error: " . $e->getMessage());
     echo json_encode(['error' => $e->getMessage()]);
     exit;
 }

@@ -28,8 +28,8 @@ if (isset($data)) {
       $eventquery->execute();
       // Fetch only the first row
       $eventRow = $eventquery->fetch(PDO::FETCH_ASSOC);
-      error_log("Fetching event info");
-      error_log(print_r($eventRow, true));
+      write_log("Fetching event info");
+      write_log(print_r($eventRow, true));
       
     } catch (Exception $e) {
       die("Error fetching data: " . $e->getMessage());
@@ -41,8 +41,8 @@ if (isset($data)) {
     $amountToCharge = $amountConverted + $extraFee;
     $amountToChargeFormatted = number_format($amountToCharge, 2);
 
-    error_log("Trx amount arrived :".$trxAmount);
-    error_log("Expected amount: ".$amountToChargeFormatted);
+    write_log("Trx amount arrived :".$trxAmount);
+    write_log("Expected amount: ".$amountToChargeFormatted);
 
 
     try {
@@ -52,7 +52,7 @@ if (isset($data)) {
       $receiverAccount = $stmt->fetch();
   
     } catch(PDOException $e) {
-      error_log("There was an error trying to get the receiver account details: ".$e->getMessage());
+      write_log("There was an error trying to get the receiver account details: ".$e->getMessage());
     }
 
 
@@ -61,26 +61,26 @@ if (isset($data)) {
 
     //$receiverAccount = get_receiver_account_details();
 
-    error_log("printing trx values");
-    error_log("trx Id: ".$id);
-    error_log("trx status: ".$trxStatus);
-    error_log("trx currency code: ".$trxCurrencyCode);
-    error_log("trx amount: ".$trxAmount);
-    error_log("trx seller protection status: ".$sellerProtectionStatus);
-    error_log("trx dispute categories: ".$sellerProtectionCategories);
-    error_log("trx created time: ".$createdTime);
-    error_log("trx updated time: ".$updatedTime);
-    error_log("ok");
+    write_log("printing trx values");
+    write_log("trx Id: ".$id);
+    write_log("trx status: ".$trxStatus);
+    write_log("trx currency code: ".$trxCurrencyCode);
+    write_log("trx amount: ".$trxAmount);
+    write_log("trx seller protection status: ".$sellerProtectionStatus);
+    write_log("trx dispute categories: ".$sellerProtectionCategories);
+    write_log("trx created time: ".$createdTime);
+    write_log("trx updated time: ".$updatedTime);
+    write_log("ok");
 
     if ($eventId == null) {
       echo "Ha habido un erro obteniendo la informacion sobre el evento, contacta al administrador mostrando este mensaje";
-      error_log("Ha habido un erro obteniendo la informacion sobre el evento, contacta al administrador mostrando este mensaje");
-      error_log("The event ID could not be fetch, check file trx.js to see what we are getting on eventId field in post request");
-      error_log("------------SESSION DETAILS START------------");
-      error_log("User: ".$_SESSION['username']);
-      error_log("Transaction ammount: ".$trxAmount);
-      error_log("Date time:".date("h:i:sa"));
-      error_log("------------SESSION DETAILS END------------");
+      write_log("Ha habido un erro obteniendo la informacion sobre el evento, contacta al administrador mostrando este mensaje");
+      write_log("The event ID could not be fetch, check file trx.js to see what we are getting on eventId field in post request");
+      write_log("------------SESSION DETAILS START------------");
+      write_log("User: ".$_SESSION['username']);
+      write_log("Transaction ammount: ".$trxAmount);
+      write_log("Date time:".date("h:i:sa"));
+      write_log("------------SESSION DETAILS END------------");
       exit();
     }
     if ($trxAmount != $amountToChargeFormatted) {
@@ -88,7 +88,7 @@ if (isset($data)) {
       alert("La información de la transacción es invalida, serás redirigido a la página principal");
             </script>';
       sleep(5);
-      header('Location: http://localhost/vesca/VetCapMembers/login.php');
+      header('Location: https://www.vetcaprd.com//VetCapMembers/login.php');
       exit(); 
     } else {
       try {
@@ -153,7 +153,7 @@ if (isset($data)) {
         //else catch the exception and show the error.
         } catch(PDOException $e) {
             $error[] = $e->getMessage();
-            error_log($e->getMessage());
+            write_log($e->getMessage());
             http_response_code(500);
             echo json_encode(["success" => false, "message" => "Failed to register the transaction: ".$e->getMessage()]);
         }
@@ -171,7 +171,7 @@ function get_receiver_account_details() {
     return $stmt->fetch();
 
   } catch(PDOException $e) {
-    error_log("There was an error trying to get the receiver account details: ".$e->getMessage());
+    write_log("There was an error trying to get the receiver account details: ".$e->getMessage());
   }
 }
 ?>

@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } catch (Exception $e) {
         // Handle database errors
-        error_log("Error updating email: " . $e->getMessage());
+        write_log("Error updating email: " . $e->getMessage());
         echo json_encode(['status' => 'error', 'message' => 'Error al actualizar el correo.']);
     }
 } else {

@@ -344,13 +344,13 @@ font-family: "Helvetica";
 .custom-partners-logos {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 85px;
   margin-top: 20px;
   flex-wrap: wrap;
   align-items: center;
 }
 .custom-partner-logo {
-  max-width: 200px;
+  max-width: 100px;
   height: auto;
 }
 

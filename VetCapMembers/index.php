@@ -36,7 +36,20 @@ $misPendingCourses = getUserPendingCourses($db);
        onclick="return confirm('¿Estás seguro que quieres cerrar sesión?');">
         Cerrar sesión
     </a>
+    <?php
+if ($user->is_logged_in() && isset($_SESSION['rol']) && $_SESSION['rol'] == "administrador") {
+  $goToAdminPortalButton = '
+    <a class="btn-info" style="text-decoration: none; font-weight: 550; text-align: left; color: black; padding: 10px 20px; border-radius: 5px; display: inline-block;" 
+       href="../VetCapAdmins/index.php" 
+        >
+        Ir al portal de administradores
+    </a>
+  ';
+  echo $goToAdminPortalButton;
+}
+ ?>
 </p>
+
 
     <h2 style="font-size: 30px; font-family: HelveticaBold; text-align: right; color: #2d4a34; margin-bottom: 0;">
         Bienvenido/a <?php echo htmlspecialchars($_SESSION['name']) ?>
@@ -91,16 +104,16 @@ $misPendingCourses = getUserPendingCourses($db);
       <?php
       $userEventosList = ["eventName"];
       $userHasEvents = false;
-      error_log("Verifiying if user has events: ".$userHasEvents);
+      write_log("Verifiying if user has events: ".$userHasEvents);
             foreach ($misEventos as $theEvent) {
               $userHasEvents = true;
-              error_log("Does user has events?: ".$userHasEvents);
+              write_log("Does user has events?: ".$userHasEvents);
               array_push($userEventosList, $theEvent['Id']);
               echo '<!-- Event Container (Repeat this block for each event) -->
       <div class="event-container" style="display: flex; flex-direction: row; align-items: start; gap: 20px; margin-bottom: 20px;">
         <div class="event-image-container" style="flex: 1; max-width: 150px;">
           <img 
-            src="http://localhost/vesca'.$theEvent['foto_evento'].'" 
+            src="https://www.vetcaprd.com/'.$theEvent['foto_evento'].'" 
             alt="Event Photo" 
             style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"
           />
@@ -141,12 +154,12 @@ $misPendingCourses = getUserPendingCourses($db);
 
     foreach ($misPendingEventos as $thePendingEvent) {
       $userHasPendingEvents = true;
-      error_log("Does user has pending events?: ".$userHasPendingEvents);
+      write_log("Does user has pending events?: ".$userHasPendingEvents);
       echo '<!-- Event Container (Repeat this block for each event) -->
 <div class="event-container" style="display: flex; flex-direction: row; align-items: start; gap: 20px; margin-bottom: 20px;">
 <div class="event-image-container" style="flex: 1; max-width: 150px;">
   <img 
-    src="http://localhost/vesca'.$thePendingEvent['foto_evento'].'" 
+    src="https://www.vetcaprd.com/'.$thePendingEvent['foto_evento'].'" 
     alt="Event Photo" 
     style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"
   />
@@ -201,7 +214,7 @@ $misPendingCourses = getUserPendingCourses($db);
           <div class="row align-items-center">
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
               <div class="about-img about-img1">
-                <img src="http://localhost/vesca<?php  echo $nextEvent['foto_evento']; ?>" alt="" class="event-pic"/>
+                <img src="https://www.vetcaprd.com/<?php  echo $nextEvent['foto_evento']; ?>" alt="" class="event-pic"/>
               </div>
             </div>
             <div
@@ -210,7 +223,7 @@ $misPendingCourses = getUserPendingCourses($db);
               <div class="about-caption about-caption1">
                 <div class="section-tittle m-0">
                   <!-- second section 
-                  <img src="http://localhost/vesca/assets/img/centro_de_cultura_logo.png" style="width: 300px;" alt=""> !-->
+                  <img src="https://www.vetcaprd.com//assets/img/centro_de_cultura_logo.png" style="width: 300px;" alt=""> !-->
                   <h2 style="font-size: 30px; font-family: Horizon;"><?php echo $nextEvent['nombre']; ?></h2>
                   <p style="color: #2d5b2d;" class="capitalize-first vetcap-description">
       <?= htmlspecialchars($nextEvent['descripcion']) ?>
@@ -264,16 +277,16 @@ updateCountdown(nextEventId, nextEventTimestamp);
 $isAttributeWritten = false;
 $onClick = '';
 foreach ($misEventos as $possibleEvent) {
-  error_log($possibleEvent['Id']);
-  error_log($nextEvent['Id']);
+  write_log($possibleEvent['Id']);
+  write_log($nextEvent['Id']);
   if ($possibleEvent['Id'] == $nextEvent['Id']) {
       $onClick = 'onclick="alert(\'Ya estás suscrito a este evento.\')"';
       $isAttributeWritten = true;
   }
 }
 foreach ($misPendingEventos as $possiblePendingEvent) {
-  error_log($possiblePendingEvent['Id']);
-  error_log($nextEvent['Id']);
+  write_log($possiblePendingEvent['Id']);
+  write_log($nextEvent['Id']);
   if ($possiblePendingEvent['Id'] == $nextEvent['Id']) {
       $onClick = 'onclick="alert(\'Ya solicitaste inscribirte a este evento, estamos revisando tu solicitud.\')"';
       $isAttributeWritten = true;
@@ -290,7 +303,7 @@ $nextEventPriceText = $nextEvent['precio_inscripcion'] == 0.00 ? "GRATIS" : "RD$
 echo $nextEventSubscribeButton;
  ?>
 
-<img  src="http://localhost/vesca/assets/img/money_logo.png" class="money-pic" alt=""><a class="money-free"><?php echo $nextEventPriceText; ?></a></div>
+<img  src="https://www.vetcaprd.com//assets/img/money_logo.png" class="money-pic" alt=""><a class="money-free"><?php echo $nextEventPriceText; ?></a></div>
 
 
                   <p class="mb-30">
@@ -305,7 +318,7 @@ echo $nextEventSubscribeButton;
 
 
 <?php
-error_log("telomando".$nextEvent['Id']);
+write_log("telomando".$nextEvent['Id']);
 array_push($eventosList, [$nextEvent['Id'], 0]);
 $eventsModalHeader = '
     <div id="subscribe-events-modal'.$nextEvent['Id'].'" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); justify-content: center; align-items: center; z-index: 9999;">
@@ -377,11 +390,11 @@ $completeProffileContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Com
       </div>
     </div>';
     $valueToSend = $nextEvent['Id'];
-    error_log($valueToSend);
+    write_log($valueToSend);
     $theValue = encryptValue($valueToSend);
-    //error_log($theValue);
+    //write_log($theValue);
     //$thecryptedValue = decryptValue($theValue);
-    //error_log($thecryptedValue);
+    //write_log($thecryptedValue);
     $eventIdInpur = '<input type="hidden" name="eventId" value="'.$nextEvent['Id'].'">';
 
 $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscribir evento</h2>
@@ -593,7 +606,7 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
     </div>';
 
     if (isset($_GET['photoUploaded']) && isset($_SESSION['cedulaHavePath']) && $_SESSION['cedulaHavePath'] == 1) {
-      error_log("The user: '".$_SESSION['username']."' just uploaded the photos");
+      write_log("The user: '".$_SESSION['username']."' just uploaded the photos");
       $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscribir evento</h2>
     
     <!-- Events List -->
@@ -639,19 +652,19 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
       </div>
     </div>';
 
-    error_log("tarann");
+    write_log("tarann");
     echo $eventsModalHeader;
     echo $subscribeEventContent;
     } elseif (!$user->isUserCedulaUploaded($_SESSION['username'])) {
-      error_log("The user: '".$_SESSION['username']."' needs to complete his proffile");
+      write_log("The user: '".$_SESSION['username']."' needs to complete his proffile");
       echo $eventsModalHeader;
       echo $completeProffileContent;
-      error_log("tarannn");
+      write_log("tarannn");
     } else {
-      error_log("The user: '".$_SESSION['username']."' can register to events");
+      write_log("The user: '".$_SESSION['username']."' can register to events");
       echo $eventsModalHeader;
       echo $subscribeEventContent;
-      error_log("tarannnn");
+      write_log("tarannnn");
     }
     /*elseif (!$user->isUserCedulaValidated($_SESSION['username'])) {
       echo $completeProffileContent;
@@ -670,20 +683,20 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
 <hr />
 
 <?php if (!empty($eventos)) : ?>
-  <?php error_log("taran");
+  <?php write_log("taran");
     ?>
                 <?php foreach ($eventos as $evento) : ?>
-                  <?php error_log("Retrieved records: " . print_r($eventos, true));
+                  <?php write_log("Retrieved records: " . print_r($eventos, true));
                         array_push($eventosList, [$evento['Id'], 0]);
-                        error_log("Eventos list: " . print_r($eventosList, true));
+                        write_log("Eventos list: " . print_r($eventosList, true));
                   ?>
                   <section class="vetcap-section">
   <div class="vetcap-container">
     <!-- Left Section -->
     <div class="vetcap-left">
-      <img src="http://localhost/vesca<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
+      <img src="https://www.vetcaprd.com/<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
       <div class="vetcap-badge">
-        <img style="width: 70px; height: auto;" src="http://localhost/vesca/assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
+        <img style="width: 70px; height: auto;" src="https://www.vetcaprd.com//assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
         <span>RD$<?= htmlspecialchars($evento['precio_inscripcion']) ?></span>
       </div>
     </div>
@@ -691,9 +704,9 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
     <div class="vetcap-right">
     <?php
             if (isset($evento['foto_titulo'])) {
-              echo '<img style="max-width: 330px;" src="http://localhost/vesca'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
+              echo '<img style="max-width: 330px;" src="https://www.vetcaprd.com/'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
             } else {
-              error_log("foto titulo");
+              write_log("foto titulo");
               echo '<h2 style="font-size: 50px; font-family: HelveticaBold;" class="course-title">'.$evento['nombre'].'</h2>';
             }
         ?>
@@ -743,15 +756,15 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
 updateCountdown(eventtId_<?php echo str_replace("-", "_", $evento['Id']); ?>, eventTimestamp_<?php echo str_replace("-", "_", $evento['Id']); ?>);
 </script>
 <br>
-      <button onclick="location.href='http://localhost/vesca/eventos.php';" id="conocer-mas" style="color: black" class="btnn btn-outline">CONOCER MÁS</button>
+      <button onclick="location.href='https://www.vetcaprd.com//eventos.php';" id="conocer-mas" style="color: black" class="btnn btn-outline">CONOCER MÁS</button>
       <?php 
     $isAttributeWritten = false;
     $onClick = ''; // Initialize $onClick to avoid undefined variable issues
-    error_log("aaaaaaaaaaaaaaa");
+    write_log("aaaaaaaaaaaaaaa");
 
     foreach ($misEventos as $possibleEvent) {
-        error_log($possibleEvent['Id']);
-        error_log($evento['Id']);
+        write_log($possibleEvent['Id']);
+        write_log($evento['Id']);
         if ($possibleEvent['Id'] == $evento['Id']) {
             $onClick = 'alert(\'Ya estás suscrito a este evento.\')';
             $isAttributeWritten = true;
@@ -759,8 +772,8 @@ updateCountdown(eventtId_<?php echo str_replace("-", "_", $evento['Id']); ?>, ev
     }
 
     foreach ($misPendingEventos as $possiblePendingEvent) {
-      error_log($possiblePendingEvent['Id']);
-      error_log($possiblePendingEvent['Id']);
+      write_log($possiblePendingEvent['Id']);
+      write_log($possiblePendingEvent['Id']);
       if ($possiblePendingEvent['Id'] == $evento['Id']) {
           $onClick = 'alert(\'Ya solicitaste inscribirte a este evento, estamos revisando tu solicitud.\')';
           $isAttributeWritten = true;
@@ -856,11 +869,11 @@ $completeProffileContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Com
       </div>
     </div>';
     $valueToSend = $evento['Id'];
-    error_log($valueToSend);
+    write_log($valueToSend);
     $theValue = encryptValue($valueToSend);
-    //error_log($theValue);
+    //write_log($theValue);
     //$thecryptedValue = decryptValue($theValue);
-    //error_log($thecryptedValue);
+    //write_log($thecryptedValue);
     $eventIdInpur = '<input type="hidden" name="eventId" value="'.$evento['Id'].'">';
 
 $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscribir evento</h2>
@@ -1072,7 +1085,7 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
     </div>';
 
     if (isset($_GET['photoUploaded']) && isset($_SESSION['cedulaHavePath']) && $_SESSION['cedulaHavePath'] == 1) {
-      error_log("The user: '".$_SESSION['username']."' just uploaded the photos");
+      write_log("The user: '".$_SESSION['username']."' just uploaded the photos");
       $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscribir evento</h2>
     
     <!-- Events List -->
@@ -1118,19 +1131,19 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
       </div>
     </div>';
 
-    error_log("tarann");
+    write_log("tarann");
     echo $eventsModalHeader;
     echo $subscribeEventContent;
     } elseif (!$user->isUserCedulaUploaded($_SESSION['username'])) {
-      error_log("The user: '".$_SESSION['username']."' needs to complete his proffile");
+      write_log("The user: '".$_SESSION['username']."' needs to complete his proffile");
       echo $eventsModalHeader;
       echo $completeProffileContent;
-      error_log("tarannn");
+      write_log("tarannn");
     } else {
-      error_log("The user: '".$_SESSION['username']."' can register to events");
+      write_log("The user: '".$_SESSION['username']."' can register to events");
       echo $eventsModalHeader;
       echo $subscribeEventContent;
-      error_log("tarannnn");
+      write_log("tarannnn");
     }
     /*elseif (!$user->isUserCedulaValidated($_SESSION['username'])) {
       echo $completeProffileContent;

@@ -17,6 +17,17 @@
     <script class="u-script" type="text/javascript" src="nicepage.js" defer=""></script>
     <link rel="stylesheet" href="indexcapa.css" media="screen">
     <meta name="generator" content="Nicepage 7.5.2, nicepage.com">
+    <style>
+     footer p {
+    font-family: "HelveticaBold";
+    color: white; 
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 15px;
+    font-weight: 150;
+    line-height: 1.6;
+}
+    </style>
     
     
     
@@ -45,6 +56,10 @@
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="eventos.php" style="padding: 10px 22px;">Eventos</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="patrocinadores.php" style="padding: 10px 22px;">Patrocinadores</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link u-text-active-palette-1-base u-text-hover-palette-2-base" href="sobre-nosotros.php" style="padding: 10px 22px;">Sobre Nosotros</a>
+</li><li class="u-nav-item"><div style="float: right; display: flex; flex-wrap: nowrap; gap: 10%;">
+                        <a href="./VetCapMembers/login.php"><img src="./assets/img/icons/user-black-icon.png" alt="" width="20px" />
+                        <a id="theUserr" style="display: block; margin-left: -8.5px; margin-top: 4px; font-size:20px; white-space: nowrap; color: black; font-family: Helvetica" href="./VetCapMembers/login.php"><?php if (isset($_SESSION['name'])) {echo htmlspecialchars($_SESSION['name']); } else {echo 'Iniciar sesión';} ?></a></a>
+                    </div>
 </li></ul>
           </div>
           <div class="u-custom-menu u-nav-container-collapse">
@@ -55,6 +70,10 @@
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="eventos.php">Eventos</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="patrocinadores.php">Patrocinadores</a>
 </li><li class="u-nav-item"><a class="u-button-style u-nav-link" href="sobre-nosotros.php">Sobre Nosotros</a>
+</li><li class="u-nav-item"><div style="float: right; display: flex; flex-wrap: nowrap; gap: 10%;">
+                        <a href="./VetCapMembers/login.php"><img src="./assets/img/icons/white/user-white-icon.png" alt="" width="20px" />
+                        <a id="theUserr" style="display: block; margin-left: -8.5px; margin-top: 4px; font-size:20px; white-space: nowrap; color: white; font-family: Helvetica" href="./VetCapMembers/login.php"><?php if (isset($_SESSION['name'])) {echo htmlspecialchars($_SESSION['name']); } else {echo 'Iniciar sesión';} ?></a></a>
+                    </div>
 </li></ul>
               </div>
             </div>
@@ -65,17 +84,21 @@
       </div></header>
     <section class="u-clearfix u-section-1" id="block-5">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <div class="u-border-1 u-border-custom-color-1 u-line u-line-vertical u-line-1"></div>
+        
+        
+      </div>
+      <div class="u-border-1 u-border-custom-color-1 u-line u-line-vertical u-line-1"></div>
         <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-1" src="images/16.png" alt="" data-image-width="500" data-image-height="500">
-        <h1 class="u-align-left u-custom-font u-text u-title u-text-1">
+        
+        <img class="u-image u-image-contain u-image-default u-image-2" src="images/3.png" alt="" data-image-width="1918" data-image-height="720">
+      <h1 class="u-align-left u-custom-font u-text u-title u-text-1">
           <span class="u-text-custom-color-1">cURSOS, tAlleres<font color="#111111">&nbsp;</font>
           </span>
           <span class="u-text-custom-color-3">&amp;</span>
+          <br>
           <span class="u-text-custom-color-1">Diplomados</span>
         </h1>
-        <img class="u-image u-image-contain u-image-default u-image-2" src="images/3.png" alt="" data-image-width="1918" data-image-height="720">
-        <p class="u-align-justify u-text u-text-2"> Vetcap estará organizando una amplia variedad de diplomados, cursos y talleres diseñados para fortalecer el conocimiento y las habilidades de profesionales y estudiantes en el ámbito veterinario. Cada programa cuenta con el aval oficial del Colegio Médico Veterinario (COLVET), lo que asegura una formación de alta calidad y con respaldo profesional. Con estas oportunidades de educación continua, Vetcap se compromete a impulsar la excelencia en la práctica veterinaria en la República Dominicana.&nbsp;¡Prepárate para ser parte de una experiencia educativa única y con certificación reconocida!</p>
-      </div>
+      <p style=""class="u-align-justify u-text u-text-2"> Vetcap estará organizando una amplia variedad de diplomados, cursos y talleres diseñados para fortalecer el conocimiento y las habilidades de profesionales y estudiantes en el ámbito veterinario. Cada programa cuenta con el aval oficial del Colegio Médico Veterinario (COLVET), lo que asegura una formación de alta calidad y con respaldo profesional. Con estas oportunidades de educación continua, Vetcap se compromete a impulsar la excelencia en la práctica veterinaria en la República Dominicana.&nbsp;¡Prepárate para ser parte de una experiencia educativa única y con certificación reconocida!</p>
     </section>
     
 
@@ -141,7 +164,7 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
 	c-0.4,0-0.7,0.1-1,0.2L10.6,9c0.8,0.8,2.2,0.8,3,0l9.2-8.7C22.6,0.1,22.2,0,21.8,0z M0.2,1.1C0.1,1.4,0,1.7,0,2V14
 	c0,0.3,0.1,0.6,0.2,0.9l7.3-6.8L0.2,1.1z M15.5,9l-1.1,1c-1.3,1.2-3.6,1.2-4.9,0l-1-1l-7.3,6.8c0.2,0.1,0.6,0.2,1,0.2H22
 	c0.4,0,0.6-0.1,1-0.2L15.5,9z"></path></svg></span>&nbsp;info@vetcaprd.com
-      </a><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-6" src="images/9.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-7" src="images/5.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-8" src="images/7.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-9" src="images/8.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-10" src="images/6.png" alt="" data-image-width="500" data-image-height="500"><div class="u-border-2 u-border-white u-expanded-width-xs u-line u-line-horizontal u-line-1"></div><p class="u-custom-font u-text u-text-default u-text-4"> Copyright ® 2025 EncioSystems Inc. Todos los derechos reservados.</p></footer>
+      </a><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-6" src="images/9.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-7" src="images/5.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-8" src="images/7.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-9" src="images/8.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-10" src="images/6.png" alt="" data-image-width="500" data-image-height="500"><div class="u-border-2 u-border-white u-expanded-width-xs u-line u-line-horizontal u-line-1"></div><p style="font-family:Helvetica" class="u-custom-font u-text u-text-4"> Copyright ® 2025 EncioSystems Inc. Todos los derechos reservados.</p></footer>
     <section class="u-backlink u-clearfix u-grey-80">
     </section>
   <?php 

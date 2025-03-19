@@ -2,15 +2,15 @@
 require_once('../includes/config.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    error_log("-----complete proffile process-----");
-    error_log($_POST['cedula_numero']);
-    error_log($_FILES['captura_frontal_cedula']);
-    error_log($_FILES['captura_trasera_cedula']);
+    write_log("-----complete proffile process-----");
+    write_log($_POST['cedula_numero']);
+    write_log(print_r($_FILES['captura_frontal_cedula'], true));
+    write_log($_FILES['captura_trasera_cedula'], true);
 
     if (isset($_POST['cedula_numero']) && isset($_FILES['captura_frontal_cedula']) && isset($_FILES['captura_trasera_cedula'])) {
-        error_log("la vaca");
-        error_log($_FILES['captura_frontal_cedula']);
-        error_log($_FILES['captura_trasera_cedula']);
+        write_log("la vaca");
+        write_log(print_r($_FILES['captura_frontal_cedula'], true));
+        write_log($_FILES['captura_trasera_cedula'], true);
 
         $cedulaNumber = $_POST['cedula_numero'];
 
@@ -20,9 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             isset($_FILES['captura_trasera_cedula']) && 
             $_FILES['captura_trasera_cedula']['error'] === UPLOAD_ERR_OK
         ) {
-            error_log("muuu");
-            error_log($_FILES['captura_frontal_cedula']);
-            error_log($_FILES['captura_trasera_cedula']);
+            write_log("muuu");
+            write_log(print_r($_FILES['captura_frontal_cedula'], true));
+            write_log($_FILES['captura_trasera_cedula'], true);
 
             // Define the upload directory relative to the web root
             $upload_directory = __DIR__ . "/uploads/"; // Server-side directory
@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         try {
             // Combine paths with the delimiter
             $cedula_path_mixed = $front_cedula_path . "_.d1vis10n._" . $back_cedula_path;
-            error_log($cedula_path_mixed);
+            write_log($cedula_path_mixed);
 
             // Prepare SQL statement to update the usuarios table
             $queryy = "UPDATE usuarios SET cedula_numero = :cedulaNumber, cedula_ruta = :cedulaPath WHERE usuario = :username";
@@ -59,17 +59,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->bindParam(':cedulaPath', $cedula_path_mixed);
             $stmt->bindParam(':username', $_SESSION['username']);
 
-            error_log("Numero de cedula: " . $cedulaNumber);
-            error_log("directorio de cedula: " . $cedula_path_mixed);
-            error_log("usuario: " . $_SESSION['username']);
+            write_log("Numero de cedula: " . $cedulaNumber);
+            write_log("directorio de cedula: " . $cedula_path_mixed);
+            write_log("usuario: " . $_SESSION['username']);
 
             // Execute the statement
             $stmt->execute();
             $_SESSION['cedulaHavePath'] = 1;
-            error_log("does cedula have path?: " . $_SESSION['cedulaHavePath']);
+            write_log("does cedula have path?: " . $_SESSION['cedulaHavePath']);
 
             // Redirect to the index page
-            header('Location: http://localhost/vesca/VetCapMembers/index.php?photoUploaded=true');
+            header('Location: https://www.vetcaprd.com//VetCapMembers/index.php?photoUploaded=true');
             exit();
         } catch (PDOException $e) {
             // Handle database errors

@@ -2,7 +2,7 @@
 require_once('../includes/config.php');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    error_log("-----Starting payment processing-----");
+    write_log("-----Starting payment processing-----");
 
     $upload_directory = __DIR__ . "/uploads/";
     $comprobante_path = "";
@@ -13,10 +13,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (move_uploaded_file($_FILES['comprobante_pago']['tmp_name'], $upload_directory . $file_name)) {
             $comprobante_path = $upload_directory . $file_name;
         } else {
-            error_log("Failed to move uploaded file.");
+            write_log("Failed to move uploaded file.");
         }
     } else {
-        error_log("No valid comprobante file uploaded.");
+        write_log("No valid comprobante file uploaded.");
     }
 
     try {
@@ -68,7 +68,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Execute the statement
         if ($stmt->execute()) {
-            error_log("Payment information successfully inserted.");
+            write_log("Payment information successfully inserted.");
             /*try {
                 // Prepare and execute the SQL query
                 $stmt = $db->prepare("INSERT INTO usuario_eventos (evento_id, usuario_id) VALUES (:eventoId, :usuarioId)");
@@ -76,22 +76,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $stmt->bindParam(':usuarioId', $usuario_id);
         
                 if ($stmt->execute()) {
-                    error_log(json_encode(["success" => true, "message" => "User successfully registered for the event."]));
+                    write_log(json_encode(["success" => true, "message" => "User successfully registered for the event."]));
                 } else {
-                    error_log(json_encode(["success" => false, "message" => "Failed to register user for the event."]));
+                    write_log(json_encode(["success" => false, "message" => "Failed to register user for the event."]));
                 }
             } catch (PDOException $e) {
-                error_log(json_encode(["success" => false, "message" => "Database error: " . $e->getMessage()]));
+                write_log(json_encode(["success" => false, "message" => "Database error: " . $e->getMessage()]));
             }*/
-            header('Location: http://localhost/vesca/VetCapMembers/index.php');
+            header('Location: https://www.vetcaprd.com//VetCapMembers/index.php');
             exit();
         } else {
-            error_log("Failed to insert payment information.");
-            header('Location: http://localhost/vesca/VetCapMembers/index.php');
+            write_log("Failed to insert payment information.");
+            header('Location: https://www.vetcaprd.com//VetCapMembers/index.php');
             exit();
         }
     } catch (Exception $e) {
-        error_log("Error while processing payment: " . $e->getMessage());
+        write_log("Error while processing payment: " . $e->getMessage());
         echo json_encode(["success" => false, "message" => "An error occurred while processing the payment."]);
     }
 }

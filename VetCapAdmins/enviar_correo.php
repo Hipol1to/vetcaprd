@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $destinatario = $_POST['destinatario'] ?? null; // Only used for single recipient
     $titulo = $_POST['emailTitulo'] ?? 'No recibido';
     if (isset($_POST['emailMensaje'])) {
-        error_log($_POST['emailMensaje']);
+        write_log($_POST['emailMensaje']);
     }
     try {
         $mensaje = iconv('UTF-8', 'ISO-8859-1//TRANSLIT', $_POST['emailMensaje']); // Sanitize the input
@@ -30,11 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
     $attachmentsString = $_POST['emailAdjunto'] ?? 'No recibido';
-    error_log("Received tipoDestinatario: " . $tipoDestinatario);
-    error_log("Received listaId: " . $listaId);
-    error_log("Received destinatario: " . $destinatario);
-    error_log("Received titulo: " . $titulo);
-    error_log("Received mensaje: " . $mensaje);
+    write_log("Received tipoDestinatario: " . $tipoDestinatario);
+    write_log("Received listaId: " . $listaId);
+    write_log("Received destinatario: " . $destinatario);
+    write_log("Received titulo: " . $titulo);
+    write_log("Received mensaje: " . $mensaje);
 
     // Validate recipient type
     if (!$tipoDestinatario) {
@@ -64,7 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $emails = [$destinatario]; // Single recipient as an array
     }
 
-    error_log("Recipients: " . json_encode($emails));
+    write_log("Recipients: " . json_encode($emails));
 
     if (empty($emails)) {
         die("Error: No hay correos válidos para enviar.");
@@ -76,14 +76,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // SMTP Settings
         $mail->isSMTP();
-        $mail->Host       = 'smtp.gmail.com';
+        $mail->Host       = 'smtp.hostinger.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'thelegendstutorials@gmail.com';
-        $mail->Password   = 'zmfb uwso jmpk yybe';
+        $mail->Username   = 'info@vetcaprd.com';
+        $mail->Password   = 'VBM7TTEJEYEDg!';
         $mail->Port       = 587;
 
         // Email Details
-        $mail->setFrom('thelegendstutorials@gmail.com', 'Fundacion VetCap');
+        $mail->setFrom('info@vetcaprd.com', 'Fundacion VetCap');
 
         // Add recipients
         foreach ($emails as $email) {
@@ -140,7 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $imagePaths[$imageCid] = $filePath;
             // Save the message and image paths to the database
             $emailId = uniqid(); // Generate unique email ID
-            $remitente = 'thelegendstutorials@gmail.com';
+            $remitente = 'info@vetcaprd.com';
 
             // Convert image paths to a string for database storage
             $imagePathsString = !empty($imagePaths) ? json_encode($imagePaths) : null;

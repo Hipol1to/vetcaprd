@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         header('Location: eventos.php');
     } catch (PDOException $e) {
-        error_log($e->getMessage());
+        write_log($e->getMessage());
         echo "Error: " . $e->getMessage();
     }
 }

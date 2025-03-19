@@ -16,15 +16,15 @@ if (isset($data)) {
         $eventquery->execute();
         // Fetch only the first row
         $eventRow = $eventquery->fetch(PDO::FETCH_ASSOC);
-        error_log("Fetching event info");
-        error_log(print_r($eventRow, true));
+        write_log("Fetching event info");
+        write_log(print_r($eventRow, true));
         
       } catch (Exception $e) {
         die("Error fetching data: " . $e->getMessage());
       }
     if ($eventRow['precio_inscripcion'] != 0.00) {
         http_response_code(400);
-        error_log(json_encode(["success" => false, "message" => "Error, this event is not registered as free."]));
+        write_log(json_encode(["success" => false, "message" => "Error, this event is not registered as free."]));
         echo json_encode(["success" => false, "message" => "Error, this event is not registered as free."]);
     } else {
         try {

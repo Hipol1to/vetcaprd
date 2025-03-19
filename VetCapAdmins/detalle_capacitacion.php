@@ -42,7 +42,7 @@ require('layout/header.php');
             <div class="form-group">
                 <label for="foto_diplomado">Foto del Diplomado</label>
                 <input type="file" class="form-control" id="foto_diplomado" name="foto_diplomado" accept="image/*">
-                <img src="http://localhost/vesca<?= htmlspecialchars($capacitacion['foto_diplomado']) ?>" alt="Foto del Diplomado" class="img-thumbnail mt-2" style="max-width: 200px;">
+                <img src="https://www.vetcaprd.com/<?= htmlspecialchars($capacitacion['foto_diplomado']) ?>" alt="Foto del Diplomado" class="img-thumbnail mt-2" style="max-width: 200px;">
             </div>
             <div class="form-group">
                 <label for="precio_inscripcion">Precio de Inscripción</label>

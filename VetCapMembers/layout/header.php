@@ -4,12 +4,28 @@
     <meta charset="utf-8">
     <meta name="keywords" content="​Transform your health with personalized nutrition plans, ​How It Works, ​90 Day Body &amp;amp; Mind Transformation Program, ​I’m ​Saundra Miers,a nutrition consultant, ​Solution In Easy Steps Successful life, How to Cook Healthy, ​What People Say?, ​The core of my work, ​Be healthy, enjoy life!">
     <meta name="description" content="">
-    <title>LandingPage</title>
+    <title>Fundacion VetCap</title>
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../assets/img/color-logos/vetcap-logo.png"
+    />
     <link rel="stylesheet" href="../nicepage.css" media="screen">
 <link rel="stylesheet" href="../index.css" media="screen">
     <script class="u-script" type="text/javascript" src="../jquery.js" defer=""></script>
     <script class="u-script" type="text/javascript" src="../nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 7.5.2, nicepage.com">
+    <style>
+     footer p {
+    font-family: "HelveticaBold";
+    color: white; 
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 15px;
+    font-weight: 150;
+    line-height: 1.6;
+}
+    </style>
     
     
     
@@ -87,7 +103,7 @@
             <div class="u-black u-menu-overlay u-opacity u-opacity-70"></div>
           </div>
         </nav>
-        <img class="u-image u-image-contain u-image-default u-image-1" src="../images/3.png" alt="" data-image-width="1918" data-image-height="720" data-href="./" data-page-id="72255026" title="LandingPage">
+        <img class="u-image u-image-contain u-image-default u-image-1" src="../images/3.png" alt="" data-image-width="1918" data-image-height="720" data-href="../index.php" data-page-id="72255026" title="LandingPage">
       </div></header>
    
    

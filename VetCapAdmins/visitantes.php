@@ -22,7 +22,7 @@ require('layout/header.php');
         </div>
         <?php
         // Query to fetch all users
-        $query = "SELECT id, nombre, correo_electronico, telefono FROM usuarios WHERE rol = 'cliente'";
+        $query = "SELECT id, nombre, correo_electronico, telefono, universidad, cedula_validada, tipo_visitante, Fecha_creacion FROM usuarios WHERE rol = 'cliente'";
         $stmt = $db->prepare($query);
         $stmt->execute();
         ?>
@@ -31,8 +31,12 @@ require('layout/header.php');
             <thead>
                 <tr>
                     <th>Nombre</th>
-                    <th>Email</th>
+                    <th>Correo electrónico</th>
+                    <th>Universidad</th>
                     <th>Teléfono</th>
+                    <th>Cedula validada</th>
+                    <th>Tipo visitante</th>
+                    <th>Fecha creacion</th>
                     <th>Acciones</th> <!-- Column for buttons -->
                 </tr>
             </thead>
@@ -40,10 +44,19 @@ require('layout/header.php');
                 <?php
                 if ($stmt->rowCount() > 0) {
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                        if ($row['cedula_validada'] == 0) {
+                            $cedulaValidadaText = "Sin validar";
+                        } else {
+                            $cedulaValidadaText = "Validada";
+                        }
                         echo "<tr>";
                         echo "<td>" . htmlspecialchars($row['nombre']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['correo_electronico']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['universidad']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['telefono']) . "</td>";
+                        echo "<td>" . htmlspecialchars($cedulaValidadaText) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['tipo_visitante']) . "</td>";
+                        echo "<td>" . htmlspecialchars($row['Fecha_creacion']) . "</td>";
                         echo "<td>
                             <a href='detalle_visitante.php?id=" . htmlspecialchars($row['id']) . "' class='btn btn-info'>Ver Detalle</a>
                             <button class='btn btn-warning' onclick='editarUsuario(\"" . htmlspecialchars($row['id']) . "\")'>Editar</button>

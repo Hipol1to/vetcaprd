@@ -6,17 +6,18 @@ date_default_timezone_set('Europe/London');
 
 //database credentials
 define('DBHOST','localhost');
-define('DBUSER','root');
-define('DBPASS','');
-define('DBNAME','vetcap_storage');
+define('DBUSER','u881757960_vetcap_adm');
+define('DBPASS','!!zU7543Mjk!!');
+define('DBNAME','u881757960_vetcap_storage');
 define('ENCRYPTION_KEY', base64_decode('G9S/vWXp8aNCL2NRQFQ/oHjdJJ3kbsT/mLxukjMMN8Q='));
 define('ENCRYPTION_IV', '5938506185430479'); // Must be 16 bytes for AES-256-CBC
 
 
 //application address
-define('DIR','http://localhost/vesca/');
-define('PAGE','http://localhost/vesca/');
-define('SITEEMAIL','noreply@domain.com');
+define('DIR','https://www.vetcaprd.com//');
+define('PAGE','https://www.vetcaprd.com//');
+define('SITEEMAIL','info@vetcaprd.com');
+$log_file = __DIR__ . '/custom_log.log'; // Define log file path
 
 try {
 
@@ -30,6 +31,12 @@ try {
 	//show error
     echo '<p class="bg-danger">'.$e->getMessage().'</p>';
     exit;
+}
+// Function to write logs
+function write_log($message) {
+  global $log_file;
+  $date = date('Y-m-d H:i:s'); // Timestamp
+  file_put_contents($log_file, "[$date] $message" . PHP_EOL, FILE_APPEND);
 }
 function encryptValue($value) {
     $key = ENCRYPTION_KEY;  // 256-bit key
@@ -60,14 +67,14 @@ function getAllEvents($dbContext) {
         // Fetch only the first row
         $_SESSION['nextEvent'] = $query->fetch(PDO::FETCH_ASSOC);
         $eventos = $query->fetchAll(PDO::FETCH_ASSOC);
-        error_log("------STARTING SESSION LOG------");
-        error_log(print_r($_SESSION['nextEvent'], true));
+        write_log("------STARTING SESSION LOG------");
+        write_log(print_r($_SESSION['nextEvent'], true));
         return $eventos;
       } catch (Exception $e) {
-        error_log("------ERROR START------");
-        error_log("There was an error while trying to get all events");
-        error_log($e->getMessage());
-        error_log("------ERROR END------");
+        write_log("------ERROR START------");
+        write_log("There was an error while trying to get all events");
+        write_log($e->getMessage());
+        write_log("------ERROR END------");
         die("Error fetching data: " . $e->getMessage());
         return null;
       }
@@ -81,10 +88,10 @@ function getUserEvents($dbContext) {
         $misEventos = $myEventsQuery->fetchAll(PDO::FETCH_ASSOC);
         return $misEventos;
       } catch (Exception $e) {
-        error_log("------ERROR START------");
-        error_log("There was an error while trying to get user events");
-        error_log($e->getMessage());
-        error_log("------ERROR END------");
+        write_log("------ERROR START------");
+        write_log("There was an error while trying to get user events");
+        write_log($e->getMessage());
+        write_log("------ERROR END------");
         die("Error fetching data: " . $e->getMessage());
         return null;
       }
@@ -96,13 +103,13 @@ function getUserPendingEvents($dbContext) {
         $myPendingEventsQuery->bindParam(':userId', $_SESSION['memberID']);
         $myPendingEventsQuery->execute();
         $misPendingEventos = $myPendingEventsQuery->fetchAll(PDO::FETCH_ASSOC);
-        error_log("User events pending for verification:" . print_r($misPendingEventos, true));
+        write_log("User events pending for verification:" . print_r($misPendingEventos, true));
         return $misPendingEventos;
       } catch (Exception $e) {
-        error_log("------ERROR START------");
-        error_log("There was an error while trying to get user pending events");
-        error_log($e->getMessage());
-        error_log("------ERROR END------");
+        write_log("------ERROR START------");
+        write_log("There was an error while trying to get user pending events");
+        write_log($e->getMessage());
+        write_log("------ERROR END------");
         die("Error fetching data: " . $e->getMessage());
         return null;
       }
@@ -113,13 +120,13 @@ function getAllCourses($dbContext) {
         $query = $dbContext->prepare("SELECT * FROM `diplomados` WHERE activo = 1 ORDER BY fecha_inicio_diplomado ASC");
         $query->execute();
         $diplomados = $query->fetchAll(PDO::FETCH_ASSOC);
-        error_log("------STARTING SESSION LOG------");
+        write_log("------STARTING SESSION LOG------");
         return $diplomados;
       } catch (Exception $e) {
-        error_log("------ERROR START------");
-        error_log("There was an error while trying to get all the courses");
-        error_log($e->getMessage());
-        error_log("------ERROR END------");
+        write_log("------ERROR START------");
+        write_log("There was an error while trying to get all the courses");
+        write_log($e->getMessage());
+        write_log("------ERROR END------");
         die("Error fetching data: " . $e->getMessage());
         return null;
       }
@@ -133,10 +140,10 @@ function getUserCourses($dbContext) {
         $misDiplomados = $myCoursesQuery->fetchAll(PDO::FETCH_ASSOC);
         return $misDiplomados;
       } catch (Exception $e) {
-        error_log("------ERROR START------");
-        error_log("There was an error while trying to get user courses");
-        error_log($e->getMessage());
-        error_log("------ERROR END------");
+        write_log("------ERROR START------");
+        write_log("There was an error while trying to get user courses");
+        write_log($e->getMessage());
+        write_log("------ERROR END------");
         die("Error fetching data: " . $e->getMessage());
         return null;
       }
@@ -148,13 +155,13 @@ function getUserPendingCourses($dbContext) {
         $myPendingCoursesQuery->bindParam(':userId', $_SESSION['memberID']);
         $myPendingCoursesQuery->execute();
         $misPendingCourses = $myPendingCoursesQuery->fetchAll(PDO::FETCH_ASSOC);
-        error_log("User courses pending for verification:" . print_r($misPendingCourses, true));
+        write_log("User courses pending for verification:" . print_r($misPendingCourses, true));
         return $misPendingCourses;
       } catch (Exception $e) {
-        error_log("------ERROR START------");
-        error_log("There was an error while trying to get user pending courses");
-        error_log($e->getMessage());
-        error_log("------ERROR END------");
+        write_log("------ERROR START------");
+        write_log("There was an error while trying to get user pending courses");
+        write_log($e->getMessage());
+        write_log("------ERROR END------");
         die("Error fetching data: " . $e->getMessage());
         return null;
       }
@@ -218,14 +225,14 @@ function renderDiplomadosSlider($diplomadosArray, $misPendingDiplomados, $misDip
          </div>
 </div>
 <script>
-  let diplomadoId_'.$theDiplomado['Id'].' = "'.$theDiplomado['Id'].'";
-  let eventTimestamp_'.$theDiplomado['Id'].' = "'.$theDiplomado['fecha_cierre_inscripcion'].'";
+  let diplomadoId_'.str_replace("-", "_", $theDiplomado['Id']).' = "'.$theDiplomado['Id'].'";
+  let eventTimestamp_'.str_replace("-", "_", $theDiplomado['Id']).' = "'.$theDiplomado['fecha_cierre_inscripcion'].'";
   // Update every second
-  console.log(diplomadoId_'.$theDiplomado['Id'].');
-  console.log(eventTimestamp_'.$theDiplomado['Id'].');
+  console.log(diplomadoId_'.str_replace("-", "_", $theDiplomado['Id']).');
+  console.log(eventTimestamp_'.str_replace("-", "_", $theDiplomado['Id']).');
   
-  const timerInterval_'.$theDiplomado['Id'].' = setInterval(() => updateCountdown(diplomadoId_'.$theDiplomado['Id'].', eventTimestamp_'.$theDiplomado['Id'].'), 1000);
-updateCountdown(diplomadoId_'.$theDiplomado['Id'].', eventTimestamp_'.$theDiplomado['Id'].');
+  const timerInterval_'.str_replace("-", "_", $theDiplomado['Id']).' = setInterval(() => updateCountdown(diplomadoId_'.str_replace("-", "_", $theDiplomado['Id']).', eventTimestamp_'.str_replace("-", "_", $theDiplomado['Id']).'), 1000);
+updateCountdown(diplomadoId_'.str_replace("-", "_", $theDiplomado['Id']).', eventTimestamp_'.str_replace("-", "_", $theDiplomado['Id']).');
 </script>
     ';
     echo $diplomadoSlide;
@@ -326,11 +333,11 @@ updateCountdown(diplomadoId_'.$theDiplomado['Id'].', eventTimestamp_'.$theDiplom
 function getOnclickForDiplomados($misDiplomados, $currentDiplomado, $misPendingDiplomados) {
     $isAttributeWritten = false;
     $onClick = ''; // Initialize $onClick to avoid undefined variable issues
-    error_log("aaaaaaaaaaaaaaa");
+    write_log("aaaaaaaaaaaaaaa");
 
     foreach ($misDiplomados as $possibleDiplomado) {
-        error_log($possibleDiplomado['Id']);
-        error_log($currentDiplomado['Id']);
+        write_log($possibleDiplomado['Id']);
+        write_log($currentDiplomado['Id']);
         if ($possibleDiplomado['Id'] == $currentDiplomado['Id']) {
             $onClick = 'alert(\'Ya estás inscrito a este curso.\')';
             $isAttributeWritten = true;
@@ -338,7 +345,7 @@ function getOnclickForDiplomados($misDiplomados, $currentDiplomado, $misPendingD
     }
 
     foreach ($misPendingDiplomados as $possiblePendingDiplomado) {
-      error_log($possiblePendingDiplomado['Id']);
+      write_log($possiblePendingDiplomado['Id']);
       if ($possiblePendingDiplomado['Id'] == $currentDiplomado['Id']) {
           $onClick = 'alert(\'Ya solicitaste inscribirte a este curso, estamos revisando tu solicitud.\')';
           $isAttributeWritten = true;
@@ -617,7 +624,7 @@ function renderCoursePaymentModal($currentDiplomado) {
     </div>';
 
     if (isset($_GET['photoUploaded']) && isset($_SESSION['cedulaHavePath']) && $_SESSION['cedulaHavePath'] == 1) {
-      error_log("The user: '".$_SESSION['username']."' just uploaded the photos");
+      write_log("The user: '".$_SESSION['username']."' just uploaded the photos");
       $subscribeDiplomadoContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscribir curso</h2>
     
     <!-- Events List -->
@@ -660,27 +667,27 @@ function renderCoursePaymentModal($currentDiplomado) {
       </div>
     </div>';
 
-    error_log("tarann");
+    write_log("tarann");
     echo $diplomadosModalHeader;
     echo $subscribeDiplomadoContent;
     } elseif (!true) {
       if (isset($_SESSION['username'])) {
-        error_log("The user: '".$_SESSION['username']."' needs to complete his proffile");
+        write_log("The user: '".$_SESSION['username']."' needs to complete his proffile");
       } else {
-        error_log("Tried to print that user needs to complete his proffile but SESSION is not defined");
+        write_log("Tried to print that user needs to complete his proffile but SESSION is not defined");
       }
       echo $diplomadosModalHeader;
       echo $completeProffileContent;
-      error_log("tarannn");
+      write_log("tarannn");
     } else {
       if (isset($_SESSION['username'])) {
-        error_log("The user: '".$_SESSION['username']."' can register to courses");
+        write_log("The user: '".$_SESSION['username']."' can register to courses");
       } else {
-        error_log("Tried to print that user can register to courses but SESSION is not defined");
+        write_log("Tried to print that user can register to courses but SESSION is not defined");
       }
       echo $diplomadosModalHeader;
       echo $subscribeDiplomadoContent;
-      error_log("tarannnn");
+      write_log("tarannnn");
     }
 
     $diplomadoModalFooter = '</div>
@@ -692,15 +699,15 @@ function printAllEvents($eventos) {
   ?>
     <?php if (!empty($eventos)) : ?>
                 <?php foreach ($eventos as $evento) : ?>
-                  <?php error_log("Retrieved records: " . print_r($eventos, true));
+                  <?php write_log("Retrieved records: " . print_r($eventos, true));
                   ?>
                   <section class="vetcap-section">
   <div class="vetcap-container">
     <!-- Left Section -->
     <div class="vetcap-left">
-      <img src="http://localhost/vesca<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
+      <img src="https://www.vetcaprd.com/<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
       <div class="vetcap-badge">
-        <img style="width: 70px; height: auto;" src="http://localhost/vesca/assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
+        <img style="width: 70px; height: auto;" src="https://www.vetcaprd.com//assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
         <span>RD$<?= htmlspecialchars($evento['precio_inscripcion']) ?></span>
       </div>
     </div>
@@ -708,9 +715,9 @@ function printAllEvents($eventos) {
     <div class="vetcap-right">
     <?php
             if (isset($evento['foto_titulo'])) {
-              echo '<img style="max-width: 330px;" src="http://localhost/vesca'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
+              echo '<img style="max-width: 330px;" src="https://www.vetcaprd.com/'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
             } else {
-              error_log("foto titulo");
+              write_log("foto titulo");
               echo '<h2 style="font-size: 50px; font-family: HelveticaBold;" class="course-title">'.$evento['nombre'].'</h2>';
             }
         ?>
@@ -763,7 +770,7 @@ updateCountdown(eventtId_<?php echo str_replace("-", "_", $evento['Id']); ?>, ev
       <?php 
     $isAttributeWritten = false;
     $onClick = 'location.href=\''.DIR.'VetCapMembers/login.php\'" type="button"'; // Initialize $onClick to avoid undefined variable issues
-    error_log("aaaaaaaaaaaaaaa");
+    write_log("aaaaaaaaaaaaaaa");
 ?>
       <button onclick="<?php echo $onClick; ?>" class="btnnn btn-filled">INSCRIBIRME</button>
     </div>

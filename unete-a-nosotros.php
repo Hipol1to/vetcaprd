@@ -6,9 +6,9 @@ if ($user->is_logged_in() ){
 	header('Location: '.DIR.'/VetCapMembers/index.php'); 
 	//exit(); 
 }
-error_log("no envie el submit");
+write_log("no envie el submit");
 if(isset($_POST['submit'])){
-  error_log("envie el submit");
+  write_log("envie el submit");
 if (! isset($_POST['usuario'])) {
   $error[] = "Debes completar todos los campos";
 }
@@ -28,8 +28,8 @@ $apellido = $_POST['apellido'];
 $correo_electronico = $_POST['correo_electronico'];
 $telefono = $_POST['telefono'];
 $tipo_visitante = $_POST['tipo_visitante'];
-$tipo_estudiante = isset($_POST['tipo_estudiante'])? $_POST['tipo_estudiante'] : 'No estudiante';
-$universidad = isset($_POST['universidad'])? $_POST['universidad'] : 'No universidad';
+$tipo_estudiante = isset($_POST['tipo_estudiante'])? $_POST['tipo_estudiante'] : 'No es estudiante';
+$universidad = isset($_POST['universidad'])? $_POST['universidad'] : 'No es estudiante';
 $contrasena = $_POST['contrasena'];
 $fecha_nacimiento = $_POST['fecha_nacimiento'];
 
@@ -85,7 +85,7 @@ $activasion = md5(uniqid(rand(),true));
 
 try {
   $id = generateShortGUID();
-error_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electronico, usuario, contrasena, fecha_nacimiento, tipo_visitante, tipo_estudiante, universidad, rol, activo, token_activacion) VALUES (:'.$id.', :'.$nombre.', :'.$apellido.', :'.$telefono.', :'.$correo_electronico.', :'.$usuario.', :'.$contrasena.', :'.$fecha_nacimiento.', :'.$tipo_visitante.', :'.$tipo_estudiante.', :'.$universidad.', :cliente, :0, :'.$activasion.')');
+write_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electronico, usuario, contrasena, fecha_nacimiento, tipo_visitante, tipo_estudiante, universidad, rol, activo, token_activacion) VALUES (:'.$id.', :'.$nombre.', :'.$apellido.', :'.$telefono.', :'.$correo_electronico.', :'.$usuario.', :'.$contrasena.', :'.$fecha_nacimiento.', :'.$tipo_visitante.', :'.$tipo_estudiante.', :'.$universidad.', :cliente, :0, :'.$activasion.')');
   //insert into database with a prepared statement
 
   $stmt = $db->prepare('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electronico, usuario, contrasena, fecha_nacimiento, tipo_visitante, tipo_estudiante, universidad, rol, activo, token_activacion) VALUES (:id, :nombre, :apellido, :telefono, :correo_electronico, :usuario, :contrasena, :fecha_nacimiento, :tipo_visitante, :tipo_estudiante, :universidad, :rol, :activo, :token_activacion)');
@@ -128,7 +128,7 @@ error_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electron
 //else catch the exception and show the error.
 } catch(PDOException $e) {
     $error[] = $e->getMessage();
-    error_log($e->getMessage());
+    write_log($e->getMessage());
 }
 }
 }
@@ -142,6 +142,17 @@ error_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electron
       display: none;
     }
   </style>
+  <style>
+     footer p {
+    font-family: "HelveticaBold";
+    color: white; 
+    font-size: 16px;
+    line-height: 30px;
+    margin-bottom: 15px;
+    font-weight: 150;
+    line-height: 1.6;
+}
+    </style>
 <section  class="call-to-action-section">
   <div class="cta-content">
     <div class="text-container">
@@ -251,7 +262,7 @@ error_log('INSERT INTO usuarios (Id, nombre, apellido, telefono, correo_electron
     <option value="Pontificia Universidad Católica Madre y Maestra">Pontificia Universidad Católica Madre y Maestra</option>
     <option value="Universidad Católica Nordestana">Universidad Católica Nordestana</option>
     <option value="Universidad Nacional Pedro Henríquez Ureña">Universidad Nacional Pedro Henríquez Ureña</option>
-    <option value="Universidad Acción Pro-Educación y Cultura">Universidad Acción Pro-Educación y Cultura</option>
+    <option value="Universidad Acción Pro-Educación y Cultura (UNAPEC)">Universidad Acción Pro-Educación y Cultura (UNAPEC)</option>
     <option value="Universidad Central del Este">Universidad Central del Este</option>
     <option value="Instituto Tecnológico de Santo Domingo">Instituto Tecnológico de Santo Domingo</option>
     <option value="Universidad INCE">Universidad INCE</option>

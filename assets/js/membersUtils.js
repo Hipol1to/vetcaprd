@@ -59,7 +59,7 @@ function toggleFields(modalId) {
           };
       
           // Send transaction data via POST request
-          fetch("http://localhost/vesca/VetCapMembers/unsubscribe_user_event.php", {
+          fetch("https://www.vetcaprd.com//VetCapMembers/unsubscribe_user_event.php", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -89,7 +89,7 @@ function toggleFields(modalId) {
         };
     
         // Send transaction data via POST request
-        fetch("http://localhost/vesca/VetCapMembers/subscribe_user_free_event.php", {
+        fetch("https://www.vetcaprd.com//VetCapMembers/subscribe_user_free_event.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -135,7 +135,7 @@ function toggleFields(modalId) {
         };
     
         // Send transaction data via POST request
-        fetch("http://localhost/vesca/VetCapMembers/subscribe_user_free_course.php", {
+        fetch("https://www.vetcaprd.com//VetCapMembers/subscribe_user_free_course.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

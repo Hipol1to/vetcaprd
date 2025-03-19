@@ -9,7 +9,7 @@ $active = trim($_GET['y']);
 if (!empty($userId) && !empty($active)) {
 
 	//update users record set the active column to Yes where the memberID and active value match the ones provided in the array
-    error_log("UPDATE usuarios SET activo = 1 WHERE Id = ".$userId." AND activo = 0");
+    write_log("UPDATE usuarios SET activo = 1 WHERE Id = ".$userId." AND activo = 0");
 	$stmt = $db->prepare("UPDATE usuarios SET activo = 1 WHERE Id = :id AND activo = 0");
 	$stmt->execute(array(
 		':id' => $userId
