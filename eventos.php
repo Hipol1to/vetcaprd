@@ -89,7 +89,7 @@
           <div class="row align-items-center">
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
               <div class="about-img about-img1">
-                <img src="https://www.vetcaprd.com/<?php  echo str_replace("../", "", $nextEvent['foto_evento']);; ?>" alt="" class="event-pic"/>
+                <img src="http://localhost/vesca/<?php  echo str_replace("../", "", $nextEvent['foto_evento']);; ?>" alt="" class="event-pic"/>
               </div>
             </div>
             <div

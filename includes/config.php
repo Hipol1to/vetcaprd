@@ -14,8 +14,8 @@ define('ENCRYPTION_IV', '5938506185430479'); // Must be 16 bytes for AES-256-CBC
 
 
 //application address
-define('DIR','https://www.vetcaprd.com//');
-define('PAGE','https://www.vetcaprd.com//');
+define('DIR','http://localhost/vesca//');
+define('PAGE','http://localhost/vesca//');
 define('SITEEMAIL','info@vetcaprd.com');
 $log_file = __DIR__ . '/custom_log.log'; // Define log file path
 
@@ -705,9 +705,9 @@ function printAllEvents($eventos) {
   <div class="vetcap-container">
     <!-- Left Section -->
     <div class="vetcap-left">
-      <img src="https://www.vetcaprd.com/<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
+      <img src="http://localhost/vesca/<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
       <div class="vetcap-badge">
-        <img style="width: 70px; height: auto;" src="https://www.vetcaprd.com//assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
+        <img style="width: 70px; height: auto;" src="http://localhost/vesca//assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
         <span>RD$<?= htmlspecialchars($evento['precio_inscripcion']) ?></span>
       </div>
     </div>
@@ -715,7 +715,7 @@ function printAllEvents($eventos) {
     <div class="vetcap-right">
     <?php
             if (isset($evento['foto_titulo'])) {
-              echo '<img style="max-width: 330px;" src="https://www.vetcaprd.com/'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
+              echo '<img style="max-width: 330px;" src="http://localhost/vesca/'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
             } else {
               write_log("foto titulo");
               echo '<h2 style="font-size: 50px; font-family: HelveticaBold;" class="course-title">'.$evento['nombre'].'</h2>';

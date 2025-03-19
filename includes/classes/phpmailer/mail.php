@@ -9,15 +9,13 @@ require __DIR__.'/SMTP.php';
 class Mail extends PHPMailer
 {
     // Set default variables for all new objects
-    public $From     = 'info@vetcaprd.com';
+    public $From     = 'noreply@domain.com';
     public $FromName = 'Fundacion VetCap';
-    public $Host     = 'smtp.hostinger.com';
+    public $Host     = 'smtp.gmail.com';
     public $Mailer   = 'smtp';
     public $SMTPAuth = true;
-    public $Username = 'info@vetcaprd.com';
-    public $Password = 'VBM7TTEJEYEDg!';//if using Gmail use an app password more details here https://support.google.com/accounts/answer/185833?hl=en
-    public $SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Use STARTTLS encryption
-    public $Port     = 587; // SMTP Port for Hostinger
+    public $Username = 'thelegendstutorials@gmail.com';
+    public $Password = 'zmfb uwso jmpk yybe';//if using Gmail use an app password more details here https://support.google.com/accounts/answer/185833?hl=en
     //public $SMTPSecure = 'tls';
     public $WordWrap = 75;
 

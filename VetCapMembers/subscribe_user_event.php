@@ -83,11 +83,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             } catch (PDOException $e) {
                 write_log(json_encode(["success" => false, "message" => "Database error: " . $e->getMessage()]));
             }*/
-            header('Location: https://www.vetcaprd.com//VetCapMembers/index.php');
+            header('Location: http://localhost/vesca//VetCapMembers/index.php');
             exit();
         } else {
             write_log("Failed to insert payment information.");
-            header('Location: https://www.vetcaprd.com//VetCapMembers/index.php');
+            header('Location: http://localhost/vesca//VetCapMembers/index.php');
             exit();
         }
     } catch (Exception $e) {

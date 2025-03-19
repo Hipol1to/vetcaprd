@@ -76,14 +76,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // SMTP Settings
         $mail->isSMTP();
-        $mail->Host       = 'smtp.hostinger.com';
+        $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'info@vetcaprd.com';
-        $mail->Password   = 'VBM7TTEJEYEDg!';
+        $mail->Username   = 'thelegendstutorials@gmail.com';
+        $mail->Password   = 'zmfb uwso jmpk yybe';
         $mail->Port       = 587;
 
         // Email Details
-        $mail->setFrom('info@vetcaprd.com', 'Fundacion VetCap');
+        $mail->setFrom('thelegendstutorials@gmail.com', 'Fundacion VetCap');
 
         // Add recipients
         foreach ($emails as $email) {
