@@ -134,35 +134,34 @@
 	c-42.8-12.4-48.2-87.2-19.2-115C24.8,17.6,31.3,15.4,38.1,14.8L38.1,14.8z"></path></svg>
       </div>
       <div class="u-form u-radius-20 u-white u-form-1">
-        <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" source="email" name="form" style="padding: 23px;">
+        <form action="https://api.web3forms.com/submit" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" source="email" name="form" style="padding: 23px;">
+          <input type="hidden" name="access_key" value="4a39f8e1-64d6-4301-95d7-10bf58aa9293">
           <h4 class="u-align-center u-form-group u-form-text u-text u-text-2"> ¡Estamos aquí para servirte!<span style="text-decoration: underline !important;"></span>
           </h4>
           <div class="u-form-group u-form-name">
-            <label for="name-4c18" class="u-label">Nombre &amp; Apellido</label>
-            <input type="text" placeholder="Escribe tu Nombre &amp; Apellido" id="name-4c18" name="Nombre" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" required="">
+            <label for="name-4c18" class="u-label">Nombre completo</label>
+            <input type="text" placeholder="Escribe tu nombre y apellido" id="name-4c18" name="Nombre" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" required="">
           </div>
           <div class="u-form-email u-form-group">
-            <label for="email-4c18" class="u-label">Email</label>
-            <input type="email" placeholder="Coloca tu Email" id="email-4c18" name="email" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" required="">
+            <label for="email-4c18" class="u-label">Correo electrónico</label>
+            <input type="email" placeholder="Coloca tu direccion de correo electrónico" id="email-4c18" name="email" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" required="">
           </div>
           <div class="u-form-group u-form-message">
             <label for="message-4c18" class="u-label">Mensaje</label>
             <textarea placeholder="Escribe tu Mensaje" rows="4" cols="50" id="message-4c18" name="message" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" required=""></textarea>
           </div>
-          <div class="u-form-agree u-form-group u-form-group-5">
+          <!-- <div class="u-form-agree u-form-group u-form-group-5">
             <label class="u-field-label"></label>
             <input type="checkbox" id="agree-a472" name="agree" class="u-agree-checkbox u-field-input" required="">
             <label for="agree-a472" class="u-agree-label u-block-dbf8-22 u-field-label" style="">I accept the <a href="#">Terms of Service</a>
             </label>
-          </div>
+          </div> -->
           <div class="u-align-right u-form-group u-form-submit">
             <a href="#" class="u-active-custom-color-3 u-border-5 u-border-active-custom-color-3 u-border-custom-color-1 u-border-hover-custom-color-3 u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-hover-custom-color-3 u-radius-10 u-btn-1">Enviar</a>
             <input type="submit" value="submit" class="u-form-control-hidden">
           </div>
-          <div class="u-form-send-message u-form-send-success">Thank you! Your message has been sent.</div>
-          <div class="u-form-send-error u-form-send-message">Unable to send your message. Please fix errors then try again.</div>
-          <input type="hidden" value="" name="recaptchaResponse">
-          <input type="hidden" name="formServices" value="6eb94d59-93e5-4517-1b4f-dcb113998bd2">
+          <div class="u-form-send-message u-form-send-success">¡Gracias! Tu mensaje ha sido enviado.</div>
+          <div class="u-form-send-error u-form-send-message">No podemos enviar tu mensaje. Por favor corrije los errores.</div>
         </form>
       </div>
     </section>

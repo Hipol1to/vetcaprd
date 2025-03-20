@@ -44,15 +44,31 @@ require('layout/header.php');
                 <?php
                 if ($stmt->rowCount() > 0) {
                     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                        if ($row['cedula_validada'] == 0) {
-                            $cedulaValidadaText = "Sin validar";
-                        } else {
-                            $cedulaValidadaText = "Validada";
+                        switch ($row['cedula_validada']) {
+                            case 0:
+                                $cedulaValidadaText = "Sin validar";
+                                break;
+                            case 1:
+                                $cedulaValidadaText = "Cedula valida";
+                                break;
+                            case 2:
+                                $cedulaValidadaText = "Validacion pendiente";
+                                break;
+                            case 3:
+                                $cedulaValidadaText = "Cedula invalida";
+                                break;
+                            
+                            default:
+                            $cedulaValidadaText = "N/A";
+                                break;
                         }
+                        write_log("launi".$row['universidad']);
+                        $universityText = !isset($row['universidad']) || $row['universidad'] == null || !$row['universidad'] ? "No estudiante" : $row['universidad'];
+                        
                         echo "<tr>";
                         echo "<td>" . htmlspecialchars($row['nombre']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['correo_electronico']) . "</td>";
-                        echo "<td>" . htmlspecialchars($row['universidad']) . "</td>";
+                        echo "<td>" . htmlspecialchars($universityText) . "</td>";
                         echo "<td>" . htmlspecialchars($row['telefono']) . "</td>";
                         echo "<td>" . htmlspecialchars($cedulaValidadaText) . "</td>";
                         echo "<td>" . htmlspecialchars($row['tipo_visitante']) . "</td>";

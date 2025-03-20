@@ -51,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             write_log($cedula_path_mixed);
 
             // Prepare SQL statement to update the usuarios table
-            $queryy = "UPDATE usuarios SET cedula_numero = :cedulaNumber, cedula_ruta = :cedulaPath WHERE usuario = :username";
+            $queryy = "UPDATE usuarios SET cedula_numero = :cedulaNumber, cedula_ruta = :cedulaPath, cedula_validada = 2 WHERE usuario = :username";
             $stmt = $db->prepare($queryy);
 
             // Bind parameters

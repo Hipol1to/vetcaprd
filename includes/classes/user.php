@@ -57,9 +57,9 @@ class User
 	{
 		try {
 			if ($this->_ignoreCase) {
-				$stmt = $this->_db->prepare('SELECT cedula_ruta from usuarios WHERE LOWER(usuario) = LOWER(:usuario) AND activo="1" ');
+				$stmt = $this->_db->prepare('SELECT cedula_ruta, cedula_validada from usuarios WHERE LOWER(usuario) = LOWER(:usuario) AND activo="1" ');
 			} else {
-				$stmt = $this->_db->prepare('SELECT cedula_ruta FROM usuarios WHERE usuario = :usuario AND activo="1" ');
+				$stmt = $this->_db->prepare('SELECT cedula_ruta, cedula_validada FROM usuarios WHERE usuario = :usuario AND activo="1" ');
 			}
 			$stmt->execute(array('usuario' => $username));
 
@@ -73,10 +73,16 @@ class User
 	public function isUserCedulaUploaded($username)
 	{
 		$row = $this->get_cedula_path($username);
+		write_log("peroviejo".$row['cedula_validada']);
+		write_log(!isset($row['cedula_validada']));
 
-		if (isset($row['cedula_ruta']) && $row['cedula_ruta'] != null && $row['cedula_ruta'] != "") {
+		if (isset($row['cedula_ruta']) && $row['cedula_ruta'] != null && $row['cedula_ruta'] != "" && $row['cedula_validada'] == 1 ||
+			isset($row['cedula_ruta']) && $row['cedula_ruta'] != null && $row['cedula_ruta'] != "" && $row['cedula_validada'] == 2 ||
+			isset($row['cedula_ruta']) && $row['cedula_ruta'] != null && $row['cedula_ruta'] != "" && $row['cedula_validada'] == 3) {
+			write_log("sissss");
 			return true;
 		} else {
+			write_log("nonnnn");
 			return false;
 		}
 
@@ -87,9 +93,36 @@ class User
 	{
 		$row = $this->get_cedula_validated($username);
 
-		if (isset($row['cedula_validada']) && $row['cedula_validada'] == 1) {
+		if ($row['cedula_validada'] == 1) {
 			return true;
 		} else {
+			return false;
+		}
+
+		
+	}
+
+	public function isUserCedulaInvalid($username)
+	{
+		$row = $this->get_cedula_validated($username);
+
+		if ($row['cedula_validada'] == 3) {
+			return true;
+		} else {
+			return false;
+		}
+
+		
+	}
+	public function isUserCedulaWaitingForValidation($username)
+	{
+		$row = $this->get_cedula_validated($username);
+
+		if ($row['cedula_validada'] == 2) {
+			write_log("do");
+			return true;
+		} else {
+			write_log("no e do");
 			return false;
 		}
 
