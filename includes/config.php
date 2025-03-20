@@ -6,9 +6,9 @@ date_default_timezone_set('Europe/London');
 
 //database credentials
 define('DBHOST','localhost');
-define('DBUSER','root');
-define('DBPASS','');
-define('DBNAME','vetcap_storage');
+define('DBUSER','u881757960_vetcap_adm');
+define('DBPASS','!!zU7543Mjk!!');
+define('DBNAME','u881757960_vetcap_storage');
 define('ENCRYPTION_KEY', base64_decode('G9S/vWXp8aNCL2NRQFQ/oHjdJJ3kbsT/mLxukjMMN8Q='));
 define('ENCRYPTION_IV', '5938506185430479'); // Must be 16 bytes for AES-256-CBC
 
@@ -16,7 +16,7 @@ define('ENCRYPTION_IV', '5938506185430479'); // Must be 16 bytes for AES-256-CBC
 //application address
 define('DIR','https://www.vetcaprd.com//');
 define('PAGE','https://www.vetcaprd.com//');
-define('SITEEMAIL','noreply@domain.com');
+define('SITEEMAIL','info@vetcaprd.com');
 $log_file = __DIR__ . '/custom_log.log'; // Define log file path
 
 try {
