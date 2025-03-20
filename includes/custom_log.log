@@ -10412,3 +10412,933 @@
 [2025-03-20 04:55:51] nonnnn
 [2025-03-20 04:55:51] The user: 'sober' needs to complete his proffile
 [2025-03-20 04:55:51] tarannn
+[2025-03-20 14:39:27] ------STARTING SESSION LOG------
+[2025-03-20 14:39:27] Array
+(
+    [Id] => 760A6306-71F1-42CF-AA66-69A15332BA9C
+    [nombre] => evento de prueba
+    [descripcion] => invita a tus amigos a este evento de prueba para futuros veterinarios
+    [descripcion2] => 
+    [foto_evento] => /VetCapAdmins/uploads/67d4a070ba6f8_vetcap_tour_template.png
+    [foto_titulo] => /VetCapAdmins/uploads/67d4a070bab1d_noctua_group_white_logo.png
+    [precio_inscripcion] => 4500.00
+    [fecha_apertura_inscripcion] => 2025-03-20 17:32:00
+    [fecha_cierre_inscripcion] => 2025-03-18 17:32:00
+    [fecha_evento] => 2025-03-22 17:32:00
+    [Fecha_creacion] => 2025-03-14 17:32:32
+    [activo] => 1
+    [Fecha_modificacion] => 2025-03-14 17:32:32
+)
+
+[2025-03-20 14:39:27] User events pending for verification:Array
+(
+)
+
+[2025-03-20 14:39:27] ------STARTING SESSION LOG------
+[2025-03-20 14:39:27] User courses pending for verification:Array
+(
+)
+
+[2025-03-20 14:39:27] Verifiying if user has events: 
+[2025-03-20 14:39:27] telomando760A6306-71F1-42CF-AA66-69A15332BA9C
+[2025-03-20 14:39:27] 760A6306-71F1-42CF-AA66-69A15332BA9C
+[2025-03-20 14:39:27] peroviejo0
+[2025-03-20 14:39:27] 
+[2025-03-20 14:39:27] nonnnn
+[2025-03-20 14:39:27] The user: 'sober' needs to complete his proffile
+[2025-03-20 14:39:27] tarannn
+[2025-03-20 14:39:27] is user cedula validated?: 
+[2025-03-20 14:39:27] taran
+[2025-03-20 14:39:27] Retrieved records: Array
+(
+    [0] => Array
+        (
+            [Id] => 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+            [nombre] => otro eventico
+            [descripcion] => este es otro evento de prueba
+            [descripcion2] => 
+            [foto_evento] => /VetCapAdmins/uploads/67d4a193accc8_vetcap_tour_template.png
+            [foto_titulo] => /VetCapAdmins/uploads/67d4a193ad046_animal_food_line-white_logo.png
+            [precio_inscripcion] => 9000.00
+            [fecha_apertura_inscripcion] => 2025-03-21 17:37:00
+            [fecha_cierre_inscripcion] => 2025-03-21 15:37:00
+            [fecha_evento] => 2025-03-22 17:37:00
+            [Fecha_creacion] => 2025-03-14 17:37:23
+            [activo] => 1
+            [Fecha_modificacion] => 2025-03-14 17:37:23
+        )
+
+)
+
+[2025-03-20 14:39:27] Eventos list: Array
+(
+    [0] => Array
+        (
+            [0] => modalName
+            [1] => 0
+        )
+
+    [1] => Array
+        (
+            [0] => 760A6306-71F1-42CF-AA66-69A15332BA9C
+            [1] => 0
+        )
+
+    [2] => Array
+        (
+            [0] => 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+            [1] => 0
+        )
+
+)
+
+[2025-03-20 14:39:27] aaaaaaaaaaaaaaa
+[2025-03-20 14:39:27] 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+[2025-03-20 14:39:27] peroviejo0
+[2025-03-20 14:39:27] 
+[2025-03-20 14:39:27] nonnnn
+[2025-03-20 14:39:27] The user: 'sober' needs to complete his proffile
+[2025-03-20 14:39:27] tarannn
+[2025-03-20 14:39:27] aaaaaaaaaaaaaaa
+[2025-03-20 14:39:27] aaaaaaaaaaaaaaa
+[2025-03-20 14:39:27] aaaaaaaaaaaaaaa
+[2025-03-20 14:39:27] aaaaaaaaaaaaaaa
+[2025-03-20 14:39:27] aaaaaaaaaaaaaaa
+[2025-03-20 14:39:27] peroviejo0
+[2025-03-20 14:39:27] 
+[2025-03-20 14:39:27] nonnnn
+[2025-03-20 14:39:27] The user: 'sober' needs to complete his proffile
+[2025-03-20 14:39:27] tarannn
+[2025-03-20 14:39:27] peroviejo0
+[2025-03-20 14:39:27] 
+[2025-03-20 14:39:27] nonnnn
+[2025-03-20 14:39:27] The user: 'sober' needs to complete his proffile
+[2025-03-20 14:39:27] tarannn
+[2025-03-20 14:39:27] peroviejo0
+[2025-03-20 14:39:27] 
+[2025-03-20 14:39:27] nonnnn
+[2025-03-20 14:39:27] The user: 'sober' needs to complete his proffile
+[2025-03-20 14:39:27] tarannn
+[2025-03-20 14:39:27] peroviejo0
+[2025-03-20 14:39:27] 
+[2025-03-20 14:39:27] nonnnn
+[2025-03-20 14:39:27] The user: 'sober' needs to complete his proffile
+[2025-03-20 14:39:27] tarannn
+[2025-03-20 14:39:27] peroviejo0
+[2025-03-20 14:39:27] 
+[2025-03-20 14:39:27] nonnnn
+[2025-03-20 14:39:27] The user: 'sober' needs to complete his proffile
+[2025-03-20 14:39:27] tarannn
+[2025-03-20 14:39:51] ------STARTING SESSION LOG------
+[2025-03-20 14:39:51] Array
+(
+    [Id] => 760A6306-71F1-42CF-AA66-69A15332BA9C
+    [nombre] => evento de prueba
+    [descripcion] => invita a tus amigos a este evento de prueba para futuros veterinarios
+    [descripcion2] => 
+    [foto_evento] => /VetCapAdmins/uploads/67d4a070ba6f8_vetcap_tour_template.png
+    [foto_titulo] => /VetCapAdmins/uploads/67d4a070bab1d_noctua_group_white_logo.png
+    [precio_inscripcion] => 4500.00
+    [fecha_apertura_inscripcion] => 2025-03-20 17:32:00
+    [fecha_cierre_inscripcion] => 2025-03-18 17:32:00
+    [fecha_evento] => 2025-03-22 17:32:00
+    [Fecha_creacion] => 2025-03-14 17:32:32
+    [activo] => 1
+    [Fecha_modificacion] => 2025-03-14 17:32:32
+)
+
+[2025-03-20 14:39:51] User events pending for verification:Array
+(
+)
+
+[2025-03-20 14:39:51] ------STARTING SESSION LOG------
+[2025-03-20 14:39:51] User courses pending for verification:Array
+(
+)
+
+[2025-03-20 14:39:51] Verifiying if user has events: 
+[2025-03-20 14:39:51] telomando760A6306-71F1-42CF-AA66-69A15332BA9C
+[2025-03-20 14:39:51] 760A6306-71F1-42CF-AA66-69A15332BA9C
+[2025-03-20 14:39:51] peroviejo0
+[2025-03-20 14:39:51] 
+[2025-03-20 14:39:51] nonnnn
+[2025-03-20 14:39:51] The user: 'sober' needs to complete his proffile
+[2025-03-20 14:39:51] tarannn
+[2025-03-20 14:39:51] is user cedula validated?: 
+[2025-03-20 14:39:51] taran
+[2025-03-20 14:39:51] Retrieved records: Array
+(
+    [0] => Array
+        (
+            [Id] => 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+            [nombre] => otro eventico
+            [descripcion] => este es otro evento de prueba
+            [descripcion2] => 
+            [foto_evento] => /VetCapAdmins/uploads/67d4a193accc8_vetcap_tour_template.png
+            [foto_titulo] => /VetCapAdmins/uploads/67d4a193ad046_animal_food_line-white_logo.png
+            [precio_inscripcion] => 9000.00
+            [fecha_apertura_inscripcion] => 2025-03-21 17:37:00
+            [fecha_cierre_inscripcion] => 2025-03-21 15:37:00
+            [fecha_evento] => 2025-03-22 17:37:00
+            [Fecha_creacion] => 2025-03-14 17:37:23
+            [activo] => 1
+            [Fecha_modificacion] => 2025-03-14 17:37:23
+        )
+
+)
+
+[2025-03-20 14:39:51] Eventos list: Array
+(
+    [0] => Array
+        (
+            [0] => modalName
+            [1] => 0
+        )
+
+    [1] => Array
+        (
+            [0] => 760A6306-71F1-42CF-AA66-69A15332BA9C
+            [1] => 0
+        )
+
+    [2] => Array
+        (
+            [0] => 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+            [1] => 0
+        )
+
+)
+
+[2025-03-20 14:39:51] aaaaaaaaaaaaaaa
+[2025-03-20 14:39:51] 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+[2025-03-20 14:39:51] peroviejo0
+[2025-03-20 14:39:51] 
+[2025-03-20 14:39:51] nonnnn
+[2025-03-20 14:39:51] The user: 'sober' needs to complete his proffile
+[2025-03-20 14:39:51] tarannn
+[2025-03-20 14:39:51] aaaaaaaaaaaaaaa
+[2025-03-20 14:39:51] aaaaaaaaaaaaaaa
+[2025-03-20 14:39:51] aaaaaaaaaaaaaaa
+[2025-03-20 14:39:51] aaaaaaaaaaaaaaa
+[2025-03-20 14:39:51] aaaaaaaaaaaaaaa
+[2025-03-20 14:39:51] peroviejo0
+[2025-03-20 14:39:51] 
+[2025-03-20 14:39:51] nonnnn
+[2025-03-20 14:39:51] The user: 'sober' needs to complete his proffile
+[2025-03-20 14:39:51] tarannn
+[2025-03-20 14:39:51] peroviejo0
+[2025-03-20 14:39:51] 
+[2025-03-20 14:39:51] nonnnn
+[2025-03-20 14:39:51] The user: 'sober' needs to complete his proffile
+[2025-03-20 14:39:51] tarannn
+[2025-03-20 14:39:51] peroviejo0
+[2025-03-20 14:39:51] 
+[2025-03-20 14:39:51] nonnnn
+[2025-03-20 14:39:51] The user: 'sober' needs to complete his proffile
+[2025-03-20 14:39:51] tarannn
+[2025-03-20 14:39:51] peroviejo0
+[2025-03-20 14:39:51] 
+[2025-03-20 14:39:51] nonnnn
+[2025-03-20 14:39:51] The user: 'sober' needs to complete his proffile
+[2025-03-20 14:39:51] tarannn
+[2025-03-20 14:39:51] peroviejo0
+[2025-03-20 14:39:51] 
+[2025-03-20 14:39:51] nonnnn
+[2025-03-20 14:39:51] The user: 'sober' needs to complete his proffile
+[2025-03-20 14:39:51] tarannn
+[2025-03-20 14:40:34] ------STARTING SESSION LOG------
+[2025-03-20 14:40:34] Array
+(
+    [Id] => 760A6306-71F1-42CF-AA66-69A15332BA9C
+    [nombre] => evento de prueba
+    [descripcion] => invita a tus amigos a este evento de prueba para futuros veterinarios
+    [descripcion2] => 
+    [foto_evento] => /VetCapAdmins/uploads/67d4a070ba6f8_vetcap_tour_template.png
+    [foto_titulo] => /VetCapAdmins/uploads/67d4a070bab1d_noctua_group_white_logo.png
+    [precio_inscripcion] => 4500.00
+    [fecha_apertura_inscripcion] => 2025-03-20 17:32:00
+    [fecha_cierre_inscripcion] => 2025-03-18 17:32:00
+    [fecha_evento] => 2025-03-22 17:32:00
+    [Fecha_creacion] => 2025-03-14 17:32:32
+    [activo] => 1
+    [Fecha_modificacion] => 2025-03-14 17:32:32
+)
+
+[2025-03-20 14:40:34] User events pending for verification:Array
+(
+)
+
+[2025-03-20 14:40:34] ------STARTING SESSION LOG------
+[2025-03-20 14:40:34] User courses pending for verification:Array
+(
+    [0] => Array
+        (
+            [Id] => 9919aaff
+            [nombre] => Diplomado en Desarrollo Web Fullstacka
+            [descripcion] => Un diplomado intensivo para aprender desarrollo web tanto frontend como backend, utilizando las tecnologías más modernas.
+            [modalidad] => En línea
+            [foto_diplomado] => 
+            [precio_inscripcion] => 15000.00
+            [fecha_inicio_diplomado] => 2025-03-01 08:00:00
+            [fecha_fin_diplomado] => 2025-06-30 17:00:00
+            [fecha_apertura_inscripcion] => 2025-01-15 08:00:00
+            [fecha_cierre_inscripcion] => 2025-02-28 23:59:00
+            [Fecha_creacion] => 2025-02-16 13:51:06
+            [activo] => 1
+            [Fecha_modificacion] => 2025-03-14 23:59:01
+        )
+
+)
+
+[2025-03-20 14:40:34] Verifiying if user has events: 
+[2025-03-20 14:40:34] telomando760A6306-71F1-42CF-AA66-69A15332BA9C
+[2025-03-20 14:40:34] 760A6306-71F1-42CF-AA66-69A15332BA9C
+[2025-03-20 14:40:34] peroviejo1
+[2025-03-20 14:40:34] 
+[2025-03-20 14:40:34] sissss
+[2025-03-20 14:40:34] no e do
+[2025-03-20 14:40:34] The user: 'nouni' can register to events
+[2025-03-20 14:40:34] tarannnn
+[2025-03-20 14:40:34] is user cedula validated?: 1
+[2025-03-20 14:40:34] taran
+[2025-03-20 14:40:34] Retrieved records: Array
+(
+    [0] => Array
+        (
+            [Id] => 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+            [nombre] => otro eventico
+            [descripcion] => este es otro evento de prueba
+            [descripcion2] => 
+            [foto_evento] => /VetCapAdmins/uploads/67d4a193accc8_vetcap_tour_template.png
+            [foto_titulo] => /VetCapAdmins/uploads/67d4a193ad046_animal_food_line-white_logo.png
+            [precio_inscripcion] => 9000.00
+            [fecha_apertura_inscripcion] => 2025-03-21 17:37:00
+            [fecha_cierre_inscripcion] => 2025-03-21 15:37:00
+            [fecha_evento] => 2025-03-22 17:37:00
+            [Fecha_creacion] => 2025-03-14 17:37:23
+            [activo] => 1
+            [Fecha_modificacion] => 2025-03-14 17:37:23
+        )
+
+)
+
+[2025-03-20 14:40:34] Eventos list: Array
+(
+    [0] => Array
+        (
+            [0] => modalName
+            [1] => 0
+        )
+
+    [1] => Array
+        (
+            [0] => 760A6306-71F1-42CF-AA66-69A15332BA9C
+            [1] => 0
+        )
+
+    [2] => Array
+        (
+            [0] => 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+            [1] => 0
+        )
+
+)
+
+[2025-03-20 14:40:34] aaaaaaaaaaaaaaa
+[2025-03-20 14:40:34] 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+[2025-03-20 14:40:34] peroviejo1
+[2025-03-20 14:40:34] 
+[2025-03-20 14:40:34] sissss
+[2025-03-20 14:40:34] no e do
+[2025-03-20 14:40:34] The user: 'nouni' can register to events
+[2025-03-20 14:40:34] tarannnn
+[2025-03-20 14:40:34] aaaaaaaaaaaaaaa
+[2025-03-20 14:40:34] 9919aaff
+[2025-03-20 14:40:34] aaaaaaaaaaaaaaa
+[2025-03-20 14:40:34] 9919aaff
+[2025-03-20 14:40:34] aaaaaaaaaaaaaaa
+[2025-03-20 14:40:34] 9919aaff
+[2025-03-20 14:40:34] aaaaaaaaaaaaaaa
+[2025-03-20 14:40:34] 9919aaff
+[2025-03-20 14:40:34] aaaaaaaaaaaaaaa
+[2025-03-20 14:40:34] 9919aaff
+[2025-03-20 14:40:34] peroviejo1
+[2025-03-20 14:40:34] 
+[2025-03-20 14:40:34] sissss
+[2025-03-20 14:40:34] no e do
+[2025-03-20 14:40:34] The user: 'nouni' can register to events
+[2025-03-20 14:40:34] tarannnn
+[2025-03-20 14:40:34] peroviejo1
+[2025-03-20 14:40:34] 
+[2025-03-20 14:40:34] sissss
+[2025-03-20 14:40:34] no e do
+[2025-03-20 14:40:34] The user: 'nouni' can register to events
+[2025-03-20 14:40:34] tarannnn
+[2025-03-20 14:40:34] peroviejo1
+[2025-03-20 14:40:34] 
+[2025-03-20 14:40:34] sissss
+[2025-03-20 14:40:34] no e do
+[2025-03-20 14:40:34] The user: 'nouni' can register to events
+[2025-03-20 14:40:34] tarannnn
+[2025-03-20 14:40:34] peroviejo1
+[2025-03-20 14:40:34] 
+[2025-03-20 14:40:34] sissss
+[2025-03-20 14:40:34] no e do
+[2025-03-20 14:40:34] The user: 'nouni' can register to events
+[2025-03-20 14:40:34] tarannnn
+[2025-03-20 14:40:34] peroviejo1
+[2025-03-20 14:40:34] 
+[2025-03-20 14:40:34] sissss
+[2025-03-20 14:40:34] no e do
+[2025-03-20 14:40:34] The user: 'nouni' can register to events
+[2025-03-20 14:40:34] tarannnn
+[2025-03-20 14:54:13] Received query: 
+[2025-03-20 14:54:13] Query results: [{"id":"029757B25F1E78378E51639008A4F005","nombre_lista":"suplidores vetboca"},{"id":"FA7B5ABA2FF24B28953A02C5C6C59C8C","nombre_lista":"Prueba de promociones"}]
+[2025-03-20 17:00:22] ------STARTING SESSION LOG------
+[2025-03-20 17:00:22] Array
+(
+    [Id] => 760A6306-71F1-42CF-AA66-69A15332BA9C
+    [nombre] => evento de prueba
+    [descripcion] => invita a tus amigos a este evento de prueba para futuros veterinarios
+    [descripcion2] => 
+    [foto_evento] => /VetCapAdmins/uploads/67d4a070ba6f8_vetcap_tour_template.png
+    [foto_titulo] => /VetCapAdmins/uploads/67d4a070bab1d_noctua_group_white_logo.png
+    [precio_inscripcion] => 4500.00
+    [fecha_apertura_inscripcion] => 2025-03-20 17:32:00
+    [fecha_cierre_inscripcion] => 2025-03-18 17:32:00
+    [fecha_evento] => 2025-03-22 17:32:00
+    [Fecha_creacion] => 2025-03-14 17:32:32
+    [activo] => 1
+    [Fecha_modificacion] => 2025-03-14 17:32:32
+)
+
+[2025-03-20 17:00:22] User events pending for verification:Array
+(
+)
+
+[2025-03-20 17:00:22] ------STARTING SESSION LOG------
+[2025-03-20 17:00:22] User courses pending for verification:Array
+(
+    [0] => Array
+        (
+            [Id] => 9919aaff
+            [nombre] => Diplomado en Desarrollo Web Fullstacka
+            [descripcion] => Un diplomado intensivo para aprender desarrollo web tanto frontend como backend, utilizando las tecnologías más modernas.
+            [modalidad] => En línea
+            [foto_diplomado] => 
+            [precio_inscripcion] => 15000.00
+            [fecha_inicio_diplomado] => 2025-03-01 08:00:00
+            [fecha_fin_diplomado] => 2025-06-30 17:00:00
+            [fecha_apertura_inscripcion] => 2025-01-15 08:00:00
+            [fecha_cierre_inscripcion] => 2025-02-28 23:59:00
+            [Fecha_creacion] => 2025-02-16 13:51:06
+            [activo] => 1
+            [Fecha_modificacion] => 2025-03-14 23:59:01
+        )
+
+)
+
+[2025-03-20 17:00:22] Verifiying if user has events: 
+[2025-03-20 17:00:22] telomando760A6306-71F1-42CF-AA66-69A15332BA9C
+[2025-03-20 17:00:22] 760A6306-71F1-42CF-AA66-69A15332BA9C
+[2025-03-20 17:00:22] peroviejo1
+[2025-03-20 17:00:22] 
+[2025-03-20 17:00:22] sissss
+[2025-03-20 17:00:22] no e do
+[2025-03-20 17:00:22] The user: 'nouni' can register to events
+[2025-03-20 17:00:22] tarannnn
+[2025-03-20 17:00:22] is user cedula validated?: 1
+[2025-03-20 17:00:22] taran
+[2025-03-20 17:00:22] Retrieved records: Array
+(
+    [0] => Array
+        (
+            [Id] => 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+            [nombre] => otro eventico
+            [descripcion] => este es otro evento de prueba
+            [descripcion2] => 
+            [foto_evento] => /VetCapAdmins/uploads/67d4a193accc8_vetcap_tour_template.png
+            [foto_titulo] => /VetCapAdmins/uploads/67d4a193ad046_animal_food_line-white_logo.png
+            [precio_inscripcion] => 9000.00
+            [fecha_apertura_inscripcion] => 2025-03-21 17:37:00
+            [fecha_cierre_inscripcion] => 2025-03-21 15:37:00
+            [fecha_evento] => 2025-03-22 17:37:00
+            [Fecha_creacion] => 2025-03-14 17:37:23
+            [activo] => 1
+            [Fecha_modificacion] => 2025-03-14 17:37:23
+        )
+
+)
+
+[2025-03-20 17:00:22] Eventos list: Array
+(
+    [0] => Array
+        (
+            [0] => modalName
+            [1] => 0
+        )
+
+    [1] => Array
+        (
+            [0] => 760A6306-71F1-42CF-AA66-69A15332BA9C
+            [1] => 0
+        )
+
+    [2] => Array
+        (
+            [0] => 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+            [1] => 0
+        )
+
+)
+
+[2025-03-20 17:00:22] aaaaaaaaaaaaaaa
+[2025-03-20 17:00:22] 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+[2025-03-20 17:00:22] peroviejo1
+[2025-03-20 17:00:22] 
+[2025-03-20 17:00:22] sissss
+[2025-03-20 17:00:22] no e do
+[2025-03-20 17:00:22] The user: 'nouni' can register to events
+[2025-03-20 17:00:22] tarannnn
+[2025-03-20 17:00:22] aaaaaaaaaaaaaaa
+[2025-03-20 17:00:22] 9919aaff
+[2025-03-20 17:00:22] aaaaaaaaaaaaaaa
+[2025-03-20 17:00:22] 9919aaff
+[2025-03-20 17:00:22] aaaaaaaaaaaaaaa
+[2025-03-20 17:00:22] 9919aaff
+[2025-03-20 17:00:22] aaaaaaaaaaaaaaa
+[2025-03-20 17:00:22] 9919aaff
+[2025-03-20 17:00:22] aaaaaaaaaaaaaaa
+[2025-03-20 17:00:22] 9919aaff
+[2025-03-20 17:00:22] peroviejo1
+[2025-03-20 17:00:22] 
+[2025-03-20 17:00:22] sissss
+[2025-03-20 17:00:22] no e do
+[2025-03-20 17:00:22] The user: 'nouni' can register to events
+[2025-03-20 17:00:22] tarannnn
+[2025-03-20 17:00:22] peroviejo1
+[2025-03-20 17:00:22] 
+[2025-03-20 17:00:22] sissss
+[2025-03-20 17:00:22] no e do
+[2025-03-20 17:00:22] The user: 'nouni' can register to events
+[2025-03-20 17:00:22] tarannnn
+[2025-03-20 17:00:22] peroviejo1
+[2025-03-20 17:00:22] 
+[2025-03-20 17:00:22] sissss
+[2025-03-20 17:00:22] no e do
+[2025-03-20 17:00:22] The user: 'nouni' can register to events
+[2025-03-20 17:00:22] tarannnn
+[2025-03-20 17:00:22] peroviejo1
+[2025-03-20 17:00:22] 
+[2025-03-20 17:00:22] sissss
+[2025-03-20 17:00:22] no e do
+[2025-03-20 17:00:22] The user: 'nouni' can register to events
+[2025-03-20 17:00:22] tarannnn
+[2025-03-20 17:00:22] peroviejo1
+[2025-03-20 17:00:22] 
+[2025-03-20 17:00:22] sissss
+[2025-03-20 17:00:22] no e do
+[2025-03-20 17:00:22] The user: 'nouni' can register to events
+[2025-03-20 17:00:22] tarannnn
+[2025-03-20 17:02:47] ------STARTING SESSION LOG------
+[2025-03-20 17:02:47] Array
+(
+    [Id] => 760A6306-71F1-42CF-AA66-69A15332BA9C
+    [nombre] => evento de prueba
+    [descripcion] => invita a tus amigos a este evento de prueba para futuros veterinarios
+    [descripcion2] => 
+    [foto_evento] => /VetCapAdmins/uploads/67d4a070ba6f8_vetcap_tour_template.png
+    [foto_titulo] => /VetCapAdmins/uploads/67d4a070bab1d_noctua_group_white_logo.png
+    [precio_inscripcion] => 4500.00
+    [fecha_apertura_inscripcion] => 2025-03-20 17:32:00
+    [fecha_cierre_inscripcion] => 2025-03-18 17:32:00
+    [fecha_evento] => 2025-03-22 17:32:00
+    [Fecha_creacion] => 2025-03-14 17:32:32
+    [activo] => 1
+    [Fecha_modificacion] => 2025-03-14 17:32:32
+)
+
+[2025-03-20 17:02:47] User events pending for verification:Array
+(
+)
+
+[2025-03-20 17:02:47] ------STARTING SESSION LOG------
+[2025-03-20 17:02:47] User courses pending for verification:Array
+(
+)
+
+[2025-03-20 17:02:47] Verifiying if user has events: 
+[2025-03-20 17:02:47] telomando760A6306-71F1-42CF-AA66-69A15332BA9C
+[2025-03-20 17:02:47] 760A6306-71F1-42CF-AA66-69A15332BA9C
+[2025-03-20 17:02:47] peroviejo1
+[2025-03-20 17:02:47] 
+[2025-03-20 17:02:47] sissss
+[2025-03-20 17:02:47] no e do
+[2025-03-20 17:02:47] The user: 'nouni' can register to events
+[2025-03-20 17:02:47] tarannnn
+[2025-03-20 17:02:47] is user cedula validated?: 1
+[2025-03-20 17:02:47] taran
+[2025-03-20 17:02:47] Retrieved records: Array
+(
+    [0] => Array
+        (
+            [Id] => 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+            [nombre] => otro eventico
+            [descripcion] => este es otro evento de prueba
+            [descripcion2] => 
+            [foto_evento] => /VetCapAdmins/uploads/67d4a193accc8_vetcap_tour_template.png
+            [foto_titulo] => /VetCapAdmins/uploads/67d4a193ad046_animal_food_line-white_logo.png
+            [precio_inscripcion] => 9000.00
+            [fecha_apertura_inscripcion] => 2025-03-21 17:37:00
+            [fecha_cierre_inscripcion] => 2025-03-21 15:37:00
+            [fecha_evento] => 2025-03-22 17:37:00
+            [Fecha_creacion] => 2025-03-14 17:37:23
+            [activo] => 1
+            [Fecha_modificacion] => 2025-03-14 17:37:23
+        )
+
+)
+
+[2025-03-20 17:02:47] Eventos list: Array
+(
+    [0] => Array
+        (
+            [0] => modalName
+            [1] => 0
+        )
+
+    [1] => Array
+        (
+            [0] => 760A6306-71F1-42CF-AA66-69A15332BA9C
+            [1] => 0
+        )
+
+    [2] => Array
+        (
+            [0] => 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+            [1] => 0
+        )
+
+)
+
+[2025-03-20 17:02:47] aaaaaaaaaaaaaaa
+[2025-03-20 17:02:47] 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+[2025-03-20 17:02:47] peroviejo1
+[2025-03-20 17:02:47] 
+[2025-03-20 17:02:47] sissss
+[2025-03-20 17:02:47] no e do
+[2025-03-20 17:02:47] The user: 'nouni' can register to events
+[2025-03-20 17:02:47] tarannnn
+[2025-03-20 17:02:47] aaaaaaaaaaaaaaa
+[2025-03-20 17:02:47] 9919aaff
+[2025-03-20 17:02:47] 9919aaff
+[2025-03-20 17:02:47] aaaaaaaaaaaaaaa
+[2025-03-20 17:02:47] 9919aaff
+[2025-03-20 17:02:47] D88F5CCB-7ABF-4966-8AE4-8DECE0EE9889
+[2025-03-20 17:02:47] aaaaaaaaaaaaaaa
+[2025-03-20 17:02:47] 9919aaff
+[2025-03-20 17:02:47] 9919bff5
+[2025-03-20 17:02:47] aaaaaaaaaaaaaaa
+[2025-03-20 17:02:47] 9919aaff
+[2025-03-20 17:02:47] 9919c17a
+[2025-03-20 17:02:47] aaaaaaaaaaaaaaa
+[2025-03-20 17:02:47] 9919aaff
+[2025-03-20 17:02:47] 9919c8f2
+[2025-03-20 17:02:47] peroviejo1
+[2025-03-20 17:02:47] 
+[2025-03-20 17:02:47] sissss
+[2025-03-20 17:02:47] no e do
+[2025-03-20 17:02:47] The user: 'nouni' can register to events
+[2025-03-20 17:02:47] tarannnn
+[2025-03-20 17:02:47] peroviejo1
+[2025-03-20 17:02:47] 
+[2025-03-20 17:02:47] sissss
+[2025-03-20 17:02:47] no e do
+[2025-03-20 17:02:47] The user: 'nouni' can register to events
+[2025-03-20 17:02:47] tarannnn
+[2025-03-20 17:02:47] peroviejo1
+[2025-03-20 17:02:47] 
+[2025-03-20 17:02:47] sissss
+[2025-03-20 17:02:47] no e do
+[2025-03-20 17:02:47] The user: 'nouni' can register to events
+[2025-03-20 17:02:47] tarannnn
+[2025-03-20 17:02:47] peroviejo1
+[2025-03-20 17:02:47] 
+[2025-03-20 17:02:47] sissss
+[2025-03-20 17:02:47] no e do
+[2025-03-20 17:02:47] The user: 'nouni' can register to events
+[2025-03-20 17:02:47] tarannnn
+[2025-03-20 17:02:47] peroviejo1
+[2025-03-20 17:02:47] 
+[2025-03-20 17:02:47] sissss
+[2025-03-20 17:02:47] no e do
+[2025-03-20 17:02:47] The user: 'nouni' can register to events
+[2025-03-20 17:02:47] tarannnn
+[2025-03-20 21:19:14] ------STARTING SESSION LOG------
+[2025-03-20 21:19:14] Array
+(
+    [Id] => 760A6306-71F1-42CF-AA66-69A15332BA9C
+    [nombre] => evento de prueba
+    [descripcion] => invita a tus amigos a este evento de prueba para futuros veterinarios
+    [descripcion2] => 
+    [foto_evento] => /VetCapAdmins/uploads/67d4a070ba6f8_vetcap_tour_template.png
+    [foto_titulo] => /VetCapAdmins/uploads/67d4a070bab1d_noctua_group_white_logo.png
+    [precio_inscripcion] => 4500.00
+    [fecha_apertura_inscripcion] => 2025-03-20 17:32:00
+    [fecha_cierre_inscripcion] => 2025-03-18 17:32:00
+    [fecha_evento] => 2025-03-22 17:32:00
+    [Fecha_creacion] => 2025-03-14 17:32:32
+    [activo] => 1
+    [Fecha_modificacion] => 2025-03-14 17:32:32
+)
+
+[2025-03-20 21:19:14] User events pending for verification:Array
+(
+)
+
+[2025-03-20 21:19:14] ------STARTING SESSION LOG------
+[2025-03-20 21:19:14] User courses pending for verification:Array
+(
+)
+
+[2025-03-20 21:19:14] Verifiying if user has events: 
+[2025-03-20 21:19:14] telomando760A6306-71F1-42CF-AA66-69A15332BA9C
+[2025-03-20 21:19:14] 760A6306-71F1-42CF-AA66-69A15332BA9C
+[2025-03-20 21:19:14] peroviejo1
+[2025-03-20 21:19:14] 
+[2025-03-20 21:19:14] sissss
+[2025-03-20 21:19:14] no e do
+[2025-03-20 21:19:14] The user: 'nouni' can register to events
+[2025-03-20 21:19:14] tarannnn
+[2025-03-20 21:19:14] is user cedula validated?: 1
+[2025-03-20 21:19:14] taran
+[2025-03-20 21:19:14] Retrieved records: Array
+(
+    [0] => Array
+        (
+            [Id] => 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+            [nombre] => otro eventico
+            [descripcion] => este es otro evento de prueba
+            [descripcion2] => 
+            [foto_evento] => /VetCapAdmins/uploads/67d4a193accc8_vetcap_tour_template.png
+            [foto_titulo] => /VetCapAdmins/uploads/67d4a193ad046_animal_food_line-white_logo.png
+            [precio_inscripcion] => 9000.00
+            [fecha_apertura_inscripcion] => 2025-03-21 17:37:00
+            [fecha_cierre_inscripcion] => 2025-03-21 15:37:00
+            [fecha_evento] => 2025-03-22 17:37:00
+            [Fecha_creacion] => 2025-03-14 17:37:23
+            [activo] => 1
+            [Fecha_modificacion] => 2025-03-14 17:37:23
+        )
+
+)
+
+[2025-03-20 21:19:14] Eventos list: Array
+(
+    [0] => Array
+        (
+            [0] => modalName
+            [1] => 0
+        )
+
+    [1] => Array
+        (
+            [0] => 760A6306-71F1-42CF-AA66-69A15332BA9C
+            [1] => 0
+        )
+
+    [2] => Array
+        (
+            [0] => 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+            [1] => 0
+        )
+
+)
+
+[2025-03-20 21:19:14] aaaaaaaaaaaaaaa
+[2025-03-20 21:19:14] 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+[2025-03-20 21:19:14] peroviejo1
+[2025-03-20 21:19:14] 
+[2025-03-20 21:19:14] sissss
+[2025-03-20 21:19:14] no e do
+[2025-03-20 21:19:14] The user: 'nouni' can register to events
+[2025-03-20 21:19:14] tarannnn
+[2025-03-20 21:19:14] aaaaaaaaaaaaaaa
+[2025-03-20 21:19:14] 9919aaff
+[2025-03-20 21:19:14] 9919aaff
+[2025-03-20 21:19:14] aaaaaaaaaaaaaaa
+[2025-03-20 21:19:14] 9919aaff
+[2025-03-20 21:19:14] D88F5CCB-7ABF-4966-8AE4-8DECE0EE9889
+[2025-03-20 21:19:14] aaaaaaaaaaaaaaa
+[2025-03-20 21:19:14] 9919aaff
+[2025-03-20 21:19:14] 9919bff5
+[2025-03-20 21:19:14] aaaaaaaaaaaaaaa
+[2025-03-20 21:19:14] 9919aaff
+[2025-03-20 21:19:14] 9919c17a
+[2025-03-20 21:19:14] aaaaaaaaaaaaaaa
+[2025-03-20 21:19:14] 9919aaff
+[2025-03-20 21:19:14] 9919c8f2
+[2025-03-20 21:19:14] peroviejo1
+[2025-03-20 21:19:14] 
+[2025-03-20 21:19:14] sissss
+[2025-03-20 21:19:14] no e do
+[2025-03-20 21:19:14] The user: 'nouni' can register to events
+[2025-03-20 21:19:14] tarannnn
+[2025-03-20 21:19:14] peroviejo1
+[2025-03-20 21:19:14] 
+[2025-03-20 21:19:14] sissss
+[2025-03-20 21:19:14] no e do
+[2025-03-20 21:19:14] The user: 'nouni' can register to events
+[2025-03-20 21:19:14] tarannnn
+[2025-03-20 21:19:14] peroviejo1
+[2025-03-20 21:19:14] 
+[2025-03-20 21:19:14] sissss
+[2025-03-20 21:19:14] no e do
+[2025-03-20 21:19:14] The user: 'nouni' can register to events
+[2025-03-20 21:19:14] tarannnn
+[2025-03-20 21:19:14] peroviejo1
+[2025-03-20 21:19:14] 
+[2025-03-20 21:19:14] sissss
+[2025-03-20 21:19:14] no e do
+[2025-03-20 21:19:14] The user: 'nouni' can register to events
+[2025-03-20 21:19:14] tarannnn
+[2025-03-20 21:19:14] peroviejo1
+[2025-03-20 21:19:14] 
+[2025-03-20 21:19:14] sissss
+[2025-03-20 21:19:14] no e do
+[2025-03-20 21:19:14] The user: 'nouni' can register to events
+[2025-03-20 21:19:14] tarannnn
+[2025-03-20 21:27:35] ------STARTING SESSION LOG------
+[2025-03-20 21:27:35] Array
+(
+    [Id] => 760A6306-71F1-42CF-AA66-69A15332BA9C
+    [nombre] => evento de prueba
+    [descripcion] => invita a tus amigos a este evento de prueba para futuros veterinarios
+    [descripcion2] => 
+    [foto_evento] => /VetCapAdmins/uploads/67d4a070ba6f8_vetcap_tour_template.png
+    [foto_titulo] => /VetCapAdmins/uploads/67d4a070bab1d_noctua_group_white_logo.png
+    [precio_inscripcion] => 4500.00
+    [fecha_apertura_inscripcion] => 2025-03-20 17:32:00
+    [fecha_cierre_inscripcion] => 2025-03-18 17:32:00
+    [fecha_evento] => 2025-03-22 17:32:00
+    [Fecha_creacion] => 2025-03-14 17:32:32
+    [activo] => 1
+    [Fecha_modificacion] => 2025-03-14 17:32:32
+)
+
+[2025-03-20 21:27:35] User events pending for verification:Array
+(
+)
+
+[2025-03-20 21:27:35] ------STARTING SESSION LOG------
+[2025-03-20 21:27:35] User courses pending for verification:Array
+(
+)
+
+[2025-03-20 21:27:35] Verifiying if user has events: 
+[2025-03-20 21:27:35] telomando760A6306-71F1-42CF-AA66-69A15332BA9C
+[2025-03-20 21:27:35] 760A6306-71F1-42CF-AA66-69A15332BA9C
+[2025-03-20 21:27:35] peroviejo1
+[2025-03-20 21:27:35] 
+[2025-03-20 21:27:35] sissss
+[2025-03-20 21:27:35] no e do
+[2025-03-20 21:27:35] The user: 'nouni' can register to events
+[2025-03-20 21:27:35] tarannnn
+[2025-03-20 21:27:35] is user cedula validated?: 1
+[2025-03-20 21:27:35] taran
+[2025-03-20 21:27:35] Retrieved records: Array
+(
+    [0] => Array
+        (
+            [Id] => 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+            [nombre] => otro eventico
+            [descripcion] => este es otro evento de prueba
+            [descripcion2] => 
+            [foto_evento] => /VetCapAdmins/uploads/67d4a193accc8_vetcap_tour_template.png
+            [foto_titulo] => /VetCapAdmins/uploads/67d4a193ad046_animal_food_line-white_logo.png
+            [precio_inscripcion] => 9000.00
+            [fecha_apertura_inscripcion] => 2025-03-21 17:37:00
+            [fecha_cierre_inscripcion] => 2025-03-21 15:37:00
+            [fecha_evento] => 2025-03-22 17:37:00
+            [Fecha_creacion] => 2025-03-14 17:37:23
+            [activo] => 1
+            [Fecha_modificacion] => 2025-03-14 17:37:23
+        )
+
+)
+
+[2025-03-20 21:27:35] Eventos list: Array
+(
+    [0] => Array
+        (
+            [0] => modalName
+            [1] => 0
+        )
+
+    [1] => Array
+        (
+            [0] => 760A6306-71F1-42CF-AA66-69A15332BA9C
+            [1] => 0
+        )
+
+    [2] => Array
+        (
+            [0] => 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+            [1] => 0
+        )
+
+)
+
+[2025-03-20 21:27:35] aaaaaaaaaaaaaaa
+[2025-03-20 21:27:35] 7AD9E946-3E56-4B4D-9E75-2FD379F2A6EC
+[2025-03-20 21:27:35] peroviejo1
+[2025-03-20 21:27:35] 
+[2025-03-20 21:27:35] sissss
+[2025-03-20 21:27:35] no e do
+[2025-03-20 21:27:35] The user: 'nouni' can register to events
+[2025-03-20 21:27:35] tarannnn
+[2025-03-20 21:27:35] aaaaaaaaaaaaaaa
+[2025-03-20 21:27:35] 9919aaff
+[2025-03-20 21:27:35] 9919aaff
+[2025-03-20 21:27:35] aaaaaaaaaaaaaaa
+[2025-03-20 21:27:35] 9919aaff
+[2025-03-20 21:27:35] D88F5CCB-7ABF-4966-8AE4-8DECE0EE9889
+[2025-03-20 21:27:35] aaaaaaaaaaaaaaa
+[2025-03-20 21:27:35] 9919aaff
+[2025-03-20 21:27:35] 9919bff5
+[2025-03-20 21:27:35] aaaaaaaaaaaaaaa
+[2025-03-20 21:27:35] 9919aaff
+[2025-03-20 21:27:35] 9919c17a
+[2025-03-20 21:27:35] aaaaaaaaaaaaaaa
+[2025-03-20 21:27:35] 9919aaff
+[2025-03-20 21:27:35] 9919c8f2
+[2025-03-20 21:27:35] peroviejo1
+[2025-03-20 21:27:35] 
+[2025-03-20 21:27:35] sissss
+[2025-03-20 21:27:35] no e do
+[2025-03-20 21:27:35] The user: 'nouni' can register to events
+[2025-03-20 21:27:35] tarannnn
+[2025-03-20 21:27:35] peroviejo1
+[2025-03-20 21:27:35] 
+[2025-03-20 21:27:35] sissss
+[2025-03-20 21:27:35] no e do
+[2025-03-20 21:27:35] The user: 'nouni' can register to events
+[2025-03-20 21:27:35] tarannnn
+[2025-03-20 21:27:35] peroviejo1
+[2025-03-20 21:27:35] 
+[2025-03-20 21:27:35] sissss
+[2025-03-20 21:27:35] no e do
+[2025-03-20 21:27:35] The user: 'nouni' can register to events
+[2025-03-20 21:27:35] tarannnn
+[2025-03-20 21:27:35] peroviejo1
+[2025-03-20 21:27:35] 
+[2025-03-20 21:27:35] sissss
+[2025-03-20 21:27:35] no e do
+[2025-03-20 21:27:35] The user: 'nouni' can register to events
+[2025-03-20 21:27:35] tarannnn
+[2025-03-20 21:27:35] peroviejo1
+[2025-03-20 21:27:35] 
+[2025-03-20 21:27:35] sissss
+[2025-03-20 21:27:35] no e do
+[2025-03-20 21:27:35] The user: 'nouni' can register to events
+[2025-03-20 21:27:35] tarannnn
