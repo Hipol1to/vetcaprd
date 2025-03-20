@@ -9,6 +9,7 @@ if (! $user->is_logged_in()){
 
 
 
+
 //include header template
 require('layout/header.php'); 
 $eventosList = [["modalName", 0]];
@@ -1258,7 +1259,7 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
   <h1 class="title">Diplomados</h1>
   <?php
   $_SESSION['eventosListForPayment'] = $eventosList;
-    renderDiplomadosSlider($diplomados, $misPendingCourses, $misDiplomados);
+    renderDiplomadosSlider($diplomados, $misPendingCourses, $misDiplomados, $user);
     $eventosList = $_SESSION['eventosListForPayment'];
    ?>
 </section>
