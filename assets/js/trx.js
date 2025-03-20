@@ -78,7 +78,7 @@ paypal
     };
   
     // Send transaction data via POST request
-    fetch("https://www.vetcaprd.com//VetCapMembers/register_trx.php", {
+    fetch("https://www.vetcaprd.com///VetCapMembers/register_trx.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -123,7 +123,7 @@ paypal
     };
 
     // Send transaction data via POST request
-    fetch("https://www.vetcaprd.com//VetCapMembers/register_user_event.php", {
+    fetch("https://www.vetcaprd.com///VetCapMembers/register_user_event.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

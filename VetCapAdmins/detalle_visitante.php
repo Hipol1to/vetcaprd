@@ -92,11 +92,11 @@ require('layout/header.php');
                             echo '<div class="row">';
                             echo '<div class="col-md-6">';
                             echo '<p>Captura Frontal</p>';
-                            echo '<img src="https://www.vetcaprd.com//' . htmlspecialchars($image_paths[0]) . '" alt="Captura frontal no disponible" class="img-thumbnail" style="max-width: 100%;">';
+                            echo '<img src="https://www.vetcaprd.com///' . htmlspecialchars($image_paths[0]) . '" alt="Captura frontal no disponible" class="img-thumbnail" style="max-width: 100%;">';
                             echo '</div>';
                             echo '<div class="col-md-6">';
                             echo '<p>Captura Posterior</p>';
-                            echo '<img src="https://www.vetcaprd.com//' . htmlspecialchars($image_paths[1]) . '" alt="Captura posterior no disponible" class="img-thumbnail" style="max-width: 100%;">';
+                            echo '<img src="https://www.vetcaprd.com///' . htmlspecialchars($image_paths[1]) . '" alt="Captura posterior no disponible" class="img-thumbnail" style="max-width: 100%;">';
                             echo '</div>';
                             echo '</div>';
                         } else {
@@ -109,8 +109,10 @@ require('layout/header.php');
                     <div class="form-group">
                         <label for="cedula_validada">Cédula Validada</label>
                         <select class="form-control" id="cedula_validada" name="cedula_validada">
-                            <option value="1" <?= $usuario['cedula_validada'] ? 'selected' : '' ?>>Validada</option>
-                            <option value="0" <?= !$usuario['cedula_validada'] ? 'selected' : '' ?>>No Validada</option>
+                            <option value="0" <?= !$usuario['cedula_validada'] ? 'selected' : '' ?>>Cedula no enviada</option>
+                            <option value="1" <?= $usuario['cedula_validada'] == 1 ? 'selected' : '' ?>>Cedula valida</option>
+                            <option value="2" <?= $usuario['cedula_validada'] == 2 ? 'selected' : '' ?>>Validacion pendiente</option>
+                            <option value="3" <?= $usuario['cedula_validada'] == 3 ? 'selected' : '' ?>>Cedula invalida</option>
                         </select>
                     </div>
 

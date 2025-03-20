@@ -6,9 +6,9 @@ date_default_timezone_set('Europe/London');
 
 //database credentials
 define('DBHOST','localhost');
-define('DBUSER','u881757960_vetcap_adm');
-define('DBPASS','!!zU7543Mjk!!');
-define('DBNAME','u881757960_vetcap_storage');
+define('DBUSER','root');
+define('DBPASS','');
+define('DBNAME','vetcap_storage');
 define('ENCRYPTION_KEY', base64_decode('G9S/vWXp8aNCL2NRQFQ/oHjdJJ3kbsT/mLxukjMMN8Q='));
 define('ENCRYPTION_IV', '5938506185430479'); // Must be 16 bytes for AES-256-CBC
 
@@ -16,7 +16,7 @@ define('ENCRYPTION_IV', '5938506185430479'); // Must be 16 bytes for AES-256-CBC
 //application address
 define('DIR','https://www.vetcaprd.com//');
 define('PAGE','https://www.vetcaprd.com//');
-define('SITEEMAIL','info@vetcaprd.com');
+define('SITEEMAIL','noreply@domain.com');
 $log_file = __DIR__ . '/custom_log.log'; // Define log file path
 
 try {
@@ -167,7 +167,7 @@ function getUserPendingCourses($dbContext) {
       }
 }
 
-function renderDiplomadosSlider($diplomadosArray, $misPendingDiplomados, $misDiplomados) {
+function renderDiplomadosSlider($diplomadosArray, $misPendingDiplomados, $misDiplomados, $theUser) {
     $diplomadosSliderContainerHeader = '
     <div class="slider-capacitaciones-container">
    <div class="slider-capacitaciones">
@@ -246,7 +246,7 @@ updateCountdown(diplomadoId_'.str_replace("-", "_", $theDiplomado['Id']).', even
     echo $diplomadosSliderContainerFooter;
 
     foreach ($diplomadosArray as $theDiplomado) {
-        renderCoursePaymentModal($theDiplomado);
+        renderCoursePaymentModal($theDiplomado, $theUser);
     }
 }
 
@@ -363,7 +363,7 @@ function getOnclickForDiplomados($misDiplomados, $currentDiplomado, $misPendingD
     return $onClick;
 }
 
-function renderCoursePaymentModal($currentDiplomado) {
+function renderCoursePaymentModal($currentDiplomado, $theUser) {
     $diplomadosModalHeader = '
     <div id="subscribe-events-modal'.$currentDiplomado['Id'].'" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); justify-content: center; align-items: center; z-index: 9999;">
       <div class="modal-content" style="background: white; padding: 20px; border-radius: 8px; max-width: 90%; max-height: 90%; overflow-y: auto; position: relative; display: flex; flex-direction: column; align-items: center; text-align: center;">
@@ -427,8 +427,67 @@ function renderCoursePaymentModal($currentDiplomado) {
         </form>
       </div>
     </div>';
+    $proffileUnderInspection = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Tu perfil esta siendo revisado</h2>
+    
+    <!-- Events List -->
+    <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
+      <!-- Event Container (Repeat this block for each event) -->
+      <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
+      <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+            Estamos revisando tus documentos de identidad, podrás registrarte a eventos cuando confirmemos la veracidad de los mismos.
+          </p>
+          <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+            Recibirás un mensaje de correo electrónico una vez que concluya el proceso.
+          </p>
+          <br>     
+      </div>
+    </div>';
+    $cedulaInvalid = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Documento de identidad inválido</h2>
+    
+    <!-- Events List -->
+    <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
+      <!-- Event Container (Repeat this block for each event) -->
+      <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
+      <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+            No pudimos verificar la veracidad de tus documentos, por favor comunícate con nosotros.
+          </p>
+          <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+            Nos pondremos en contacto tan pronto sea posible.
+          </p>
+          <br>     
 
-    $diplomadoIdInpur = '<input type="hidden" name="eventId" value="'.$currentDiplomado['Id'].'">';
+          <div class="u-form u-radius-20 u-white u-form-1">
+          <form action="https://api.web3forms.com/submit" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" source="email" name="form" style="padding: 23px;">
+          <input type="hidden" name="access_key" value="4a39f8e1-64d6-4301-95d7-10bf58aa9293">
+          <div class="u-form-group u-form-name">
+            <label for="name-4c18" class="u-label">Nombre de usuario</label>
+            <input type="text" placeholder="usuario" id="name-4c18" name="usuario" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" value="'.$_SESSION['username'].'" readonly required>
+            <input type="text" placeholder="Asunto" id="name-4c18" name="asunto" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" value="Cedula fue marcada como invalida" readonly hidden>
+          </div>
+          <div class="u-form-group u-form-name">
+            <label for="name-4c18" class="u-label">Numero de teléfono</label>
+            <input type="tel" placeholder="Escribe tu numero de teléfono" id="name-4c18" name="telefono" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" required>
+          </div>
+          <div class="u-form-email u-form-group">
+            <label for="email-4c18" class="u-label">Correo electrónico</label>
+            <input type="email" placeholder="Coloca tu direccion de correo electrónico" id="email-4c18" name="email" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" required="">
+          </div>
+          <div class="u-form-group u-form-message">
+            <label for="message-4c18" class="u-label">Mensaje</label>
+            <textarea placeholder="Escribe tu Mensaje" rows="4" cols="50" id="message-4c18" name="message" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" required=""></textarea>
+          </div>
+          <div class="u-align-right u-form-group u-form-submit">
+            <a href="#" class="u-active-custom-color-3 u-border-5 u-border-active-custom-color-3 u-border-custom-color-1 u-border-hover-custom-color-3 u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-hover-custom-color-3 u-radius-10 u-btn-1">Enviar</a>
+            <input type="submit" value="submit" class="u-form-control-hidden">
+          </div>
+          <div class="u-form-send-message u-form-send-success">¡Gracias! Tu mensaje ha sido enviado.</div>
+          <div class="u-form-send-error u-form-send-message">No podemos enviar tu mensaje. Por favor corrije los errores.</div>
+        </form>
+        </div>
+      </div>
+    </div>';
+
+    $diplomadoIdInpur = '<input type="hidden" name="diplomadoId" value="'.$currentDiplomado['Id'].'">';
 
     $subscribeDiplomadoContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscribir curso</h2>
     
@@ -436,7 +495,7 @@ function renderCoursePaymentModal($currentDiplomado) {
     <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
       <!-- Event Container (Repeat this block for each event) -->
       <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
-        <form role="form" autocomplete="off" action="subscribe_user_event.php" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px; width: 100%;" enctype="multipart/form-data">
+        <form role="form" autocomplete="off" action="subscribe_user_course.php" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px; width: 100%;" enctype="multipart/form-data">
           <!-- Metodo de pago -->
           <label style="color: #2d4a34; width: 100%; text-align: left;">
           Selecciona tu metodo de pago preferido
@@ -458,157 +517,12 @@ function renderCoursePaymentModal($currentDiplomado) {
 
           <!-- Comprobante de Pago -->
            <div id="comprobante_pago_field_container_'.$currentDiplomado['Id'].'" class="hidden">
-           <label for="addMonto">Monto (RD$):</label>
-                <input type="number" class="form-control" id="addMonto" name="addMonto" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+           
 
 <br>
 
-                <label for="addCuentaRemitente">Número de cuenta remitente:</label>
-                <input type="text" class="form-control" id="addCuentaRemitente" name="addCuentaRemitente" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-
-<br>
-
-                <label for="editTipoCuentaRemitente">Tipo de cuenta remitente:</label>
-                <select id="editTipoCuentaRemitente" name="editTipoCuentaRemitente" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-                  <option value="" disabled="" selected="">Tipo de Cuenta</option>
-                    <option value="Cuenta de ahorros">Cuenta de ahorros</option>
-                    <option value="Cuenta corriente">Cuenta corriente</option>
-                </select>
-
-<br>
-<br>
-
-                <label for="addEntidadBancariaRemitente">Entidad bancaria remitente</label>
-  <select id="addEntidadBancariaRemitente" name="addEntidadBancariaRemitente" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" required>
-    <option value="Banreservas" disabled selected>Entidad Bancaria Remitente</option>
-    <option value="Banreservas">Banreservas</option>
-    <option value="Banco Popular Dominicano">Banco Popular Dominicano</option>
-    <option value="Banco BHD">Banco BHD</option>
-    <option value="Asociación Popular de Ahorros y Préstamos">Asociación Popular de Ahorros y Préstamos</option>
-    <option value="Scotiabank">Scotiabank</option>
-    <option value="Banco Santa Cruz">Banco Santa Cruz</option>
-    <option value="Asociación Cibao de Ahorros y Préstamos">Asociación Cibao de Ahorros y Préstamos</option>
-    <option value="Banco Promerica">Banco Promerica</option>
-    <option value="Banesco">Banesco</option>
-    <option value="Banco Caribe">Banco Caribe</option>
-    <option value="Banco Agrícola">Banco Agrícola</option>
-    <option value="Asociación La Nacional de Ahorros y Préstamos">Asociación La Nacional de Ahorros y Préstamos</option>
-    <option value="Citibank">Citibank</option>
-    <option value="Banco BDI">Banco BDI</option>
-    <option value="Banco Vimenca">Banco Vimenca</option>
-    <option value="Banco López de Haro">Banco López de Haro</option>
-    <option value="Bandex">Bandex</option>
-    <option value="Banco Ademi">Banco Ademi</option>
-    <option value="Banco Lafise">Banco Lafise</option>
-    <option value="Motor Crédit Banco de Ahorro y Crédito">Motor Crédit Banco de Ahorro y Crédito</option>
-    <option value="Alaver Asociación de Ahorros y Préstamos">Alaver Asociación de Ahorros y Préstamos</option>
-    <option value="Banfondesa">Banfondesa</option>
-    <option value="Banco Adopem">Banco Adopem</option>
-    <option value="Asociación Duarte">Asociación Duarte</option>
-    <option value="JMMB Bank">JMMB Bank</option>
-    <option value="Asociación Mocana">Asociación Mocana</option>
-    <option value="ABONAP">ABONAP</option>
-    <option value="Banco Unión">Banco Unión</option>
-    <option value="Banco BACC">Banco BACC</option>
-    <option value="Asociación Romana">Asociación Romana</option>
-    <option value="Asociación Peravia">Asociación Peravia</option>
-    <option value="Banco Confisa">Banco Confisa</option>
-    <option value="Leasing Confisa">Leasing Confisa</option>
-    <option value="Qik Banco Digital">Qik Banco Digital</option>
-    <option value="Banco Fihogar">Banco Fihogar</option>
-    <option value="Asociación Maguana de Ahorros y Préstamos">Asociación Maguana de Ahorros y Préstamos</option>
-    <option value="Banco Atlántico">Banco Atlántico</option>
-    <option value="Bancotui">Bancotui</option>
-    <option value="Banco Activo">Banco Activo</option>
-    <option value="Banco Gruficorp">Banco Gruficorp</option>
-    <option value="Corporación de Crédito Nordestana">Corporación de Crédito Nordestana</option>
-    <option value="Banco Óptima de Ahorro y Crédito">Banco Óptima de Ahorro y Crédito</option>
-    <option value="Banco Cofaci">Banco Cofaci</option>
-    <option value="Bonanza Banco">Bonanza Banco</option>
-    <option value="Corporación de Crédito Monumental">Corporación de Crédito Monumental</option>
-    <option value="Banco Empire">Banco Empire</option>
-    <option value="Corporación de Crédito Oficorp">Corporación de Crédito Oficorp</option>
-</select>
-
-<br>
-<br>
-
-            <label for="addCuentaRemitente">Número de cuenta destinatario:</label>
-                <input type="text" class="form-control" id="addCuentaDestinatario" name="addCuentaDestinatario" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-
-<br>
+               
 '.$diplomadoIdInpur.'
-
-                <label for="editTipoCuentaRemitente">Tipo de Cuenta destinatario:</label>
-                <select id="editTipoCuentaRemitente" name="editTipoCuentaDestinatario" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-                  <option value="" disabled="" selected="">Tipo de Cuenta</option>
-                    <option value="Cuenta de ahorros">Cuenta de ahorros</option>
-                    <option value="Cuenta corriente">Cuenta corriente</option>
-                </select>
-
-<br>
-<br>
-
-                <label for="addEntidadBancariaRemitente">Entidad Bancaria destinatario</label>
-  <select id="addEntidadBancariaRemitente" name="addEntidadBancariaDestinatario" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" required>
-    <option value="Banreservas" disabled selected>Entidad Bancaria Remitente</option>
-    <option value="Banreservas">Banreservas</option>
-    <option value="Banco Popular Dominicano">Banco Popular Dominicano</option>
-    <option value="Banco BHD">Banco BHD</option>
-    <option value="Asociación Popular de Ahorros y Préstamos">Asociación Popular de Ahorros y Préstamos</option>
-    <option value="Scotiabank">Scotiabank</option>
-    <option value="Banco Santa Cruz">Banco Santa Cruz</option>
-    <option value="Asociación Cibao de Ahorros y Préstamos">Asociación Cibao de Ahorros y Préstamos</option>
-    <option value="Banco Promerica">Banco Promerica</option>
-    <option value="Banesco">Banesco</option>
-    <option value="Banco Caribe">Banco Caribe</option>
-    <option value="Banco Agrícola">Banco Agrícola</option>
-    <option value="Asociación La Nacional de Ahorros y Préstamos">Asociación La Nacional de Ahorros y Préstamos</option>
-    <option value="Citibank">Citibank</option>
-    <option value="Banco BDI">Banco BDI</option>
-    <option value="Banco Vimenca">Banco Vimenca</option>
-    <option value="Banco López de Haro">Banco López de Haro</option>
-    <option value="Bandex">Bandex</option>
-    <option value="Banco Ademi">Banco Ademi</option>
-    <option value="Banco Lafise">Banco Lafise</option>
-    <option value="Motor Crédit Banco de Ahorro y Crédito">Motor Crédit Banco de Ahorro y Crédito</option>
-    <option value="Alaver Asociación de Ahorros y Préstamos">Alaver Asociación de Ahorros y Préstamos</option>
-    <option value="Banfondesa">Banfondesa</option>
-    <option value="Banco Adopem">Banco Adopem</option>
-    <option value="Asociación Duarte">Asociación Duarte</option>
-    <option value="JMMB Bank">JMMB Bank</option>
-    <option value="Asociación Mocana">Asociación Mocana</option>
-    <option value="ABONAP">ABONAP</option>
-    <option value="Banco Unión">Banco Unión</option>
-    <option value="Banco BACC">Banco BACC</option>
-    <option value="Asociación Romana">Asociación Romana</option>
-    <option value="Asociación Peravia">Asociación Peravia</option>
-    <option value="Banco Confisa">Banco Confisa</option>
-    <option value="Leasing Confisa">Leasing Confisa</option>
-    <option value="Qik Banco Digital">Qik Banco Digital</option>
-    <option value="Banco Fihogar">Banco Fihogar</option>
-    <option value="Asociación Maguana de Ahorros y Préstamos">Asociación Maguana de Ahorros y Préstamos</option>
-    <option value="Banco Atlántico">Banco Atlántico</option>
-    <option value="Bancotui">Bancotui</option>
-    <option value="Banco Activo">Banco Activo</option>
-    <option value="Banco Gruficorp">Banco Gruficorp</option>
-    <option value="Corporación de Crédito Nordestana">Corporación de Crédito Nordestana</option>
-    <option value="Banco Óptima de Ahorro y Crédito">Banco Óptima de Ahorro y Crédito</option>
-    <option value="Banco Cofaci">Banco Cofaci</option>
-    <option value="Bonanza Banco">Bonanza Banco</option>
-    <option value="Corporación de Crédito Monumental">Corporación de Crédito Monumental</option>
-    <option value="Banco Empire">Banco Empire</option>
-    <option value="Corporación de Crédito Oficorp">Corporación de Crédito Oficorp</option>
-</select>
-
-<br>
-<br>
-
-          <label style="color: #2d4a34; width: 100%; text-align: left;" for="addFechaDePago">Fecha de Pago:</label>
-            <input type="text" class="datepicker" id="addFechaDePago" name="addFechaDePago" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-
-<br>
-<br>
           <label style="color: #2d4a34; width: 100%; text-align: left;">
             Comprobante de pago (imagenn):
             <input type="file" name="comprobante_pago" accept="image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
@@ -623,68 +537,23 @@ function renderCoursePaymentModal($currentDiplomado) {
       </div>
     </div>';
 
-    if (isset($_GET['photoUploaded']) && isset($_SESSION['cedulaHavePath']) && $_SESSION['cedulaHavePath'] == 1) {
-      write_log("The user: '".$_SESSION['username']."' just uploaded the photos");
-      $subscribeDiplomadoContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscribir curso</h2>
-    
-    <!-- Events List -->
-    <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
-      <!-- Event Container (Repeat this block for each event) -->
-      <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
-        <form role="form" autocomplete="off" action="" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
-          <!-- Metodo de pago -->
-          <label style="color: #2d4a34; width: 100%; text-align: left;">
-          Selecciona tu metodo de pago preferido
-          <select id="metodo_de_pago_'.$currentDiplomado['Id'].'" name="metodo_de_pago" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" amountRd="'.$currentDiplomado['precio_inscripcion'].'" onchange="toggleFields(\''.$currentDiplomado['Id'].'\')">
-            <option value="" disabled selected>Selecciona una opción</option>
-            <option value="Transferencia">Transferencia bancaria (adjuntar comprobante)</option>
-            <option value="Tarjeta">Tarjeta de débito/crédito</option>
-          </select>
-        </label>
-
-        <!-- Precio -->
-          <div style="position: relative; text-align: center; justify-content: center; flex-direction: unset !important; bottom: 1% !important;" class="vetcap-badge">
-            <img style="width: 70px; height: auto;" src="../assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon">
-            <span>RD$'.$currentDiplomado['precio_inscripcion'].'</span>
-          </div>
-
-        <div id="paypal-button-container-'.$currentDiplomado['Id'].'" class="">
-        </div>
-
-          <!-- Comprobante de Pago -->
-           <div id="comprobante_pago_field_container_'.$currentDiplomado['Id'].'" class="hidden">
-          <label style="color: #2d4a34; width: 100%; text-align: left;">
-            Comprobante de pago (imagenn):
-            <input type="file" name="comprobante_pago" accept="image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-          </label>
-          </div>
-
-          <!-- Botón -->
-          <button id="inscribir_button_'.$currentDiplomado['Id'].'" class="hidden" type="submit" name="submit" style="background-color: #2d4a34; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 16px;">
-            INSCRIBIR
-          </button>
-        </form>
-      </div>
-    </div>';
-
-    write_log("tarann");
-    echo $diplomadosModalHeader;
-    echo $subscribeDiplomadoContent;
-    } elseif (!true) {
-      if (isset($_SESSION['username'])) {
-        write_log("The user: '".$_SESSION['username']."' needs to complete his proffile");
-      } else {
-        write_log("Tried to print that user needs to complete his proffile but SESSION is not defined");
-      }
+    if (!$theUser->isUserCedulaUploaded($_SESSION['username'])) {
+      write_log("The user: '".$_SESSION['username']."' needs to complete his proffile");
       echo $diplomadosModalHeader;
       echo $completeProffileContent;
       write_log("tarannn");
-    } else {
-      if (isset($_SESSION['username'])) {
-        write_log("The user: '".$_SESSION['username']."' can register to courses");
-      } else {
-        write_log("Tried to print that user can register to courses but SESSION is not defined");
-      }
+    } elseif ($theUser->isUserCedulaWaitingForValidation($_SESSION['username'])) {
+      write_log("The user: '".$_SESSION['username']."' have cedula waiting for validation");
+      echo $diplomadosModalHeader;
+      echo $proffileUnderInspection;
+      write_log("tarannn");
+    } elseif ($theUser->isUserCedulaInvalid($_SESSION['username'])) {
+      write_log("The user: '".$_SESSION['username']."' have an invalid cedula");
+      echo $diplomadosModalHeader;
+      echo $cedulaInvalid;
+      write_log("tarannn");
+    } elseif ($theUser->isUserCedulaValidated($_SESSION['username'])) {
+      write_log("The user: '".$_SESSION['username']."' can register to events");
       echo $diplomadosModalHeader;
       echo $subscribeDiplomadoContent;
       write_log("tarannnn");
@@ -705,9 +574,9 @@ function printAllEvents($eventos) {
   <div class="vetcap-container">
     <!-- Left Section -->
     <div class="vetcap-left">
-      <img src="https://www.vetcaprd.com/<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
+      <img src="https://www.vetcaprd.com//<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
       <div class="vetcap-badge">
-        <img style="width: 70px; height: auto;" src="https://www.vetcaprd.com//assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
+        <img style="width: 70px; height: auto;" src="https://www.vetcaprd.com///assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
         <span>RD$<?= htmlspecialchars($evento['precio_inscripcion']) ?></span>
       </div>
     </div>
@@ -715,7 +584,7 @@ function printAllEvents($eventos) {
     <div class="vetcap-right">
     <?php
             if (isset($evento['foto_titulo'])) {
-              echo '<img style="max-width: 330px;" src="https://www.vetcaprd.com/'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
+              echo '<img style="max-width: 330px;" src="https://www.vetcaprd.com//'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
             } else {
               write_log("foto titulo");
               echo '<h2 style="font-size: 50px; font-family: HelveticaBold;" class="course-title">'.$evento['nombre'].'</h2>';

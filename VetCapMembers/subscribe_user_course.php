@@ -22,7 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     try {
         // Collect and sanitize input data
         $id = uniqid();
-        $evento_id = $_POST['eventId'] ?? '';
+        $diplomado_id = $_POST['diplomadoId'] ?? '';
         $usuario_id = $_SESSION['memberID'] ?? '';
         $monto = $_POST['addMonto'] ?? '0';
         $metodo_de_pago = $_POST['metodo_de_pago'] ?? '';
@@ -38,12 +38,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $query = "
             INSERT INTO pagos (
                 Id, monto, comprobante_pago_ruta, metodo_de_pago, pago_validado,
-                evento_id, usuario_id, cuenta_remitente, banco_remitente,
+                diplomado_id, usuario_id, cuenta_remitente, banco_remitente,
                 tipo_cuenta_remitente, cuenta_destinatario, banco_destinatario,
                 tipo_cuenta_destinatario, fecha_de_pago
             ) VALUES (
                 :Id, :monto, :comprobante_pago_ruta, :metodo_de_pago, 0,
-                :evento_id, :usuario_id, :cuenta_remitente, :banco_remitente,
+                :diplomado_id, :usuario_id, :cuenta_remitente, :banco_remitente,
                 :tipo_cuenta_remitente, :cuenta_destinatario, :banco_destinatario,
                 :tipo_cuenta_destinatario, :fecha_de_pago
             )
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->bindParam(':monto', $monto);
         $stmt->bindParam(':comprobante_pago_ruta', $comprobante_path);
         $stmt->bindParam(':metodo_de_pago', $metodo_de_pago);
-        $stmt->bindParam(':evento_id', $evento_id);
+        $stmt->bindParam(':diplomado_id', $diplomado_id);
         $stmt->bindParam(':usuario_id', $usuario_id);
         $stmt->bindParam(':cuenta_remitente', $cuenta_remitente);
         $stmt->bindParam(':banco_remitente', $banco_remitente);
@@ -71,8 +71,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             write_log("Payment information successfully inserted.");
             /*try {
                 // Prepare and execute the SQL query
-                $stmt = $db->prepare("INSERT INTO usuario_eventos (evento_id, usuario_id) VALUES (:eventoId, :usuarioId)");
-                $stmt->bindParam(':eventoId', $evento_id);
+                $stmt = $db->prepare("INSERT INTO usuario_eventos (diplomado_id, usuario_id) VALUES (:eventoId, :usuarioId)");
+                $stmt->bindParam(':eventoId', $diplomado_id);
                 $stmt->bindParam(':usuarioId', $usuario_id);
         
                 if ($stmt->execute()) {

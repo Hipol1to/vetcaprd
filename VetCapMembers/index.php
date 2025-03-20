@@ -9,6 +9,7 @@ if (! $user->is_logged_in()){
 
 
 
+
 //include header template
 require('layout/header.php'); 
 $eventosList = [["modalName", 0]];
@@ -113,7 +114,7 @@ if ($user->is_logged_in() && isset($_SESSION['rol']) && $_SESSION['rol'] == "adm
       <div class="event-container" style="display: flex; flex-direction: row; align-items: start; gap: 20px; margin-bottom: 20px;">
         <div class="event-image-container" style="flex: 1; max-width: 150px;">
           <img 
-            src="https://www.vetcaprd.com/'.$theEvent['foto_evento'].'" 
+            src="https://www.vetcaprd.com//'.$theEvent['foto_evento'].'" 
             alt="Event Photo" 
             style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"
           />
@@ -159,7 +160,7 @@ if ($user->is_logged_in() && isset($_SESSION['rol']) && $_SESSION['rol'] == "adm
 <div class="event-container" style="display: flex; flex-direction: row; align-items: start; gap: 20px; margin-bottom: 20px;">
 <div class="event-image-container" style="flex: 1; max-width: 150px;">
   <img 
-    src="https://www.vetcaprd.com/'.$thePendingEvent['foto_evento'].'" 
+    src="https://www.vetcaprd.com//'.$thePendingEvent['foto_evento'].'" 
     alt="Event Photo" 
     style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"
   />
@@ -214,7 +215,7 @@ if ($user->is_logged_in() && isset($_SESSION['rol']) && $_SESSION['rol'] == "adm
           <div class="row align-items-center">
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
               <div class="about-img about-img1">
-                <img src="https://www.vetcaprd.com/<?php  echo $nextEvent['foto_evento']; ?>" alt="" class="event-pic"/>
+                <img src="https://www.vetcaprd.com//<?php  echo $nextEvent['foto_evento']; ?>" alt="" class="event-pic"/>
               </div>
             </div>
             <div
@@ -223,7 +224,7 @@ if ($user->is_logged_in() && isset($_SESSION['rol']) && $_SESSION['rol'] == "adm
               <div class="about-caption about-caption1">
                 <div class="section-tittle m-0">
                   <!-- second section 
-                  <img src="https://www.vetcaprd.com//assets/img/centro_de_cultura_logo.png" style="width: 300px;" alt=""> !-->
+                  <img src="https://www.vetcaprd.com///assets/img/centro_de_cultura_logo.png" style="width: 300px;" alt=""> !-->
                   <h2 style="font-size: 30px; font-family: Horizon;"><?php echo $nextEvent['nombre']; ?></h2>
                   <p style="color: #2d5b2d;" class="capitalize-first vetcap-description">
       <?= htmlspecialchars($nextEvent['descripcion']) ?>
@@ -303,7 +304,7 @@ $nextEventPriceText = $nextEvent['precio_inscripcion'] == 0.00 ? "GRATIS" : "RD$
 echo $nextEventSubscribeButton;
  ?>
 
-<img  src="https://www.vetcaprd.com//assets/img/money_logo.png" class="money-pic" alt=""><a class="money-free"><?php echo $nextEventPriceText; ?></a></div>
+<img  src="https://www.vetcaprd.com///assets/img/money_logo.png" class="money-pic" alt=""><a class="money-free"><?php echo $nextEventPriceText; ?></a></div>
 
 
                   <p class="mb-30">
@@ -387,6 +388,65 @@ $completeProffileContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Com
         
 
 
+      </div>
+    </div>';
+    $proffileUnderInspection = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Tu perfil esta siendo revisado</h2>
+    
+    <!-- Events List -->
+    <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
+      <!-- Event Container (Repeat this block for each event) -->
+      <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
+      <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+            Estamos revisando tus documentos de identidad, podrás registrarte a eventos cuando confirmemos la veracidad de los mismos.
+          </p>
+          <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+            Recibirás un mensaje de correo electrónico una vez que concluya el proceso.
+          </p>
+          <br>     
+      </div>
+    </div>';
+    $cedulaInvalid = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Documento de identidad inválido</h2>
+    
+    <!-- Events List -->
+    <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
+      <!-- Event Container (Repeat this block for each event) -->
+      <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
+      <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+            No pudimos verificar la veracidad de tus documentos, por favor comunícate con nosotros.
+          </p>
+          <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+            Nos pondremos en contacto tan pronto sea posible.
+          </p>
+          <br>     
+
+          <div class="u-form u-radius-20 u-white u-form-1">
+          <form action="https://api.web3forms.com/submit" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" source="email" name="form" style="padding: 23px;">
+          <input type="hidden" name="access_key" value="4a39f8e1-64d6-4301-95d7-10bf58aa9293">
+          <div class="u-form-group u-form-name">
+            <label for="name-4c18" class="u-label">Nombre de usuario</label>
+            <input type="text" placeholder="usuario" id="name-4c18" name="usuario" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" value="'.$_SESSION['username'].'" readonly required>
+            <input type="text" placeholder="Asunto" id="name-4c18" name="asunto" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" value="Cedula fue marcada como invalida" readonly hidden>
+          </div>
+          <div class="u-form-group u-form-name">
+            <label for="name-4c18" class="u-label">Numero de teléfono</label>
+            <input type="tel" placeholder="Escribe tu numero de teléfono" id="name-4c18" name="telefono" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" required>
+          </div>
+          <div class="u-form-email u-form-group">
+            <label for="email-4c18" class="u-label">Correo electrónico</label>
+            <input type="email" placeholder="Coloca tu direccion de correo electrónico" id="email-4c18" name="email" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" required="">
+          </div>
+          <div class="u-form-group u-form-message">
+            <label for="message-4c18" class="u-label">Mensaje</label>
+            <textarea placeholder="Escribe tu Mensaje" rows="4" cols="50" id="message-4c18" name="message" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" required=""></textarea>
+          </div>
+          <div class="u-align-right u-form-group u-form-submit">
+            <a href="#" class="u-active-custom-color-3 u-border-5 u-border-active-custom-color-3 u-border-custom-color-1 u-border-hover-custom-color-3 u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-hover-custom-color-3 u-radius-10 u-btn-1">Enviar</a>
+            <input type="submit" value="submit" class="u-form-control-hidden">
+          </div>
+          <div class="u-form-send-message u-form-send-success">¡Gracias! Tu mensaje ha sido enviado.</div>
+          <div class="u-form-send-error u-form-send-message">No podemos enviar tu mensaje. Por favor corrije los errores.</div>
+        </form>
+        </div>
       </div>
     </div>';
     $valueToSend = $nextEvent['Id'];
@@ -605,67 +665,28 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
       </div>
     </div>';
 
-    if (isset($_GET['photoUploaded']) && isset($_SESSION['cedulaHavePath']) && $_SESSION['cedulaHavePath'] == 1) {
-      write_log("The user: '".$_SESSION['username']."' just uploaded the photos");
-      $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscribir evento</h2>
-    
-    <!-- Events List -->
-    <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
-      <!-- Event Container (Repeat this block for each event) -->
-      <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
-        <form role="form" autocomplete="off" action="" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
-          <!-- Metodo de pago -->
-          <label style="color: #2d4a34; width: 100%; text-align: left;">
-          Selecciona tu metodo de pago preferido
-          <select id="metodo_de_pago_'.$nextEvent['Id'].'" name="metodo_de_pago" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" amountRd="'.$nextEvent['precio_inscripcion'].'" onchange="toggleFields(\''.$nextEvent['Id'].'\')">
-            <option value="" disabled selected>Selecciona una opción</option>
-            <option value="Transferencia">Transferencia bancaria (adjuntar comprobante)</option>
-            <option value="Tarjeta">Tarjeta de débito/crédito</option>
-          </select>
-        </label>
-
-
-        <!-- Precio -->
-          <div style="position: relative; text-align: center; justify-content: center; flex-direction: unset !important; bottom: 1% !important;" class="vetcap-badge">
-            <img style="width: 70px; height: auto;" src="../assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon">
-            <span>RD$'.$nextEvent['precio_inscripcion'].'</span>
-          </div>
-
-
-        <div id="paypal-button-container-'.$nextEvent['Id'].'" class="">
-        </div>
-
-          <!-- Comprobante de Pago -->
-           <div id="comprobante_pago_field_container_'.$nextEvent['Id'].'" class="hidden">
-          <label style="color: #2d4a34; width: 100%; text-align: left;">
-            Comprobante de pago (imagenn):
-            <input type="file" name="comprobante_pago" accept="image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-          </label>
-          </div>
-
-          <!-- Botón -->
-          <button id="inscribir_button_'.$nextEvent['Id'].'" class="hidden" type="submit" name="submit" style="background-color: #2d4a34; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 16px;">
-            INSCRIBIR
-          </button>
-        </form>
-  <!-- <script src="../assets/js/trx.js"></script> -->
-      </div>
-    </div>';
-
-    write_log("tarann");
-    echo $eventsModalHeader;
-    echo $subscribeEventContent;
-    } elseif (!$user->isUserCedulaUploaded($_SESSION['username'])) {
+    if (!$user->isUserCedulaUploaded($_SESSION['username'])) {
       write_log("The user: '".$_SESSION['username']."' needs to complete his proffile");
       echo $eventsModalHeader;
       echo $completeProffileContent;
       write_log("tarannn");
-    } else {
+    } elseif ($user->isUserCedulaWaitingForValidation($_SESSION['username'])) {
+      write_log("The user: '".$_SESSION['username']."' have cedula waiting for validation");
+      echo $eventsModalHeader;
+      echo $proffileUnderInspection;
+      write_log("tarannn");
+    } elseif ($user->isUserCedulaInvalid($_SESSION['username'])) {
+      write_log("The user: '".$_SESSION['username']."' have an invalid cedula");
+      echo $eventsModalHeader;
+      echo $cedulaInvalid;
+      write_log("tarannn");
+    } elseif ($user->isUserCedulaValidated($_SESSION['username'])) {
       write_log("The user: '".$_SESSION['username']."' can register to events");
       echo $eventsModalHeader;
       echo $subscribeEventContent;
       write_log("tarannnn");
     }
+    write_log("is user cedula validated?: ".$user->isUserCedulaValidated($_SESSION['username']));
     /*elseif (!$user->isUserCedulaValidated($_SESSION['username'])) {
       echo $completeProffileContent;
     } else {
@@ -694,9 +715,9 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
   <div class="vetcap-container">
     <!-- Left Section -->
     <div class="vetcap-left">
-      <img src="https://www.vetcaprd.com/<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
+      <img src="https://www.vetcaprd.com//<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
       <div class="vetcap-badge">
-        <img style="width: 70px; height: auto;" src="https://www.vetcaprd.com//assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
+        <img style="width: 70px; height: auto;" src="https://www.vetcaprd.com///assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
         <span>RD$<?= htmlspecialchars($evento['precio_inscripcion']) ?></span>
       </div>
     </div>
@@ -704,7 +725,7 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
     <div class="vetcap-right">
     <?php
             if (isset($evento['foto_titulo'])) {
-              echo '<img style="max-width: 330px;" src="https://www.vetcaprd.com/'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
+              echo '<img style="max-width: 330px;" src="https://www.vetcaprd.com//'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
             } else {
               write_log("foto titulo");
               echo '<h2 style="font-size: 50px; font-family: HelveticaBold;" class="course-title">'.$evento['nombre'].'</h2>';
@@ -756,7 +777,7 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
 updateCountdown(eventtId_<?php echo str_replace("-", "_", $evento['Id']); ?>, eventTimestamp_<?php echo str_replace("-", "_", $evento['Id']); ?>);
 </script>
 <br>
-      <button onclick="location.href='https://www.vetcaprd.com//eventos.php';" id="conocer-mas" style="color: black" class="btnn btn-outline">CONOCER MÁS</button>
+      <button onclick="location.href='https://www.vetcaprd.com///eventos.php';" id="conocer-mas" style="color: black" class="btnn btn-outline">CONOCER MÁS</button>
       <?php 
     $isAttributeWritten = false;
     $onClick = ''; // Initialize $onClick to avoid undefined variable issues
@@ -808,66 +829,125 @@ $eventsModalHeader = '
           &times;
           </span>';
     
-$completeProffileContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Completa tu perfil</h2>
+          $completeProffileContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Completa tu perfil</h2>
     
-    <!-- Events List -->
-    <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
-      <!-- Event Container (Repeat this block for each event) -->
-      <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
-      <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
-            Debes completar tu perfil antes de inscribirte en este evento, envía tu cedula de identidad o la de tu tutor legal.
-          </p>
-          <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
-            Podrás inscribirte al evento una vez envies tu documento de identidad.
-          </p>
-          <br>
-        <form role="form" autocomplete="off" action="complete_proffile.php" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px; width: 100%;" enctype="multipart/form-data">
-          <div class="form-group">
-            <label for="cedula">Número de Cédula:</label>
-            <label for="cedula">Cédula:</label>
-<input 
-    type="text" 
-    class="form-control" 
-    id="cedula" 
-    name="cedula_numero" 
-    maxlength="11" 
-    inputmode="numeric" 
-    required 
-    placeholder="Ingresa tu cédula"
-/>
-
-<script>
-    // Enforce numeric input only
-    const cedulaInput = document.getElementById(\'cedula\');
-    cedulaInput.addEventListener(\'input\', () => {
-        // Remove all non-numeric characters
-        cedulaInput.value = cedulaInput.value.replace(/\D/g, \'\');
-    });
-</script>
-
-          </div>
-          <!-- Captura Frontal de Cédula -->
-          <label style="color: #2d4a34; width: 100%; text-align: left;">
-            Captura frontal de cédula (imagen):
-            <input type="file" name="captura_frontal_cedula" accept="application/image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-          </label>
-
-          <!-- Captura Trasera de Cédula -->
-          <label style="color: #2d4a34; width: 100%; text-align: left;">
-            Captura trasera de cédula (imagen):
-            <input type="file" name="captura_trasera_cedula" accept="application/image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-          </label>
-          <br>
-          <!-- Botón -->
-          <button type="submit" name="submit" style="background-color: #2d4a34; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 16px;">
-            SUBIR DOCUMENTOS
-          </button>
-        </form>
-        
-
-
-      </div>
-    </div>';
+          <!-- Events List -->
+          <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
+            <!-- Event Container (Repeat this block for each event) -->
+            <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
+            <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+                  Debes completar tu perfil antes de inscribirte en este evento, envía tu cedula de identidad o la de tu tutor legal.
+                </p>
+                <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+                  Podrás inscribirte al evento una vez envies tu documento de identidad.
+                </p>
+                <br>
+              <form role="form" autocomplete="off" action="complete_proffile.php" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px; width: 100%;" enctype="multipart/form-data">
+                <div class="form-group">
+                  <label for="cedula">Número de Cédula:</label>
+                  <label for="cedula">Cédula:</label>
+      <input 
+          type="text" 
+          class="form-control" 
+          id="cedula" 
+          name="cedula_numero" 
+          maxlength="11" 
+          inputmode="numeric" 
+          required 
+          placeholder="Ingresa tu cédula"
+      />
+      
+      <script>
+          // Enforce numeric input only
+          const cedulaInput = document.getElementById(\'cedula\');
+          cedulaInput.addEventListener(\'input\', () => {
+              // Remove all non-numeric characters
+              cedulaInput.value = cedulaInput.value.replace(/\D/g, \'\');
+          });
+      </script>
+      
+                </div>
+                <!-- Captura Frontal de Cédula -->
+                <label style="color: #2d4a34; width: 100%; text-align: left;">
+                  Captura frontal de cédula (imagen):
+                  <input type="file" name="captura_frontal_cedula" accept="application/image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                </label>
+      
+                <!-- Captura Trasera de Cédula -->
+                <label style="color: #2d4a34; width: 100%; text-align: left;">
+                  Captura trasera de cédula (imagen):
+                  <input type="file" name="captura_trasera_cedula" accept="application/image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                </label>
+                <br>
+                <!-- Botón -->
+                <button type="submit" name="submit" style="background-color: #2d4a34; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 16px;">
+                  SUBIR DOCUMENTOS
+                </button>
+              </form>
+              
+      
+      
+            </div>
+          </div>';
+          $proffileUnderInspection = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Tu perfil esta siendo revisado</h2>
+          
+          <!-- Events List -->
+          <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
+            <!-- Event Container (Repeat this block for each event) -->
+            <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
+            <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+                  Estamos revisando tus documentos de identidad, podrás registrarte a eventos cuando confirmemos la veracidad de los mismos.
+                </p>
+                <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+                  Recibirás un mensaje de correo electrónico una vez que concluya el proceso.
+                </p>
+                <br>     
+            </div>
+          </div>';
+          $cedulaInvalid = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Documento de identidad inválido</h2>
+          
+          <!-- Events List -->
+          <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
+            <!-- Event Container (Repeat this block for each event) -->
+            <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
+            <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+                  No pudimos verificar la veracidad de tus documentos, por favor comunícate con nosotros.
+                </p>
+                <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+                  Nos pondremos en contacto tan pronto sea posible.
+                </p>
+                <br>     
+      
+                <div class="u-form u-radius-20 u-white u-form-1">
+                <form action="https://api.web3forms.com/submit" class="u-clearfix u-form-spacing-15 u-form-vertical u-inner-form" source="email" name="form" style="padding: 23px;">
+                <input type="hidden" name="access_key" value="4a39f8e1-64d6-4301-95d7-10bf58aa9293">
+                <div class="u-form-group u-form-name">
+                  <label for="name-4c18" class="u-label">Nombre de usuario</label>
+                  <input type="text" placeholder="usuario" id="name-4c18" name="usuario" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" value="'.$_SESSION['username'].'" readonly required>
+                  <input type="text" placeholder="Asunto" id="name-4c18" name="asunto" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" value="Cedula fue marcada como invalida" readonly hidden>
+                </div>
+                <div class="u-form-group u-form-name">
+                  <label for="name-4c18" class="u-label">Numero de teléfono</label>
+                  <input type="tel" placeholder="Escribe tu numero de teléfono" id="name-4c18" name="telefono" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" required>
+                </div>
+                <div class="u-form-email u-form-group">
+                  <label for="email-4c18" class="u-label">Correo electrónico</label>
+                  <input type="email" placeholder="Coloca tu direccion de correo electrónico" id="email-4c18" name="email" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" required="">
+                </div>
+                <div class="u-form-group u-form-message">
+                  <label for="message-4c18" class="u-label">Mensaje</label>
+                  <textarea placeholder="Escribe tu Mensaje" rows="4" cols="50" id="message-4c18" name="message" class="u-border-2 u-border-grey-10 u-grey-10 u-input u-input-rectangle u-radius-10" required=""></textarea>
+                </div>
+                <div class="u-align-right u-form-group u-form-submit">
+                  <a href="#" class="u-active-custom-color-3 u-border-5 u-border-active-custom-color-3 u-border-custom-color-1 u-border-hover-custom-color-3 u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-hover-custom-color-3 u-radius-10 u-btn-1">Enviar</a>
+                  <input type="submit" value="submit" class="u-form-control-hidden">
+                </div>
+                <div class="u-form-send-message u-form-send-success">¡Gracias! Tu mensaje ha sido enviado.</div>
+                <div class="u-form-send-error u-form-send-message">No podemos enviar tu mensaje. Por favor corrije los errores.</div>
+              </form>
+              </div>
+            </div>
+          </div>';
     $valueToSend = $evento['Id'];
     write_log($valueToSend);
     $theValue = encryptValue($valueToSend);
@@ -1084,62 +1164,22 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
       </div>
     </div>';
 
-    if (isset($_GET['photoUploaded']) && isset($_SESSION['cedulaHavePath']) && $_SESSION['cedulaHavePath'] == 1) {
-      write_log("The user: '".$_SESSION['username']."' just uploaded the photos");
-      $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscribir evento</h2>
-    
-    <!-- Events List -->
-    <div class="events-list" style="display: flex; flex-direction: column; gap: 20px; width: 100%; align-items: center;">
-      <!-- Event Container (Repeat this block for each event) -->
-      <div class="event-container" style="display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 600px;">
-        <form role="form" autocomplete="off" action="" class="registration-form" method="POST" style="display: flex; flex-direction: column; gap: 20px; width: 100%;">
-          <!-- Metodo de pago -->
-          <label style="color: #2d4a34; width: 100%; text-align: left;">
-          Selecciona tu metodo de pago preferido
-          <select id="metodo_de_pago_'.$evento['Id'].'" name="metodo_de_pago" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" amountRd="'.$evento['precio_inscripcion'].'" onchange="toggleFields(\''.$evento['Id'].'\')">
-            <option value="" disabled selected>Selecciona una opción</option>
-            <option value="Transferencia">Transferencia bancaria (adjuntar comprobante)</option>
-            <option value="Tarjeta">Tarjeta de débito/crédito</option>
-          </select>
-        </label>
-
-
-        <!-- Precio -->
-          <div style="position: relative; text-align: center; justify-content: center; flex-direction: unset !important; bottom: 1% !important;" class="vetcap-badge">
-            <img style="width: 70px; height: auto;" src="../assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon">
-            <span>RD$'.$evento['precio_inscripcion'].'</span>
-          </div>
-
-
-        <div id="paypal-button-container-'.$evento['Id'].'" class="">
-        </div>
-
-          <!-- Comprobante de Pago -->
-           <div id="comprobante_pago_field_container_'.$evento['Id'].'" class="hidden">
-          <label style="color: #2d4a34; width: 100%; text-align: left;">
-            Comprobante de pago (imagenn):
-            <input type="file" name="comprobante_pago" accept="image/*" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-          </label>
-          </div>
-
-          <!-- Botón -->
-          <button id="inscribir_button_'.$evento['Id'].'" class="hidden" type="submit" name="submit" style="background-color: #2d4a34; color: white; padding: 15px; border: none; border-radius: 5px; font-size: 16px;">
-            INSCRIBIR
-          </button>
-        </form>
-  <!-- <script src="../assets/js/trx.js"></script> -->
-      </div>
-    </div>';
-
-    write_log("tarann");
-    echo $eventsModalHeader;
-    echo $subscribeEventContent;
-    } elseif (!$user->isUserCedulaUploaded($_SESSION['username'])) {
+    if (!$user->isUserCedulaUploaded($_SESSION['username'])) {
       write_log("The user: '".$_SESSION['username']."' needs to complete his proffile");
       echo $eventsModalHeader;
       echo $completeProffileContent;
       write_log("tarannn");
-    } else {
+    } elseif ($user->isUserCedulaWaitingForValidation($_SESSION['username'])) {
+      write_log("The user: '".$_SESSION['username']."' have cedula waiting for validation");
+      echo $eventsModalHeader;
+      echo $proffileUnderInspection;
+      write_log("tarannn");
+    } elseif ($user->isUserCedulaInvalid($_SESSION['username'])) {
+      write_log("The user: '".$_SESSION['username']."' have an invalid cedula");
+      echo $eventsModalHeader;
+      echo $cedulaInvalid;
+      write_log("tarannn");
+    } elseif ($user->isUserCedulaValidated($_SESSION['username'])) {
       write_log("The user: '".$_SESSION['username']."' can register to events");
       echo $eventsModalHeader;
       echo $subscribeEventContent;
@@ -1219,11 +1259,11 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
   <h1 class="title">Diplomados</h1>
   <?php
   $_SESSION['eventosListForPayment'] = $eventosList;
-    renderDiplomadosSlider($diplomados, $misPendingCourses, $misDiplomados);
+    renderDiplomadosSlider($diplomados, $misPendingCourses, $misDiplomados, $user);
     $eventosList = $_SESSION['eventosListForPayment'];
    ?>
 </section>
-<script src="https://www.sandbox.paypal.com/sdk/js?client-id=Ae15xLTKadxt1n17OTKnYK9GKc6TTcqvBM5CHt1IXAAKKwlTtx_RJ82ndJssVjy8ioL6Hw3bxz2teIqU&currency=USD&locale=es_DO"
+<script src="https://www.sandbox.paypal.com/sdk/js?client-id=AdA9xIixISOAmAq-vAW_iBFx12xb3MoR5Ww4K1DK3pD5SATmbq17-_f6acn4zEUGSexNGIIs3Lj5oun0&currency=USD&locale=es_DO"
   data-shipping-preference="NO_SHIPPING"></script>
   <script src="../assets/js/trx.js"></script>
   <script>

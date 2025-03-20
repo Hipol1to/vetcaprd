@@ -812,7 +812,7 @@ $(document).ready(function() {
   resize: true,
 
   // Enable image uploads
-  images_upload_url: '/vesca/VetCapAdmins/subir_adjuntos.php',  // Change to your backend upload URL
+  images_upload_url: '/VetCapAdmins/subir_adjuntos.php',  // Change to your backend upload URL
   automatic_uploads: true,
   file_picker_types: 'image file media',
 
