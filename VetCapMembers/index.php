@@ -1318,7 +1318,7 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
 
 
 <section class="u-align-center u-clearfix u-container-align-center u-valign-middle u-section-4" id="block-4">
-      <div class="u-carousel u-expanded-width u-gallery u-gallery-slider u-layout-carousel u-lightbox u-no-transition u-show-text-on-hover u-gallery-1" id="carousel-2023" data-interval="750" data-u-ride="carousel" data-pause="false">
+      <div class="u-carousel u-expanded-width u-gallery u-gallery-slider u-layout-carousel u-lightbox u-no-transition u-show-text-on-hover u-gallery-1" id="carousel-2023" data-interval="2750" data-u-ride="carousel" data-pause="false">
         <ol class="u-absolute-hcenter u-carousel-indicators u-carousel-indicators-1">
           <li data-u-target="#carousel-2023" data-u-slide-to="0" class="u-active u-shape-circle" style="width: 10px; height: 10px;"></li>
           <li data-u-target="#carousel-2023" data-u-slide-to="1" class="u-shape-circle" style="width: 10px; height: 10px;"></li>
@@ -1397,27 +1397,27 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
 
 <script src="../assets/js/capacitacionesSlider.js"></script>
 <?php
-if (isset($nextEvent)) {
-$hideSection = '<script>
-let laSeccionElement = document.getElementById("nextEventSection");
-laSeccionElement.classList.remove("hidden");
-</script>';
-echo $hideSection;
-}
-if (isset($eventos)) {
-$hideSection = '<script>
-let eventosContainerElement = document.getElementById("eventosContainer");
-eventosContainerElement.classList.remove("hidden");
-</script>';
-echo $hideSection;
-}
-if (isset($diplomados)) {
-$hideSection = '<script>
-let diplomadosSectionElement = document.getElementById("diplomadosSection");
-diplomadosSectionElement.classList.remove("hidden");
-</script>';
-echo $hideSection;
-}
+if (isset($nextEvent['Id'])) {
+  $hideSection = '<script>
+  let laSeccionElement = document.getElementById("nextEventSection");
+  laSeccionElement.classList.remove("hidden");
+  </script>';
+  echo $hideSection;
+  }
+  if (isset($eventos[0])) {
+  $hideSection = '<script>
+  let eventosContainerElement = document.getElementById("eventosContainer");
+  eventosContainerElement.classList.remove("hidden");
+  </script>';
+  echo $hideSection;
+  }
+  if (isset($diplomados[0])) {
+  $hideSection = '<script>
+  let diplomadosSectionElement = document.getElementById("diplomadosSection");
+  diplomadosSectionElement.classList.remove("hidden");
+  </script>';
+  echo $hideSection;
+  }
  ?>
 
       <?php 
