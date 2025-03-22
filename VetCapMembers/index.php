@@ -1397,27 +1397,27 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
 
 <script src="../assets/js/capacitacionesSlider.js"></script>
 <?php
-if (isset($nextEvent)) {
-$hideSection = '<script>
-let laSeccionElement = document.getElementById("nextEventSection");
-laSeccionElement.classList.remove("hidden");
-</script>';
-echo $hideSection;
-}
-if (isset($eventos)) {
-$hideSection = '<script>
-let eventosContainerElement = document.getElementById("eventosContainer");
-eventosContainerElement.classList.remove("hidden");
-</script>';
-echo $hideSection;
-}
-if (isset($diplomados)) {
-$hideSection = '<script>
-let diplomadosSectionElement = document.getElementById("diplomadosSection");
-diplomadosSectionElement.classList.remove("hidden");
-</script>';
-echo $hideSection;
-}
+if (isset($nextEvent['Id'])) {
+  $hideSection = '<script>
+  let laSeccionElement = document.getElementById("nextEventSection");
+  laSeccionElement.classList.remove("hidden");
+  </script>';
+  echo $hideSection;
+  }
+  if (isset($eventos[0])) {
+  $hideSection = '<script>
+  let eventosContainerElement = document.getElementById("eventosContainer");
+  eventosContainerElement.classList.remove("hidden");
+  </script>';
+  echo $hideSection;
+  }
+  if (isset($diplomados[0])) {
+  $hideSection = '<script>
+  let diplomadosSectionElement = document.getElementById("diplomadosSection");
+  diplomadosSectionElement.classList.remove("hidden");
+  </script>';
+  echo $hideSection;
+  }
  ?>
 
       <?php 
