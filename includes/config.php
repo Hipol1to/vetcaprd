@@ -182,11 +182,17 @@ function renderDiplomadosSlider($diplomadosArray, $misPendingDiplomados, $misDip
 <div class="slide">
     <div class="diplomado-container">
             <div class="image-box">
-               <div class="image-placeholder">
-                  <span class="month">MARZO</span>
-               </div>
-               <div class="disvi"><button class="rounded-button marginnnn er-bustonn" onclick="'.$onclick.'" style="margin-top: 20px; ">INSCRIBIRME</button></div>
+                <div class="image-placeholder">
+                    <img style="width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the whole area */" src="http://localhost/vesca/'.str_replace("../", "", $theDiplomado['foto_diplomado']).'" alt="Foto capacitación" class="hero-image">
+                    <span class="month">MARZO</span>
+                </div>
+                <div class="disvi">
+                    <button class="rounded-button marginnnn er-bustonn" onclick="'.$onclick.'" style="margin-top: 20px;">INSCRIBIRME</button>
+                </div>
             </div>
+
             <div class="info-box">
                <h2 class="course-title">'.$theDiplomado['nombre'].'</h2>
                <p class="mode"><span>Modalidad: </span>'.$theDiplomado['modalidad'].'</p>
@@ -325,9 +331,9 @@ updateCountdown(diplomadoId_'.$theDiplomado['Id'].', eventTimestamp_'.$theDiplom
   ';
   echo $diplomadosSliderContainerFooter;
 
-  foreach ($diplomadosArray as $theDiplomado) {
+  /*foreach ($diplomadosArray as $theDiplomado) {
       renderCoursePaymentModal($theDiplomado);
-  }
+  }*/
 }
 
 function getOnclickForDiplomados($misDiplomados, $currentDiplomado, $misPendingDiplomados) {

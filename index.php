@@ -75,7 +75,7 @@
         <img class="u-image u-image-contain u-image-default u-image-1" src="images/3.png" alt="" data-image-width="1918" data-image-height="720" data-href="./" data-page-id="72255026" title="LandingPage">
       </div></header>
     <section class="u-align-center u-clearfix u-container-align-center u-container-align-center-lg u-container-align-center-md u-container-align-center-sm u-container-align-center-xl u-valign-bottom-lg u-valign-bottom-xl u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-section-1" id="block-3">
-      <h2 class="u-hidden-xs u-text u-text-1">Sample Headline</h2>
+      
       <div class="u-carousel u-carousel-duration-250 u-expanded-width u-gallery u-gallery-slider u-layout-carousel u-lightbox u-no-transition u-show-text-on-hover u-gallery-1" id="carousel-0f3a" data-interval="750" data-u-ride="carousel">
         <ol class="u-absolute-hcenter u-carousel-indicators u-carousel-indicators-1">
           <li data-u-target="#carousel-0f3a" data-u-slide-to="0" class="u-active u-custom-color-3 u-shape-circle" style="width: 10px; height: 10px; background-image: none;"></li>
@@ -84,7 +84,7 @@
         <div class="u-carousel-inner u-gallery-inner" role="listbox">
           <div class="u-active u-carousel-item u-effect-fade u-gallery-item u-carousel-item-1">
             <div class="u-back-slide" data-image-width="1918" data-image-height="720">
-              <img class="u-back-image u-expanded" src="images/ForVetsByVets.jpg">
+              <img class="u-back-image u-expanded" src="images/27.png">
             </div>
             <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-1">
               <!-- <h3 class="u-gallery-heading">Sample Title</h3>
@@ -93,12 +93,23 @@
           </div>
           <div class="u-carousel-item u-effect-fade u-gallery-item u-carousel-item-2">
             <div class="u-back-slide" data-image-width="740" data-image-height="1110">
-              <!-- <img class="u-back-image u-expanded" src="images/diet-concept-with-sport-woman-he.jpg"> -->
-              <img class="u-back-image u-expanded" src="images/ForVetsByVets.jpg">
+              <img class="u-back-image u-expanded" src="images/28.png">
             </div>
             <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-2">
-              <!-- <h3 class="u-gallery-heading">Sample Title</h3>
-              <p class="u-gallery-text">Sample Text</p> -->
+            </div>
+          </div>
+          <div class="u-carousel-item u-effect-fade u-gallery-item u-carousel-item-3">
+            <div class="u-back-slide" data-image-width="740" data-image-height="1110">
+              <img class="u-back-image u-expanded" src="images/29.png">
+            </div>
+            <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-2">
+            </div>
+          </div>
+          <div class="u-carousel-item u-effect-fade u-gallery-item u-carousel-item-4">
+            <div class="u-back-slide" data-image-width="740" data-image-height="1110">
+              <img class="u-back-image u-expanded" src="images/30.png">
+            </div>
+            <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-2">
             </div>
           </div>
         </div>
@@ -132,7 +143,7 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
       <div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-align-left u-custom-font u-text u-text-1"> Conoce nuestra próxima capacitación </p>
         <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-1" src="images/211.png" alt="" data-image-width="500" data-image-height="500">
-        <a href="" class="u-border-1 u-border-custom-color-3 u-btn u-button-style u-white u-btn-1">DESCUBRE </a>
+        <a href="capacitaciones.php" class="u-border-1 u-border-custom-color-3 u-btn u-button-style u-white u-btn-1">DESCUBRE </a>
         <div class="u-expanded-width u-list u-list-1">
           <div class="u-repeater u-repeater-1">
             <div class="u-align-left u-border-5 u-border-custom-color-3 u-border-no-left u-border-no-right u-border-no-top u-container-align-left u-container-style u-list-item u-radius u-repeater-item u-shape-round u-white u-list-item-1" data-animation-name="customAnimationIn" data-animation-duration="1500" data-animation-delay="250">
@@ -287,7 +298,7 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
               <div class="u-container-layout u-container-layout-2">
                 <h3 class="u-align-left u-custom-font u-text u-text-1"> ¿Quieres Colaborar?</h3>
                 <p class="u-align-left u-text u-text-2"> ¿Quieres saber más sobre nosotros? Envíanos un mensaje con tus ideas, sugerencias o cualquier comentario. ¡Estamos aquí para servirte!</p>
-                <a href="" class="u-active-custom-color-3 u-align-left u-border-none u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-3 u-radius u-btn-1">CONTACTANOS </a>
+                <a href="mailto:info@vetcaprd.com" class="u-active-custom-color-3 u-align-left u-border-none u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-3 u-radius u-btn-1">CONTACTANOS </a>
               </div>
             </div>
           </div>
@@ -305,7 +316,7 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
 	c-0.4,0-0.7,0.1-1,0.2L10.6,9c0.8,0.8,2.2,0.8,3,0l9.2-8.7C22.6,0.1,22.2,0,21.8,0z M0.2,1.1C0.1,1.4,0,1.7,0,2V14
 	c0,0.3,0.1,0.6,0.2,0.9l7.3-6.8L0.2,1.1z M15.5,9l-1.1,1c-1.3,1.2-3.6,1.2-4.9,0l-1-1l-7.3,6.8c0.2,0.1,0.6,0.2,1,0.2H22
 	c0.4,0,0.6-0.1,1-0.2L15.5,9z"></path></svg></span>&nbsp;info@vetcaprd.com
-      </a><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-6" src="images/9.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-7" src="images/5.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-8" src="images/7.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-9" src="images/8.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-10" src="images/6.png" alt="" data-image-width="500" data-image-height="500"><div class="u-border-2 u-border-white u-expanded-width-xs u-line u-line-horizontal u-line-1"></div><p style="font-family:Helvetica" class="u-custom-font u-text u-text-4"> Copyright ® 2025 EncioSystems Inc. Todos los derechos reservados.</p></footer>
+      </a><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-6" src="images/9.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-7" src="images/5.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-8" src="images/7.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-9" src="images/8.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-10" src="images/6.png" alt="" data-image-width="500" data-image-height="500"><div class="u-border-2 u-border-white u-expanded-width-xs u-line u-line-horizontal u-line-1"></div><p style="font-family:Helvetica" class="u-custom-font u-text u-text-4"> <a style="font-family:Helvetica; color:white;" href="https://enciosystems.com/">Copyright ® 2025 EncioSystems Inc. Todos los derechos reservados.</a></p></footer>
     
   
 </body></html>

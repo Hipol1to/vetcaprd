@@ -88,7 +88,7 @@
         <img src="./assets/img/color-logos/vibix-logo.png" alt="Vibix" class="custom-partner-logo">
         <img src="./assets/img/color-logos/mallen-logo.png" alt="Mallén Mascotas" class="custom-partner-logo">
         <img src="./assets/img/color-logos/animal-food-line-logo.png" alt="Animal Food Line" class="custom-partner-logo">
-        <img src="./assets/img/color-logos/colegio-de-medicos-veterinarios-logo.png" alt="VetBoca" class="custom-partner-logo">
+        <img style="max-width: 60px;" src="./assets/img/color-logos/colegio-de-medicos-veterinarios-logo.png" alt="VetBoca" class="custom-partner-logo">
         <img src="./assets/img/color-logos/patas-parriba-logo.png" alt="Noctua Group" class="custom-partner-logo">
         <img src="./assets/img/color-logos/ccoagro-logo.png" alt="Noctua Group" class="custom-partner-logo">
         <img src="./assets/img/color-logos/noctua-logo.png" alt="Noctua Group" class="custom-partner-logo">
@@ -114,8 +114,8 @@
             Carval es una organización comprometida con asegurar el bienestar de los seres vivos, ofreciendo soluciones integrales que satisfacen las necesidades de sus grupos de interés a través de la innovación y la excelencia en el servicio. Dentro de su portafolio de productos, Carval ofrece la línea de vacunas Vibix, diseñada para proteger a perros y gatos contra diversas enfermedades. Estas vacunas se adaptan a las necesidades individuales de cada mascota, sin importar su historia o procedencia.
             </div>
             <div class="icons">
-                <img src="./assets/img/icons/ig-icon-black.png" alt="Instagram">
-                <img src="./assets/img/icons/web-icon-black.png" alt="Website">
+                <a target="_blank" href="https://www.instagram.com/relatos_carval/"><img src="./assets/img/icons/ig-icon-black.png" alt="Instagram"></a>
+                <a target="_blank" href="https://carvalcorp.com/"><img src="./assets/img/icons/web-icon-black.png" alt="Website"></a>
             </div>
         </div>
     </div>
@@ -130,8 +130,8 @@
             Espavet S.R.L. es una empresa ubicada en Santo Domingo, República Dominicana, que se especializa en la distribución de productos veterinarios, equipos y medicamentos para animales. Ofrecen una amplia gama de productos destinados al cuidado y bienestar de las mascotas y animales de granja. Un ejemplo es NexGard es una reconocida marca de antiparasitarios para perros, conocida por sus tabletas masticables que eliminan pulgas y garrapatas. 
             </div>
             <div class="icons">
-                <img src="./assets/img/icons/ig-icon-black.png" alt="Instagram">
-                <img src="./assets/img/icons/web-icon-black.png" alt="Website">
+                <a target="_blank" href="https://www.instagram.com/espavet.rd/"><img src="./assets/img/icons/ig-icon-black.png" alt="Instagram"></a>
+                <a target="_blank" href="https://www.instagram.com/espavet.rd/"><img src="./assets/img/icons/web-icon-black.png" alt="Website"></a>
             </div>
         </div>
     </div>
@@ -146,8 +146,8 @@
             Mallén Mascotas es una división de Mallén Veterinaria, parte del Grupo Mallén, una empresa con más de 50 años de experiencia en la representación, distribución y promoción de productos farmacéuticos y cosméticos en la República Dominicana. Desde 1995, Mallén Veterinaria se ha dedicado a mejorar la salud y el bienestar de los animales, ofreciendo un amplio portafolio de marcas internacionales reconocidas por su investigación y desarrollo de alta calidad.
             </div>
             <div class="icons">
-                <img src="./assets/img/icons/ig-icon-black.png" alt="Instagram">
-                <img src="./assets/img/icons/web-icon-black.png" alt="Website">
+                <a target="_blank" href="https://www.instagram.com/mallenmascotasrd/"><img src="./assets/img/icons/ig-icon-black.png" alt="Instagram"></a>
+                <a target="_blank" href="https://mallenmascotas.com/"><img src="./assets/img/icons/web-icon-black.png" alt="Website"></a>
             </div>
         </div>
     </div>
@@ -162,15 +162,15 @@
             Animal Food Line S.A. es una empresa ubicada en Santo Domingo, República Dominicana, dedicada a la distribución de productos alimenticios para animales. Fundada en 1995, se especializa en la comercialización de alimentos y suministros para mascotas, así como productos relacionados con la nutrición animal. 
             </div>
             <div class="icons">
-                <img src="./assets/img/icons/ig-icon-black.png" alt="Instagram">
-                <img src="./assets/img/icons/web-icon-black.png" alt="Website">
+                <a target="_blank" href="https://www.instagram.com/animalfoodline/"><img src="./assets/img/icons/ig-icon-black.png" alt="Instagram"></a>
+                <a target="_blank" href="https://www.instagram.com/animalfoodline/"><img src="./assets/img/icons/web-icon-black.png" alt="Website"></a>
             </div>
         </div>
     </div>
 
     <div class="partner-card">
         <div class="partner-logo">
-            <img src="./assets/img/color-logos/main-logos/colegio-main-logo.png" alt="Mallen Mascotas Logo">
+            <img style="max-width: 50%;" src="./assets/img/color-logos/main-logos/colegio-main-logo.png" alt="Mallen Mascotas Logo">
         </div>
         <div class="partner-info">
             <div class="partner-title">COLVET <span class="partner-title-small-text" style="color: black;">/ PATROCINADOR OFICIAL</span></div>
@@ -178,8 +178,8 @@
             El Colegio Dominicano de Médicos Veterinarios (Colvet) es una institución sin fines de lucro fundada en octubre de 2002, mediante la Ley 173-02. Su misión es regular y promover el ejercicio profesional de la medicina veterinaria en la República Dominicana, estableciendo normas de conducta y eficiencia para garantizar una práctica ética y profesional.
             </div>
             <div class="icons">
-                <img src="./assets/img/icons/ig-icon-black.png" alt="Instagram">
-                <img src="./assets/img/icons/web-icon-black.png" alt="Website">
+                <a target="_blank" href="https://www.instagram.com/colvetcolvet/"><img src="./assets/img/icons/ig-icon-black.png" alt="Instagram"></a>
+                <a target="_blank" href="https://www.instagram.com/colvetcolvet/"><img src="./assets/img/icons/web-icon-black.png" alt="Website"></a>
             </div>
         </div>
     </div>
@@ -194,8 +194,8 @@
             Vetboca es una clínica veterinaria ubicada en la Calle Independencia #25, frente a Vimenpaq, en Santiago de los Caballeros, República Dominicana. Ofrecen una variedad de servicios para el cuidado de mascotas, tales como consultas veterinarias, vacunaciones, desparasitaciones, peluquería y estética para perros y gatos, así como psicología canina para abordar comportamientos y necesidades emocionales de los animales. 
             </div>
             <div class="icons">
-                <img src="./assets/img/icons/ig-icon-black.png" alt="Instagram">
-                <img src="./assets/img/icons/web-icon-black.png" alt="Website">
+                <a target="_blank" href="https://www.instagram.com/vetbocard/"><img src="./assets/img/icons/ig-icon-black.png" alt="Instagram"></a>
+                <a target="_blank" href="https://www.instagram.com/vetbocard/"><img src="./assets/img/icons/web-icon-black.png" alt="Website"></a>
             </div>
         </div>
     </div>
@@ -210,8 +210,8 @@
             CCOAGRO (Comercializadora y Consultoría Agropecuaria Folipasto S.R.L.) es una empresa dominicana dedicada a la distribución de insumos, equipos y soluciones para el sector agropecuario. Su misión es apoyar el desarrollo agrícola y ganadero en el país mediante la comercialización de productos de alta calidad y la prestación de servicios de consultoría especializada.
             </div>
             <div class="icons">
-                <img src="./assets/img/icons/ig-icon-black.png" alt="Instagram">
-                <img src="./assets/img/icons/web-icon-black.png" alt="Website">
+                <a target="_blank" href="https://www.instagram.com/ccoagro.rd/"><img src="./assets/img/icons/ig-icon-black.png" alt="Instagram"></a>
+                <a target="_blank" href="https://www.instagram.com/ccoagro.rd/"><img src="./assets/img/icons/web-icon-black.png" alt="Website"></a>
             </div>
         </div>
     </div>
@@ -226,8 +226,8 @@
             Patas Pa'rriba - Pet Social Club es un centro integral para mascotas ubicado en Santiago, República Dominicana. Ofrece servicios como Pet Hotel, Dog Park y Day Care, proporcionando espacios diseñados para el esparcimiento y cuidado de las mascotas. Su equipo de profesionales amantes de los animales garantiza atención personalizada.
             </div>
             <div class="icons">
-                <img src="./assets/img/icons/ig-icon-black.png" alt="Instagram">
-                <img src="./assets/img/icons/web-icon-black.png" alt="Website">
+                <a target="_blank" href="https://www.instagram.com/patasparriba_rd/"><img src="./assets/img/icons/ig-icon-black.png" alt="Instagram"></a>
+                <a target="_blank" href="https://www.instagram.com/patasparriba_rd/"><img src="./assets/img/icons/web-icon-black.png" alt="Website"></a>
             </div>
         </div>
     </div>
@@ -312,7 +312,7 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
 	c-0.4,0-0.7,0.1-1,0.2L10.6,9c0.8,0.8,2.2,0.8,3,0l9.2-8.7C22.6,0.1,22.2,0,21.8,0z M0.2,1.1C0.1,1.4,0,1.7,0,2V14
 	c0,0.3,0.1,0.6,0.2,0.9l7.3-6.8L0.2,1.1z M15.5,9l-1.1,1c-1.3,1.2-3.6,1.2-4.9,0l-1-1l-7.3,6.8c0.2,0.1,0.6,0.2,1,0.2H22
 	c0.4,0,0.6-0.1,1-0.2L15.5,9z"></path></svg></span>&nbsp;info@vetcaprd.com
-      </a><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-6" src="images/9.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-7" src="images/5.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-8" src="images/7.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-9" src="images/8.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-10" src="images/6.png" alt="" data-image-width="500" data-image-height="500"><div class="u-border-2 u-border-white u-expanded-width-xs u-line u-line-horizontal u-line-1"></div><p style="font-family:Helvetica" class="u-custom-font u-text u-text-4"> Copyright ® 2025 EncioSystems Inc. Todos los derechos reservados.</p></footer>
+      </a><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-6" src="images/9.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-7" src="images/5.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-8" src="images/7.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-9" src="images/8.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-10" src="images/6.png" alt="" data-image-width="500" data-image-height="500"><div class="u-border-2 u-border-white u-expanded-width-xs u-line u-line-horizontal u-line-1"></div><p style="font-family:Helvetica" class="u-custom-font u-text u-text-4"> <a style="font-family:Helvetica; color:white;" href="https://enciosystems.com/">Copyright ® 2025 EncioSystems Inc. Todos los derechos reservados.</a></p></footer>
     
   
 </body></html>

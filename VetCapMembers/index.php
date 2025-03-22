@@ -88,6 +88,12 @@ if ($user->is_logged_in() && isset($_SESSION['rol']) && $_SESSION['rol'] == "adm
     onclick="openMyEventsModal()">
     Ver mis Eventos
   </button>
+  <button 
+    id="view-events-button" 
+    style="padding: 10px 20px; font-size: 16px; background-color: #2d4a34; color: white; border: none; border-radius: 5px; cursor: pointer;"
+    onclick="openMyCoursesModal()">
+    Ver mis Cursos
+  </button>
 </section>
 
 <!-- Modal -->
@@ -189,27 +195,118 @@ if ($user->is_logged_in() && isset($_SESSION['rol']) && $_SESSION['rol'] == "adm
 
 
 
-<br><br>
-<div class="promo-bar">
-  <div class="text-section">
-    <div class="logo-info">LOBO CORPORATION | FUNDACIÓN VETCAP</div>
-    <div class="collection-title">HIVE <a style="color:white;">& HOWL</a></div>
-    <div class="collection-subtitle">COLLECTION</div>
-  </div>
-  <div class="image-section">
-    <img src="../assets/img/vetcap_lobo.png" alt="Cap image">
-  </div>
-  <div class="hashtag-section">
-    <h2>#VETCAPXLOBO</h2>
-  </div>
-  <div class="button-section">
-    <button class="rounded-button">SHOP NOW</button>
+
+
+
+
+
+<!-- Modal -->
+<div id="my-courses-modal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); justify-content: center; align-items: center; z-index: 9999;">
+  <div class="modal-content" style="background: white; padding: 20px; border-radius: 8px; max-width: 90%; max-height: 90%; overflow-y: auto; position: relative;">
+    <span 
+      onclick="closeMyEventsModal()" 
+      style="position: absolute; top: 10px; right: 20px; font-size: 24px; cursor: pointer; color: #555;">
+      &times;
+    </span>
+    <h2 style="color: #2d4a34; text-align: center; margin-bottom: 20px;">Capacitaciones Suscritas</h2>
+    
+    <!-- Events List -->
+    <div class="events-list">
+      <?php
+      $userCoursesList = ["eventName"];
+      $userHasCourses = false;
+      write_log("Verifiying if user has events: ".$userHasCourses);
+            foreach ($misDiplomados as $theCourse) {
+              $userHasCourses = true;
+              write_log("Does user has events?: ".$userHasCourses);
+              array_push($userCoursesList, $theCourse['Id']);
+              echo '<!-- Event Container (Repeat this block for each event) -->
+      <div class="event-container" style="display: flex; flex-direction: row; align-items: start; gap: 20px; margin-bottom: 20px;">
+        <div class="event-image-container" style="flex: 1; max-width: 150px;">
+          <img 
+            src="http://localhost/vesca/'.$theCourse['foto_diplomado'].'" 
+            alt="Foto capacitación" 
+            style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"
+          />
+        </div>
+        <div class="event-details-container" style="flex: 3;">
+          <h2 class="event-title" style="color: #2d4a34; font-size: 1.5rem; margin-bottom: 10px;">'.$theCourse['nombre'].'</h2>
+          <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+            '.$theCourse['descripcion'].'
+          </p>
+          <p class="event-price" style="color: #007BFF; font-size: 1rem; font-weight: bold;">Precio de Suscripción: RD$'.$theCourse['precio_inscripcion'].'</p>
+          <p class="event-date" style="color: #555; font-size: 1rem;">Fecha y Hora: '.$theCourse['fecha_inicio_diplomado'].'</p>
+        </div>
+        
+        
+      </div>';
+      $desinscribirCourseButton = '<a class="btn-danger" style="cursor: pointer; text-decoration: none; font-weight: 550; text-align: left; color: white; padding: 10px 20px; background-color:rgb(238, 76, 76); border-radius: 5px; display: inline-block;" 
+       onclick="unsubscribeEvent(\''.$theCourse['Id'].'\')">
+        Desinscribir
+    </a>';
+            }
+            if (!$userHasCourses) {
+              echo '<p style="text-align: center; margin-bottom: 20px;">Aún no estás suscrito a ningúna capacitación.</p>';
+            }      
+            
+      ?>
+    </div>
+    <?php
+    if (isset($misPendingCourses[0])) {
+      $pendingCoursesHeader ='<h2 style="color: #2d4a34; text-align: center; margin-bottom: 20px;">Eventos en revisión</h2>
+    
+    <!-- Events List -->
+    <div class="events-list">';
+    echo $pendingCoursesHeader;
+    echo '<p style="text-align: center; margin-bottom: 20px;">Estamos revisando tu solicitud de inscripción para estas capcitaciones.</p>';
+
+
+
+
+    foreach ($misPendingCourses as $thePendingCourse) {
+      $userHasPendingCourses = true;
+      write_log("Does user has pending events?: ".$userHasPendingCourses);
+      echo '<!-- Event Container (Repeat this block for each event) -->
+<div class="event-container" style="display: flex; flex-direction: row; align-items: start; gap: 20px; margin-bottom: 20px;">
+<div class="event-image-container" style="flex: 1; max-width: 150px;">
+  <img 
+    src="http://localhost/vesca/'.$thePendingCourse['foto_diplomado'].'" 
+    alt="Event Photo" 
+    style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"
+  />
+</div>
+<div class="event-details-container" style="flex: 3;">
+  <h2 class="event-title" style="color: #2d4a34; font-size: 1.5rem; margin-bottom: 10px;">'.$thePendingCourse['nombre'].'</h2>
+  <p class="event-description" style="color: #555; font-size: 1rem; margin-bottom: 10px;">
+    '.$thePendingCourse['descripcion'].'
+  </p>
+  <p class="event-price" style="color: #007BFF; font-size: 1rem; font-weight: bold;">Precio de Suscripción: RD$'.$thePendingCourse['precio_inscripcion'].'</p>
+  <p class="event-date" style="color: #555; font-size: 1rem;">Fecha y Hora: '.$thePendingCourse['fecha_inicio_diplomado'].'</p>
+</div>
+</div>';
+    }
+
+
+
+
+    $pendingCoursesFooter = '</div>';
+    echo $pendingCoursesFooter;
+    }
+     ?>
   </div>
 </div>
 
 
 
-<section style="padding-top: 30px; padding-bottom: 10px;" class="about-area section-bg section-padding">
+
+
+
+
+
+<script></script>
+
+
+<section id="nextEventSection" style="padding-top: 30px; padding-bottom: 10px;" class="hidden about-area section-bg section-padding">
         <h2 style="font-size: 50px; font-family: Horizon; text-align: center; color: #2d4a34; margin-bottom: 0%;">PROXIMO EVENTO</h2>
         <div class="container">
           <div class="row align-items-center">
@@ -712,7 +809,7 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
                         write_log("Eventos list: " . print_r($eventosList, true));
                   ?>
                   <section class="vetcap-section">
-  <div class="vetcap-container">
+  <div id="eventosContainer" class="hidden vetcap-container">
     <!-- Left Section -->
     <div class="vetcap-left">
       <img src="http://localhost/vesca/<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
@@ -1220,42 +1317,63 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
 
 
 
-<div class="promo-bar-container">
-  <!-- Logo Section -->
-  <div class="promo-bar-logo-section">
-    <img
-      class="promo-bar-logo"
-      src="../assets/img/mallen-mascotas-logo.png"
-      alt="Mallén Mascotas Logo"
-    />
-  </div>
+<section class="u-align-center u-clearfix u-container-align-center u-valign-middle u-section-4" id="block-4">
+      <div class="u-carousel u-expanded-width u-gallery u-gallery-slider u-layout-carousel u-lightbox u-no-transition u-show-text-on-hover u-gallery-1" id="carousel-2023" data-interval="750" data-u-ride="carousel" data-pause="false">
+        <ol class="u-absolute-hcenter u-carousel-indicators u-carousel-indicators-1">
+          <li data-u-target="#carousel-2023" data-u-slide-to="0" class="u-active u-shape-circle" style="width: 10px; height: 10px;"></li>
+          <li data-u-target="#carousel-2023" data-u-slide-to="1" class="u-shape-circle" style="width: 10px; height: 10px;"></li>
+        </ol>
+        <div class="u-carousel-inner u-gallery-inner" role="listbox">
+          <div class="u-active u-carousel-item u-effect-fade u-gallery-item u-carousel-item-1" data-href="https://mallenmascotas.com/" data-target="_blank">
+            <div class="u-back-slide" data-image-width="7917" data-image-height="834">
+              <img class="u-back-image u-expanded" src="../images/Banner-MM-VETCAP-1900x200_px.png">
+            </div>
+            <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-1"></div>
+          </div>
+          <div class="u-carousel-item u-effect-fade u-gallery-item u-carousel-item-2">
+            <div class="u-back-slide" data-image-width="7917" data-image-height="834">
+              <img class="u-back-image u-expanded" src="../images/banners-MMMesadetrabajo1300x.png">
+            </div>
+            <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-2">
+              <!-- <h3 class="u-gallery-heading">Sample Title</h3>
+              <p class="u-gallery-text">Sample Text</p> -->
+            </div>
+          </div>
+        </div>
+        <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-hidden u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-1" href="#carousel-2023" role="button" data-u-slide="prev">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+          </span>
+          <span class="sr-only">
+            <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
+          </span>
+        </a>
+        <a class="u-absolute-vcenter u-carousel-control u-carousel-control-next u-hidden u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-2" href="#carousel-2023" role="button" data-u-slide="next">
+          <span aria-hidden="true">
+            <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+          </span>
+          <span class="sr-only">
+            <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
+L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
+c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
+          </span>
+        </a>
+      </div>
+    </section>
 
-  <!-- Middle Image Section -->
-  <div class="promo-bar-middle-images">
-    <img 
-      src="../assets/img/royal-canin.png" 
-      alt="Dog and Cat" 
-    />
-  </div>
-
-  <!-- Subtitle and Button Section -->
-   <div class="promo-bar-action-section">
-    <span class="promo-bar-subtitle">Breed health nutrition</span>
-  </div>
-  <div class="promo-bar-action-section">
-    <button class="promo-bar-rounded-button">
-      <i class="promo-bar-button-icon"></i> SHOP NOW
-    </button>
-  </div>
-</div>
 
 
 
 
 
 
-
-<section class="slider-capacitaciones-section">
+<section id="diplomadosSection" class="hidden slider-capacitaciones-section">
   <h1 class="title">Diplomados</h1>
   <?php
   $_SESSION['eventosListForPayment'] = $eventosList;
@@ -1278,6 +1396,29 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
 <script src="../assets/js/membersUtils.js"></script>
 
 <script src="../assets/js/capacitacionesSlider.js"></script>
+<?php
+if (isset($nextEvent)) {
+$hideSection = '<script>
+let laSeccionElement = document.getElementById("nextEventSection");
+laSeccionElement.classList.remove("hidden");
+</script>';
+echo $hideSection;
+}
+if (isset($eventos)) {
+$hideSection = '<script>
+let eventosContainerElement = document.getElementById("eventosContainer");
+eventosContainerElement.classList.remove("hidden");
+</script>';
+echo $hideSection;
+}
+if (isset($diplomados)) {
+$hideSection = '<script>
+let diplomadosSectionElement = document.getElementById("diplomadosSection");
+diplomadosSectionElement.classList.remove("hidden");
+</script>';
+echo $hideSection;
+}
+ ?>
 
       <?php 
 //include header template

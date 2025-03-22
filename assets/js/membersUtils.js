@@ -52,6 +52,14 @@ function toggleFields(modalId) {
     document.getElementById('my-events-modal').style.display = 'none';
   }
 
+  function openMyCoursesModal() {
+    document.getElementById('my-courses-modal').style.display = 'flex';
+  }
+
+  function closeMyCoursesModal() {
+    document.getElementById('my-courses-modal').style.display = 'none';
+  }
+
   function unsubscribeEvent(eventId) {
     if(confirm("¿Estás seguro que quieres desinscribir este evento?")) {
         const event = {
