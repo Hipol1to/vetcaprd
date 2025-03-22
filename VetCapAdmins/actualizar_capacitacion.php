@@ -20,7 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $activo = $_POST['activo'];
 
     // Handle file upload if a new file is provided
-    $foto_diplomado = !empty($_FILES['foto_diplomado']['name']) ? uploadFile($_FILES['foto_diplomado']) : $_POST['foto_diplomado'];
+    $foto_diplomado = $_POST['foto_diplomado']; // Default to the existing value
+
+    if (!empty($_FILES['foto_diplomado_file']['name'])) {
+        $uploadResult = uploadFile($_FILES['foto_diplomado_file']);
+        if ($uploadResult) {
+            $foto_diplomado = $uploadResult; // Update with the new file path
+        }
+    }
 
     $query = "UPDATE diplomados SET 
               nombre = ?, 
@@ -44,12 +51,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Function to handle file uploads
 function uploadFile($file) {
     if ($file['error'] === UPLOAD_ERR_OK) {
-        $uploadDir = __DIR__ . '/uploads/';
+        $uploadDir = __DIR__ . '/uploads/'; // Ensure this directory exists and is writable
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0755, true); // Create the directory if it doesn't exist
+        }
         $fileName = uniqid() . '_' . basename($file['name']);
         $uploadFilePath = $uploadDir . $fileName;
 
         if (move_uploaded_file($file['tmp_name'], $uploadFilePath)) {
-            return '/VetCapAdmins/uploads/' . $fileName; // Return relative path
+            return '/uploads/' . $fileName; // Return relative path
         }
     }
     return null; // Return null if upload fails

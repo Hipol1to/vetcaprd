@@ -69,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             write_log("does cedula have path?: " . $_SESSION['cedulaHavePath']);
 
             // Redirect to the index page
-            header('Location: https://www.vetcaprd.com///VetCapMembers/index.php?photoUploaded=true');
+            header('Location: https://www.vetcaprd.com//VetCapMembers/index.php?photoUploaded=true');
             exit();
         } catch (PDOException $e) {
             // Handle database errors

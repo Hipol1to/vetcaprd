@@ -125,8 +125,13 @@
               <img class="u-back-image u-expanded" src="images/banners-MMMesadetrabajo1300x.png">
             </div>
             <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-2">
-              <!-- <h3 class="u-gallery-heading">Sample Title</h3>
-              <p class="u-gallery-text">Sample Text</p> -->
+            </div>
+          </div>
+          <div class="u-carousel-item u-effect-fade u-gallery-item u-carousel-item-3">
+            <div class="u-back-slide" data-image-width="7917" data-image-height="834">
+              <img class="u-back-image u-expanded" src="images/banners-MMMesadetrabajo1300x.png">
+            </div>
+            <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-2">
             </div>
           </div>
         </div>
@@ -164,7 +169,7 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
 	c-0.4,0-0.7,0.1-1,0.2L10.6,9c0.8,0.8,2.2,0.8,3,0l9.2-8.7C22.6,0.1,22.2,0,21.8,0z M0.2,1.1C0.1,1.4,0,1.7,0,2V14
 	c0,0.3,0.1,0.6,0.2,0.9l7.3-6.8L0.2,1.1z M15.5,9l-1.1,1c-1.3,1.2-3.6,1.2-4.9,0l-1-1l-7.3,6.8c0.2,0.1,0.6,0.2,1,0.2H22
 	c0.4,0,0.6-0.1,1-0.2L15.5,9z"></path></svg></span>&nbsp;info@vetcaprd.com
-      </a><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-6" src="images/9.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-7" src="images/5.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-8" src="images/7.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-9" src="images/8.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-10" src="images/6.png" alt="" data-image-width="500" data-image-height="500"><div class="u-border-2 u-border-white u-expanded-width-xs u-line u-line-horizontal u-line-1"></div><p style="font-family:Helvetica" class="u-custom-font u-text u-text-4"> Copyright ® 2025 EncioSystems Inc. Todos los derechos reservados.</p></footer>
+      </a><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-6" src="images/9.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-7" src="images/5.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-8" src="images/7.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-9" src="images/8.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-10" src="images/6.png" alt="" data-image-width="500" data-image-height="500"><div class="u-border-2 u-border-white u-expanded-width-xs u-line u-line-horizontal u-line-1"></div><p style="font-family:Helvetica" class="u-custom-font u-text u-text-4"> <a style="font-family:Helvetica; color:white;" href="https://enciosystems.com/">Copyright ® 2025 EncioSystems Inc. Todos los derechos reservados.</a></p></footer>
     <section class="u-backlink u-clearfix u-grey-80">
     </section>
   <?php 

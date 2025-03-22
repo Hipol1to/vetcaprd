@@ -8,7 +8,7 @@ require __DIR__.'/SMTP.php';
 
 class Mail extends PHPMailer
 {
-     // Set default variables for all new objects
+    // Set default variables for all new objects
     public $From     = 'info@vetcaprd.com';
     public $FromName = 'Fundacion VetCap';
     public $Host     = 'smtp.hostinger.com';

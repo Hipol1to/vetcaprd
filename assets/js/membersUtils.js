@@ -52,6 +52,14 @@ function toggleFields(modalId) {
     document.getElementById('my-events-modal').style.display = 'none';
   }
 
+  function openMyCoursesModal() {
+    document.getElementById('my-courses-modal').style.display = 'flex';
+  }
+
+  function closeMyCoursesModal() {
+    document.getElementById('my-courses-modal').style.display = 'none';
+  }
+
   function unsubscribeEvent(eventId) {
     if(confirm("¿Estás seguro que quieres desinscribir este evento?")) {
         const event = {
@@ -59,7 +67,7 @@ function toggleFields(modalId) {
           };
       
           // Send transaction data via POST request
-          fetch("https://www.vetcaprd.com///VetCapMembers/unsubscribe_user_event.php", {
+          fetch("https://www.vetcaprd.com//VetCapMembers/unsubscribe_user_event.php", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -89,7 +97,7 @@ function toggleFields(modalId) {
         };
     
         // Send transaction data via POST request
-        fetch("https://www.vetcaprd.com///VetCapMembers/subscribe_user_free_event.php", {
+        fetch("https://www.vetcaprd.com//VetCapMembers/subscribe_user_free_event.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -135,7 +143,7 @@ function toggleFields(modalId) {
         };
     
         // Send transaction data via POST request
-        fetch("https://www.vetcaprd.com///VetCapMembers/subscribe_user_free_course.php", {
+        fetch("https://www.vetcaprd.com//VetCapMembers/subscribe_user_free_course.php", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

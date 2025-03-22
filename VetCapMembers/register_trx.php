@@ -88,7 +88,7 @@ if (isset($data)) {
       alert("La información de la transacción es invalida, serás redirigido a la página principal");
             </script>';
       sleep(5);
-      header('Location: https://www.vetcaprd.com///VetCapMembers/login.php');
+      header('Location: https://www.vetcaprd.com//VetCapMembers/login.php');
       exit(); 
     } else {
       try {

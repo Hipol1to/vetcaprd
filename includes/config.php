@@ -182,11 +182,17 @@ function renderDiplomadosSlider($diplomadosArray, $misPendingDiplomados, $misDip
 <div class="slide">
     <div class="diplomado-container">
             <div class="image-box">
-               <div class="image-placeholder">
-                  <span class="month">MARZO</span>
-               </div>
-               <div class="disvi"><button class="rounded-button marginnnn er-bustonn" onclick="'.$onclick.'" style="margin-top: 20px; ">INSCRIBIRME</button></div>
+                <div class="image-placeholder">
+                    <img style="width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the whole area */" src="https://www.vetcaprd.com/'.str_replace("../", "", $theDiplomado['foto_diplomado']).'" alt="Foto capacitación" class="hero-image">
+                    <span class="month">MARZO</span>
+                </div>
+                <div class="disvi">
+                    <button class="rounded-button marginnnn er-bustonn" onclick="'.$onclick.'" style="margin-top: 20px;">INSCRIBIRME</button>
+                </div>
             </div>
+
             <div class="info-box">
                <h2 class="course-title">'.$theDiplomado['nombre'].'</h2>
                <p class="mode"><span>Modalidad: </span>'.$theDiplomado['modalidad'].'</p>
@@ -325,9 +331,9 @@ updateCountdown(diplomadoId_'.$theDiplomado['Id'].', eventTimestamp_'.$theDiplom
   ';
   echo $diplomadosSliderContainerFooter;
 
-  foreach ($diplomadosArray as $theDiplomado) {
+  /*foreach ($diplomadosArray as $theDiplomado) {
       renderCoursePaymentModal($theDiplomado);
-  }
+  }*/
 }
 
 function getOnclickForDiplomados($misDiplomados, $currentDiplomado, $misPendingDiplomados) {
@@ -574,9 +580,9 @@ function printAllEvents($eventos) {
   <div class="vetcap-container">
     <!-- Left Section -->
     <div class="vetcap-left">
-      <img src="https://www.vetcaprd.com//<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
+      <img src="https://www.vetcaprd.com/<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
       <div class="vetcap-badge">
-        <img style="width: 70px; height: auto;" src="https://www.vetcaprd.com///assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
+        <img style="width: 70px; height: auto;" src="https://www.vetcaprd.com//assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
         <span>RD$<?= htmlspecialchars($evento['precio_inscripcion']) ?></span>
       </div>
     </div>
@@ -584,7 +590,7 @@ function printAllEvents($eventos) {
     <div class="vetcap-right">
     <?php
             if (isset($evento['foto_titulo'])) {
-              echo '<img style="max-width: 330px;" src="https://www.vetcaprd.com//'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
+              echo '<img style="max-width: 330px;" src="https://www.vetcaprd.com/'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
             } else {
               write_log("foto titulo");
               echo '<h2 style="font-size: 50px; font-family: HelveticaBold;" class="course-title">'.$evento['nombre'].'</h2>';

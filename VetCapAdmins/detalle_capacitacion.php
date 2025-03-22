@@ -73,8 +73,10 @@ require('layout/header.php');
                     </div>
                     <div class="form-group">
                         <label for="foto_diplomado">Foto del Diplomado</label>
-                        <input type="file" class="form-control" id="foto_diplomado" name="foto_diplomado" accept="image/*">
-                        <img src="https://www.vetcaprd.com//<?= htmlspecialchars($capacitacion['foto_diplomado']) ?>" alt="Foto del Diplomado" class="img-thumbnail mt-2" style="max-width: 200px;">
+                        <input type="file" class="form-control-file" id="foto_diplomado_file" name="foto_diplomado_file" accept="image/*">
+                        <input type="hidden" id="foto_diplomado" name="foto_diplomado" value="<?= htmlspecialchars($capacitacion['foto_diplomado']) ?>">
+                        <!-- <small class="form-text text-muted">Sube una imagen para actualizar la foto del diplomado.</small> -->
+                        <img src="https://www.vetcaprd.com/<?= htmlspecialchars(str_replace("../", "", $capacitacion['foto_diplomado'])) ?>" alt="Foto del Diplomado no disponible" class="img-thumbnail mt-2" style="max-width: 200px;" id="foto_diplomado_preview">
                     </div>
                     <div class="form-group">
                         <label for="precio_inscripcion">Precio de Inscripción</label>
@@ -349,6 +351,48 @@ require('layout/header.php');
         </div>
     </div>
 </div>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function () {
+    // Function to handle file upload
+    function uploadFile(fileInput, hiddenInput, previewImage) {
+        const file = fileInput.files[0];
+        if (!file) return;
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        $.ajax({
+            url: 'upload_image.php', // PHP script to handle the upload
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (response) {
+                if (response.success) {
+                    // Update the hidden input with the new image path
+                    $(hiddenInput).val(response.filePath);
+                    // Update the image preview
+                    $(previewImage).attr('src', response.filePath);
+                    alert('Imagen subida correctamente.');
+                } else {
+                    alert('Error al subir la imagen: ' + response.message);
+                }
+            },
+            error: function () {
+                alert('Error al subir la imagen.');
+            }
+        });
+    }
+
+    // Event listener for foto_diplomado file input
+    $('#foto_diplomado_file').on('change', function () {
+        uploadFile(this, '#foto_diplomado', '#foto_diplomado_preview');
+    });
+});
+</script>
 
 
 <?php require('layout/footer.php'); ?>
