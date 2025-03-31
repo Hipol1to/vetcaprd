@@ -18,6 +18,12 @@
     <link rel="stylesheet" href="indexcapa.css" media="screen">
     <meta name="generator" content="Nicepage 7.5.2, nicepage.com">
     <style>
+    /* Correctly hides elements */
+    .hidden {
+      display: none;
+    }
+  </style>
+    <style>
      footer p {
     font-family: "HelveticaBold";
     color: white; 
@@ -82,7 +88,7 @@
         </nav>
         <img class="u-image u-image-contain u-image-default u-image-1" src="images/3.png" alt="" data-image-width="1918" data-image-height="720" data-href="./" data-page-id="72255026" title="LandingPage">
       </div></header>
-    <section class="u-clearfix u-section-1" id="block-6">
+    <section id="nextEventSection" class="hidden u-clearfix u-section-1" id="block-6">
       <h1 class="u-custom-font u-text u-text-custom-color-1 u-text-default u-title u-text-1">Proximo <span class="u-text-custom-color-3">Evento</span>
       </h1>
       <div class="container">
@@ -172,62 +178,6 @@ echo $nextEventSubscribeButton;
 
 
 
-        <section class="u-align-center u-clearfix u-container-align-center u-valign-middle u-section-4" id="block-4">
-      <div class="u-carousel u-expanded-width u-gallery u-gallery-slider u-layout-carousel u-lightbox u-no-transition u-show-text-on-hover u-gallery-1" id="carousel-2023" data-interval="2750" data-u-ride="carousel" data-pause="false">
-        <ol class="u-absolute-hcenter u-carousel-indicators u-carousel-indicators-1">
-          <li data-u-target="#carousel-2023" data-u-slide-to="0" class="u-active u-shape-circle" style="width: 10px; height: 10px;"></li>
-          <li data-u-target="#carousel-2023" data-u-slide-to="1" class="u-shape-circle" style="width: 10px; height: 10px;"></li>
-        </ol>
-        <div class="u-carousel-inner u-gallery-inner" role="listbox">
-          <div class="u-active u-carousel-item u-effect-fade u-gallery-item u-carousel-item-1" data-href="https://mallenmascotas.com/" data-target="_blank">
-            <div class="u-back-slide" data-image-width="7917" data-image-height="834">
-              <img class="u-back-image u-expanded" src="images/Banner-MM-VETCAP-1900x200_px.png">
-            </div>
-            <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-1"></div>
-          </div>
-          <div class="u-carousel-item u-effect-fade u-gallery-item u-carousel-item-2">
-            <div class="u-back-slide" data-image-width="7917" data-image-height="834">
-              <img class="u-back-image u-expanded" src="images/banners-MMMesadetrabajo1300x.png">
-            </div>
-            <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-2">
-              <!-- <h3 class="u-gallery-heading">Sample Title</h3>
-              <p class="u-gallery-text">Sample Text</p> -->
-            </div>
-          </div>
-        </div>
-        <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-hidden u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-1" href="#carousel-2023" role="button" data-u-slide="prev">
-          <span aria-hidden="true">
-            <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
-c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
-c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
-          </span>
-          <span class="sr-only">
-            <svg viewBox="0 0 451.847 451.847"><path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
-c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
-c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"></path></svg>
-          </span>
-        </a>
-        <a class="u-absolute-vcenter u-carousel-control u-carousel-control-next u-hidden u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-2" href="#carousel-2023" role="button" data-u-slide="next">
-          <span aria-hidden="true">
-            <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
-L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
-c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
-          </span>
-          <span class="sr-only">
-            <svg viewBox="0 0 451.846 451.847"><path d="M345.441,248.292L151.154,442.573c-12.359,12.365-32.397,12.365-44.75,0c-12.354-12.354-12.354-32.391,0-44.744
-L278.318,225.92L106.409,54.017c-12.354-12.359-12.354-32.394,0-44.748c12.354-12.359,32.391-12.359,44.75,0l194.287,194.284
-c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,248.292z"></path></svg>
-          </span>
-        </a>
-      </div>
-    </section>
-
-
-
-
-
-
-
       <div class="u-border-1 u-border-custom-color-3 u-expanded-width u-line u-line-horizontal u-line-1"></div>
       <h1 class="u-custom-font u-text u-text-custom-color-1 u-text-default u-title u-text-2">Eventos Futuros </h1>
       <br>
@@ -288,6 +238,15 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
         </a>
       </div>
     </section>
+    <?php
+    if (isset($nextEvent['Id'])) {
+  $hideSection = '<script>
+  let laSeccionElement = document.getElementById("nextEventSection");
+  laSeccionElement.classList.remove("hidden");
+  </script>';
+  echo $hideSection;
+  }
+    ?>
     <footer class="u-align-center u-clearfix u-container-align-center u-custom-color-1 u-footer u-footer" id="footer"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-1" src="images/logodeVETCAP2025.png" alt="" data-image-width="320" data-image-height="320"><p class="u-custom-font u-text u-text-1">Principal Partner</p><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-2" src="images/31.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-3" src="images/21.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-4" src="images/12.png" alt="" data-image-width="500" data-image-height="500"><img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-5" src="images/4.png" alt="" data-image-width="500" data-image-height="500"><p class="u-custom-font u-text u-text-2">Official Partner</p><p class="u-custom-font u-text u-text-custom-color-3 u-text-3"> Contáctanos</p><a href="" class="u-active-none u-align-center u-btn u-btn-rectangle u-button-style u-hover-none u-none u-btn-1">
         <span class="u-icon"><svg class="u-svg-content" viewBox="0 0 405.333 405.333" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M373.333,266.88c-25.003,0-49.493-3.904-72.704-11.563c-11.328-3.904-24.192-0.896-31.637,6.699l-46.016,34.752    c-52.8-28.181-86.592-61.952-114.389-114.368l33.813-44.928c8.512-8.512,11.563-20.971,7.915-32.64    C142.592,81.472,138.667,56.96,138.667,32c0-17.643-14.357-32-32-32H32C14.357,0,0,14.357,0,32    c0,205.845,167.488,373.333,373.333,373.333c17.643,0,32-14.357,32-32V298.88C405.333,281.237,390.976,266.88,373.333,266.88z"></path></svg></span>&nbsp;​+1 (809) 344-5048
       </a><a href="mailto:info@vetcaprd.com" class="u-active-none u-btn u-btn-rectangle u-button-style u-hover-none u-none u-text-white u-btn-2">

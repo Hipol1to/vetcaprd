@@ -45,7 +45,7 @@ require('layout/header.php');
                         echo "<td>" . htmlspecialchars($row['correo_electronico']) . "</td>";
                         echo "<td>" . htmlspecialchars($row['telefono']) . "</td>";
                         echo "<td>
-                            <a href='detalle_usuario.php?id=" . htmlspecialchars($row['id']) . "' class='btn btn-info'>Ver Detalle</a>
+                            <a href='detalle_visitante.php?id=" . htmlspecialchars($row['id']) . "' class='btn btn-info'>Ver Detalle</a>
                             <button class='btn btn-warning' onclick='editarUsuario(\"" . htmlspecialchars($row['id']) . "\")'>Editar</button>
                             <button class='btn btn-danger' onclick='eliminarUsuario(\"" . htmlspecialchars($row['id']) . "\")'>Eliminar</button>
                         </td>";

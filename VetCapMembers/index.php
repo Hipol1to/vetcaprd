@@ -1,4 +1,4 @@
-<?php 
+    <?php 
 require_once('../includes/config.php');
 
 //if not logged in redirect to login page
@@ -204,7 +204,7 @@ if ($user->is_logged_in() && isset($_SESSION['rol']) && $_SESSION['rol'] == "adm
 <div id="my-courses-modal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.7); justify-content: center; align-items: center; z-index: 9999;">
   <div class="modal-content" style="background: white; padding: 20px; border-radius: 8px; max-width: 90%; max-height: 90%; overflow-y: auto; position: relative;">
     <span 
-      onclick="closeMyEventsModal()" 
+      onclick="closeMyCoursesModal()" 
       style="position: absolute; top: 10px; right: 20px; font-size: 24px; cursor: pointer; color: #555;">
       &times;
     </span>
@@ -253,7 +253,7 @@ if ($user->is_logged_in() && isset($_SESSION['rol']) && $_SESSION['rol'] == "adm
     </div>
     <?php
     if (isset($misPendingCourses[0])) {
-      $pendingCoursesHeader ='<h2 style="color: #2d4a34; text-align: center; margin-bottom: 20px;">Eventos en revisión</h2>
+      $pendingCoursesHeader ='<h2 style="color: #2d4a34; text-align: center; margin-bottom: 20px;">Capacitaciones en revisión</h2>
     
     <!-- Events List -->
     <div class="events-list">';
@@ -455,13 +455,13 @@ $completeProffileContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Com
     placeholder="Ingresa tu cédula"
 />
 
-<script>
+<script>/*
     // Enforce numeric input only
-    const cedulaInput = document.getElementById(\'cedula\');
+    let cedulaInput = document.getElementById(\'cedula\');
     cedulaInput.addEventListener(\'input\', () => {
         // Remove all non-numeric characters
         cedulaInput.value = cedulaInput.value.replace(/\D/g, \'\');
-    });
+    });*/
 </script>
 
           </div>
@@ -955,12 +955,13 @@ $eventsModalHeader = '
       />
       
       <script>
+      /*
           // Enforce numeric input only
-          const cedulaInput = document.getElementById(\'cedula\');
+          //let cedulaInput = document.getElementById(\'cedula\');
           cedulaInput.addEventListener(\'input\', () => {
               // Remove all non-numeric characters
               cedulaInput.value = cedulaInput.value.replace(/\D/g, \'\');
-          });
+          });*/
       </script>
       
                 </div>
@@ -1299,6 +1300,12 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
 
 
 
+
+<br><br>                    
+                <?php endforeach; ?>                
+            <?php endif; ?>
+</section>
+
 <script>  
   function openSubscribeModal(eventId) {
     document.getElementById('subscribe-events-modal'+eventId).style.display = 'flex';
@@ -1307,12 +1314,6 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
   function closeSubscribeModal(eventId) {
     document.getElementById('subscribe-events-modal'+eventId).style.display = 'none';
   }</script>
-<br><br>                    
-                <?php endforeach; ?>                
-            <?php endif; ?>
-</section>
-
-
 
 
 
@@ -1381,7 +1382,7 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
     $eventosList = $_SESSION['eventosListForPayment'];
    ?>
 </section>
-<script src="https://www.sandbox.paypal.com/sdk/js?client-id=AdA9xIixISOAmAq-vAW_iBFx12xb3MoR5Ww4K1DK3pD5SATmbq17-_f6acn4zEUGSexNGIIs3Lj5oun0&currency=USD&locale=es_DO"
+<script src="https://www.paypal.com/sdk/js?client-id=AdA9xIixISOAmAq-vAW_iBFx12xb3MoR5Ww4K1DK3pD5SATmbq17-_f6acn4zEUGSexNGIIs3Lj5oun0&currency=USD&locale=es_DO"
   data-shipping-preference="NO_SHIPPING"></script>
   <script src="../assets/js/trx.js"></script>
   <script>
@@ -1398,26 +1399,26 @@ c6.177,6.18,9.262,14.271,9.262,22.366C354.708,234.018,351.617,242.115,345.441,24
 <script src="../assets/js/capacitacionesSlider.js"></script>
 <?php
 if (isset($nextEvent['Id'])) {
-  $hideSection = '<script>
-  let laSeccionElement = document.getElementById("nextEventSection");
-  laSeccionElement.classList.remove("hidden");
-  </script>';
-  echo $hideSection;
-  }
-  if (isset($eventos[0])) {
-  $hideSection = '<script>
-  let eventosContainerElement = document.getElementById("eventosContainer");
-  eventosContainerElement.classList.remove("hidden");
-  </script>';
-  echo $hideSection;
-  }
-  if (isset($diplomados[0])) {
-  $hideSection = '<script>
-  let diplomadosSectionElement = document.getElementById("diplomadosSection");
-  diplomadosSectionElement.classList.remove("hidden");
-  </script>';
-  echo $hideSection;
-  }
+$hideSection = '<script>
+let laSeccionElement = document.getElementById("nextEventSection");
+laSeccionElement.classList.remove("hidden");
+</script>';
+echo $hideSection;
+}
+if (isset($eventos[0])) {
+$hideSection = '<script>
+let eventosContainerElement = document.getElementById("eventosContainer");
+eventosContainerElement.classList.remove("hidden");
+</script>';
+echo $hideSection;
+}
+if (isset($diplomados[0])) {
+$hideSection = '<script>
+let diplomadosSectionElement = document.getElementById("diplomadosSection");
+diplomadosSectionElement.classList.remove("hidden");
+</script>';
+echo $hideSection;
+}
  ?>
 
       <?php 

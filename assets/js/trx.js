@@ -2,53 +2,57 @@ function generateTransaction(eventId, ammount) {
   let ammountConverted = ammount / 61.50;
   let extraFee = ammountConverted * 0.05;
   let ammountToCharge = extraFee + ammountConverted;
-paypal
-  .Buttons({
-    fundingSource: paypal.FUNDING.CARD, // Show only credit card funding source
-    createOrder: function (data, actions) {
-      return actions.order.create({
-        purchase_units: [
-          {
-            amount: {
-              value: parseFloat(ammountToCharge).toFixed(2),
-              currency_code: "USD",
-            },
-            shipping_preference: "NO_SHIPPING"
+
+  let paypalButtonContainer = document.getElementById("paypal-button-container-" + eventId);
+
+  // Hide the button container before PayPal initializes
+  paypalButtonContainer.style.display = "none"; 
+
+  paypal
+      .Buttons({
+          fundingSource: paypal.FUNDING.CARD, // Show only credit card funding source
+          createOrder: function (data, actions) {
+              return actions.order.create({
+                  purchase_units: [
+                      {
+                          amount: {
+                              value: parseFloat(ammountToCharge).toFixed(2),
+                              currency_code: "USD",
+                          },
+                          shipping_preference: "NO_SHIPPING"
+                      },
+                  ],
+              });
           },
-        ],
-      });
-    },
-    onApprove: function (data, actions) {
-      // Always call capture regardless of the response or status
-      return actions.order
-        .capture()
-        .then(function (details) {
+          onApprove: function (data, actions) {
+              return actions.order
+                  .capture()
+                  .then(function (details) {
+                      const transaction = details.purchase_units[0].payments.captures[0];
 
-          const transaction = details.purchase_units[0].payments.captures[0];
-          // Check if the status is COMPLETED or other
-          if (transaction.status === "COMPLETED") {
-            //alert("Transaccion completada satisfactoriamente.");
-            registerTransaction(transaction, eventId);
-          } else {
-            alert(
-              "Tu transaccion no pudo ser completada, status: " + transaction.status + ". Verifica tu balance e intenta de nuevo en unos minutos."
-            );
+                      if (transaction.status === "COMPLETED") {
+                          registerTransaction(transaction, eventId);
+                      } else {
+                          alert(
+                              "Tu transacción no pudo ser completada, status: " + transaction.status + ". Verifica tu balance e intenta de nuevo en unos minutos."
+                          );
+                      }
+                  })
+                  .catch(function (error) {
+                      alert("Error capturando la transacción, contacte al administrador con este mensaje: " + error.message);
+                      console.error(error);
+                  });
+          },
+          onError: function (error) {
+              alert("Error iniciando transacción, contacte al administrador con este mensaje: " + error.message);
+              console.error("PayPal Button Error:", error);
+          },
+          onInit: function (data, actions) {
+              // Show the button container only when PayPal is ready
+              paypalButtonContainer.style.display = "block";
           }
-        })
-        .catch(function (error) {
-          // Handle any error during the capture call
-          alert("Error capturando la transaccion, contacte al administrador con este mensaje: " + error.message);
-          console.error(error);
-          //checkTransactionStatus(data.orderID); // Still check the status
-        });
-    },
-    onError: function (error) {
-      alert("Error iniciando transaccion, contacte al administrador con este mensaje: " + error.message);
-      console.error("PayPal Button Error:", error);
-    },
-  })
-  .render("#paypal-button-container-"+eventId);
-
+      })
+      .render("#paypal-button-container-" + eventId);
 }
 
   function printTransaction(transaction) {

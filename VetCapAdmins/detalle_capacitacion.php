@@ -132,7 +132,8 @@ require('layout/header.php');
                                     <td>$<?= number_format($pago['monto'], 2) ?></td>
                                     <td>
                                         <?php if (!empty($pago['comprobante_pago_ruta'])): ?>
-                                            <a href="<?= htmlspecialchars($pago['comprobante_pago_ruta']) ?>" target="_blank">Ver Comprobante</a>
+                                        <?php $comprobantePath = explode("VetCapMembers/uploads/", $pago['comprobante_pago_ruta']) ?>
+                                            <a href="<?= htmlspecialchars("https://www.vetcaprd.com/VetCapMembers/uploads/".$comprobantePath[1]) ?>" target="_blank">Ver Comprobante</a>
                                         <?php else: ?>
                                             No disponible
                                         <?php endif; ?>
@@ -249,7 +250,7 @@ require('layout/header.php');
                         <input type="number" step="0.01" class="form-control" id="monto" name="monto" required>
                     </div>
                     <div class="form-group">
-                        <label for="cuenta_remitente">Cuenta Remitente</label>
+                        <label for="cuenta_remitente">Numero de Cuenta Remitente</label>
                         <input type="text" class="form-control" id="cuenta_remitente" name="cuenta_remitente" required>
                     </div>
                     <div class="form-group">
@@ -261,7 +262,7 @@ require('layout/header.php');
                         <input type="text" class="form-control" id="tipo_cuenta_remitente" name="tipo_cuenta_remitente" required>
                     </div>
                     <div class="form-group">
-                        <label for="cuenta_destinatario">Cuenta Destinatario</label>
+                        <label for="cuenta_destinatario">Numero de Cuenta Destinatario</label>
                         <input type="text" class="form-control" id="cuenta_destinatario" name="cuenta_destinatario" required>
                     </div>
                     <div class="form-group">
@@ -274,7 +275,7 @@ require('layout/header.php');
                     </div>
                     <div class="form-group">
                         <label for="fecha_de_pago">Fecha de Pago</label>
-                        <input type="datetime-local" class="form-control" id="fecha_de_pago" name="fecha_de_pago" required>
+                        <input type="datetime-local" class="form-control" id="fecha_de_pago" name="fecha_de_pago" required step="1">
                     </div>
                     <div class="form-group">
                         <label for="pago_validado">Pago Validado</label>

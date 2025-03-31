@@ -1,4 +1,5 @@
 <?php
+    require_once('includes/config.php');
       require('layout/header2.php'); 
        ?>
 <!DOCTYPE html>

@@ -87,12 +87,12 @@
             </svg> Correos informativos</a></li>
         <li class="nav-divider"></li>
         <li class="nav-title">Accesos de usuario</li>
-        <li class="nav-group"><a class="nav-link" href="visitantes">
+        <li class="nav-group"><a class="nav-link" href="visitantes.php">
             <svg class="nav-icon">
               <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-user"></use>
             </svg>Visitantes</a>
         </li>
-        <li class="nav-group"><a class="nav-link" href="administradores">
+        <li class="nav-group"><a class="nav-link" href="administradores.php">
             <svg class="nav-icon">
               <use xlink:href="vendors/@coreui/icons/svg/free.svg#cil-settings"></use>
             </svg>Administradores</a>

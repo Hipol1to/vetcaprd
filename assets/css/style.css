@@ -1265,7 +1265,7 @@ font-family: "Helvetica";
 
 .image-placeholder {
   width: 400px;
-  height: 400px;
+  height: 500px;
   background: linear-gradient(#e9f7ef, #a9dfbf);
   border-radius: 20px;
   position: relative;

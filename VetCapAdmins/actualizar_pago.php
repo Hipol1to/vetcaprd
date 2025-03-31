@@ -1,6 +1,9 @@
 <?php
 require_once('../includes/config.php');
 
+try {
+    
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pagoId = $_POST['pagoId'];
     $usuarioId = $_POST['usuarioId'];
@@ -34,13 +37,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fechaDePago, $pagoValidado, $pagoId
     ]);
 
-    // Insert into usuario_diplomados
+    if ($pagoValidado == 1) {
+        write_log("Form submitted that payment is valid");
+        // Insert into usuario_diplomados
     $queryInsert = "INSERT INTO usuario_diplomados (usuario_id, diplomado_id) VALUES (?, ?)";
     $stmtInsert = $db->prepare($queryInsert);
     $stmtInsert->execute([$usuarioId, $diplomadoId]);
-
+    
     echo "Pago actualizado y usuario registrado en el diplomado correctamente.";
+    write_log("Pago actualizado y usuario registrado en el diplomado correctamente.");
+    header('Location: detalle_capacitacion.php?id='.$diplomadoId);
+    } else {
+        write_log("Form submitted that payment is invalid");
+        header('Location: detalle_capacitacion.php?id='.$diplomadoId);
+    }
 } else {
     http_response_code(400);
-    echo "Solicitud inválida.";
+    write_log("Solicitud inválida.");
 }
+
+} catch(Exception $e) {
+    header('Location: detalle_capacitacion.php?id='.$diplomadoId);
+    write_log($e->getMessage());
+}
+?>

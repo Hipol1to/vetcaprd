@@ -76,7 +76,7 @@
       </div></header>
     <section class="u-align-center u-clearfix u-container-align-center u-container-align-center-lg u-container-align-center-md u-container-align-center-sm u-container-align-center-xl u-valign-bottom-lg u-valign-bottom-xl u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-section-1" id="block-3">
       <h2 class="u-hidden-xs u-text u-text-1">Sample Headline</h2>
-      <div class="u-carousel u-carousel-duration-250 u-expanded-width u-gallery u-gallery-slider u-layout-carousel u-lightbox u-no-transition u-show-text-on-hover u-gallery-1" id="carousel-0f3a" data-interval="2750" data-u-ride="carousel">
+      <div class="u-carousel u-carousel-duration-250 u-expanded-width u-gallery u-gallery-slider u-layout-carousel u-lightbox u-no-transition u-show-text-on-hover u-gallery-1" id="carousel-0f3a" data-interval="750" data-u-ride="carousel">
         <ol class="u-absolute-hcenter u-carousel-indicators u-carousel-indicators-1">
           <li data-u-target="#carousel-0f3a" data-u-slide-to="0" class="u-active u-custom-color-3 u-shape-circle" style="width: 10px; height: 10px; background-image: none;"></li>
           <li data-u-target="#carousel-0f3a" data-u-slide-to="1" class="u-custom-color-3 u-shape-circle" style="width: 10px; height: 10px; background-image: none;"></li>
@@ -203,7 +203,7 @@ c0-7.4,3.4-18.8,18.8-18.8h13.8v15.4H75.5z"></path></svg></span>
       </div>
     </section>
     <section class="u-align-center u-clearfix u-container-align-center u-valign-middle u-section-4" id="block-4">
-      <div class="u-carousel u-expanded-width u-gallery u-gallery-slider u-layout-carousel u-lightbox u-no-transition u-show-text-on-hover u-gallery-1" id="carousel-2023" data-interval="2750" data-u-ride="carousel" data-pause="false">
+      <div class="u-carousel u-expanded-width u-gallery u-gallery-slider u-layout-carousel u-lightbox u-no-transition u-show-text-on-hover u-gallery-1" id="carousel-2023" data-interval="750" data-u-ride="carousel" data-pause="false">
         <ol class="u-absolute-hcenter u-carousel-indicators u-carousel-indicators-1">
           <li data-u-target="#carousel-2023" data-u-slide-to="0" class="u-active u-shape-circle" style="width: 10px; height: 10px;"></li>
           <li data-u-target="#carousel-2023" data-u-slide-to="1" class="u-shape-circle" style="width: 10px; height: 10px;"></li>
