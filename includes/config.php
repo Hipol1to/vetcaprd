@@ -6,16 +6,16 @@ date_default_timezone_set('Europe/London');
 
 //database credentials
 define('DBHOST','localhost');
-define('DBUSER','u881757960_vetcap_adm');
-define('DBPASS','!!zU7543Mjk!!');
-define('DBNAME','u881757960_vetcap_storage');
+define('DBUSER','root');
+define('DBPASS','');
+define('DBNAME','vetcap_storage');
 define('ENCRYPTION_KEY', base64_decode('G9S/vWXp8aNCL2NRQFQ/oHjdJJ3kbsT/mLxukjMMN8Q='));
 define('ENCRYPTION_IV', '5938506185430479'); // Must be 16 bytes for AES-256-CBC
 
 
 //application address
-define('DIR','https://www.vetcaprd.com//');
-define('PAGE','https://www.vetcaprd.com//');
+define('DIR','http://localhost/vescaprod/');
+define('PAGE','http://localhost/vescaprod/');
 define('SITEEMAIL','info@vetcaprd.com');
 $log_file = __DIR__ . '/custom_log.log'; // Define log file path
 
@@ -185,7 +185,7 @@ function renderDiplomadosSlider($diplomadosArray, $misPendingDiplomados, $misDip
                 <div class="image-placeholder">
                     <img style="width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the whole area */" src="https://www.vetcaprd.com/'.str_replace("../", "", $theDiplomado['foto_diplomado']).'" alt="Foto capacitación" class="hero-image">
+    object-fit: cover; /* Ensures the image covers the whole area */" src="http://localhost/vescaprod/'.str_replace("../", "", $theDiplomado['foto_diplomado']).'" alt="Foto capacitación" class="hero-image">
                     <span class="month">MARZO</span>
                 </div>
                 <div class="disvi">
@@ -580,9 +580,9 @@ function printAllEvents($eventos) {
   <div class="vetcap-container">
     <!-- Left Section -->
     <div class="vetcap-left">
-      <img src="https://www.vetcaprd.com/<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
+      <img src="http://localhost/vescaprod/<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
       <div class="vetcap-badge">
-        <img style="width: 70px; height: auto;" src="https://www.vetcaprd.com//assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
+        <img style="width: 70px; height: auto;" src="http://localhost/vescaprod/assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
         <span>RD$<?= htmlspecialchars($evento['precio_inscripcion']) ?></span>
       </div>
     </div>
@@ -590,7 +590,7 @@ function printAllEvents($eventos) {
     <div class="vetcap-right">
     <?php
             if (isset($evento['foto_titulo'])) {
-              echo '<img style="max-width: 330px;" src="https://www.vetcaprd.com/'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
+              echo '<img style="max-width: 330px;" src="http://localhost/vescaprod/'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
             } else {
               write_log("foto titulo");
               echo '<h2 style="font-size: 50px; font-family: HelveticaBold;" class="course-title">'.$evento['nombre'].'</h2>';

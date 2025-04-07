@@ -82,7 +82,7 @@ function generateTransaction(eventId, ammount) {
     };
   
     // Send transaction data via POST request
-    fetch("https://www.vetcaprd.com//VetCapMembers/register_trx.php", {
+    fetch("http://localhost/vescaprod/VetCapMembers/register_trx.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -115,7 +115,7 @@ function generateTransaction(eventId, ammount) {
       })
       .catch((error) => {
         console.error("Error during fetch:", error);
-        alert("Ha ocurrido un error durante tu solicitud, por favor contacta al administrador con este mensaje.");
+        alert("Ha ocurrido un error durante tu solicitud, por favor contacta al administrador con este mensaje. \n"+error);
       });
     
   }
@@ -127,7 +127,7 @@ function generateTransaction(eventId, ammount) {
     };
 
     // Send transaction data via POST request
-    fetch("https://www.vetcaprd.com//VetCapMembers/register_user_event.php", {
+    fetch("http://localhost/vescaprod/VetCapMembers/register_user_event.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

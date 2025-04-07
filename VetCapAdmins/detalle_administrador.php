@@ -92,11 +92,11 @@ require('layout/header.php');
                             echo '<div class="row">';
                             echo '<div class="col-md-6">';
                             echo '<p>Captura Frontal</p>';
-                            echo '<img src="https://www.vetcaprd.com//' . htmlspecialchars($image_paths[0]) . '" alt="Captura Frontal" class="img-thumbnail" style="max-width: 100%;">';
+                            echo '<img src="http://localhost/vescaprod/' . htmlspecialchars($image_paths[0]) . '" alt="Captura Frontal" class="img-thumbnail" style="max-width: 100%;">';
                             echo '</div>';
                             echo '<div class="col-md-6">';
                             echo '<p>Captura Posterior</p>';
-                            echo '<img src="https://www.vetcaprd.com//' . htmlspecialchars($image_paths[1]) . '" alt="Captura Posterior" class="img-thumbnail" style="max-width: 100%;">';
+                            echo '<img src="http://localhost/vescaprod/' . htmlspecialchars($image_paths[1]) . '" alt="Captura Posterior" class="img-thumbnail" style="max-width: 100%;">';
                             echo '</div>';
                             echo '</div>';
                         } else {

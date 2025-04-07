@@ -120,7 +120,7 @@ if ($user->is_logged_in() && isset($_SESSION['rol']) && $_SESSION['rol'] == "adm
       <div class="event-container" style="display: flex; flex-direction: row; align-items: start; gap: 20px; margin-bottom: 20px;">
         <div class="event-image-container" style="flex: 1; max-width: 150px;">
           <img 
-            src="https://www.vetcaprd.com/'.$theEvent['foto_evento'].'" 
+            src="http://localhost/vescaprod/'.$theEvent['foto_evento'].'" 
             alt="Event Photo" 
             style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"
           />
@@ -166,7 +166,7 @@ if ($user->is_logged_in() && isset($_SESSION['rol']) && $_SESSION['rol'] == "adm
 <div class="event-container" style="display: flex; flex-direction: row; align-items: start; gap: 20px; margin-bottom: 20px;">
 <div class="event-image-container" style="flex: 1; max-width: 150px;">
   <img 
-    src="https://www.vetcaprd.com/'.$thePendingEvent['foto_evento'].'" 
+    src="http://localhost/vescaprod/'.$thePendingEvent['foto_evento'].'" 
     alt="Event Photo" 
     style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"
   />
@@ -224,7 +224,7 @@ if ($user->is_logged_in() && isset($_SESSION['rol']) && $_SESSION['rol'] == "adm
       <div class="event-container" style="display: flex; flex-direction: row; align-items: start; gap: 20px; margin-bottom: 20px;">
         <div class="event-image-container" style="flex: 1; max-width: 150px;">
           <img 
-            src="https://www.vetcaprd.com/'.$theCourse['foto_diplomado'].'" 
+            src="http://localhost/vescaprod/'.$theCourse['foto_diplomado'].'" 
             alt="Foto capacitación" 
             style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"
           />
@@ -270,7 +270,7 @@ if ($user->is_logged_in() && isset($_SESSION['rol']) && $_SESSION['rol'] == "adm
 <div class="event-container" style="display: flex; flex-direction: row; align-items: start; gap: 20px; margin-bottom: 20px;">
 <div class="event-image-container" style="flex: 1; max-width: 150px;">
   <img 
-    src="https://www.vetcaprd.com/'.$thePendingCourse['foto_diplomado'].'" 
+    src="http://localhost/vescaprod/'.$thePendingCourse['foto_diplomado'].'" 
     alt="Event Photo" 
     style="width: 100%; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);"
   />
@@ -312,7 +312,7 @@ if ($user->is_logged_in() && isset($_SESSION['rol']) && $_SESSION['rol'] == "adm
           <div class="row align-items-center">
             <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12">
               <div class="about-img about-img1">
-                <img src="https://www.vetcaprd.com/<?php  echo $nextEvent['foto_evento']; ?>" alt="" class="event-pic"/>
+                <img src="http://localhost/vescaprod/<?php  echo $nextEvent['foto_evento']; ?>" alt="" class="event-pic"/>
               </div>
             </div>
             <div
@@ -321,7 +321,7 @@ if ($user->is_logged_in() && isset($_SESSION['rol']) && $_SESSION['rol'] == "adm
               <div class="about-caption about-caption1">
                 <div class="section-tittle m-0">
                   <!-- second section 
-                  <img src="https://www.vetcaprd.com//assets/img/centro_de_cultura_logo.png" style="width: 300px;" alt=""> !-->
+                  <img src="http://localhost/vescaprod/assets/img/centro_de_cultura_logo.png" style="width: 300px;" alt=""> !-->
                   <h2 style="font-size: 30px; font-family: Horizon;"><?php echo $nextEvent['nombre']; ?></h2>
                   <p style="color: #2d5b2d;" class="capitalize-first vetcap-description">
       <?= htmlspecialchars($nextEvent['descripcion']) ?>
@@ -401,7 +401,7 @@ $nextEventPriceText = $nextEvent['precio_inscripcion'] == 0.00 ? "GRATIS" : "RD$
 echo $nextEventSubscribeButton;
  ?>
 
-<img  src="https://www.vetcaprd.com//assets/img/money_logo.png" class="money-pic" alt=""><a class="money-free"><?php echo $nextEventPriceText; ?></a></div>
+<img  src="http://localhost/vescaprod/assets/img/money_logo.png" class="money-pic" alt=""><a class="money-free"><?php echo $nextEventPriceText; ?></a></div>
 
 
                   <p class="mb-30">
@@ -812,9 +812,9 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
   <div id="eventosContainer" class="hidden vetcap-container">
     <!-- Left Section -->
     <div class="vetcap-left">
-      <img src="https://www.vetcaprd.com/<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
+      <img src="http://localhost/vescaprod/<?= $evento['foto_evento'] ?>" alt="Illustration" class="vetcap-image vetcap-logo" />
       <div class="vetcap-badge">
-        <img style="width: 70px; height: auto;" src="https://www.vetcaprd.com//assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
+        <img style="width: 70px; height: auto;" src="http://localhost/vescaprod/assets/img/money_logo.png" alt="Gratis Icon" class="badge-icon" />
         <span>RD$<?= htmlspecialchars($evento['precio_inscripcion']) ?></span>
       </div>
     </div>
@@ -822,7 +822,7 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
     <div class="vetcap-right">
     <?php
             if (isset($evento['foto_titulo'])) {
-              echo '<img style="max-width: 330px;" src="https://www.vetcaprd.com/'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
+              echo '<img style="max-width: 330px;" src="http://localhost/vescaprod/'.$evento['foto_titulo'].'" alt="Vetcap Tour Logo" class="vetcap-logo" />';
             } else {
               write_log("foto titulo");
               echo '<h2 style="font-size: 50px; font-family: HelveticaBold;" class="course-title">'.$evento['nombre'].'</h2>';
@@ -874,7 +874,7 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
 updateCountdown(eventtId_<?php echo str_replace("-", "_", $evento['Id']); ?>, eventTimestamp_<?php echo str_replace("-", "_", $evento['Id']); ?>);
 </script>
 <br>
-      <button onclick="location.href='https://www.vetcaprd.com//eventos.php';" id="conocer-mas" style="color: black" class="btnn btn-outline">CONOCER MÁS</button>
+      <button onclick="location.href='http://localhost/vescaprod/eventos.php';" id="conocer-mas" style="color: black" class="btnn btn-outline">CONOCER MÁS</button>
       <?php 
     $isAttributeWritten = false;
     $onClick = ''; // Initialize $onClick to avoid undefined variable issues
@@ -1331,15 +1331,15 @@ $subscribeEventContent = '<h2 style="color: #2d4a34; margin-bottom: 20px;">Inscr
             </div>
             <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-1"></div>
           </div>
-          <div class="u-carousel-item u-effect-fade u-gallery-item u-carousel-item-2">
+          <!-- <div class="u-carousel-item u-effect-fade u-gallery-item u-carousel-item-2">
             <div class="u-back-slide" data-image-width="7917" data-image-height="834">
               <img class="u-back-image u-expanded" src="../images/banners-MMMesadetrabajo1300x.png">
             </div>
             <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-2">
-              <!-- <h3 class="u-gallery-heading">Sample Title</h3>
+               <h3 class="u-gallery-heading">Sample Title</h3>
               <p class="u-gallery-text">Sample Text</p> -->
             </div>
-          </div>
+          </div> 
         </div>
         <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-hidden u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-1" href="#carousel-2023" role="button" data-u-slide="prev">
           <span aria-hidden="true">

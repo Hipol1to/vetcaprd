@@ -79,7 +79,7 @@ require('layout/header.php');
     <input type="file" class="form-control-file" id="foto_evento_file" name="foto_evento_file" accept="image/*">
     <input type="hidden" id="foto_evento" name="foto_evento" value="<?= htmlspecialchars($event['foto_evento']) ?>">
     <small class="form-text text-muted">Sube una imagen para actualizar la foto del evento.</small>
-    <img src="https://www.vetcaprd.com/<?= htmlspecialchars($event['foto_evento']) ?>" alt="Foto del Evento" class="img-thumbnail mt-2" style="max-width: 200px;" id="foto_evento_preview">
+    <img src="http://localhost/vescaprod/<?= htmlspecialchars($event['foto_evento']) ?>" alt="Foto del Evento" class="img-thumbnail mt-2" style="max-width: 200px;" id="foto_evento_preview">
 </div>
 
 <div class="form-group">
@@ -87,7 +87,7 @@ require('layout/header.php');
     <input type="file" class="form-control-file" id="foto_titulo_file" name="foto_titulo_file" accept="image/*">
     <input type="hidden" id="foto_titulo" name="foto_titulo" value="<?= htmlspecialchars($event['foto_titulo']) ?>">
     <small class="form-text text-muted">Sube una imagen para actualizar la foto del título.</small>
-    <img src="https://www.vetcaprd.com/<?= htmlspecialchars($event['foto_titulo']) ?>" alt="Foto del Título" class="img-thumbnail mt-2" style="max-width: 200px;" id="foto_titulo_preview">
+    <img src="http://localhost/vescaprod/<?= htmlspecialchars($event['foto_titulo']) ?>" alt="Foto del Título" class="img-thumbnail mt-2" style="max-width: 200px;" id="foto_titulo_preview">
 </div>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -190,7 +190,7 @@ $(document).ready(function () {
                         <td>$<?= number_format($pago['monto'], 2) ?></td>
                         <td>
                             <?php if (!empty($pago['comprobante_pago_ruta'])): ?>
-                                <a href="https://www.vetcaprd.com/<?= htmlspecialchars($pago['comprobante_pago_ruta']) ?>" target="_blank">Ver Comprobante</a>
+                                <a href="http://localhost/vescaprod/<?= htmlspecialchars($pago['comprobante_pago_ruta']) ?>" target="_blank">Ver Comprobante</a>
                             <?php else: ?>
                                 No disponible
                             <?php endif; ?>

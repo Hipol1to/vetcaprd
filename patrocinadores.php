@@ -266,15 +266,15 @@
             </div>
             <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-1"></div>
           </div>
-          <div class="u-carousel-item u-effect-fade u-gallery-item u-carousel-item-2">
+          <!-- <div class="u-carousel-item u-effect-fade u-gallery-item u-carousel-item-2">
             <div class="u-back-slide" data-image-width="7917" data-image-height="834">
               <img class="u-back-image u-expanded" src="images/banners-MMMesadetrabajo1300x.png">
             </div>
             <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-2">
-              <!-- <h3 class="u-gallery-heading">Sample Title</h3>
-              <p class="u-gallery-text">Sample Text</p> -->
+              <h3 class="u-gallery-heading">Sample Title</h3>
+              <p class="u-gallery-text">Sample Text</p>
             </div>
-          </div>
+          </div> -->
         </div>
         <a class="u-absolute-vcenter u-carousel-control u-carousel-control-prev u-hidden u-opacity u-opacity-70 u-spacing-10 u-text-white u-carousel-control-1" href="#carousel-2023" role="button" data-u-slide="prev">
           <span aria-hidden="true">

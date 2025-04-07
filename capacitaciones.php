@@ -120,13 +120,13 @@
             </div>
             <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-1"></div>
           </div>
-          <div class="u-carousel-item u-effect-fade u-gallery-item u-carousel-item-2">
+          <!-- <div class="u-carousel-item u-effect-fade u-gallery-item u-carousel-item-2">
             <div class="u-back-slide" data-image-width="7917" data-image-height="834">
               <img class="u-back-image u-expanded" src="images/banners-MMMesadetrabajo1300x.png">
             </div>
             <div class="u-align-center u-over-slide u-shading u-valign-bottom u-over-slide-2">
             </div>
-          </div>
+          </div> -->
           <div class="u-carousel-item u-effect-fade u-gallery-item u-carousel-item-3">
             <div class="u-back-slide" data-image-width="7917" data-image-height="834">
               <img class="u-back-image u-expanded" src="images/banners-MMMesadetrabajo1300x.png">

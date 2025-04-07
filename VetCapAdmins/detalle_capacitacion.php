@@ -76,7 +76,7 @@ require('layout/header.php');
                         <input type="file" class="form-control-file" id="foto_diplomado_file" name="foto_diplomado_file" accept="image/*">
                         <input type="hidden" id="foto_diplomado" name="foto_diplomado" value="<?= htmlspecialchars($capacitacion['foto_diplomado']) ?>">
                         <!-- <small class="form-text text-muted">Sube una imagen para actualizar la foto del diplomado.</small> -->
-                        <img src="https://www.vetcaprd.com/<?= htmlspecialchars(str_replace("../", "", $capacitacion['foto_diplomado'])) ?>" alt="Foto del Diplomado no disponible" class="img-thumbnail mt-2" style="max-width: 200px;" id="foto_diplomado_preview">
+                        <img src="http://localhost/vescaprod/<?= htmlspecialchars(str_replace("../", "", $capacitacion['foto_diplomado'])) ?>" alt="Foto del Diplomado no disponible" class="img-thumbnail mt-2" style="max-width: 200px;" id="foto_diplomado_preview">
                     </div>
                     <div class="form-group">
                         <label for="precio_inscripcion">Precio de Inscripción</label>
@@ -133,7 +133,7 @@ require('layout/header.php');
                                     <td>
                                         <?php if (!empty($pago['comprobante_pago_ruta'])): ?>
                                         <?php $comprobantePath = explode("VetCapMembers/uploads/", $pago['comprobante_pago_ruta']) ?>
-                                            <a href="<?= htmlspecialchars("https://www.vetcaprd.com/VetCapMembers/uploads/".$comprobantePath[1]) ?>" target="_blank">Ver Comprobante</a>
+                                            <a href="<?= htmlspecialchars("http://localhost/vescaprod/VetCapMembers/uploads/".$comprobantePath[1]) ?>" target="_blank">Ver Comprobante</a>
                                         <?php else: ?>
                                             No disponible
                                         <?php endif; ?>
